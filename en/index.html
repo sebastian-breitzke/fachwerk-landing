@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="alternate" hreflang="de" href="index.html">
-<link rel="alternate" hreflang="en" href="en/index.html">
-<title>Fachwerk — Baut sich selbst.</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate" hreflang="de" href="../index.html">
+<link rel="alternate" hreflang="en" href="index.html">
+<title>Fachwerk — Builds itself.</title>
 <style>
-@font-face { font-family: 'IBM Plex Sans'; font-weight: 300; src: url(fonts/ibm-plex-sans-300.ttf) format('truetype'); font-display: swap; }
-@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
-@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
-@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 300; src: url(../fonts/ibm-plex-sans-300.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(../fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(../fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(../fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
 
@@ -56,9 +56,7 @@ body {
 
 .content { position: relative; z-index: 1; }
 
-/* ═══════════════════════════════════════════════
-   NAV
-   ═══════════════════════════════════════════════ */
+/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -96,9 +94,7 @@ nav {
 }
 .nav-links a:hover { color: var(--primary); }
 
-/* ═══════════════════════════════════════════════
-   HERO
-   ═══════════════════════════════════════════════ */
+/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -130,7 +126,6 @@ nav {
   line-height: 1.7;
 }
 
-/* Isometric animation — right side of hero */
 /* Construction lines */
 .construction-lines {
   position: absolute;
@@ -148,9 +143,7 @@ nav {
 .c-line.h { height: 1px; left: 0; right: 0; }
 .c-line.v { width: 1px; top: 0; bottom: 0; }
 
-/* ═══════════════════════════════════════════════
-   DIVIDER
-   ═══════════════════════════════════════════════ */
+/* DIVIDER */
 .divider {
   width: 60px;
   height: 2px;
@@ -158,9 +151,7 @@ nav {
   margin: 0 8vw;
 }
 
-/* ═══════════════════════════════════════════════
-   SECTIONS
-   ═══════════════════════════════════════════════ */
+/* SECTIONS */
 .section {
   min-height: 70vh;
   display: flex;
@@ -197,7 +188,7 @@ nav {
   line-height: 1.8;
 }
 
-/* Strikethrough effect for the problem headline */
+/* Strikethrough effect */
 .strike-through {
   position: relative;
   display: inline;
@@ -221,9 +212,7 @@ nav {
   margin-top: 0.5rem;
 }
 
-/* ═══════════════════════════════════════════════
-   PILLARS
-   ═══════════════════════════════════════════════ */
+/* PILLARS */
 .pillars {
   min-height: 80vh;
   display: flex;
@@ -252,9 +241,7 @@ nav {
   max-width: 36rem;
 }
 
-/* ═══════════════════════════════════════════════
-   EXAMPLE
-   ═══════════════════════════════════════════════ */
+/* EXAMPLE */
 .example {
   min-height: 90vh;
   padding: 8rem 8vw;
@@ -307,7 +294,7 @@ nav {
 }
 
 .terminal-quote::before {
-  content: 'AI-ANALYSE — E-MAIL AN DEN DISPONENTEN';
+  content: 'AI ANALYSIS — EMAIL TO DISPATCHER';
   position: absolute;
   top: -0.65rem;
   left: 1rem;
@@ -330,9 +317,7 @@ nav {
   margin-top: 2rem;
 }
 
-/* ═══════════════════════════════════════════════
-   LOGIMAT
-   ═══════════════════════════════════════════════ */
+/* LOGIMAT */
 .logimat {
   min-height: 40vh;
   display: flex;
@@ -375,9 +360,7 @@ nav {
   box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
 }
 
-/* ═══════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════ */
+/* FOOTER */
 footer {
   padding: 1.2rem 8vw;
   border-top: 2px solid var(--border);
@@ -405,9 +388,7 @@ footer {
 }
 .footer-right a:hover { color: var(--primary); }
 
-/* ═══════════════════════════════════════════════
-   SCROLL REVEAL
-   ═══════════════════════════════════════════════ */
+/* SCROLL REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -419,16 +400,13 @@ footer {
   transform: translateY(0);
 }
 
-/* ═══════════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
     padding: 7rem 6vw 4rem;
     gap: 2rem;
   }
-  .iso-structure { transform: rotateX(50deg) rotateZ(-45deg) scale(0.7); }
   .section, .pillars, .example, .logimat { padding: 5rem 6vw; }
   nav { padding: 0.75rem 6vw; }
   .nav-links { gap: 1rem; }
@@ -465,10 +443,10 @@ footer {
   </a>
   <div class="nav-links">
     <a href="#problem">Problem</a>
-    <a href="#plattform">Plattform</a>
-    <a href="#beispiel">Beispiel</a>
+    <a href="#platform">Platform</a>
+    <a href="#example">Example</a>
     <a href="#logimat">LogiMat</a>
-    <a href="en/" style="color: var(--primary); border-left: 1px solid var(--border); padding-left: 1.5rem;">EN</a>
+    <a href="../" style="color: var(--primary); border-left: 1px solid var(--border); padding-left: 1.5rem;">DE</a>
   </div>
 </nav>
 
@@ -486,11 +464,10 @@ footer {
 
     <div class="hero-text">
       <h1 class="hero-headline">
-        <span>Baut</span>
-        <span>sich</span>
-        <span>selbst.</span>
+        <span>Builds</span>
+        <span>itself.</span>
       </h1>
-      <p class="hero-sub">Die Plattform für maßgeschneiderte Business-Software. Automatisierung und Integration — gebaut für dein Unternehmen, nicht von der Stange.</p>
+      <p class="hero-sub">The platform for bespoke business software. Automation and integration — built for your company, not off the shelf.</p>
     </div>
 
   </section>
@@ -501,57 +478,57 @@ footer {
   <section class="section reveal" id="problem">
     <span class="section-label">Problem</span>
     <h2 class="section-headline">
-      Maßgeschneiderte Software<br>
-      <span class="strike-through">kann sich niemand leisten.</span>
-      <span class="replacement">In Stunden, nicht Monaten.</span>
+      Custom software<br>
+      <span class="strike-through">no one can afford.</span>
+      <span class="replacement">In hours, not months.</span>
     </h2>
-    <p class="section-text">Du hast 1000 Prozesse, die automatisiert werden müssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+    <p class="section-text">You have 1,000 processes that need automating. Integrations between systems that nobody understands. Manual workarounds costing time and money every single day. But custom software? Too expensive. Too slow. Too much back and forth between business, project management, and development.</p>
   </section>
 
   <div class="divider"></div>
 
   <!-- SOLUTION -->
-  <section class="section reveal" id="plattform">
-    <span class="section-label">Lösung</span>
-    <h2 class="section-headline">Dein Problem.<br>Deine Lösung.<br>Dein Tempo.</h2>
-    <p class="section-text">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+  <section class="section reveal" id="platform">
+    <span class="section-label">Solution</span>
+    <h2 class="section-headline">Your problem.<br>Your solution.<br>Your pace.</h2>
+    <p class="section-text">Fachwerk is an automation and integration platform. Built for the people who know best what they need — business users, not developers. No budget approvals. No outside contractors. No back and forth.</p>
   </section>
 
   <div class="divider"></div>
 
   <!-- PILLARS -->
   <section class="pillars">
-    <span class="section-label">Wie es funktioniert</span>
+    <span class="section-label">How it works</span>
     <div class="pillar reveal">
-      <h3 class="pillar-title">Baut sich selbst.<br>Wartet sich selbst.<br>Heilt sich selbst.</h3>
-      <p class="pillar-text">Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</p>
+      <h3 class="pillar-title">Builds itself.<br>Maintains itself.<br>Heals itself.</h3>
+      <p class="pillar-text">Fachwerk understands your entire system — every interface, every process, every dependency. The kind of knowledge that usually lives in one person's head across the entire organization.</p>
     </div>
     <div class="pillar reveal">
-      <h3 class="pillar-title">Gebaut für Business,<br>nicht für Entwickler.</h3>
-      <p class="pillar-text">Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig.</p>
+      <h3 class="pillar-title">Built for business,<br>not for developers.</h3>
+      <p class="pillar-text">The people who best understand what's needed can describe it themselves. Fachwerk analyzes, builds, and delivers. No coding. No technical background required.</p>
     </div>
     <div class="pillar reveal">
-      <h3 class="pillar-title">Code wo Code reicht.<br>AI wo AI zählt.</h3>
-      <p class="pillar-text">Der Großteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</p>
+      <h3 class="pillar-title">Code where code works.<br>AI where AI counts.</h3>
+      <p class="pillar-text">Most of what Fachwerk builds is reliable, hard code. Fast, stable, predictable. AI is deployed precisely where it adds real value — as an escalation layer, not a hammer for everything.</p>
     </div>
   </section>
 
   <div class="divider"></div>
 
   <!-- EXAMPLE -->
-  <section class="example reveal" id="beispiel">
-    <span class="section-label">Beispiel</span>
-    <h2 class="section-headline">Tour-Dokumente in Minuten<br>statt Stunden</h2>
+  <section class="example reveal" id="example">
+    <span class="section-label">Example</span>
+    <h2 class="section-headline">Tour documents in minutes<br>instead of hours</h2>
 
-    <p class="example-intro">Hunderte Seiten Frachtdokumente pro Tour. Bisher luden Mitarbeiter sie <em>täglich von Hand herunter</em>, kombinierten sie manuell und prüften jede einzelne Seite. Dieselben Mitarbeiter haben Fachwerk beschrieben, was sie brauchen.</p>
+    <p class="example-intro">Hundreds of pages of freight documents per tour. Previously, employees <em>downloaded them by hand every day</em>, combined them manually, and checked every single page. Those same employees told Fachwerk what they needed.</p>
 
-    <p class="example-intro">Nun extrahiert Fachwerk automatisch die Deckblätter, prüft Adressen und Vollständigkeit. Alles korrekt? Sammel-PDF wird erstellt und direkt an den Transportdienstleister gemailt. <em>Ohne dass jemand einen Finger rührt.</em></p>
+    <p class="example-intro">Now Fachwerk automatically extracts cover sheets, verifies addresses and completeness. Everything correct? A consolidated PDF is created and emailed directly to the carrier. <em>Without anyone lifting a finger.</em></p>
 
-    <p class="example-intro">Wenn etwas nicht stimmt, erkennt die Automatik — wie vom Fachanwender spezifiziert — das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie — und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</p>
+    <p class="example-intro">When something's off, the automation — as specified by the business user — catches the problem. Then AI steps in: it analyzes the data, the PDFs, the interface history — and writes a concrete problem report with recommended actions to the right person.</p>
 
-    <div class="terminal-quote">Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.</div>
+    <div class="terminal-quote">Tour 4711: Shipping documents cannot be sent. Cause: The interface file from Provider X this morning contained incorrect address data. Three downstream processes are affected. The CMR is missing the recipient as a result. Please request a correction file from Provider X.</div>
 
-    <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
+    <p class="punchline">No searching through six systems. No three hours of root cause analysis. Fachwerk knows the connections and tells you what's wrong and what to do.</p>
   </section>
 
   <div class="divider"></div>
@@ -559,14 +536,14 @@ footer {
   <!-- LOGIMAT -->
   <section class="logimat" id="logimat">
     <span class="section-label">LogiMat 2026</span>
-    <h2 class="logimat-headline">Live auf der LogiMat 2026<br>Halle 4 — Stand ecovium 4C77</h2>
-    <a href="mailto:hello@fachwerk.tech" class="cta-button">Demo anfragen</a>
+    <h2 class="logimat-headline">Live at LogiMat 2026<br>Hall 4 — ecovium booth 4C77</h2>
+    <a href="mailto:hello@fachwerk.tech" class="cta-button">Request a demo</a>
   </section>
 
   <footer>
     <div class="footer-inner">
-      <span class="footer-left">Ein Projekt von <strong>Sebastian Breitzke</strong> · <a href="https://s16e.de" target="_blank" rel="noopener">s16e.de</a></span>
-      <span class="footer-right"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a></span>
+      <span class="footer-left">A project by <strong>Sebastian Breitzke</strong> · <a href="https://s16e.de" target="_blank" rel="noopener">s16e.de</a></span>
+      <span class="footer-right"><a href="../impressum.html">Legal notice</a> <a href="../datenschutz.html">Privacy</a></span>
     </div>
   </footer>
 </div>
