@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachwerk — Baut sich selbst. Wartet sich selbst. Heilt sich selbst.</title>
+<style>
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 300; src: url(fonts/ibm-plex-sans-300.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+:root {
+  --bg: #f4f5f7;
+  --fg: #1a2030;
+  --primary: #2a9080;
+  --muted: #e8eaee;
+  --muted-text: #5a6270;
+  --border: #dfe2e6;
+  --success: #4a7c59;
+  --error: #a65241;
+  --warning: #b8860b;
+  --info: #4a6fa5;
+  --dark-bg: #1e2430;
+  --teal: #5eead4;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'Courier New', 'Lucida Console', monospace;
+}
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Millimeterpapier grid */
+body {
+  background-image:
+    linear-gradient(rgba(42, 144, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 144, 128, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: local;
+}
+
+.content { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(244, 245, 247, 0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--border);
+}
+
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-logo svg { width: 32px; height: 32px; }
+.nav-logo .wordmark {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg);
+}
+
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: var(--muted-text);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--primary); }
+
+/* ═══════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 8vw;
+}
+
+.hero-text { }
+
+.hero-headline {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: 3rem;
+}
+
+.hero-headline span { display: block; }
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  max-width: 32rem;
+  line-height: 1.7;
+}
+
+/* Isometric animation — right side of hero */
+/* Construction lines */
+.construction-lines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.c-line {
+  position: absolute;
+  background: rgba(42, 144, 128, 0.06);
+}
+
+.c-line.h { height: 1px; left: 0; right: 0; }
+.c-line.v { width: 1px; top: 0; bottom: 0; }
+
+/* ═══════════════════════════════════════════════
+   DIVIDER
+   ═══════════════════════════════════════════════ */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0 8vw;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════════ */
+.section {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 8vw;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
+
+.section-headline {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+  color: var(--fg);
+}
+
+.section-text {
+  font-size: 1.05rem;
+  color: var(--muted-text);
+  max-width: 40rem;
+  line-height: 1.8;
+}
+
+/* Strikethrough effect for the problem headline */
+.strike-through {
+  position: relative;
+  display: inline;
+  white-space: nowrap;
+}
+
+.strike-through::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 52%;
+  height: 3px;
+  background: #c0392b;
+  transform: rotate(-0.5deg);
+}
+
+.replacement {
+  display: block;
+  color: var(--fg);
+  margin-top: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   PILLARS
+   ═══════════════════════════════════════════════ */
+.pillars {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 8vw;
+  gap: 5rem;
+}
+
+.pillar { max-width: 48rem; }
+
+.pillar-title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.pillar-text {
+  font-size: 1rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+  max-width: 36rem;
+}
+
+/* ═══════════════════════════════════════════════
+   EXAMPLE
+   ═══════════════════════════════════════════════ */
+.example {
+  min-height: 90vh;
+  padding: 8rem 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.example-intro {
+  font-size: 1.05rem;
+  color: var(--muted-text);
+  max-width: 40rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.example-intro em {
+  font-style: normal;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.terminal-block {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--fg);
+  border-left: 2px solid var(--primary);
+  padding: 2rem;
+  margin: 2rem 0;
+  max-width: 52rem;
+  white-space: pre-wrap;
+}
+
+.terminal-block .prompt { color: var(--primary); }
+
+.terminal-quote {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: var(--muted-text);
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  margin: 2rem 0;
+  max-width: 52rem;
+  white-space: pre-wrap;
+  background: rgba(42, 144, 128, 0.03);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.terminal-quote::before {
+  content: 'AI-ANALYSE — E-MAIL AN DEN DISPONENTEN';
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  background: var(--primary);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.punchline {
+  font-size: 1rem;
+  color: var(--fg);
+  font-weight: 500;
+  max-width: 40rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+}
+
+/* ═══════════════════════════════════════════════
+   LOGIMAT
+   ═══════════════════════════════════════════════ */
+.logimat {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 8vw;
+  border-top: 2px solid var(--border);
+}
+
+.logimat-headline {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+footer {
+  padding: 1.2rem 8vw;
+  border-top: 2px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  font-family: var(--font-body);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-left strong { color: var(--fg); font-weight: 500; }
+.footer-left a { color: var(--muted-text); text-decoration: none; }
+.footer-left a:hover { color: var(--primary); }
+
+.footer-right { display: flex; gap: 1.5rem; }
+.footer-right a {
+  color: var(--muted-text);
+  text-decoration: none;
+}
+.footer-right a:hover { color: var(--primary); }
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 7rem 6vw 4rem;
+    gap: 2rem;
+  }
+  .iso-structure { transform: rotateX(50deg) rotateZ(-45deg) scale(0.7); }
+  .section, .pillars, .example, .logimat { padding: 5rem 6vw; }
+  nav { padding: 0.75rem 6vw; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.6rem; }
+}
+
+@media (max-width: 600px) {
+  .hero-headline { font-size: clamp(2rem, 12vw, 4rem); }
+  .section-headline { font-size: clamp(1.2rem, 3.5vw, 2rem); }
+  .strike-through { font-size: 0.75em; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="nav-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#nav-frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="wordmark">Fachwerk</span>
+  </a>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#plattform">Plattform</a>
+    <a href="#beispiel">Beispiel</a>
+    <a href="#logimat">LogiMat</a>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Construction lines -->
+    <div class="construction-lines">
+      <div class="c-line h" style="top: 25%"></div>
+      <div class="c-line h" style="top: 75%"></div>
+      <div class="c-line v" style="left: 8%"></div>
+      <div class="c-line v" style="right: 8%"></div>
+    </div>
+
+    <div class="hero-text">
+      <h1 class="hero-headline">
+        <span>Baut</span>
+        <span>sich</span>
+        <span>selbst.</span>
+      </h1>
+      <p class="hero-sub">Die Plattform für maßgeschneiderte Business-Software. Automatisierung und Integration — gebaut für dein Unternehmen, nicht von der Stange.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM -->
+  <section class="section reveal" id="problem">
+    <span class="section-label">Problem</span>
+    <h2 class="section-headline">
+      Maßgeschneiderte Software<br>
+      <span class="strike-through">kann sich niemand leisten.</span>
+      <span class="replacement">In Stunden, nicht Monaten.</span>
+    </h2>
+    <p class="section-text">Du hast 1000 Prozesse, die automatisiert werden müssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SOLUTION -->
+  <section class="section reveal" id="plattform">
+    <span class="section-label">Lösung</span>
+    <h2 class="section-headline">Dein Problem.<br>Deine Lösung.<br>Dein Tempo.</h2>
+    <p class="section-text">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <span class="section-label">Wie es funktioniert</span>
+    <div class="pillar reveal">
+      <h3 class="pillar-title">Baut sich selbst.<br>Wartet sich selbst.<br>Heilt sich selbst.</h3>
+      <p class="pillar-text">Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</p>
+    </div>
+    <div class="pillar reveal">
+      <h3 class="pillar-title">Gebaut für Business,<br>nicht für Entwickler.</h3>
+      <p class="pillar-text">Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig.</p>
+    </div>
+    <div class="pillar reveal">
+      <h3 class="pillar-title">Code wo Code reicht.<br>AI wo AI zählt.</h3>
+      <p class="pillar-text">Der Großteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXAMPLE -->
+  <section class="example reveal" id="beispiel">
+    <span class="section-label">Beispiel</span>
+    <h2 class="section-headline">Tour-Dokumente in Minuten<br>statt Stunden</h2>
+
+    <p class="example-intro">Hunderte Seiten Frachtdokumente pro Tour. Bisher luden Mitarbeiter sie <em>täglich von Hand herunter</em>, kombinierten sie manuell und prüften jede einzelne Seite. Dieselben Mitarbeiter haben Fachwerk beschrieben, was sie brauchen.</p>
+
+    <p class="example-intro">Nun extrahiert Fachwerk automatisch die Deckblätter, prüft Adressen und Vollständigkeit. Alles korrekt? Sammel-PDF wird erstellt und direkt an den Transportdienstleister gemailt. <em>Ohne dass jemand einen Finger rührt.</em></p>
+
+    <p class="example-intro">Wenn etwas nicht stimmt, erkennt die Automatik — wie vom Fachanwender spezifiziert — das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie — und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</p>
+
+    <div class="terminal-quote">Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.</div>
+
+    <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- LOGIMAT -->
+  <section class="logimat" id="logimat">
+    <span class="section-label">LogiMat 2026</span>
+    <h2 class="logimat-headline">Live auf der LogiMat 2026<br>Halle 4 — Stand ecovium 4C77</h2>
+    <a href="mailto:hello@fachwerk.tech" class="cta-button">Demo anfragen</a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-left">Ein Projekt von <strong>Sebastian Breitzke</strong> · <a href="https://s16e.de" target="_blank" rel="noopener">s16e.de</a></span>
+      <span class="footer-right"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </footer>
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

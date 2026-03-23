@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FACHWERK — Automatisierungs- und Integrationsplattform</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+:root {
+  --bg: #f4f5f7;
+  --fg: #1a2030;
+  --primary: #2a9080;
+  --muted: #e8eaee;
+  --muted-text: #5a6270;
+  --border: #dfe2e6;
+  --success: #4a7c59;
+  --error: #a65241;
+  --warning: #b8860b;
+  --info: #4a6fa5;
+  --grid-color: rgba(42, 144, 128, 0.05);
+  --grid-strong: rgba(42, 144, 128, 0.09);
+  --shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  --shadow-lg: 6px 6px 0 rgba(0,0,0,0.12);
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --col-gap: 32px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.75;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+/* Subtle millimeterpapier grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.container-wide {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Header */
+header {
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-area svg {
+  width: 44px;
+  height: 44px;
+}
+
+.logo-text {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+header nav a {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+header nav a:hover {
+  color: var(--primary);
+  border-color: var(--border);
+}
+
+/* Masthead / edition bar */
+.masthead {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.masthead .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+/* Geometric dividers */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+
+.divider .marker {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--primary);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Headings */
+h1 {
+  font-family: var(--mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  font-size: clamp(36px, 6vw, 72px);
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-family: var(--mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  font-size: clamp(24px, 3.5vw, 42px);
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-family: var(--mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  color: var(--primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+p { margin-bottom: 16px; }
+
+/* Drop cap */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--mono);
+  font-size: 4.2em;
+  line-height: 0.85;
+  font-weight: 700;
+  color: var(--primary);
+  margin-right: 12px;
+  margin-top: 4px;
+}
+
+/* Pull quote */
+.pull-quote {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--fg);
+  padding: 40px 0;
+  border-top: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+  margin: 40px 0;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 0 60px;
+  border-bottom: 4px solid var(--fg);
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: end;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 68px);
+}
+
+.hero-right {
+  padding-bottom: 8px;
+}
+
+.hero-right p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted-text);
+}
+
+.hero-right .cta-btn {
+  margin-top: 28px;
+}
+
+/* Two-column text layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--col-gap);
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+/* Sections */
+section {
+  padding: 72px 0;
+  position: relative;
+}
+
+.section-border-top {
+  border-top: 2px solid var(--border);
+}
+
+/* Problem section — full width intro + two column */
+.problem-intro {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.problem-text {
+  column-count: 2;
+  column-gap: var(--col-gap);
+  column-rule: 1px solid var(--border);
+}
+
+/* Pillars as editorial columns */
+.pillar-col {
+  border-left: 2px solid var(--border);
+  padding: 36px 28px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.pillar-col:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.pillar-col:hover {
+  background: rgba(42, 144, 128, 0.02);
+}
+
+.pillar-col .pillar-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.pillar-col h3 {
+  min-height: 60px;
+}
+
+.pillar-col p {
+  font-size: 15px;
+  color: var(--muted-text);
+  line-height: 1.75;
+}
+
+/* Case study callout */
+.case-study-section {
+  background: rgba(42, 144, 128, 0.04);
+  border-top: 4px solid var(--primary);
+  border-bottom: 4px solid var(--primary);
+  margin: 0 -48px;
+  padding: 72px 48px;
+}
+
+.case-study-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+}
+
+.case-study-left h2 {
+  font-size: clamp(22px, 3vw, 38px);
+}
+
+/* System output quote */
+.system-output {
+  border: 2px solid var(--primary);
+  padding: 32px;
+  background: rgba(244, 245, 247, 0.95);
+  box-shadow: var(--shadow);
+  margin: 28px 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+}
+
+.system-output::before {
+  content: 'SYSTEM OUTPUT';
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  padding: 0 8px;
+  background: rgba(42, 144, 128, 0.04);
+}
+
+.punchline {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid var(--border);
+}
+
+/* Banner */
+.banner-section {
+  padding: 0;
+}
+
+.banner {
+  background: var(--fg);
+  color: #fff;
+  padding: 72px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  border: 2px solid var(--fg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fachwerk pattern as corner decorations */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid rgba(94, 234, 212, 0.3);
+  border-left: 2px solid rgba(94, 234, 212, 0.3);
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid rgba(94, 234, 212, 0.3);
+  border-right: 2px solid rgba(94, 234, 212, 0.3);
+}
+
+.banner h2 { color: #fff; margin: 0; font-size: clamp(20px, 2.5vw, 32px); }
+
+.banner-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 8px;
+}
+
+/* CTA */
+.cta-btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 16px 40px;
+  border: 2px solid var(--primary);
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.cta-btn:hover {
+  background: transparent;
+  color: var(--primary);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.08);
+}
+
+.banner .cta-btn:hover {
+  color: #5eead4;
+  border-color: #5eead4;
+}
+
+/* Folio / page number */
+.folio {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* Footer */
+footer {
+  padding: 32px 0;
+  border-top: 2px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted-text);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+footer svg { width: 28px; height: 28px; }
+
+/* Section marker (geometric) */
+.section-marker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-marker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .case-study-grid { grid-template-columns: 1fr; gap: 40px; }
+  .three-col { grid-template-columns: 1fr; }
+  .pillar-col { border-left: none; border-top: 2px solid var(--border); padding: 28px 0; }
+  .pillar-col:first-child { border-top: none; padding-top: 0; }
+  .pillar-col h3 { min-height: auto; }
+}
+
+@media (max-width: 768px) {
+  .container, .container-wide { padding: 0 24px; }
+  .case-study-section { margin: 0 -24px; padding: 48px 24px; }
+  .problem-text { column-count: 1; }
+  .two-col { grid-template-columns: 1fr; }
+  .banner { flex-direction: column; text-align: center; padding: 48px 24px; }
+  header { flex-direction: column; gap: 16px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+  .pull-quote { font-size: 20px; padding: 28px 0; }
+}
+
+@media (max-width: 600px) {
+  .system-output { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <rect width="128" height="128" fill="#1e2430"/>
+        <defs><clipPath id="frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+        <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#frame)">
+          <rect x="16" y="16" width="96" height="96"/>
+          <line x1="16" y1="64" x2="112" y2="64"/>
+          <line x1="64" y1="16" x2="64" y2="112"/>
+          <line x1="16" y1="64" x2="64" y2="16"/>
+          <line x1="64" y1="16" x2="112" y2="64"/>
+          <line x1="16" y1="64" x2="64" y2="112"/>
+          <line x1="64" y1="112" x2="112" y2="64"/>
+        </g>
+      </svg>
+      <span class="logo-text">Fachwerk</span>
+    </div>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#solution">Plattform</a>
+      <a href="#example">Fallstudie</a>
+      <a href="#logimat">LogiMat</a>
+    </nav>
+  </header>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <span>Automatisierung &amp; Integration</span>
+    <span class="diamond"></span>
+    <span>Plattform f&uuml;r Business-Software</span>
+    <span class="diamond"></span>
+    <span>Ausgabe 01 / 2026</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>BAUT SICH SELBST.<br>WARTET SICH SELBST.<br>HEILT SICH SELBST.</h1>
+      </div>
+      <div class="hero-right">
+        <p>Die Plattform f&uuml;r ma&szlig;geschneiderte Business-Software. Automatisierung und Integration &mdash; gebaut f&uuml;r dein Unternehmen, nicht von der Stange.</p>
+        <a href="#logimat" class="cta-btn">Demo anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="section-marker">
+      <div class="section-label" style="margin-bottom: 0;">Problemstellung</div>
+    </div>
+    <div class="problem-intro">
+      <h2>Ma&szlig;geschneiderte Software. In Stunden, nicht Monaten.</h2>
+    </div>
+    <div class="problem-text drop-cap">
+      <p>Du hast 1000 Prozesse, die automatisiert werden m&uuml;ssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+    </div>
+  </section>
+
+  <div class="divider"><span class="marker"></span></div>
+
+  <!-- SOLUTION -->
+  <section id="solution">
+    <div class="section-marker">
+      <div class="section-label" style="margin-bottom: 0;">Die Plattform</div>
+    </div>
+
+    <div class="two-col" style="margin-bottom: 48px;">
+      <div>
+        <h2>Dein Problem. Deine L&ouml;sung. Dein Tempo.</h2>
+      </div>
+      <div>
+        <p>Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut f&uuml;r die Leute, die am besten wissen, was sie brauchen &mdash; Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      &bdquo;Code wo Code reicht. AI wo AI z&auml;hlt.&ldquo;
+    </div>
+
+    <!-- Three pillars as editorial columns -->
+    <div class="three-col">
+      <div class="pillar-col">
+        <span class="pillar-num">I</span>
+        <h3>Baut sich selbst. Wartet sich selbst. Heilt sich selbst.</h3>
+        <p>Fachwerk versteht dein gesamtes System &mdash; jede Schnittstelle, jeden Prozess, jede Abh&auml;ngigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</p>
+      </div>
+      <div class="pillar-col">
+        <span class="pillar-num">II</span>
+        <h3>Gebaut f&uuml;r Business, nicht f&uuml;r Entwickler</h3>
+        <p>Die Leute, die am besten verstehen was gebraucht wird, k&ouml;nnen es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen n&ouml;tig.</p>
+      </div>
+      <div class="pillar-col">
+        <span class="pillar-num">III</span>
+        <h3>Code wo Code reicht. AI wo AI z&auml;hlt.</h3>
+        <p>Der Gro&szlig;teil dessen, was Fachwerk baut, ist zuverl&auml;ssiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt &mdash; als Eskalationsstufe, nicht als Hammer auf alles.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<!-- CASE STUDY — full-width background -->
+<div class="case-study-section" id="example">
+  <div class="case-study-grid">
+    <div class="case-study-left">
+      <div class="section-label">Fallstudie</div>
+      <h2>Tour-Dokumente in Minuten statt Stunden</h2>
+      <p class="drop-cap">Hunderte Seiten Frachtdokumente pro Tour. Fachwerk l&auml;dt sie automatisch, extrahiert die Deckbl&auml;tter, pr&uuml;ft Adressen und Vollst&auml;ndigkeit. Alles korrekt? Sammel-PDF wird erstellt und direkt an den Transportdienstleister gemailt. Ohne dass jemand einen Finger r&uuml;hrt.</p>
+      <p>Wenn etwas nicht stimmt, erkennt die Automatik das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie &mdash; und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</p>
+    </div>
+    <div>
+      <div class="system-output">
+        Tour 4711: Versanddokumente k&ouml;nnen nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empf&auml;nger. Bitte Korrekturdatei bei Anbieter X anfordern.
+      </div>
+      <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenh&auml;nge und sagt dir, was los ist und was zu tun ist.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="folio">&#8212; Seite 1 &#8212;</div>
+
+  <div class="divider"><span class="marker"></span></div>
+
+  <!-- LOGIMAT BANNER -->
+  <section id="logimat" class="banner-section">
+    <div class="banner">
+      <div>
+        <h2>Live auf der LogiMat 2026 in Stuttgart</h2>
+        <div class="banner-sub">Messe Stuttgart &mdash; 2026</div>
+      </div>
+      <a href="#" class="cta-btn">Demo anfragen</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <rect width="128" height="128" fill="#1e2430"/>
+        <defs><clipPath id="frame2"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+        <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#frame2)">
+          <rect x="16" y="16" width="96" height="96"/>
+          <line x1="16" y1="64" x2="112" y2="64"/>
+          <line x1="64" y1="16" x2="64" y2="112"/>
+          <line x1="16" y1="64" x2="64" y2="16"/>
+          <line x1="64" y1="16" x2="112" y2="64"/>
+          <line x1="16" y1="64" x2="64" y2="112"/>
+          <line x1="64" y1="112" x2="112" y2="64"/>
+        </g>
+      </svg>
+      <span style="font-family: var(--mono); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;">Fachwerk</span>
+    </div>
+    <p>&copy; 2026 Fachwerk &mdash; Automatisierungs- und Integrationsplattform</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

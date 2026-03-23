@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachwerk — Baut sich selbst. Wartet sich selbst. Heilt sich selbst.</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+:root {
+  --bg: #f4f5f7;
+  --fg: #1a2030;
+  --primary: #2a9080;
+  --muted: #e8eaee;
+  --muted-text: #5a6270;
+  --border: #dfe2e6;
+  --success: #4a7c59;
+  --error: #a65241;
+  --warning: #b8860b;
+  --info: #4a6fa5;
+  --shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+  --grid-color: rgba(42, 144, 128, 0.06);
+  --iso-angle: 30deg;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--fg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: var(--muted-text);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+
+nav .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+nav .logo-wrap svg { width: 36px; height: 36px; }
+nav .logo-text {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1rem;
+}
+
+nav .nav-links { display: flex; gap: 1.5rem; }
+nav a {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  text-decoration: none;
+}
+nav a:hover { color: var(--primary); }
+
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ISOMETRIC HELPERS */
+.iso-scene {
+  perspective: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iso-grid {
+  transform: rotateX(55deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.iso-block {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  margin: 4px;
+}
+
+.iso-block .face-top {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--primary);
+  opacity: 0.9;
+  transform: translateZ(40px);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.iso-block .face-front {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  background: #228070;
+  bottom: 0;
+  transform-origin: bottom;
+  transform: rotateX(-90deg) translateZ(0px);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+.iso-block .face-right {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  background: #1d6b5e;
+  right: 0;
+  transform-origin: right;
+  transform: rotateY(90deg) translateZ(0px);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-iso {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* CSS isometric structure */
+.iso-structure {
+  display: inline-block;
+  transform: rotateX(50deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+}
+
+.iso-row { display: flex; transform-style: preserve-3d; }
+
+.iso-unit {
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: iso-float 3s ease-in-out infinite;
+}
+
+.iso-unit:nth-child(2) { animation-delay: 0.2s; }
+.iso-unit:nth-child(3) { animation-delay: 0.4s; }
+
+.iso-unit .top {
+  position: absolute;
+  width: 50px; height: 50px;
+  background: var(--primary);
+  transform: translateZ(25px);
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.iso-unit .front {
+  position: absolute;
+  width: 50px; height: 25px;
+  background: #228070;
+  bottom: 0;
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+  border: 2px solid rgba(255,255,255,0.15);
+}
+
+.iso-unit .side {
+  position: absolute;
+  width: 25px; height: 50px;
+  background: #1d6b5e;
+  right: 0;
+  transform-origin: right;
+  transform: rotateY(90deg);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+@keyframes iso-float {
+  0%, 100% { transform: translateZ(0); }
+  50% { transform: translateZ(10px); }
+}
+
+/* Dimension markers */
+.dimension-line {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.dim-line {
+  height: 1px;
+  background: var(--muted-text);
+  flex: 1;
+  min-width: 20px;
+}
+
+.dim-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted-text);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.hero h1 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 2.2rem;
+  line-height: 1.3;
+  color: var(--fg);
+  max-width: 700px;
+}
+
+.hero h1 span { color: var(--primary); }
+
+.hero .subline {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--muted-text);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* Construction lines overlay */
+.construction-lines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.c-line {
+  position: absolute;
+  background: rgba(42, 144, 128, 0.08);
+}
+
+.c-line.h {
+  height: 1px;
+  left: 0; right: 0;
+}
+
+.c-line.v {
+  width: 1px;
+  top: 0; bottom: 0;
+}
+
+.c-line.d {
+  height: 1px;
+  width: 200%;
+  transform-origin: 0 0;
+}
+
+/* SECTION */
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+section h2 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.5rem;
+  color: var(--fg);
+  margin-bottom: 1.5rem;
+}
+
+section p.body-text {
+  font-size: 1.05rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+/* ISOMETRIC SHELF for headers */
+.iso-shelf {
+  display: inline-block;
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background: var(--fg);
+  color: white;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.iso-shelf::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 8px;
+  right: -8px;
+  height: 8px;
+  background: rgba(0,0,0,0.15);
+  transform: skewX(-45deg);
+  transform-origin: top left;
+}
+
+.iso-shelf::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  bottom: -8px;
+  width: 8px;
+  background: rgba(0,0,0,0.1);
+  transform: skewY(-45deg);
+  transform-origin: top left;
+}
+
+.iso-shelf h2 {
+  color: white;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+/* PILLARS as isometric columns */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pillar-col {
+  position: relative;
+  border: 2px solid var(--border);
+  background: white;
+  box-shadow: var(--shadow);
+  overflow: visible;
+}
+
+/* Isometric top cap */
+.pillar-cap {
+  height: 40px;
+  background: var(--primary);
+  position: relative;
+}
+
+.pillar-cap::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(135deg, transparent 33%, #228070 33%, #228070 66%, transparent 66%),
+              linear-gradient(225deg, transparent 33%, var(--primary) 33%);
+  background-size: 20px 12px;
+}
+
+.pillar-content {
+  padding: 1.5rem;
+}
+
+.pillar-content h3 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+}
+
+.pillar-content p {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+/* Dimension annotation */
+.dim-annotation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.dim-annotation .dim-marker {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--primary);
+  background: transparent;
+}
+
+.dim-annotation span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* EXAMPLE viewport */
+.example-viewport {
+  border: 2px solid var(--border);
+  background: white;
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.viewport-header {
+  background: var(--fg);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.viewport-dot {
+  width: 8px;
+  height: 8px;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.viewport-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.viewport-body {
+  padding: 2rem;
+}
+
+.viewport-body h3 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.viewport-body p {
+  font-size: 1rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.escalation-label {
+  display: inline-block;
+  background: var(--warning);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.quote-block {
+  border: 2px solid var(--primary);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--fg);
+  background: rgba(42, 144, 128, 0.03);
+  position: relative;
+}
+
+.quote-block::before {
+  content: 'AI-ANALYSE';
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background: var(--primary);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.punchline {
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* LOGIMAT */
+.logimat {
+  background: var(--fg);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 2px solid var(--border);
+  background-image:
+    linear-gradient(rgba(94,234,212,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94,234,212,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.logimat h2 {
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  padding: 1rem 2.5rem;
+  background: var(--primary);
+  color: white;
+  border: 2px solid var(--primary);
+  text-decoration: none;
+  box-shadow: 4px 4px 0 rgba(255,255,255,0.15);
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(255,255,255,0.2);
+}
+
+/* FOOTER */
+footer {
+  border-top: 2px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted-text);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container { padding: 0 1.5rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .iso-structure { transform: rotateX(50deg) rotateZ(-45deg) scale(0.7); }
+  nav { padding: 0.75rem 1rem; }
+  nav .nav-links { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="logo-text">Fachwerk</span>
+  </div>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#saeulen">Plattform</a>
+    <a href="#beispiel">Beispiel</a>
+    <a href="#logimat">LogiMat</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Construction lines -->
+  <div class="construction-lines">
+    <div class="c-line h" style="top: 20%"></div>
+    <div class="c-line h" style="top: 80%"></div>
+    <div class="c-line v" style="left: 15%"></div>
+    <div class="c-line v" style="right: 15%"></div>
+    <div class="c-line d" style="top: 0; left: 0; transform: rotate(30deg)"></div>
+    <div class="c-line d" style="bottom: 0; right: 0; transform: rotate(-30deg)"></div>
+  </div>
+
+  <div class="hero-iso">
+    <div class="iso-structure">
+      <div class="iso-row">
+        <div class="iso-unit"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+        <div class="iso-unit"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+        <div class="iso-unit"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+      </div>
+      <div class="iso-row">
+        <div class="iso-unit"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+        <div class="iso-unit" style="animation-delay: 0.6s"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+      </div>
+      <div class="iso-row">
+        <div class="iso-unit" style="animation-delay: 0.8s"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+        <div class="iso-unit" style="animation-delay: 1s"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+        <div class="iso-unit" style="animation-delay: 1.2s"><div class="top"></div><div class="front"></div><div class="side"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h1><span>Baut sich selbst.</span><br><span>Wartet sich selbst.</span><br><span>Heilt sich selbst.</span></h1>
+  <p class="subline">Die Plattform für maßgeschneiderte Business-Software. Automatisierung und Integration — gebaut für dein Unternehmen, nicht von der Stange.</p>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="iso-shelf">
+      <h2>Maßgeschneiderte Software. In Stunden, nicht Monaten.</h2>
+    </div>
+    <p class="body-text">Du hast 1000 Prozesse, die automatisiert werden müssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section>
+  <div class="container">
+    <div class="iso-shelf">
+      <h2>Dein Problem. Deine Lösung. Dein Tempo.</h2>
+    </div>
+    <p class="body-text">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="saeulen">
+  <div class="container">
+    <span class="label">Die drei Säulen</span>
+    <div class="pillars-grid">
+      <div class="pillar-col">
+        <div class="pillar-cap"></div>
+        <div class="pillar-content">
+          <h3>Baut sich selbst. Wartet sich selbst. Heilt sich selbst.</h3>
+          <p>Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</p>
+          <div class="dim-annotation">
+            <div class="dim-marker"></div>
+            <span>Systemwissen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar-col">
+        <div class="pillar-cap"></div>
+        <div class="pillar-content">
+          <h3>Gebaut für Business, nicht für Entwickler</h3>
+          <p>Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig.</p>
+          <div class="dim-annotation">
+            <div class="dim-marker"></div>
+            <span>Business-First</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar-col">
+        <div class="pillar-cap"></div>
+        <div class="pillar-content">
+          <h3>Code wo Code reicht. AI wo AI zählt.</h3>
+          <p>Der Großteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</p>
+          <div class="dim-annotation">
+            <div class="dim-marker"></div>
+            <span>Hybrid-Architektur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLE -->
+<section id="beispiel">
+  <div class="container">
+    <span class="label">Praxisbeispiel</span>
+    <div class="example-viewport">
+      <div class="viewport-header">
+        <div class="viewport-dot"></div>
+        <div class="viewport-dot"></div>
+        <div class="viewport-dot"></div>
+        <span class="viewport-title">Fachwerk &mdash; Flow Viewport</span>
+      </div>
+      <div class="viewport-body">
+        <h3>Tour-Dokumente in Minuten statt Stunden</h3>
+        <p>Hunderte Seiten Frachtdokumente pro Tour. Fachwerk lädt sie automatisch, extrahiert die Deckblätter, prüft Adressen und Vollständigkeit. Alles korrekt? Sammel-PDF wird erstellt und direkt an den Transportdienstleister gemailt. Ohne dass jemand einen Finger rührt.</p>
+
+        <span class="escalation-label">Eskalation</span>
+        <p>Wenn etwas nicht stimmt, erkennt die Automatik das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie — und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</p>
+
+        <div class="quote-block">
+          Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.
+        </div>
+
+        <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGIMAT -->
+<section class="logimat" id="logimat">
+  <span class="label" style="color: rgba(255,255,255,0.4);">LogiMat 2026</span>
+  <h2>Live auf der LogiMat 2026 in Stuttgart</h2>
+  <a href="mailto:demo@fachwerk.dev" class="cta-button">Demo anfragen</a>
+</section>
+
+<footer>
+  <p>Fachwerk &mdash; Automatisierung &amp; Integration</p>
+</footer>
+
+</body>
+</html>

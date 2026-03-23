@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachwerk — Baut sich selbst. Wartet sich selbst. Heilt sich selbst.</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+:root {
+  --bg: #1e2430;
+  --fg: #5eead4;
+  --fg-dim: #3a8a7a;
+  --fg-bright: #a7f3d0;
+  --white: #d4e4df;
+  --muted: #2a3340;
+  --muted-text: #5a7a72;
+  --border: #344050;
+  --primary: #5eead4;
+  --success: #4a7c59;
+  --error: #a65241;
+  --warning: #b8860b;
+  --info: #4a6fa5;
+  --shadow: 4px 4px 0 rgba(0,0,0,0.3);
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --grid-color: rgba(94, 234, 212, 0.04);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  background: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+/* NAV as terminal bar */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: #161b24;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+}
+
+nav .logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+nav .logo-wrap svg { width: 32px; height: 32px; }
+
+nav .logo-text {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 0.9rem;
+}
+
+nav .nav-links { display: flex; gap: 1.25rem; }
+
+nav a {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  text-decoration: none;
+}
+
+nav a::before { content: '/'; color: var(--muted-text); margin-right: 0.15rem; }
+nav a:hover { color: var(--fg); }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* TERMINAL ELEMENTS */
+.prompt {
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+}
+
+.prompt .path { color: var(--info); }
+.prompt .dollar { color: var(--fg); margin-left: 0.5rem; }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+.divider-double {
+  border: none;
+  border-top: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  height: 5px;
+  margin: 3rem 0;
+}
+
+.status-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.5rem;
+  border: 1px solid;
+}
+
+.status-tag.ok { color: var(--success); border-color: var(--success); }
+.status-tag.warn { color: var(--warning); border-color: var(--warning); }
+.status-tag.ai { color: var(--primary); border-color: var(--primary); }
+.status-tag.err { color: var(--error); border-color: var(--error); }
+.status-tag.info { color: var(--info); border-color: var(--info); }
+
+.timestamp {
+  color: var(--muted-text);
+  font-size: 0.75rem;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero .terminal-window {
+  border: 2px solid var(--border);
+  background: #161b24;
+  box-shadow: var(--shadow);
+  max-width: 750px;
+}
+
+.terminal-bar {
+  background: var(--muted);
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.terminal-dot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--border);
+}
+
+.terminal-bar-title {
+  font-size: 0.65rem;
+  color: var(--muted-text);
+  margin-left: 0.5rem;
+}
+
+.terminal-body {
+  padding: 1.5rem;
+}
+
+.hero-headline {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.hero-headline .typed-line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--fg);
+  animation: typewriter 1.5s steps(30) forwards, blink-caret 0.7s step-end infinite;
+}
+
+.hero-headline .typed-line:nth-child(2) {
+  animation: typewriter 1.5s steps(30) 1.5s forwards, blink-caret 0.7s step-end 1.5s infinite;
+  width: 0;
+}
+
+.hero-headline .typed-line:nth-child(3) {
+  animation: typewriter 1.5s steps(30) 3s forwards, blink-caret 0.7s step-end 3s infinite;
+  width: 0;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+/* After all lines typed, only last cursor blinks */
+.hero-headline .typed-line:nth-child(1) {
+  animation: typewriter 1.2s steps(20) forwards, hide-caret 0s 1.2s forwards;
+}
+
+.hero-headline .typed-line:nth-child(2) {
+  animation: typewriter 1.2s steps(22) 1.2s forwards, hide-caret 0s 2.4s forwards;
+  width: 0;
+}
+
+.hero-headline .typed-line:nth-child(3) {
+  animation: typewriter 1.2s steps(20) 2.4s forwards, blink-caret 0.7s step-end 2.4s infinite;
+  width: 0;
+}
+
+@keyframes hide-caret {
+  to { border-color: transparent; }
+}
+
+.hero-subline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.7;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fade-in 0.8s 3.6s forwards;
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+/* SECTION */
+section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.section-header::before {
+  content: '## ';
+  color: var(--muted-text);
+}
+
+.section-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+/* PILLARS as ASCII table */
+.ascii-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.ascii-table thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--fg-dim);
+  border-top: 2px solid var(--fg-dim);
+  color: var(--fg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+.ascii-table tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.ascii-table tbody td:first-child {
+  color: var(--fg);
+  font-weight: 600;
+  white-space: nowrap;
+  width: 35%;
+  font-size: 0.8rem;
+}
+
+.ascii-table tbody td:last-child {
+  font-family: var(--font-body);
+  color: var(--white);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.ascii-table tbody tr:hover {
+  background: rgba(94, 234, 212, 0.03);
+}
+
+/* LOG OUTPUT for example */
+.log-output {
+  border: 2px solid var(--border);
+  background: #161b24;
+  box-shadow: var(--shadow);
+  margin-top: 1.5rem;
+  overflow: hidden;
+}
+
+.log-header {
+  background: var(--muted);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border);
+}
+
+.log-header-title {
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.log-body {
+  padding: 1rem;
+}
+
+.log-line {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+  font-size: 0.8rem;
+  align-items: flex-start;
+}
+
+.log-line .ts { color: var(--muted-text); white-space: nowrap; min-width: 60px; }
+.log-line .msg { color: var(--white); font-family: var(--font-body); line-height: 1.5; }
+.log-line .msg strong { color: var(--fg); font-weight: 600; }
+
+.log-separator {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 0.5rem 0;
+}
+
+/* AI analysis block */
+.ai-block {
+  border: 2px solid var(--primary);
+  margin: 1rem 0;
+  padding: 1rem;
+  position: relative;
+  background: rgba(94, 234, 212, 0.03);
+}
+
+.ai-block::before {
+  content: 'AI-ANALYSE';
+  position: absolute;
+  top: -0.6rem;
+  left: 0.75rem;
+  background: var(--primary);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.6rem;
+  padding: 0.1rem 0.4rem;
+  letter-spacing: 0.1em;
+}
+
+.ai-block p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--white);
+  line-height: 1.7;
+}
+
+.punchline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--fg-bright);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+/* CTA as command prompt */
+.cta-section {
+  background: #161b24;
+  border-top: 2px solid var(--border);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 2rem;
+}
+
+.cta-command {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.cta-command:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+}
+
+.cta-command .cmd-prompt {
+  background: var(--muted);
+  color: var(--fg-dim);
+  padding: 0.75rem 1rem;
+  border-right: 2px solid var(--border);
+  font-weight: 600;
+}
+
+.cta-command .cmd-text {
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+}
+
+.cta-command .cmd-text span { color: var(--fg-bright); }
+
+.cta-command .cmd-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--fg);
+  margin-left: 0.25rem;
+  animation: blink-caret 0.7s step-end infinite;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+
+footer::before { content: '# '; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+  .hero-headline { font-size: 1.1rem; }
+  .hero-headline .typed-line { white-space: normal; animation: fade-in 0.5s forwards !important; border-right: none !important; }
+  .hero-headline .typed-line:nth-child(2) { animation-delay: 0.5s !important; }
+  .hero-headline .typed-line:nth-child(3) { animation-delay: 1s !important; }
+  .ascii-table { font-size: 0.75rem; }
+  .ascii-table tbody td:first-child { white-space: normal; width: 40%; }
+  .log-line { flex-direction: column; gap: 0.25rem; }
+  .log-line .ts { min-width: auto; }
+  nav { padding: 0.5rem 1rem; }
+  nav .nav-links { gap: 0.75rem; }
+  .cta-command { flex-direction: column; }
+  .cta-command .cmd-prompt { border-right: none; border-bottom: 2px solid var(--border); width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="logo-text">fachwerk</span>
+  </div>
+  <div class="nav-links">
+    <a href="#problem">problem</a>
+    <a href="#plattform">plattform</a>
+    <a href="#beispiel">beispiel</a>
+    <a href="#logimat">logimat</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="prompt">
+      <span class="path">~/fachwerk</span><span class="dollar">$</span> <span style="color: var(--fg);">cat manifest.txt</span>
+    </div>
+    <br>
+    <div class="terminal-window">
+      <div class="terminal-bar">
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <span class="terminal-bar-title">fachwerk v1.0 -- manifest</span>
+      </div>
+      <div class="terminal-body">
+        <div class="hero-headline">
+          <span class="typed-line">BAUT SICH SELBST.</span>
+          <span class="typed-line">WARTET SICH SELBST.</span>
+          <span class="typed-line">HEILT SICH SELBST.</span>
+        </div>
+        <p class="hero-subline">Die Plattform für maßgeschneiderte Business-Software. Automatisierung und Integration — gebaut für dein Unternehmen, nicht von der Stange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><hr class="divider-double"></div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <h2 class="section-header">Maßgeschneiderte Software. In Stunden, nicht Monaten.</h2>
+    <p class="section-body">Du hast 1000 Prozesse, die automatisiert werden müssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+  </div>
+</section>
+
+<div class="container"><hr class="divider"></div>
+
+<!-- SOLUTION -->
+<section>
+  <div class="container">
+    <h2 class="section-header">Dein Problem. Deine Lösung. Dein Tempo.</h2>
+    <p class="section-body">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+  </div>
+</section>
+
+<div class="container"><hr class="divider-double"></div>
+
+<!-- PILLARS -->
+<section id="plattform">
+  <div class="container">
+    <h2 class="section-header">Plattform</h2>
+    <table class="ascii-table">
+      <thead>
+        <tr>
+          <th>Prinzip</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Baut sich selbst.<br>Wartet sich selbst.<br>Heilt sich selbst.</td>
+          <td>Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</td>
+        </tr>
+        <tr>
+          <td>Gebaut für Business,<br>nicht für Entwickler</td>
+          <td>Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig.</td>
+        </tr>
+        <tr>
+          <td>Code wo Code reicht.<br>AI wo AI zählt.</td>
+          <td>Der Großteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="container"><hr class="divider-double"></div>
+
+<!-- EXAMPLE -->
+<section id="beispiel">
+  <div class="container">
+    <h2 class="section-header">Praxisbeispiel: Tour-Dokumente</h2>
+
+    <div class="log-output">
+      <div class="log-header">
+        <span class="log-header-title">fachwerk / flow-log / tour-dokumente</span>
+        <span class="timestamp">2026-03-23 08:41:12 UTC</span>
+      </div>
+      <div class="log-body">
+        <div class="log-line">
+          <span class="ts">08:41:12</span>
+          <span class="status-tag ok">OK</span>
+          <span class="msg">Tour-Dokumente geladen. <strong>247 Seiten</strong> in 12 PDFs.</span>
+        </div>
+        <div class="log-line">
+          <span class="ts">08:41:14</span>
+          <span class="status-tag ok">OK</span>
+          <span class="msg">Deckblätter extrahiert. Adressen geprüft.</span>
+        </div>
+        <div class="log-line">
+          <span class="ts">08:41:15</span>
+          <span class="status-tag ok">OK</span>
+          <span class="msg">Vollständigkeit bestätigt. Sammel-PDF erstellt.</span>
+        </div>
+        <div class="log-line">
+          <span class="ts">08:41:16</span>
+          <span class="status-tag ok">OK</span>
+          <span class="msg">Mail an Transportdienstleister versendet. <strong>Ohne manuellen Eingriff.</strong></span>
+        </div>
+
+        <hr class="log-separator">
+        <div class="log-line">
+          <span class="ts">08:41:12</span>
+          <span class="status-tag info">INFO</span>
+          <span class="msg">Hunderte Seiten Frachtdokumente pro Tour. Fachwerk lädt sie automatisch, extrahiert die Deckblätter, prüft Adressen und Vollständigkeit. Alles korrekt? Sammel-PDF wird erstellt und direkt an den Transportdienstleister gemailt. Ohne dass jemand einen Finger rührt.</span>
+        </div>
+
+        <hr class="log-separator">
+
+        <div class="log-line">
+          <span class="ts">09:12:33</span>
+          <span class="status-tag warn">WARN</span>
+          <span class="msg">Tour 4711: Adressdaten inkonsistent. Automatische Verarbeitung gestoppt.</span>
+        </div>
+        <div class="log-line">
+          <span class="ts">09:12:34</span>
+          <span class="status-tag ai">AI</span>
+          <span class="msg">Eskalation eingeleitet. Analyse der Datenbasis, PDFs, Schnittstellenhistorie...</span>
+        </div>
+
+        <hr class="log-separator">
+
+        <div class="log-line" style="padding: 0;">
+          <span class="ts" style="visibility: hidden;">00:00:00</span>
+          <div style="flex: 1;">
+            <span class="status-tag info">INFO</span>
+            <span class="msg" style="display: inline;">Wenn etwas nicht stimmt, erkennt die Automatik das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie — und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</span>
+          </div>
+        </div>
+
+        <div class="ai-block">
+          <p>Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.</p>
+        </div>
+
+        <div class="log-line">
+          <span class="ts">09:12:38</span>
+          <span class="status-tag ok">OK</span>
+          <span class="msg"><strong>Problemmeldung mit Handlungsempfehlung versendet.</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <p class="punchline" style="margin-top: 1.5rem;">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
+  </div>
+</section>
+
+<div class="container"><hr class="divider-double"></div>
+
+<!-- LOGIMAT -->
+<section class="cta-section" id="logimat">
+  <span class="timestamp" style="display: block; margin-bottom: 1rem;">LogiMat 2026 // Stuttgart</span>
+  <h2>Live auf der LogiMat 2026 in Stuttgart</h2>
+  <a href="mailto:demo@fachwerk.dev" class="cta-command">
+    <span class="cmd-prompt">$</span>
+    <span class="cmd-text">fachwerk demo <span>--anfragen</span><span class="cmd-cursor"></span></span>
+  </a>
+</section>
+
+<footer>
+  fachwerk &mdash; automatisierung &amp; integration
+</footer>
+
+</body>
+</html>
