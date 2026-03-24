@@ -461,17 +461,24 @@ footer {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
   z-index: 201;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-hamburger span {
   display: block;
-  width: 22px;
+  width: 24px;
   height: 2px;
   background: var(--fg);
-  margin: 5px 0;
+  margin: 6px 0;
   transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
 }
 
 .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -520,7 +527,7 @@ footer {
   .section-headline { font-size: clamp(1.2rem, 3.5vw, 2rem); }
   .strike-through { font-size: 0.75em; }
   .nav-links { display: none; }
-  .nav-hamburger { display: block; }
+  .nav-hamburger { display: flex; }
 }
 </style>
 </head>
