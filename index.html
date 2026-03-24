@@ -306,6 +306,10 @@ nav {
   position: relative;
 }
 
+.terminal-quote[data-label]::before {
+  content: attr(data-label);
+}
+
 .terminal-quote::before {
   content: 'AI-ANALYSE — E-MAIL AN DEN DISPONENTEN';
   position: absolute;
@@ -328,6 +332,46 @@ nav {
   max-width: 40rem;
   line-height: 1.8;
   margin-top: 2rem;
+}
+
+/* ═══════════════════════════════════════════════
+   NO-LIST
+   ═══════════════════════════════════════════════ */
+.no-list {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 8vw;
+}
+
+.no-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 3rem;
+  margin-top: 2.5rem;
+  max-width: 52rem;
+}
+
+.no-list-item {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  padding-left: 1rem;
+  border-left: 2px solid var(--primary);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .no-list-grid { grid-template-columns: repeat(2, 1fr); }
+  .no-list { padding: 5rem 6vw; }
+}
+
+@media (max-width: 600px) {
+  .no-list-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
 /* ═══════════════════════════════════════════════
@@ -435,11 +479,72 @@ footer {
   .nav-links a { font-size: 0.6rem; }
 }
 
+/* Hamburger menu button */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 201;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  margin: 5px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 199;
+  background: rgba(244, 245, 247, 0.98);
+  backdrop-filter: blur(8px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.1rem;
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mobile-menu a:hover { color: var(--primary); }
+
+.mobile-menu .lang-link {
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
 @media (max-width: 600px) {
   .hero-headline { font-size: clamp(2rem, 12vw, 4rem); }
   .section-headline { font-size: clamp(1.2rem, 3.5vw, 2rem); }
   .strike-through { font-size: 0.75em; }
   .nav-links { display: none; }
+  .nav-hamburger { display: block; }
 }
 </style>
 </head>
@@ -470,7 +575,19 @@ footer {
     <a href="#kontakt">Kontakt</a>
     <a href="en/" style="color: var(--primary); border-left: 1px solid var(--border); padding-left: 1.5rem;">EN</a>
   </div>
+  <button class="nav-hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#problem" onclick="closeMobileMenu()">Problem</a>
+  <a href="#plattform" onclick="closeMobileMenu()">Plattform</a>
+  <a href="#beispiel" onclick="closeMobileMenu()">Beispiel</a>
+  <a href="#kontakt" onclick="closeMobileMenu()">Kontakt</a>
+  <a href="en/" class="lang-link">EN</a>
+</div>
 
 <div class="content">
 
@@ -540,7 +657,7 @@ footer {
 
   <!-- EXAMPLE -->
   <section class="example reveal" id="beispiel">
-    <span class="section-label">Beispiel</span>
+    <span class="section-label">Beispiel 01</span>
     <h2 class="section-headline">Tour-Dokumente in Minuten<br>statt Stunden</h2>
 
     <p class="example-intro">Hunderte Seiten Frachtdokumente pro Tour. Bisher luden Mitarbeiter sie <em>täglich von Hand herunter</em>, kombinierten sie manuell und prüften jede einzelne Seite. Dieselben Mitarbeiter haben Fachwerk beschrieben, was sie brauchen.</p>
@@ -552,6 +669,43 @@ footer {
     <div class="terminal-quote">Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.</div>
 
     <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXAMPLE 02 -->
+  <section class="example reveal" id="beispiel-ui">
+    <span class="section-label">Beispiel 02</span>
+    <h2 class="section-headline">Oberflächen, die arbeiten —<br>nicht nur anzeigen</h2>
+
+    <p class="example-intro">Ein Lagerhaus. Dutzende Prozesse laufen parallel — Wareneingang, Kommissionierung, Versand. Der Mitarbeiter am Shop-Floor braucht keine Tabelle und kein Dashboard. Er braucht eine Oberfläche, auf der er sieht <em>was läuft, was fertig ist, und wo er eingreifen muss.</em> Umpacken, Priorität ändern, Problem melden — direkt, nicht über drei Systeme.</p>
+
+    <p class="example-intro">Das sind keine Standard-Dashboards. Kein Power BI, kein ClickView. Das sind Oberflächen, die ins WMS greifen, Maschinendaten lesen, ERP-Status prüfen — und dem Mitarbeiter genau die Aktionen anbieten, die er gerade braucht. <em>Hochgradig custom. Voll integriert. Actionable.</em></p>
+
+    <div class="terminal-quote" data-label="LAGERLEITER — MOBILANSICHT BEIM FRÜHSTÜCK">Standort Hannover · alles läuft
+Standort Bremen  · 3 offene Probleme
+Standort Hamburg · alles läuft
+
+Bremen: Wareneingang blockiert seit 07:40.
+Ursache: Tor 3 Sensorstörung, Ware steht.
+Aktion: Techniker ist informiert, ETA 08:15.</div>
+
+    <p class="punchline">Fachwerk generiert beide Oberflächen. Eine für den Mitarbeiter am Band. Eine für den Lagerleiter auf dem Handy. Custom, connected, actionable — gebaut aus dem, was die Leute vor Ort tatsächlich brauchen.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NO-LIST -->
+  <section class="no-list reveal">
+    <span class="section-label">Was du nicht brauchst</span>
+    <div class="no-list-grid">
+      <div class="no-list-item">Kein Budget.</div>
+      <div class="no-list-item">Kein Ping-Pong.</div>
+      <div class="no-list-item">Kein Development-Team.</div>
+      <div class="no-list-item">Kein Setup-Projekt.</div>
+      <div class="no-list-item">Keinen Dienstleister.</div>
+      <div class="no-list-item">Keinen Code.</div>
+    </div>
   </section>
 
   <div class="divider"></div>
@@ -585,6 +739,22 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Mobile menu
+const hamburger = document.querySelector('.nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
 </script>
 
 </body>

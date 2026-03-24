@@ -293,6 +293,10 @@ nav {
   position: relative;
 }
 
+.terminal-quote[data-label]::before {
+  content: attr(data-label);
+}
+
 .terminal-quote::before {
   content: 'AI ANALYSIS — EMAIL TO DISPATCHER';
   position: absolute;
@@ -315,6 +319,44 @@ nav {
   max-width: 40rem;
   line-height: 1.8;
   margin-top: 2rem;
+}
+
+/* NO-LIST */
+.no-list {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 8vw;
+}
+
+.no-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 3rem;
+  margin-top: 2.5rem;
+  max-width: 52rem;
+}
+
+.no-list-item {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  padding-left: 1rem;
+  border-left: 2px solid var(--primary);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .no-list-grid { grid-template-columns: repeat(2, 1fr); }
+  .no-list { padding: 5rem 6vw; }
+}
+
+@media (max-width: 600px) {
+  .no-list-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
 /* LOGIMAT */
@@ -413,11 +455,72 @@ footer {
   .nav-links a { font-size: 0.6rem; }
 }
 
+/* Hamburger menu button */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 201;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  margin: 5px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 199;
+  background: rgba(244, 245, 247, 0.98);
+  backdrop-filter: blur(8px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.1rem;
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mobile-menu a:hover { color: var(--primary); }
+
+.mobile-menu .lang-link {
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
 @media (max-width: 600px) {
   .hero-headline { font-size: clamp(2rem, 12vw, 4rem); }
   .section-headline { font-size: clamp(1.2rem, 3.5vw, 2rem); }
   .strike-through { font-size: 0.75em; }
   .nav-links { display: none; }
+  .nav-hamburger { display: block; }
 }
 </style>
 </head>
@@ -448,7 +551,19 @@ footer {
     <a href="#contact">Contact</a>
     <a href="../" style="color: var(--primary); border-left: 1px solid var(--border); padding-left: 1.5rem;">DE</a>
   </div>
+  <button class="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#problem" onclick="closeMobileMenu()">Problem</a>
+  <a href="#platform" onclick="closeMobileMenu()">Platform</a>
+  <a href="#example" onclick="closeMobileMenu()">Example</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="../" class="lang-link">DE</a>
+</div>
 
 <div class="content">
 
@@ -517,7 +632,7 @@ footer {
 
   <!-- EXAMPLE -->
   <section class="example reveal" id="example">
-    <span class="section-label">Example</span>
+    <span class="section-label">Example 01</span>
     <h2 class="section-headline">Tour documents in minutes<br>instead of hours</h2>
 
     <p class="example-intro">Hundreds of pages of freight documents per tour. Previously, employees <em>downloaded them by hand every day</em>, combined them manually, and checked every single page. Those same employees told Fachwerk what they needed.</p>
@@ -529,6 +644,43 @@ footer {
     <div class="terminal-quote">Tour 4711: Shipping documents cannot be sent. Cause: The interface file from Provider X this morning contained incorrect address data. Three downstream processes are affected. The CMR is missing the recipient as a result. Please request a correction file from Provider X.</div>
 
     <p class="punchline">No searching through six systems. No three hours of root cause analysis. Fachwerk knows the connections and tells you what's wrong and what to do.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXAMPLE 02 -->
+  <section class="example reveal" id="example-ui">
+    <span class="section-label">Example 02</span>
+    <h2 class="section-headline">Interfaces that work —<br>not just display</h2>
+
+    <p class="example-intro">A warehouse. Dozens of processes running in parallel — receiving, picking, shipping. The worker on the shop floor doesn't need a spreadsheet or a dashboard. They need an interface that shows <em>what's running, what's done, and where they need to act.</em> Repack, reprioritize, flag a problem — directly, not through three systems.</p>
+
+    <p class="example-intro">These aren't standard dashboards. No Power BI, no ClickView. These are interfaces that reach into the WMS, read machine data, check ERP status — and offer the worker exactly the actions they need right now. <em>Highly custom. Fully integrated. Actionable.</em></p>
+
+    <div class="terminal-quote" data-label="WAREHOUSE MANAGER — MOBILE VIEW AT BREAKFAST">Hannover site · all clear
+Bremen site   · 3 open issues
+Hamburg site  · all clear
+
+Bremen: Inbound receiving blocked since 07:40.
+Cause: Gate 3 sensor malfunction, goods waiting.
+Action: Technician notified, ETA 08:15.</div>
+
+    <p class="punchline">Fachwerk generates both interfaces. One for the worker on the floor. One for the warehouse manager on their phone. Custom, connected, actionable — built from what the people on site actually need.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NO-LIST -->
+  <section class="no-list reveal">
+    <span class="section-label">What you don't need</span>
+    <div class="no-list-grid">
+      <div class="no-list-item">No budget requests.</div>
+      <div class="no-list-item">No back and forth.</div>
+      <div class="no-list-item">No dev team.</div>
+      <div class="no-list-item">No setup project.</div>
+      <div class="no-list-item">No contractors.</div>
+      <div class="no-list-item">No code.</div>
+    </div>
   </section>
 
   <div class="divider"></div>
@@ -562,6 +714,22 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Mobile menu
+const hamburger = document.querySelector('.nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
 </script>
 
 </body>
