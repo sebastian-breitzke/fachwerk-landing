@@ -306,6 +306,9 @@ nav {
   position: relative;
 }
 
+.terminal-quote strong { color: var(--fg); font-weight: 600; }
+.terminal-quote .tq-label { color: var(--primary); font-weight: 600; }
+
 .terminal-quote[data-label]::before {
   content: attr(data-label);
 }
@@ -664,7 +667,13 @@ footer {
 
     <p class="example-intro">Wenn etwas nicht stimmt, erkennt die Automatik — wie vom Fachanwender spezifiziert — das Problem. Dann kommt AI zum Einsatz: Sie analysiert die Datenbasis, die PDFs, die Schnittstellenhistorie — und schreibt eine konkrete Problemmeldung mit Handlungsempfehlung an die richtige Stelle.</p>
 
-    <div class="terminal-quote">Tour 4711: Versanddokumente können nicht abgeschickt werden. Ursache: Die Schnittstellendatei von Anbieter X von heute Morgen enthielt fehlerhafte Adressdaten. Drei nachfolgende Prozesse sind betroffen. Auf der CMR fehlt dadurch der Empfänger. Bitte Korrekturdatei bei Anbieter X anfordern.</div>
+    <div class="terminal-quote"><strong>Tour 4711</strong> · Versanddokumente blockiert
+
+<span class="tq-label">Ursache:</span>  Schnittstellendatei von Anbieter X
+         enthielt fehlerhafte Adressdaten.
+<span class="tq-label">Betroffen:</span> 3 nachfolgende Prozesse.
+         CMR fehlt der Empfänger.
+<span class="tq-label">Aktion:</span>   Korrekturdatei bei Anbieter X anfordern.</div>
 
     <p class="punchline">Keine Suche durch sechs Systeme. Keine drei Stunden Fehleranalyse. Fachwerk kennt die Zusammenhänge und sagt dir, was los ist und was zu tun ist.</p>
   </section>

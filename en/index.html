@@ -293,6 +293,9 @@ nav {
   position: relative;
 }
 
+.terminal-quote strong { color: var(--fg); font-weight: 600; }
+.terminal-quote .tq-label { color: var(--primary); font-weight: 600; }
+
 .terminal-quote[data-label]::before {
   content: attr(data-label);
 }
@@ -639,7 +642,13 @@ footer {
 
     <p class="example-intro">When something's off, the automation — as specified by the business user — catches the problem. Then AI steps in: it analyzes the data, the PDFs, the interface history — and writes a concrete problem report with recommended actions to the right person.</p>
 
-    <div class="terminal-quote">Tour 4711: Shipping documents cannot be sent. Cause: The interface file from Provider X this morning contained incorrect address data. Three downstream processes are affected. The CMR is missing the recipient as a result. Please request a correction file from Provider X.</div>
+    <div class="terminal-quote"><strong>Tour 4711</strong> · Shipping documents blocked
+
+<span class="tq-label">Cause:</span>    Interface file from Provider X
+         contained incorrect address data.
+<span class="tq-label">Affected:</span> 3 downstream processes.
+         CMR missing recipient.
+<span class="tq-label">Action:</span>   Request correction file from Provider X.</div>
 
     <p class="punchline">No searching through six systems. No three hours of root cause analysis. Fachwerk knows the connections and tells you what's wrong and what to do.</p>
   </section>
