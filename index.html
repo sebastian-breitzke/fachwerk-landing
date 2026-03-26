@@ -110,7 +110,59 @@ nav {
   padding: 4rem 8vw;
 }
 
+.hero-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4rem;
+}
+
 .hero-text { }
+
+.hero-animation {
+  flex: 0 0 auto;
+  width: clamp(220px, 28vw, 380px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark-bg);
+}
+
+.hero-animation svg { width: 100%; height: 100%; overflow: visible; }
+
+.hero-animation .u {
+  opacity: 0;
+  animation: fw-unfold 0.3s cubic-bezier(0.22, 0.85, 0.32, 1) var(--d) forwards;
+  transform-origin: var(--ox) var(--oy);
+}
+
+@keyframes fw-unfold {
+  from { opacity: 1; transform: rotate(var(--r)); }
+  to   { opacity: 1; transform: rotate(0deg); }
+}
+
+.hero-animation .draw { opacity: 1; }
+
+.hero-animation .draw line {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: fw-draw 0.3s ease-out var(--d) forwards;
+}
+
+@keyframes fw-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.hero-animation line {
+  stroke: #5eead4;
+  stroke-width: 4;
+  stroke-linecap: square;
+  fill: none;
+  filter: drop-shadow(0 0 3px rgba(94, 234, 212, 0.3));
+}
 
 .hero-headline {
   font-family: var(--font-mono);
@@ -130,6 +182,7 @@ nav {
   color: var(--muted-text);
   max-width: 32rem;
   line-height: 1.7;
+  margin-top: 3rem;
 }
 
 /* Isometric animation — right side of hero */
@@ -596,11 +649,10 @@ footer {
    ═══════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .hero {
-    flex-direction: column;
     padding: 7rem 6vw 4rem;
-    gap: 2rem;
   }
-  .iso-structure { transform: rotateX(50deg) rotateZ(-45deg) scale(0.7); }
+  .hero-row { flex-direction: column; gap: 2rem; }
+  .hero-animation { width: clamp(180px, 50vw, 280px); }
   .section, .pillars, .example, .logimat { padding: 5rem 6vw; }
   nav { padding: 0.75rem 6vw; }
   .nav-links { gap: 1rem; }
@@ -738,14 +790,41 @@ footer {
       <div class="c-line v" style="right: 8%"></div>
     </div>
 
-    <div class="hero-text">
-      <h1 class="hero-headline">
-        <span>Baut</span>
-        <span>sich</span>
-        <span>selbst.</span>
-      </h1>
-      <p class="hero-sub">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+    <div class="hero-row">
+      <div class="hero-text">
+        <h1 class="hero-headline" style="margin-bottom: 0;">
+          <span>Baut</span>
+          <span>sich</span>
+          <span>selbst.</span>
+        </h1>
+      </div>
+
+      <div class="hero-animation">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="fw-clip"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+        <g clip-path="url(#fw-clip)">
+          <g class="draw" style="--d:0s"><line x1="16" y1="112" x2="64" y2="112"/></g>
+          <g class="u" style="--d:0.2s; --ox:64px; --oy:112px; --r:90deg"><line x1="64" y1="112" x2="64" y2="64"/></g>
+          <g class="u" style="--d:0.4s; --ox:64px; --oy:64px; --r:90deg"><line x1="64" y1="64" x2="16" y2="64"/></g>
+          <g class="u" style="--d:0.6s; --ox:16px; --oy:64px; --r:90deg"><line x1="16" y1="64" x2="16" y2="112"/></g>
+          <g class="u" style="--d:0.8s; --ox:16px; --oy:64px; --r:45deg"><line x1="16" y1="64" x2="64" y2="112"/></g>
+          <g class="u" style="--d:1.0s; --ox:64px; --oy:112px; --r:-90deg"><line x1="64" y1="112" x2="112" y2="112"/></g>
+          <g class="u" style="--d:1.2s; --ox:112px; --oy:112px; --r:90deg"><line x1="112" y1="112" x2="112" y2="64"/></g>
+          <g class="u" style="--d:1.4s; --ox:112px; --oy:64px; --r:90deg"><line x1="112" y1="64" x2="64" y2="64"/></g>
+          <g class="u" style="--d:1.6s; --ox:64px; --oy:112px; --r:45deg"><line x1="64" y1="112" x2="112" y2="64"/></g>
+          <g class="u" style="--d:1.8s; --ox:16px; --oy:64px; --r:-90deg"><line x1="16" y1="64" x2="16" y2="16"/></g>
+          <g class="u" style="--d:2.0s; --ox:16px; --oy:16px; --r:-90deg"><line x1="16" y1="16" x2="64" y2="16"/></g>
+          <g class="u" style="--d:2.2s; --ox:64px; --oy:16px; --r:-90deg"><line x1="64" y1="16" x2="64" y2="64"/></g>
+          <g class="u" style="--d:2.4s; --ox:16px; --oy:64px; --r:45deg"><line x1="16" y1="64" x2="64" y2="16"/></g>
+          <g class="u" style="--d:2.6s; --ox:64px; --oy:16px; --r:90deg"><line x1="64" y1="16" x2="112" y2="16"/></g>
+          <g class="u" style="--d:2.8s; --ox:112px; --oy:16px; --r:90deg"><line x1="112" y1="16" x2="112" y2="64"/></g>
+          <g class="u" style="--d:3.0s; --ox:64px; --oy:16px; --r:45deg"><line x1="64" y1="16" x2="112" y2="64"/></g>
+        </g>
+      </svg>
     </div>
+    </div>
+
+    <p class="hero-sub">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
 
   </section>
 

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachwerk — Animation</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e2430;
+  }
+
+  .fw-wrap {
+    width: min(400px, 80vw);
+    aspect-ratio: 1;
+  }
+
+  svg { width: 100%; height: 100%; overflow: visible; }
+
+  .fw line {
+    stroke: #5eead4;
+    stroke-width: 4;
+    stroke-linecap: square;
+    fill: none;
+    filter: drop-shadow(0 0 3px rgba(94, 234, 212, 0.3));
+  }
+
+  .fw .u {
+    opacity: 0;
+    animation: unfold 0.65s cubic-bezier(0.22, 0.85, 0.32, 1) var(--d) forwards;
+    transform-origin: var(--ox) var(--oy);
+  }
+
+  @keyframes unfold {
+    from { opacity: 1; transform: rotate(var(--r)); }
+    to   { opacity: 1; transform: rotate(0deg); }
+  }
+
+  .fw .draw { opacity: 1; }
+
+  .fw .draw line {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: draw-line 0.7s ease-out var(--d) forwards;
+  }
+
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="fw-wrap">
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" class="fw">
+  <defs><clipPath id="fw-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+  <g clip-path="url(#fw-frame)">
+
+  <!--
+    Logo grid:  x = 16, 64, 112
+                y = 16, 64, 112
+    Cell size: 48 x 48
+    Diagonals connect edge midpoints (diamond pattern)
+  -->
+
+  <!-- ═══ PHASE 1: Bottom-left cell ═══ -->
+
+  <!-- L1: Bottom edge left — draw in -->
+  <g class="draw" style="--d:0s">
+    <line x1="16" y1="112" x2="64" y2="112"/>
+  </g>
+
+  <!-- L2: Vertical middle lower — unfolds up from horizontal -->
+  <g class="u" style="--d:0.45s; --ox:64px; --oy:112px; --r:90deg">
+    <line x1="64" y1="112" x2="64" y2="64"/>
+  </g>
+
+  <!-- L3: Horizontal middle left — unfolds left from vertical -->
+  <g class="u" style="--d:0.9s; --ox:64px; --oy:64px; --r:90deg">
+    <line x1="64" y1="64" x2="16" y2="64"/>
+  </g>
+
+  <!-- L4: Left edge lower — unfolds down from horizontal -->
+  <g class="u" style="--d:1.35s; --ox:16px; --oy:64px; --r:90deg">
+    <line x1="16" y1="64" x2="16" y2="112"/>
+  </g>
+
+  <!-- L5: Diagonal ↘ (left-mid → bottom-mid) -->
+  <g class="u" style="--d:1.8s; --ox:16px; --oy:64px; --r:45deg">
+    <line x1="16" y1="64" x2="64" y2="112"/>
+  </g>
+
+  <!-- ═══ PHASE 2: Bottom-right cell ═══ -->
+
+  <!-- L6: Bottom edge right — unfolds from vertical -->
+  <g class="u" style="--d:2.25s; --ox:64px; --oy:112px; --r:-90deg">
+    <line x1="64" y1="112" x2="112" y2="112"/>
+  </g>
+
+  <!-- L7: Right edge lower — unfolds up -->
+  <g class="u" style="--d:2.65s; --ox:112px; --oy:112px; --r:90deg">
+    <line x1="112" y1="112" x2="112" y2="64"/>
+  </g>
+
+  <!-- L8: Horizontal middle right — unfolds left -->
+  <g class="u" style="--d:3.05s; --ox:112px; --oy:64px; --r:90deg">
+    <line x1="112" y1="64" x2="64" y2="64"/>
+  </g>
+
+  <!-- L9: Diagonal ↗ (bottom-mid → right-mid) -->
+  <g class="u" style="--d:3.45s; --ox:64px; --oy:112px; --r:45deg">
+    <line x1="64" y1="112" x2="112" y2="64"/>
+  </g>
+
+  <!-- ═══ PHASE 3: Top-left cell ═══ -->
+
+  <!-- L10: Left edge upper — unfolds up from horizontal -->
+  <g class="u" style="--d:3.9s; --ox:16px; --oy:64px; --r:-90deg">
+    <line x1="16" y1="64" x2="16" y2="16"/>
+  </g>
+
+  <!-- L11: Top edge left — unfolds right from vertical -->
+  <g class="u" style="--d:4.3s; --ox:16px; --oy:16px; --r:-90deg">
+    <line x1="16" y1="16" x2="64" y2="16"/>
+  </g>
+
+  <!-- L12: Vertical middle upper — unfolds down from horizontal -->
+  <g class="u" style="--d:4.7s; --ox:64px; --oy:16px; --r:-90deg">
+    <line x1="64" y1="16" x2="64" y2="64"/>
+  </g>
+
+  <!-- L13: Diagonal ↗ (left-mid → top-mid) -->
+  <g class="u" style="--d:5.1s; --ox:16px; --oy:64px; --r:45deg">
+    <line x1="16" y1="64" x2="64" y2="16"/>
+  </g>
+
+  <!-- ═══ PHASE 4: Top-right cell ═══ -->
+
+  <!-- L14: Top edge right — unfolds from vertical -->
+  <g class="u" style="--d:5.55s; --ox:64px; --oy:16px; --r:90deg">
+    <line x1="64" y1="16" x2="112" y2="16"/>
+  </g>
+
+  <!-- L15: Right edge upper — unfolds down -->
+  <g class="u" style="--d:5.95s; --ox:112px; --oy:16px; --r:90deg">
+    <line x1="112" y1="16" x2="112" y2="64"/>
+  </g>
+
+  <!-- L16: Diagonal ↘ (top-mid → right-mid) -->
+  <g class="u" style="--d:6.4s; --ox:64px; --oy:16px; --r:45deg">
+    <line x1="64" y1="16" x2="112" y2="64"/>
+  </g>
+
+  </g>
+</svg>
+</div>
+
+</body>
+</html>
