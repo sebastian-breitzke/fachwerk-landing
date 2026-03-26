@@ -12,6 +12,8 @@
 @font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
 @font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
 @font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Euclid'; font-weight: 300; src: url(fonts/EuclidCircularB-Light.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Euclid'; font-weight: 500; src: url(fonts/EuclidCircularB-Medium.ttf) format('truetype'); font-display: swap; }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
 
@@ -423,6 +425,129 @@ nav {
 }
 
 /* ═══════════════════════════════════════════════
+   SIMPLECHAIN BANNER
+   ═══════════════════════════════════════════════ */
+.sc-banner {
+  background: #1e1b4b;
+  padding: 0;
+  min-height: auto;
+}
+
+.sc-banner-inner {
+  padding: 6rem 8vw;
+  max-width: 52rem;
+}
+
+.sc-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.sc-infinity {
+  height: 20px;
+  width: auto;
+}
+
+.sc-brand-text {
+  font-family: 'Euclid', var(--font-body);
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.sc-x {
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.sc-sep {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+  margin: 0 0.25rem;
+}
+
+.sc-von {
+  font-family: 'Euclid', var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+}
+
+.sc-von a {
+  color: #22d3ee;
+  text-decoration: none;
+}
+
+.sc-von a:hover { text-decoration: underline; }
+
+.sc-headline {
+  font-family: 'Euclid', var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.sc-text {
+  font-family: 'Euclid', var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.sc-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sc-btn {
+  font-family: 'Euclid', var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.sc-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+.sc-btn-light {
+  background: #fff;
+  color: #1e1b4b;
+}
+
+.sc-btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.sc-btn-outline:hover {
+  border-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .sc-banner-inner { padding: 4rem 6vw; }
+  .sc-headline { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .sc-actions { flex-direction: column; }
+  .sc-btn { text-align: center; }
+}
+
+/* ═══════════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════════ */
 footer {
@@ -580,8 +705,9 @@ footer {
   </a>
   <div class="nav-links">
     <a href="#problem">Problem</a>
-    <a href="#plattform">Plattform</a>
-    <a href="#beispiel">Beispiel</a>
+    <a href="#plattform">Lösung</a>
+    <a href="#beispiel">Beispiele</a>
+    <a href="#simplechain">SimpleChain</a>
     <a href="#kontakt">Kontakt</a>
     <a href="en/" style="color: var(--primary); border-left: 1px solid var(--border); padding-left: 1.5rem;">EN</a>
   </div>
@@ -593,8 +719,9 @@ footer {
 <!-- Mobile menu overlay -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#problem" onclick="closeMobileMenu()">Problem</a>
-  <a href="#plattform" onclick="closeMobileMenu()">Plattform</a>
-  <a href="#beispiel" onclick="closeMobileMenu()">Beispiel</a>
+  <a href="#plattform" onclick="closeMobileMenu()">Lösung</a>
+  <a href="#beispiel" onclick="closeMobileMenu()">Beispiele</a>
+  <a href="#simplechain" onclick="closeMobileMenu()">SimpleChain</a>
   <a href="#kontakt" onclick="closeMobileMenu()">Kontakt</a>
   <a href="en/" class="lang-link">EN</a>
 </div>
@@ -722,6 +849,41 @@ Standort Hamburg · alles läuft
   </section>
 
   <div class="divider"></div>
+
+  <!-- RUNS WHERE YOU NEED IT -->
+  <section class="no-list reveal">
+    <span class="section-label">// Läuft wo du es brauchst</span>
+    <p class="section-text" style="margin-bottom: 2.5rem;">Deine Systeme stehen nicht in der Cloud? Kein Problem. Fachwerk läuft lokal, in der Cloud, oder beides — und verbindet alles miteinander. Keine Migration nötig. Kein Vendor-Lock-in.</p>
+    <div class="no-list-grid">
+      <div class="no-list-item">On-Premise.</div>
+      <div class="no-list-item">Cloud.</div>
+      <div class="no-list-item">Hybrid.</div>
+      <div class="no-list-item">Hinter der Firewall.</div>
+      <div class="no-list-item">Ohne Migration.</div>
+      <div class="no-list-item">Ohne Vendor-Lock-in.</div>
+    </div>
+  </section>
+
+  <!-- SIMPLECHAIN x AI -->
+  <section class="sc-banner reveal" id="simplechain">
+    <div class="sc-banner-inner">
+      <div class="sc-brand">
+        <img class="sc-infinity" src="infinity-white.svg" alt="SimpleChain">
+        <span class="sc-brand-text">SimpleChain <span class="sc-x">x</span> AI</span>
+        <span class="sc-sep">|</span>
+        <span class="sc-von">von <a href="https://www.ecovium.com" target="_blank" rel="noopener">ecovium</a></span>
+      </div>
+
+      <h2 class="sc-headline">Die AI in SimpleChain&nbsp;x&nbsp;AI?<br>Das ist Fachwerk.</h2>
+
+      <p class="sc-text">SimpleChain orchestriert Logistikprozesse End-to-End. Fachwerk liefert die Intelligenz dahinter — die AI-Agenten, die Automatisierung, die selbstbauende Integrationsschicht. Wenn SimpleChain das Nervensystem ist, ist Fachwerk das Gehirn.</p>
+
+      <div class="sc-actions">
+        <a href="https://simplechain.ecovium.com/de/" target="_blank" rel="noopener" class="sc-btn sc-btn-light">SimpleChain entdecken</a>
+        <a href="https://simplechain.ecovium.com/de/#demo" target="_blank" rel="noopener" class="sc-btn sc-btn-outline">Demo buchen</a>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="logimat" id="kontakt">
