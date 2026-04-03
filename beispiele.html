@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Fachwerk — Beispiele</title>
+<style>
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 300; src: url(fonts/ibm-plex-sans-300.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Euclid'; font-weight: 300; src: url(fonts/EuclidCircularB-Light.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'Euclid'; font-weight: 500; src: url(fonts/EuclidCircularB-Medium.ttf) format('truetype'); font-display: swap; }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0; }
+
+:root {
+  --bg: #f4f5f7;
+  --fg: #1a2030;
+  --primary: #2a9080;
+  --muted: #e8eaee;
+  --muted-text: #5a6270;
+  --border: #dfe2e6;
+  --success: #4a7c59;
+  --error: #a65241;
+  --warning: #b8860b;
+  --info: #4a6fa5;
+  --dark-bg: #1e2430;
+  --teal: #5eead4;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'Courier New', 'Lucida Console', monospace;
+}
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Millimeterpapier grid */
+body {
+  background-image:
+    linear-gradient(rgba(42, 144, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 144, 128, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: local;
+}
+
+.content { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(244, 245, 247, 0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--border);
+}
+
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-logo svg { width: 32px; height: 32px; }
+.nav-logo .wordmark {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg);
+}
+
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: var(--muted-text);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--primary); }
+
+.nav-active { color: var(--primary) !important; }
+
+/* ═══════════════════════════════════════════════
+   DIVIDER
+   ═══════════════════════════════════════════════ */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--primary);
+  margin: 0 8vw;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION LABELS & HEADLINES
+   ═══════════════════════════════════════════════ */
+.section-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
+
+.section-headline {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+  color: var(--fg);
+}
+
+/* ═══════════════════════════════════════════════
+   INDUSTRY SWITCHER + EXAMPLES
+   ═══════════════════════════════════════════════ */
+.industry-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.industry-pill {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.industry-pill:hover {
+  border-color: var(--primary);
+  color: var(--fg);
+}
+
+.industry-pill.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.industry-panel {
+  display: none;
+}
+
+.industry-panel.active {
+  display: block;
+}
+
+.example {
+  min-height: 70vh;
+  padding: 4rem 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.example-intro {
+  font-size: 1.05rem;
+  color: var(--muted-text);
+  max-width: 40rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.example-intro em {
+  font-style: normal;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.terminal-block {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--fg);
+  border-left: 2px solid var(--primary);
+  padding: 2rem;
+  margin: 2rem 0;
+  max-width: 52rem;
+  white-space: pre-wrap;
+}
+
+.terminal-block .prompt { color: var(--primary); }
+
+.terminal-quote {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--fg);
+  padding: 2rem;
+  border: 2px solid var(--primary);
+  margin: 2rem 0;
+  max-width: 52rem;
+  white-space: pre-wrap;
+  background: rgba(42, 144, 128, 0.03);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.terminal-quote strong { color: var(--fg); font-weight: 600; }
+.terminal-quote .tq-label { color: var(--primary); font-weight: 600; }
+
+.terminal-quote[data-label]::before {
+  content: attr(data-label);
+}
+
+.terminal-quote::before {
+  content: '';
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  background: var(--primary);
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.punchline {
+  font-size: 1rem;
+  color: var(--fg);
+  font-weight: 500;
+  max-width: 40rem;
+  line-height: 1.8;
+  margin-top: 2rem;
+}
+
+/* ═══════════════════════════════════════════════
+   PILL BAR
+   ═══════════════════════════════════════════════ */
+.pill-bar {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 80;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 8vw;
+}
+.pill-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.pill-bar-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+  white-space: nowrap;
+}
+.beispiele-intro {
+  padding: 4.5rem 8vw 1rem;
+  max-width: 40rem;
+}
+.beispiele-intro h1 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: var(--fg);
+  margin-bottom: 1.5rem;
+}
+.beispiele-intro p {
+  font-size: 1.05rem;
+  color: var(--muted-text);
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════════════
+   LOGIMAT
+   ═══════════════════════════════════════════════ */
+.logimat {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 8vw;
+  border-top: 2px solid var(--border);
+}
+
+.logimat-headline {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+footer {
+  padding: 1.2rem 8vw;
+  border-top: 2px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  font-family: var(--font-body);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-left strong { color: var(--fg); font-weight: 500; }
+.footer-left a { color: var(--muted-text); text-decoration: none; }
+.footer-left a:hover { color: var(--primary); }
+
+.footer-right { display: flex; gap: 1.5rem; }
+.footer-right a {
+  color: var(--muted-text);
+  text-decoration: none;
+}
+.footer-right a:hover { color: var(--primary); }
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .example, .logimat { padding: 5rem 6vw; }
+  .pill-bar { padding: 0.7rem 6vw; }
+  nav { padding: 0.75rem 6vw; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.6rem; }
+}
+
+/* Hamburger menu button */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 201;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--fg);
+  margin: 6px 0;
+  transition: transform 0.3s, opacity 0.3s;
+  pointer-events: none;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 199;
+  background: rgba(244, 245, 247, 0.98);
+  backdrop-filter: blur(8px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.1rem;
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mobile-menu a:hover { color: var(--primary); }
+
+.mobile-menu .lang-link {
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .section-headline { font-size: clamp(1.2rem, 3.5vw, 2rem); }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .industry-pills { gap: 0.4rem; }
+  .industry-pill { font-size: 0.6rem; padding: 0.5rem 0.8rem; }
+  .example { padding: 3rem 6vw; }
+  .pill-bar-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="nav-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#nav-frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="wordmark">Fachwerk</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="beispiele.html" class="nav-active">Beispiele</a>
+    <a href="kontakt.html">Kontakt</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" onclick="closeMobileMenu()">Home</a>
+  <a href="beispiele.html" onclick="closeMobileMenu()">Beispiele</a>
+  <a href="kontakt.html" onclick="closeMobileMenu()">Kontakt</a>
+</div>
+
+<!-- Sticky pill bar -->
+<div class="pill-bar" id="pill-bar">
+  <div class="pill-bar-inner">
+    <span class="pill-bar-label">Deine Branche?</span>
+    <div class="industry-pills">
+      <button class="industry-pill active" data-industry="ecommerce">E-Commerce</button>
+      <button class="industry-pill" data-industry="fertigung">Fertigung</button>
+      <button class="industry-pill" data-industry="gesundheit">Gesundheit</button>
+      <button class="industry-pill" data-industry="finanzen">Finanzen</button>
+      <button class="industry-pill" data-industry="immobilien">Immobilien</button>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="beispiele-intro">
+    <h1>Erlebe Fachwerk.</h1>
+    <p>Jede Industrie hat andere Prozesse, andere Systeme, andere Anforderungen. Fachwerk passt sich an — hier siehst du wie.</p>
+  </div>
+
+  <!-- E-Commerce -->
+  <div class="industry-panel active" data-panel="ecommerce">
+    <section class="example">
+      <span class="section-label">// Flow</span>
+      <h2 class="section-headline">Retouren-Quote steigt?<br>Ads stoppen automatisch.</h2>
+
+      <p class="example-intro">Dein Shop meldet: <em>die Retouren-Quote bei einem Produkt steigt.</em> Bisher merkt das erst jemand, wenn die Marge längst im Keller ist — und die Werbeausgaben weiter laufen.</p>
+
+      <p class="example-intro">Fachwerk erkennt den Trend, <em>pausiert automatisch die Kampagnen</em> bei Facebook und Instagram für das Produkt. Einkauf bekommt eine Benachrichtigung mit Kontext.</p>
+
+      <p class="example-intro">Wenn es hilft, analysiert die AI die Retourengründe aus Bewertungen und schlägt eine Listing-Anpassung vor. <em>Nicht weil sie immer muss — sondern weil es hier Sinn ergibt.</em></p>
+
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — KAMPAGNEN-STEUERUNG"><strong>Produkt SKU-4820</strong> · Retouren-Rate 18% (&#8593; von 6%)
+
+<span class="tq-label">Aktion:</span>   Meta Ads pausiert (3 Kampagnen).
+<span class="tq-label">Grund:</span>    Retourenquote über Schwellwert.
+<span class="tq-label">Einkauf:</span>  Benachrichtigt, Ticket erstellt.</div>
+
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Retourengründe</strong> · SKU-4820 · letzte 30 Tage
+
+<span class="tq-label">Top-Grund:</span>  "Farbe weicht vom Bild ab" (63%)
+<span class="tq-label">Empfehlung:</span> Produktfotos aktualisieren.
+<span class="tq-label">Priorität:</span>  Hoch — Listing aktiv in 2 Märkten.</div>
+
+      <p class="punchline">Keine verbrannten Werbebudgets. Keine Überraschungen bei der Monatsabrechnung. Fachwerk handelt, bevor der Schaden wächst.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="example">
+      <span class="section-label">// Oberfläche</span>
+      <h2 class="section-headline">Retouren-Cockpit —<br>nicht nur Zahlen</h2>
+
+      <p class="example-intro">Retouren-Reports hat jeder. Aber <em>was machst du damit?</em> Tab wechseln, ins Ad-Tool, Kampagne suchen, pausieren, zurück, nächstes Produkt. Fachwerk baut dir eine Oberfläche mit genau den Aktionen, die du in diesem Moment brauchst — <em>maßgeschneidert für deinen Prozess, nicht für den Durchschnitt.</em></p>
+
+      <div class="nw-cockpit">
+<style>
+.nw-cockpit { max-width:52rem;margin:2rem 0;border-radius:6px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 8px 24px rgba(0,0,0,0.06);border:1px solid #d1d5db;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.4;color:#1e293b;background:#ffffff;-webkit-font-smoothing:antialiased; }
+.nw-header { display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.1rem;background:#1e293b;color:#f1f5f9; }
+.nw-brand { display:flex;align-items:center;gap:0.5rem; }
+.nw-logo { width:20px;height:20px;background:#3b82f6;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;letter-spacing:-0.5px; }
+.nw-brand-name { font-weight:600;font-size:13px;letter-spacing:0.01em; }
+.nw-title { font-size:12px;font-weight:400;color:#94a3b8;letter-spacing:0.02em; }
+.nw-meta { display:flex;align-items:center;gap:0.9rem;font-size:11px;color:#94a3b8; }
+.nw-live { display:flex;align-items:center;gap:0.35rem;color:#34d399;font-weight:500; }
+.nw-live-dot { width:6px;height:6px;background:#34d399;border-radius:50%;animation:nw-pulse 2s ease-in-out infinite; }
+@keyframes nw-pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+.nw-subheader { display:flex;align-items:center;justify-content:space-between;padding:0.55rem 1.1rem;background:#f8fafc;border-bottom:1px solid #e2e8f0;font-size:11px;color:#64748b; }
+.nw-subheader strong { color:#334155;font-weight:600;font-size:12px; }
+.nw-row { display:grid;grid-template-columns:7.5rem 1fr auto;align-items:center;padding:0.65rem 1.1rem;border-bottom:1px solid #f1f5f9;gap:0.75rem; }
+.nw-row:last-child { border-bottom:none; }
+.nw-sku { font-weight:600;font-size:12px;color:#1e293b;font-family:'SF Mono','Consolas',monospace;letter-spacing:0.02em; }
+.nw-details { display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap; }
+.nw-rate { font-weight:600;font-size:13px; }
+.nw-rate-high { color:#dc2626; }
+.nw-rate-mid { color:#d97706; }
+.nw-rate-low { color:#16a34a; }
+.nw-bar-wrap { width:4.5rem;height:5px;background:#e2e8f0;border-radius:3px;overflow:hidden; }
+.nw-bar { height:100%;border-radius:3px; }
+.nw-bar-high { width:82%;background:linear-gradient(90deg,#ef4444,#dc2626); }
+.nw-bar-mid { width:55%;background:linear-gradient(90deg,#f59e0b,#d97706); }
+.nw-bar-low { width:38%;background:linear-gradient(90deg,#22c55e,#16a34a); }
+.nw-badge { display:inline-flex;align-items:center;gap:0.3rem;padding:0.15rem 0.5rem;border-radius:3px;font-size:10px;font-weight:500;letter-spacing:0.01em;white-space:nowrap; }
+.nw-badge-red { background:#fef2f2;color:#991b1b;border:1px solid #fecaca; }
+.nw-badge-amber { background:#fffbeb;color:#92400e;border:1px solid #fde68a; }
+.nw-badge-slate { background:#f1f5f9;color:#475569;border:1px solid #cbd5e1; }
+.nw-actions { display:flex;gap:0.4rem;flex-shrink:0; }
+.nw-btn { padding:0.3rem 0.6rem;font-size:10.5px;font-weight:500;border-radius:3px;border:1px solid #d1d5db;background:#fff;color:#374151;white-space:nowrap;cursor:default; }
+.nw-btn-primary { background:#2563eb;border-color:#2563eb;color:#fff; }
+@media(max-width:640px){ .nw-row{grid-template-columns:1fr;gap:0.4rem;} .nw-meta{display:none;} }
+</style>
+<div class="nw-header">
+  <div class="nw-brand">
+    <div class="nw-logo">N</div>
+    <span class="nw-brand-name">NordWare</span>
+    <span class="nw-title">Retouren-Cockpit</span>
+  </div>
+  <div class="nw-meta">
+    <div class="nw-live"><span class="nw-live-dot"></span> Live</div>
+    <span>Letzte Aktualisierung: 14:32</span>
+  </div>
+</div>
+<div class="nw-subheader">
+  <div><strong>Auff&auml;llige Produkte</strong> &middot; 3 Artikel mit steigender Retourenquote</div>
+</div>
+<div>
+  <div class="nw-row">
+    <div class="nw-sku">SKU-4820</div>
+    <div class="nw-details">
+      <span class="nw-rate nw-rate-high">18%</span>
+      <div class="nw-bar-wrap"><div class="nw-bar nw-bar-high"></div></div>
+      <span class="nw-badge nw-badge-red">&#9632; Ads pausiert</span>
+    </div>
+    <div class="nw-actions">
+      <div class="nw-btn nw-btn-primary">Listing pr&uuml;fen</div>
+      <div class="nw-btn">Lieferant kontaktieren</div>
+    </div>
+  </div>
+  <div class="nw-row">
+    <div class="nw-sku">SKU-1133</div>
+    <div class="nw-details">
+      <span class="nw-rate nw-rate-mid">12%</span>
+      <div class="nw-bar-wrap"><div class="nw-bar nw-bar-mid"></div></div>
+      <span class="nw-badge nw-badge-amber">&#9650; Trend steigend</span>
+    </div>
+    <div class="nw-actions">
+      <div class="nw-btn nw-btn-primary">Ads pausieren</div>
+      <div class="nw-btn">Ignorieren</div>
+    </div>
+  </div>
+  <div class="nw-row">
+    <div class="nw-sku">SKU-0917</div>
+    <div class="nw-details">
+      <span class="nw-rate nw-rate-low">9%</span>
+      <div class="nw-bar-wrap"><div class="nw-bar nw-bar-low"></div></div>
+      <span class="nw-badge nw-badge-slate">&#9881; Lieferant-Problem</span>
+    </div>
+    <div class="nw-actions">
+      <div class="nw-btn nw-btn-primary">Ticket an Lieferant</div>
+      <div class="nw-btn">Listing deaktivieren</div>
+    </div>
+  </div>
+</div>
+</div>
+
+      <p class="punchline">Jede Aktion ist ein Klick — keine Navigation, kein Systemwechsel. Die Aktionen sind nicht generisch, sondern exakt auf deinen Workflow zugeschnitten.</p>
+    </section>
+  </div>
+
+  <!-- Fertigung -->
+  <div class="industry-panel" data-panel="fertigung">
+    <section class="example">
+      <span class="section-label">// Flow</span>
+      <h2 class="section-headline">Temperaturabweichung?<br>Charge gesperrt, ERP informiert.</h2>
+
+      <p class="example-intro">Ein Sensor an Linie 3 meldet eine Abweichung. <em>Bisher sieht das erst die Qualitätssicherung — Stunden später.</em> Die Charge ist längst weiterverarbeitet, Rückverfolgung wird zum Projekt.</p>
+
+      <p class="example-intro">Fachwerk läuft direkt im Werk — <em>lokal, im Firmennetz, hinter der Firewall.</em> Es spricht mit Maschinen und SPS-Steuerungen, auch über ältere Protokolle wie Raw TCP/IP oder Modbus. Keine Cloud-Abhängigkeit, keine Latenz.</p>
+
+      <p class="example-intro">Fachwerk korreliert den Sensorwert mit der letzten Chargenprüfung, <em>sperrt die Charge automatisch im ERP</em> und benachrichtigt den Schichtleiter. Wenn ein Muster erkennbar ist, liefert die AI den Kontext: <em>"Abweichung tritt seit dem Werkzeugwechsel in KW 12 auf."</em> Nicht geraten — aus den Daten abgeleitet.</p>
+
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — QUALITÄTSSICHERUNG"><strong>Linie 3</strong> · Temperaturabweichung erkannt
+
+<span class="tq-label">Messwert:</span>  187°C (Soll: 175°C ± 5°C)
+<span class="tq-label">Charge:</span>    CH-20260402-L3 gesperrt.
+<span class="tq-label">ERP:</span>       Sperrung eingetragen, QS informiert.</div>
+
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Musteranalyse</strong> · Linie 3 · letzte 6 Wochen
+
+<span class="tq-label">Muster:</span>     Abweichung seit KW 12 (Werkzeugwechsel).
+<span class="tq-label">Korrelation:</span> Neues Werkzeug + hohe Taktrate.
+<span class="tq-label">Empfehlung:</span>  Werkzeugkalibrierung prüfen.</div>
+
+      <p class="punchline">Kein stiller Qualitätsverlust. Keine Rückverfolgung über drei Schichten. Fachwerk greift ein, bevor die Charge das Werk verlässt.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="example">
+      <span class="section-label">// Oberfläche</span>
+      <h2 class="section-headline">Schichtleiter-Dashboard —<br>am Band, nicht im Büro</h2>
+
+      <p class="example-intro">Der Schichtleiter braucht kein BI-Tool mit Filterkaskaden. Er braucht auf dem Tablet am Band: <em>was läuft, was steht, wo muss ich entscheiden.</em> Und er braucht Aktionen, die genau zu seinem Werk passen — <em>Charge freigeben, Wartung verschieben, QS eskalieren.</em> Keine generischen Buttons, sondern seine Prozesse.</p>
+
+      <div class="sw-dashboard-mockup">
+<style>
+.sw-dashboard-mockup { max-width:52rem;margin:2rem 0;border-radius:12px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,0.08),0 8px 24px rgba(0,0,0,0.14),0 0 0 1px rgba(255,255,255,0.04) inset;font-family:'IBM Plex Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;background:#1a1d24;color:#c8ccd4;font-size:14px;line-height:1.4; }
+.sw-header { display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;background:#15171c;border-bottom:1px solid #2a2d35; }
+.sw-brand { display:flex;align-items:center;gap:0.6rem; }
+.sw-brand-icon { width:28px;height:28px;background:linear-gradient(135deg,#d4840a,#e8a030);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#15171c; }
+.sw-brand-name { font-weight:600;font-size:14px;color:#e2e5eb;letter-spacing:0.04em;text-transform:uppercase; }
+.sw-shift-info { font-size:12px;color:#6b7280;display:flex;align-items:center;gap:0.5rem; }
+.sw-shift-dot { width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,0.4); }
+.sw-shift-label { color:#9ca3af;font-weight:500; }
+.sw-row { display:grid;grid-template-columns:6.5rem 1fr auto;align-items:center;padding:0.7rem 1.25rem;border-bottom:1px solid #22252d;gap:0.75rem; }
+.sw-row:last-child { border-bottom:none; }
+.sw-line-label { font-weight:600;font-size:13px;color:#e2e5eb;white-space:nowrap; }
+.sw-status { display:flex;align-items:center;gap:0.75rem;font-size:13px; }
+.sw-badge { display:inline-flex;align-items:center;padding:0.15rem 0.55rem;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;white-space:nowrap; }
+.sw-badge--running { background:rgba(74,222,128,0.12);color:#4ade80;border:1px solid rgba(74,222,128,0.2); }
+.sw-badge--locked { background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.2); }
+.sw-badge--maintenance { background:rgba(212,132,10,0.12);color:#e8a030;border:1px solid rgba(212,132,10,0.2); }
+.sw-metric { color:#9ca3af;white-space:nowrap; }
+.sw-metric-value { color:#e2e5eb;font-weight:600; }
+.sw-actions { display:flex;gap:0.4rem;flex-shrink:0; }
+.sw-btn { display:inline-flex;align-items:center;padding:0.3rem 0.65rem;border-radius:4px;font-size:11px;font-weight:500;white-space:nowrap;border:1px solid #363a45;background:#22252d;color:#c8ccd4;cursor:default; }
+.sw-btn--primary { background:linear-gradient(135deg,#d4840a,#c07008);border-color:#d4840a;color:#15171c;font-weight:600; }
+.sw-btn--danger { border-color:rgba(239,68,68,0.35);color:#f87171; }
+.sw-footer { display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.25rem;background:#15171c;border-top:1px solid #2a2d35;font-size:11px;color:#4b5563; }
+.sw-footer-live { display:flex;align-items:center;gap:0.4rem;color:#6b7280; }
+.sw-footer-live-dot { width:5px;height:5px;border-radius:50%;background:#4ade80;animation:sw-pulse 2s ease-in-out infinite; }
+@keyframes sw-pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+@media(max-width:640px){ .sw-row{grid-template-columns:1fr;gap:0.35rem;} .sw-header{flex-direction:column;gap:0.35rem;align-items:flex-start;} }
+</style>
+<div class="sw-header">
+  <div class="sw-brand">
+    <div class="sw-brand-icon">SW</div>
+    <span class="sw-brand-name">Stahlberg Werke</span>
+  </div>
+  <div class="sw-shift-info">
+    <span class="sw-shift-dot"></span>
+    <span class="sw-shift-label">Schichtleiter &mdash; Fr&uuml;hschicht 06:00&ndash;14:00</span>
+  </div>
+</div>
+<div>
+  <div class="sw-row">
+    <span class="sw-line-label">Linie 1</span>
+    <div class="sw-status"><span class="sw-badge sw-badge--running">L&auml;uft</span><span class="sw-metric">Takt <span class="sw-metric-value">98%</span></span></div>
+    <div class="sw-actions"><span class="sw-btn">Taktzeit anpassen</span></div>
+  </div>
+  <div class="sw-row">
+    <span class="sw-line-label">Linie 2</span>
+    <div class="sw-status"><span class="sw-badge sw-badge--running">L&auml;uft</span><span class="sw-metric">Takt <span class="sw-metric-value">94%</span></span></div>
+    <div class="sw-actions"><span class="sw-btn">St&ouml;rprotokoll</span></div>
+  </div>
+  <div class="sw-row">
+    <span class="sw-line-label">Linie 3</span>
+    <div class="sw-status"><span class="sw-badge sw-badge--locked">Gesperrt</span><span class="sw-metric">Charge gesperrt</span></div>
+    <div class="sw-actions"><span class="sw-btn sw-btn--primary">Freigeben</span><span class="sw-btn sw-btn--danger">QS eskalieren</span></div>
+  </div>
+  <div class="sw-row">
+    <span class="sw-line-label">Linie 4</span>
+    <div class="sw-status"><span class="sw-badge sw-badge--maintenance">Wartung</span><span class="sw-metric">geplant <span class="sw-metric-value">10:00</span></span></div>
+    <div class="sw-actions"><span class="sw-btn">Verschieben</span><span class="sw-btn sw-btn--primary">Best&auml;tigen</span></div>
+  </div>
+</div>
+<div class="sw-footer">
+  <div class="sw-footer-live"><span class="sw-footer-live-dot"></span> Live &mdash; SPS &amp; ERP verbunden</div>
+  <span>Halle 2 &middot; Tablet T-041</span>
+</div>
+</div>
+
+      <p class="punchline">Jede Aktion greift direkt ins ERP, in die SPS, ins QS-System — ein Klick, kein Umweg. Maßgeschneidert für dieses Werk, diese Schicht, diesen Schichtleiter.</p>
+    </section>
+  </div>
+
+  <!-- Gesundheit -->
+  <div class="industry-panel" data-panel="gesundheit">
+    <section class="example">
+      <span class="section-label">// Flow</span>
+      <h2 class="section-headline">Kritischer Befund?<br>Sofort beim richtigen Arzt.</h2>
+
+      <p class="example-intro">Labor schickt den Befund als HL7-Nachricht oder PDF. <em>Bisher landet der im Postfach.</em> Irgendwann schaut jemand drauf. Bei kritischen Werten kann "irgendwann" zu spät sein.</p>
+
+      <p class="example-intro">Fachwerk extrahiert die Werte, ordnet den Patienten zu, <em>routet direkt an den zuständigen Arzt.</em> Kritische Werte lösen sofort eine Push-Benachrichtigung aus.</p>
+
+      <p class="example-intro">Wenn der Befundverlauf auffällig ist, flaggt die AI einen Verschlechterungstrend — <em>nicht als Diagnose, sondern als Hinweis:</em> hier lohnt sich ein genauerer Blick.</p>
+
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — BEFUND-ROUTING"><strong>Patient 2847</strong> · Laborbefund eingegangen
+
+<span class="tq-label">Werte:</span>    Kalium 6.2 mmol/L (kritisch hoch)
+<span class="tq-label">Routing:</span>  Dr. Weber (Nephrologie) · Push gesendet.
+<span class="tq-label">Status:</span>   Befund zugeordnet, Akte aktualisiert.</div>
+
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Verlaufsanalyse</strong> · Patient 2847 · letzte 8 Wochen
+
+<span class="tq-label">Trend:</span>      Kalium steigend (4.8 → 5.5 → 6.2)
+<span class="tq-label">Kontext:</span>    Medikation seit KW 10 umgestellt.
+<span class="tq-label">Hinweis:</span>    Verschlechterungstrend — Rücksprache empfohlen.</div>
+
+      <p class="punchline">Kein Befund, der im Postfach wartet. Kritische Werte sind sofort da, wo sie hingehören — beim richtigen Arzt, mit dem richtigen Kontext.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="example">
+      <span class="section-label">// Oberfläche</span>
+      <h2 class="section-headline">Stations-Übersicht —<br>Handeln, nicht suchen</h2>
+
+      <p class="example-intro">Die Stationsschwester braucht keine Patientenakte mit 40 Tabs. Sie braucht: <em>wer hat offene Befunde, was ist kritisch, was muss jetzt passieren.</em> Und sie braucht Aktionen, die zu ihrer Station passen — <em>Arzt rufen, Verordnung anstoßen, Befund quittieren.</em> Nicht was ein Software-Hersteller für alle Krankenhäuser gebaut hat, sondern was hier, auf dieser Station, gebraucht wird.</p>
+
+      <div class="medvita-mockup" style="max-width:52rem;margin:2rem 0;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.10),0 0 0 1px rgba(0,0,0,0.04);overflow:hidden;font-family:'IBM Plex Sans',sans-serif;background:#fff;">
+<style>
+.medvita-mockup * { box-sizing:border-box; }
+.medvita-header { background:linear-gradient(135deg,#0d7568 0%,#10998a 100%);padding:0.9rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem; }
+.medvita-brand { display:flex;align-items:center;gap:0.6rem; }
+.medvita-logo { width:28px;height:28px;background:rgba(255,255,255,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#fff; }
+.medvita-name { font-weight:600;font-size:0.85rem;color:#fff; }
+.medvita-section { font-weight:400;font-size:0.72rem;color:rgba(255,255,255,0.75); }
+.medvita-subbar { background:#f0faf8;border-bottom:1px solid #d6eeea;padding:0.55rem 1.4rem;display:flex;align-items:center;justify-content:space-between; }
+.medvita-page-title { font-weight:600;font-size:0.78rem;color:#1a2030; }
+.medvita-patient-count { font-size:0.68rem;color:#5a6a72;font-weight:500;background:#e0f3f0;padding:0.2rem 0.6rem;border-radius:20px; }
+.medvita-row { display:flex;align-items:flex-start;gap:0.8rem;padding:0.7rem 1.4rem;border-bottom:1px solid #f0f1f3;flex-wrap:wrap; }
+.medvita-row:last-child { border-bottom:none; }
+.medvita-room { font-weight:600;font-size:0.75rem;color:#1a2030;min-width:5.5rem;padding-top:0.1rem; }
+.medvita-status { flex:1;min-width:10rem;display:flex;flex-direction:column;gap:0.15rem; }
+.medvita-status-line { font-size:0.72rem;color:#4a5568;display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap; }
+.medvita-badge { display:inline-block;font-size:0.6rem;font-weight:600;letter-spacing:0.03em;padding:0.12rem 0.45rem;border-radius:3px;white-space:nowrap; }
+.medvita-badge.kritisch { background:#fde8e4;color:#a63b2a; }
+.medvita-badge.offen { background:#fef3d6;color:#8a6d0b; }
+.medvita-badge.neu { background:#e0f3f0;color:#0d7568; }
+.medvita-badge.faellig { background:#fde8e4;color:#a63b2a; }
+.medvita-detail { font-size:0.68rem;color:#7a8490; }
+.medvita-actions { display:flex;gap:0.35rem;flex-wrap:wrap;align-items:flex-start;padding-top:0.05rem; }
+.medvita-btn { font-family:'IBM Plex Sans',sans-serif;font-size:0.62rem;font-weight:600;padding:0.25rem 0.6rem;border-radius:4px;border:1.5px solid #10998a;color:#0d7568;background:#f0faf8;white-space:nowrap;cursor:default; }
+.medvita-btn.primary { background:#0d7568;color:#fff;border-color:#0d7568; }
+@media(max-width:640px){ .medvita-row{flex-direction:column;gap:0.4rem;} .medvita-room{min-width:unset;} }
+</style>
+<div class="medvita-header">
+  <div class="medvita-brand">
+    <div class="medvita-logo">M</div>
+    <div><div class="medvita-name">MedVita Klinik</div><div class="medvita-section">Station 3B — Offene Befunde</div></div>
+  </div>
+</div>
+<div class="medvita-subbar">
+  <span class="medvita-page-title">Aktuelle Patienten</span>
+  <span class="medvita-patient-count">12 station&auml;r</span>
+</div>
+<div>
+  <div class="medvita-row">
+    <span class="medvita-room">Zimmer 301</span>
+    <div class="medvita-status">
+      <div class="medvita-status-line"><span class="medvita-badge offen">Befund offen</span><span class="medvita-badge kritisch">Kalium kritisch</span></div>
+      <div class="medvita-detail">K+ 6.2 mmol/L — Grenzwert &uuml;berschritten</div>
+    </div>
+    <div class="medvita-actions"><span class="medvita-btn primary">Arzt rufen</span><span class="medvita-btn">Notfall-Labor</span></div>
+  </div>
+  <div class="medvita-row">
+    <span class="medvita-room">Zimmer 304</span>
+    <div class="medvita-status">
+      <div class="medvita-status-line"><span class="medvita-badge neu">Neuer Befund</span><span style="font-size:0.68rem;color:#7a8490;">unauff&auml;llig</span></div>
+      <div class="medvita-detail">Routine-Labor vom 02.04. — alle Werte im Normbereich</div>
+    </div>
+    <div class="medvita-actions"><span class="medvita-btn primary">Zur Kenntnis</span><span class="medvita-btn">Visite vorziehen</span></div>
+  </div>
+  <div class="medvita-row">
+    <span class="medvita-room">Zimmer 307</span>
+    <div class="medvita-status">
+      <div class="medvita-status-line"><span class="medvita-badge faellig">Verordnung f&auml;llig</span></div>
+      <div class="medvita-detail">Schmerzmedikation — letzte Gabe 06:12, n&auml;chste &uuml;berf&auml;llig</div>
+    </div>
+    <div class="medvita-actions"><span class="medvita-btn primary">Verordnen</span><span class="medvita-btn">Arzt R&uuml;cksprache</span></div>
+  </div>
+</div>
+</div>
+
+      <p class="punchline">Jede Aktion greift direkt ins KIS, ins Labor, in die Verordnung — maßgeschneidert für diese Station, nicht für den Durchschnitt.</p>
+    </section>
+  </div>
+
+  <!-- Finanzen -->
+  <div class="industry-panel" data-panel="finanzen">
+    <section class="example">
+      <span class="section-label">// Flow</span>
+      <h2 class="section-headline">Rechnung passt nicht?<br>Klärungsfall mit Kontext.</h2>
+
+      <p class="example-intro">Eingangsrechnung kommt per Mail. <em>Bisher: ausdrucken, Ordner raus, Bestellung suchen, Lieferschein suchen, vergleichen.</em> Bei Abweichungen beginnt das Telefonieren.</p>
+
+      <p class="example-intro">Fachwerk gleicht automatisch mit Bestellung und Lieferschein ab. <em>Passt alles — Freigabe läuft automatisch.</em> Abweichung? Klärungsfall mit vollständigem Kontext an den Sachbearbeiter.</p>
+
+      <p class="example-intro">Bei wiederkehrenden Abweichungen erkennt die AI das Muster: <em>"Lieferant X rechnet seit drei Monaten Frachtkosten ab, die nicht vereinbart sind."</em> Nicht geraten — aus den Daten.</p>
+
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — RECHNUNGSABGLEICH"><strong>Rechnung #R-20260328</strong> · Lieferant Müller GmbH
+
+<span class="tq-label">Bestellung:</span>  PO-8821 · Match.
+<span class="tq-label">Lieferschein:</span> LS-4455 · Match.
+<span class="tq-label">Betrag:</span>      Abweichung +142,00 € (Frachtkosten).
+<span class="tq-label">Aktion:</span>      Klärungsfall erstellt, Sachbearbeiter informiert.</div>
+
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Musteranalyse</strong> · Lieferant Müller GmbH · 6 Monate
+
+<span class="tq-label">Muster:</span>      Frachtkosten-Aufschlag in 4 von 6 Rechnungen.
+<span class="tq-label">Summe:</span>       568,00 € nicht vereinbarte Mehrkosten.
+<span class="tq-label">Empfehlung:</span>  Konditionen mit Lieferant klären.</div>
+
+      <p class="punchline">Kein manueller Abgleich. Keine vergessenen Abweichungen. Fachwerk prüft, was passt — und liefert Kontext, wo es nicht passt.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="example">
+      <span class="section-label">// Oberfläche</span>
+      <h2 class="section-headline">Freigabe-Board —<br>ein Klick statt drei Systeme</h2>
+
+      <p class="example-intro">Der Sachbearbeiter braucht keine Rechnungsliste zum Durchscrollen. Er braucht: <em>was ist offen, was weicht ab, was kann ich freigeben.</em> Und er braucht Aktionen, die zu seinem Freigabeprozess passen — <em>Rechnung freigeben, Lieferschein nachfordern, Klärungsfall an den Einkauf.</em> Nicht generische Buttons, sondern exakt sein Workflow.</p>
+
+      <div class="gp-mockup-frame">
+<style>
+.gp-mockup-frame { max-width:52rem;margin:2rem 0;border-radius:10px;box-shadow:0 2px 24px rgba(20,30,60,0.13),0 0 0 1px rgba(20,30,60,0.07);overflow:hidden;font-family:'IBM Plex Sans',-apple-system,sans-serif;background:#fff;color:#1a2030;-webkit-font-smoothing:antialiased; }
+.gp-header { background:#142240;padding:0.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem; }
+.gp-brand { display:flex;align-items:center;gap:0.6rem; }
+.gp-logo-mark { width:26px;height:26px;background:linear-gradient(135deg,#c9a84c 0%,#e0c56c 100%);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:0.85rem;color:#142240; }
+.gp-brand-name { font-family:Georgia,'Times New Roman',serif;font-size:0.85rem;font-weight:700;color:#fff; }
+.gp-header-title { font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.55);letter-spacing:0.06em;text-transform:uppercase; }
+.gp-summary { background:#f7f8fa;border-bottom:1px solid #e5e7ec;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem; }
+.gp-summary-text { font-size:0.78rem;font-weight:500;color:#3a4255; }
+.gp-summary-count { font-weight:600;color:#142240; }
+.gp-summary-badges { display:flex;gap:0.5rem; }
+.gp-badge { font-size:0.62rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:3px; }
+.gp-badge--warn { background:#fef3cd;color:#8a6d00; }
+.gp-badge--ok { background:#d4edda;color:#2d6a3f; }
+.gp-row { display:grid;grid-template-columns:6.5rem 1fr auto;align-items:center;padding:0.7rem 1.25rem;border-bottom:1px solid #eef0f3;gap:0.75rem; }
+.gp-row:last-child { border-bottom:none; }
+.gp-row--header { background:#fafbfc;padding:0.45rem 1.25rem;border-bottom:1px solid #e5e7ec; }
+.gp-row--header span { font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#8a91a0; }
+.gp-cell-id { font-family:'Courier New',monospace;font-size:0.75rem;font-weight:600;color:#142240; }
+.gp-cell-vendor { font-size:0.8rem;font-weight:500;color:#1a2030; }
+.gp-cell-status { font-size:0.7rem;margin-top:0.1rem; }
+.gp-status--deviation { color:#b8450a;font-weight:500; }
+.gp-status--match { color:#2d6a3f;font-weight:500; }
+.gp-status--missing { color:#8a6d00;font-weight:500; }
+.gp-cell-actions { display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:flex-end; }
+.gp-btn { display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:0.62rem;font-weight:600;padding:0.25rem 0.55rem;border-radius:3px;white-space:nowrap;cursor:default; }
+.gp-btn--primary { background:#142240;color:#fff; }
+.gp-btn--outline { background:#fff;color:#3a4255;border:1px solid #d0d4dc; }
+.gp-btn--danger { background:#fff;color:#a63e2a;border:1px solid #e4b8af; }
+@media(max-width:580px){ .gp-row{grid-template-columns:1fr;gap:0.3rem;} .gp-cell-actions{justify-content:flex-start;} }
+</style>
+<div class="gp-header">
+  <div class="gp-brand">
+    <div class="gp-logo-mark">G</div>
+    <span class="gp-brand-name">Gr&uuml;nfeld &amp; Partner</span>
+  </div>
+  <span class="gp-header-title">Freigabe-Board</span>
+</div>
+<div class="gp-summary">
+  <span class="gp-summary-text"><span class="gp-summary-count">8</span> Rechnungen zur Pr&uuml;fung</span>
+  <div class="gp-summary-badges">
+    <span class="gp-badge gp-badge--warn">3 Kl&auml;rungsf&auml;lle</span>
+    <span class="gp-badge gp-badge--ok">5 Match</span>
+  </div>
+</div>
+<div>
+  <div class="gp-row gp-row--header"><span>Rechnung</span><span>Lieferant / Status</span><span>Aktionen</span></div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0328</span>
+    <div><div class="gp-cell-vendor">M&uuml;ller GmbH</div><div class="gp-cell-status gp-status--deviation">+142&thinsp;&euro; Abweichung</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Kl&auml;ren</span><span class="gp-btn gp-btn--outline">Freigeben</span><span class="gp-btn gp-btn--outline">Einkauf informieren</span></div>
+  </div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0329</span>
+    <div><div class="gp-cell-vendor">Schmidt AG</div><div class="gp-cell-status gp-status--match">Match</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Freigeben</span></div>
+  </div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0331</span>
+    <div><div class="gp-cell-vendor">Weber KG</div><div class="gp-cell-status gp-status--missing">Lieferschein fehlt</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Nachfordern</span><span class="gp-btn gp-btn--outline">Zur&uuml;ckstellen</span><span class="gp-btn gp-btn--danger">Lieferant sperren</span></div>
+  </div>
+</div>
+</div>
+
+      <p class="punchline">Jede Aktion greift direkt ins ERP, in die Buchhaltung, in den Einkauf — ein Klick, kein Systemwechsel. Gebaut für diesen Prozess, nicht für den Durchschnitt.</p>
+    </section>
+  </div>
+
+  <!-- Immobilien -->
+  <div class="industry-panel" data-panel="immobilien">
+    <section class="example">
+      <span class="section-label">// Flow</span>
+      <h2 class="section-headline">Wasserschaden gemeldet?<br>Handwerker beauftragt.</h2>
+
+      <p class="example-intro">Mieter meldet einen Wasserschaden über das Formular. <em>Bisher: Mail an die Hausverwaltung, die weiterleitet, die anruft, die wartet.</em> Tage vergehen. Schaden wächst.</p>
+
+      <p class="example-intro">Fachwerk kategorisiert die Meldung, <em>prüft automatisch die Versicherungsrelevanz</em> und beauftragt den passenden Handwerker aus dem hinterlegten Pool. Mieter bekommt direkt einen Terminvorschlag.</p>
+
+      <p class="example-intro">Bei Fotos in der Meldung schätzt die AI die Dringlichkeit ein: <em>stehendes Wasser = sofort, feuchter Fleck = regulär.</em> Priorisierung mit Grund, nicht nach Bauchgefühl.</p>
+
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — SCHADENSMELDUNG"><strong>Objekt Rosenstraße 14</strong> · Wohnung 3 OG links
+
+<span class="tq-label">Schaden:</span>     Wasserschaden Badezimmer.
+<span class="tq-label">Versicherung:</span> Relevanz geprüft — meldepflichtig.
+<span class="tq-label">Handwerker:</span>  Rohrbau Petersen beauftragt.
+<span class="tq-label">Mieter:</span>      Terminvorschlag morgen 09:00 gesendet.</div>
+
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Foto-Analyse</strong> · Schadensmeldung Wohnung 3 OG
+
+<span class="tq-label">Erkennung:</span>   Stehendes Wasser, Deckenverformung.
+<span class="tq-label">Dringlichkeit:</span> Hoch — sofortige Sperrung empfohlen.
+<span class="tq-label">Empfehlung:</span>  Nachbarwohnung informieren (Wasserschaden von oben möglich).</div>
+
+      <p class="punchline">Kein Ping-Pong zwischen Mieter, Verwaltung und Handwerker. Fachwerk handelt — vom Eingang der Meldung bis zum Terminvorschlag.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="example">
+      <span class="section-label">// Oberfläche</span>
+      <h2 class="section-headline">Objektmanager —<br>alle Vorgänge, ein Blick</h2>
+
+      <p class="example-intro">Der Verwalter braucht keine Excelliste pro Objekt. Er braucht: <em>was ist offen, wer kümmert sich, wo muss ich eingreifen.</em> Und er braucht Aktionen, die zu seiner Verwaltung passen — <em>Handwerker beauftragen, Mieter informieren, Versicherung melden.</em> Nicht ein Standard-Tool für alle, sondern seine Prozesse, seine Objekte, seine Abläufe.</p>
+
+      <div class="dachstein-ui">
+<style>
+.dachstein-ui { max-width:52rem;margin:2rem 0;border-radius:12px;box-shadow:0 2px 24px rgba(60,40,30,0.10),0 0.5px 2px rgba(60,40,30,0.06);overflow:hidden;font-family:'IBM Plex Sans',sans-serif;font-size:0.82rem;line-height:1.5;color:#3a3330;background:#fff;border:1px solid #e5ddd6; }
+.dachstein-header { display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1.2rem;background:#3d3330;color:#f5eeea; }
+.dachstein-brand { display:flex;align-items:center;gap:0.5rem; }
+.dachstein-brand-icon { width:22px;height:22px;background:#c06a4a;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.7rem;color:#fff; }
+.dachstein-brand-name { font-weight:600;font-size:0.78rem; }
+.dachstein-nav-label { font-size:0.68rem;font-weight:400;opacity:0.6;letter-spacing:0.04em;text-transform:uppercase; }
+.dachstein-summary { padding:0.65rem 1.2rem;background:#faf6f3;border-bottom:1px solid #ede6e0;display:flex;align-items:center;gap:0.5rem;font-size:0.76rem;color:#7a6e66; }
+.dachstein-summary-dot { width:7px;height:7px;border-radius:50%;background:#c06a4a;flex-shrink:0; }
+.dachstein-summary strong { color:#3a3330;font-weight:600; }
+.dachstein-row { display:flex;align-items:flex-start;padding:0.65rem 1.2rem;gap:0.75rem;border-bottom:1px solid #f0eae5; }
+.dachstein-row:last-child { border-bottom:none; }
+.dachstein-row-status { flex-shrink:0;width:8px;height:8px;border-radius:50%;margin-top:0.35rem; }
+.dachstein-status-critical { background:#c04a3a; }
+.dachstein-status-warning { background:#d4940a; }
+.dachstein-status-info { background:#5a8abb; }
+.dachstein-status-neutral { background:#8a9a7a; }
+.dachstein-row-content { flex:1;min-width:0; }
+.dachstein-row-title { font-weight:600;font-size:0.8rem;color:#3a3330;margin-bottom:0.1rem; }
+.dachstein-row-detail { font-size:0.72rem;color:#8a7e76;margin-bottom:0.35rem; }
+.dachstein-row-actions { display:flex;flex-wrap:wrap;gap:0.3rem; }
+.dachstein-btn { display:inline-block;padding:0.2rem 0.55rem;font-size:0.66rem;font-weight:500;border-radius:4px;white-space:nowrap;font-family:'IBM Plex Sans',sans-serif; }
+.dachstein-btn-primary { background:#c06a4a;color:#fff; }
+.dachstein-btn-secondary { background:#f0eae5;color:#5a504a; }
+</style>
+<div class="dachstein-header">
+  <div class="dachstein-brand">
+    <div class="dachstein-brand-icon">D</div>
+    <span class="dachstein-brand-name">Dachstein Verwaltung</span>
+  </div>
+  <span class="dachstein-nav-label">Objektmanager</span>
+</div>
+<div class="dachstein-summary">
+  <span class="dachstein-summary-dot"></span>
+  <span><strong>4 Objekte</strong> mit Handlungsbedarf</span>
+</div>
+<div>
+  <div class="dachstein-row">
+    <span class="dachstein-row-status dachstein-status-critical"></span>
+    <div class="dachstein-row-content">
+      <div class="dachstein-row-title">Rosenstr. 14</div>
+      <div class="dachstein-row-detail">Wasserschaden Whg. 3 OG &middot; Rohrbau Petersen morgen 09:00</div>
+      <div class="dachstein-row-actions"><span class="dachstein-btn dachstein-btn-secondary">Status</span><span class="dachstein-btn dachstein-btn-primary">Versicherung melden</span></div>
+    </div>
+  </div>
+  <div class="dachstein-row">
+    <span class="dachstein-row-status dachstein-status-warning"></span>
+    <div class="dachstein-row-content">
+      <div class="dachstein-row-title">Birkenweg 7</div>
+      <div class="dachstein-row-detail">Heizungsausfall &middot; Techniker vor Ort</div>
+      <div class="dachstein-row-actions"><span class="dachstein-btn dachstein-btn-primary">Mieter informieren</span><span class="dachstein-btn dachstein-btn-secondary">Frist setzen</span></div>
+    </div>
+  </div>
+  <div class="dachstein-row">
+    <span class="dachstein-row-status dachstein-status-info"></span>
+    <div class="dachstein-row-content">
+      <div class="dachstein-row-title">Marktplatz 2</div>
+      <div class="dachstein-row-detail">Nebenkostenabrechnung f&auml;llig</div>
+      <div class="dachstein-row-actions"><span class="dachstein-btn dachstein-btn-primary">Erstellen</span><span class="dachstein-btn dachstein-btn-secondary">Verschieben</span></div>
+    </div>
+  </div>
+  <div class="dachstein-row">
+    <span class="dachstein-row-status dachstein-status-neutral"></span>
+    <div class="dachstein-row-content">
+      <div class="dachstein-row-title">Parkstr. 9</div>
+      <div class="dachstein-row-detail">Mieterwechsel &middot; &Uuml;bergabe offen</div>
+      <div class="dachstein-row-actions"><span class="dachstein-btn dachstein-btn-secondary">Termin planen</span><span class="dachstein-btn dachstein-btn-secondary">Kaution pr&uuml;fen</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+      <p class="punchline">Jede Aktion greift direkt in die Hausverwaltungssoftware, ins Handwerker-Portal, in die Mieter-Kommunikation — ein Klick, kein Umweg. Gebaut für diese Verwaltung, nicht für den Markt.</p>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Mini-CTA -->
+  <section class="logimat">
+    <h2 class="logimat-headline">Klingt interessant?<br>Lass uns reden.</h2>
+    <a href="kontakt.html" class="cta-button">Kontakt aufnehmen</a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-left">Ein Projekt von <strong>Sebastian Breitzke</strong> · <a href="https://s16e.de" target="_blank" rel="noopener">s16e.de</a></span>
+      <span class="footer-right"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </footer>
+</div>
+
+<script>
+// Industry switcher
+function switchIndustry(industry) {
+  document.querySelectorAll('.industry-pill').forEach(p =>
+    p.classList.toggle('active', p.dataset.industry === industry)
+  );
+  document.querySelectorAll('.industry-panel').forEach(panel =>
+    panel.classList.toggle('active', panel.dataset.panel === industry)
+  );
+}
+
+document.querySelectorAll('.industry-pills').forEach(container => {
+  container.addEventListener('click', (e) => {
+    const pill = e.target.closest('.industry-pill');
+    if (!pill) return;
+    switchIndustry(pill.dataset.industry);
+  });
+});
+
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Mobile menu
+const hamburger = document.querySelector('.nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('active');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+</script>
+
+</body>
+</html>
