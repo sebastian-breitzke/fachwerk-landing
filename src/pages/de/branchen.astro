@@ -1,0 +1,183 @@
+---
+import Base from '../../layouts/Base.astro';
+import MiniCta from '../../components/MiniCta.astro';
+---
+
+<Base title="Fachwerk — Jede Branche" currentPage="">
+  <section class="branchen-hero">
+    <h1 class="branchen-headline">Fachwerk ist nicht<br>branchenspezifisch.</h1>
+    <p class="branchen-sub">Fachwerk baut keine Standard-Software für eine Branche. Fachwerk baut <em>deine</em> Software — maßgeschneidert, integriert, automatisiert. Das funktioniert überall, wo Systeme nicht miteinander reden und Menschen Daten von A nach B tragen.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="branchen-section reveal">
+    <span class="section-label">// Warum überall</span>
+    <h2 class="section-headline">Custom Software.<br>Nicht noch ein Tool.</h2>
+    <p class="branchen-text">Standard-Tools lösen Standard-Probleme. Deine Prozesse sind nicht Standard — sie sind über Jahre gewachsen, angepasst, verbogen. Fachwerk nimmt deine Prozesse wie sie sind und baut die Automatisierung drum herum. Nicht umgekehrt.</p>
+    <p class="branchen-text"><em>Keine Migration. Keine Anpassung an ein fremdes Datenmodell. Keine "Best Practices" die nicht zu dir passen.</em></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="branchen-section reveal">
+    <span class="section-label">// Was Fachwerk kann</span>
+    <h2 class="section-headline">Systeme verbinden.<br>Prozesse automatisieren.<br>Oberflächen bauen.</h2>
+
+    <div class="branchen-grid">
+      <div class="branchen-card">
+        <h3 class="branchen-card-title">Integration</h3>
+        <p class="branchen-card-text">Dein ERP spricht nicht mit deinem CRM? Dein Webshop kennt dein Lager nicht? Fachwerk verbindet Systeme über Standard-APIs — egal ob SAP, DATEV, Shopify, Salesforce oder deine selbstgebaute Access-Datenbank.</p>
+      </div>
+      <div class="branchen-card">
+        <h3 class="branchen-card-title">Automatisierung</h3>
+        <p class="branchen-card-text">Prozesse, die heute manuell laufen — Daten abgleichen, Dokumente prüfen, E-Mails verschicken, Freigaben einholen — laufen automatisch. Deterministisch, nachvollziehbar, auditierbar.</p>
+      </div>
+      <div class="branchen-card">
+        <h3 class="branchen-card-title">Oberflächen</h3>
+        <p class="branchen-card-text">Keine generischen Dashboards. Sondern Oberflächen mit genau den Aktionen, die dein Team braucht. Maßgeschneidert für den Arbeitsplatz — ob am Schreibtisch, am Band oder auf dem Handy.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="branchen-section reveal">
+    <span class="section-label">// Beispiele</span>
+    <h2 class="section-headline">Wo Fachwerk heute schon denkt.</h2>
+
+    <div class="branchen-examples">
+      <div class="branchen-example">
+        <strong>E-Commerce</strong> — Retouren automatisch erkennen, Ads pausieren, Listings anpassen
+      </div>
+      <div class="branchen-example">
+        <strong>Fertigung</strong> — SPS-Daten ins ERP, Qualitätsprobleme sofort erkennen, Schichtübergabe digital
+      </div>
+      <div class="branchen-example">
+        <strong>Gesundheitswesen</strong> — Befunde routen, kritische Werte eskalieren, Stationsübersicht
+      </div>
+      <div class="branchen-example">
+        <strong>Finanzen</strong> — Rechnungsabgleich, Dreifach-Match, Klärungsfälle mit Kontext
+      </div>
+      <div class="branchen-example">
+        <strong>Immobilien</strong> — Schadensmeldung bis Handwerkerauftrag, Objektmanagement
+      </div>
+      <div class="branchen-example">
+        <strong>Logistik</strong> — Frachtdokumente, Zollabwicklung, Tourenplanung
+      </div>
+      <div class="branchen-example">
+        <strong>Handel</strong> — Lieferanten-Daten synchronisieren, Preispflege, Bestandsabgleich
+      </div>
+      <div class="branchen-example">
+        <strong>Energie</strong> — Kundendaten konsolidieren, Beschwerdemanagement, Abrechnungen
+      </div>
+    </div>
+
+    <p class="branchen-text" style="margin-top: 2rem;"><em>Deine Branche nicht dabei? Genau darum geht es — Fachwerk passt sich an, nicht umgekehrt.</em></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="branchen-section reveal">
+    <span class="section-label">// Wie es funktioniert</span>
+    <h2 class="section-headline">Du beschreibst.<br>Fachwerk baut.</h2>
+    <p class="branchen-text">Du brauchst keinen Entwickler, keinen Dienstleister, kein Lastenheft. Beschreib was du brauchst — in deinen Worten. Fachwerk versteht deine Systeme, baut die Automatisierung, und du hast eine produktionsreife Lösung. In Stunden, nicht Monaten.</p>
+    <p class="branchen-text">AI schreibt den Code. <em>AI ist nicht der Code.</em> Was deployed wird, ist nachvollziehbar, versioniert, testbar — keine Black Box.</p>
+  </section>
+
+  <MiniCta headline="Erzähl uns von deinem Prozess.<br>Wir zeigen dir was möglich ist." buttonText="Gespräch vereinbaren" href="/de/kontakt/" />
+</Base>
+
+<style>
+  .branchen-hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 8vw 4rem;
+  }
+  .branchen-headline {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    color: var(--fg);
+    margin-bottom: 2rem;
+  }
+  .branchen-sub {
+    font-size: 1.1rem;
+    color: var(--muted-text);
+    max-width: 40rem;
+    line-height: 1.8;
+  }
+  .branchen-sub em {
+    font-style: normal;
+    color: var(--fg);
+    font-weight: 500;
+  }
+  .branchen-section {
+    padding: 6rem 8vw;
+  }
+  .branchen-text {
+    font-size: 1.05rem;
+    color: var(--muted-text);
+    max-width: 40rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .branchen-text em {
+    font-style: normal;
+    color: var(--fg);
+    font-weight: 500;
+  }
+  .branchen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    max-width: 60rem;
+  }
+  .branchen-card {
+    border-left: 2px solid var(--primary);
+    padding-left: 1.5rem;
+  }
+  .branchen-card-title {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    margin-bottom: 0.75rem;
+  }
+  .branchen-card-text {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    line-height: 1.7;
+  }
+  .branchen-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 40rem;
+  }
+  .branchen-example {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    line-height: 1.6;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+  }
+  .branchen-example strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .branchen-hero { padding: 8rem 6vw 3rem; }
+    .branchen-section { padding: 4rem 6vw; }
+    .branchen-grid { grid-template-columns: 1fr; }
+  }
+</style>

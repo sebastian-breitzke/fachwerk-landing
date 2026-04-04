@@ -6,6 +6,7 @@
       <button class="industry-pill" data-industry="gesundheit">Gesundheit</button>
       <button class="industry-pill" data-industry="finanzen">Finanzen</button>
       <button class="industry-pill" data-industry="immobilien">Immobilien</button>
+      <a class="industry-pill-link" href="/de/branchen/">Deine Branche nicht dabei?</a>
     </div>
   </div>
 </div>
@@ -47,6 +48,21 @@
   border-bottom-color: var(--primary);
   background: transparent;
   font-weight: 600;
+}
+
+.pill-bar .industry-pill-link {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.2rem;
+  color: var(--primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.pill-bar .industry-pill-link:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 900px) {
