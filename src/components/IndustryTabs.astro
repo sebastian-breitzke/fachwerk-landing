@@ -1,0 +1,59 @@
+<div class="pill-bar" id="pill-bar">
+  <div class="pill-bar-inner">
+    <div class="industry-pills">
+      <button class="industry-pill active" data-industry="ecommerce">E-Commerce</button>
+      <button class="industry-pill" data-industry="fertigung">Fertigung</button>
+      <button class="industry-pill" data-industry="gesundheit">Gesundheit</button>
+      <button class="industry-pill" data-industry="finanzen">Finanzen</button>
+      <button class="industry-pill" data-industry="immobilien">Immobilien</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+.pill-bar {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 80;
+  background: var(--bg);
+  padding: 0.5rem 8vw 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.pill-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.pill-bar .industry-pill {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.pill-bar .industry-pill:hover {
+  color: var(--fg);
+}
+.pill-bar .industry-pill.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: transparent;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .pill-bar { padding: 0.5rem 6vw 0; }
+}
+
+@media (max-width: 600px) {
+  .pill-bar .industry-pill { font-size: 0.55rem; padding: 0.6rem 0.7rem; }
+}
+</style>

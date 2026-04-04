@@ -1,0 +1,29 @@
+{
+  "name": "fachwerk-website",
+  "version": "1.0.0",
+  "description": "Landing page for [Fachwerk](https://fachwerk.tech) — the platform for bespoke business automation.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-breitzke/fachwerk-landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebastian-breitzke/fachwerk-landing/issues"
+  },
+  "homepage": "https://github.com/sebastian-breitzke/fachwerk-landing#readme",
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.1.7",
+    "astro": "^6.1.3"
+  }
+}

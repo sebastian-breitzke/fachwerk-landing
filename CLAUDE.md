@@ -1,24 +1,52 @@
 # Fachwerk Website
 
-Static landing page for [fachwerk.tech](https://fachwerk.tech).
+Astro-based multi-page site for [fachwerk.tech](https://fachwerk.tech). DE + EN.
 
-## Deployment
+## Dev
+
+```sh
+portless fachwerk-landing npm run dev
+```
+
+Opens at: `https://fachwerk-landing.localhost`
+
+## Build
+
+```sh
+npm run build
+```
+
+Output: `dist/`
+
+## Deploy
 
 - **Hosting:** Cloudflare Pages
 - **Project:** `fachwerk-landing`
 - **Domains:** fachwerk.tech, www.fachwerk.tech, fachwerk-landing.pages.dev
-- **Deploy command:** `npx wrangler pages deploy . --project-name=fachwerk-landing`
 - **Git remote:** `origin` → `github.com:sebastian-breitzke/fachwerk-landing.git`
 - **Branch:** `main`
 
-Push + deploy:
 ```sh
-git push origin main && npx wrangler pages deploy . --project-name=fachwerk-landing
+git push origin main && npx wrangler pages deploy dist/ --project-name=fachwerk-landing
 ```
 
 ## Structure
 
-- `index.html` — German version (default)
-- `en/index.html` — English version
-- `fonts/` — IBM Plex Sans (self-hosted)
-- `favicon.svg` — SVG favicon
+```
+src/
+  layouts/Base.astro        — shared layout (nav, footer, css, js)
+  components/
+    Nav.astro               — consistent nav, language switcher
+    Footer.astro            — s16e footer
+    MiniCta.astro           — reusable CTA section
+    IndustryTabs.astro      — sticky tab bar (beispiele page)
+    mockups/                — 5 UI mockup components (NordWare, StahlbergWerke, MedVita, Gruenfeld, Dachstein)
+  styles/global.css         — shared CSS (variables, fonts, nav, footer, etc.)
+  pages/
+    de/                     — German pages (default locale)
+    en/                     — English pages
+  i18n/                     — translation strings (de.json, en.json)
+public/
+  fonts/                    — IBM Plex Sans + Euclid (self-hosted)
+  favicon.svg
+```

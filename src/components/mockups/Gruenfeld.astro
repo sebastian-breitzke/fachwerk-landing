@@ -1,0 +1,66 @@
+<div class="gp-mockup-frame">
+<div class="gp-header">
+  <div class="gp-brand">
+    <div class="gp-logo-mark">G</div>
+    <span class="gp-brand-name">Gr&uuml;nfeld &amp; Partner</span>
+  </div>
+  <span class="gp-header-title">Freigabe-Board</span>
+</div>
+<div class="gp-summary">
+  <span class="gp-summary-text"><span class="gp-summary-count">8</span> Rechnungen zur Pr&uuml;fung</span>
+  <div class="gp-summary-badges">
+    <span class="gp-badge gp-badge--warn">3 Kl&auml;rungsf&auml;lle</span>
+    <span class="gp-badge gp-badge--ok">5 Match</span>
+  </div>
+</div>
+<div>
+  <div class="gp-row gp-row--header"><span>Rechnung</span><span>Lieferant / Status</span><span>Aktionen</span></div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0328</span>
+    <div><div class="gp-cell-vendor">M&uuml;ller GmbH</div><div class="gp-cell-status gp-status--deviation">+142&thinsp;&euro; Abweichung</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Kl&auml;ren</span><span class="gp-btn gp-btn--outline">Freigeben</span><span class="gp-btn gp-btn--outline">Einkauf informieren</span></div>
+  </div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0329</span>
+    <div><div class="gp-cell-vendor">Schmidt AG</div><div class="gp-cell-status gp-status--match">Match</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Freigeben</span></div>
+  </div>
+  <div class="gp-row">
+    <span class="gp-cell-id">#R-0331</span>
+    <div><div class="gp-cell-vendor">Weber KG</div><div class="gp-cell-status gp-status--missing">Lieferschein fehlt</div></div>
+    <div class="gp-cell-actions"><span class="gp-btn gp-btn--primary">Nachfordern</span><span class="gp-btn gp-btn--outline">Zur&uuml;ckstellen</span><span class="gp-btn gp-btn--danger">Lieferant sperren</span></div>
+  </div>
+</div>
+</div>
+
+<style is:global>
+.gp-mockup-frame { max-width:52rem;margin:2rem 0;border-radius:10px;box-shadow:0 2px 24px rgba(20,30,60,0.13),0 0 0 1px rgba(20,30,60,0.07);overflow:hidden;font-family:'IBM Plex Sans',-apple-system,sans-serif;background:#fff;color:#1a2030;-webkit-font-smoothing:antialiased; }
+.gp-header { background:#142240;padding:0.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem; }
+.gp-brand { display:flex;align-items:center;gap:0.6rem; }
+.gp-logo-mark { width:26px;height:26px;background:linear-gradient(135deg,#c9a84c 0%,#e0c56c 100%);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:0.85rem;color:#142240; }
+.gp-brand-name { font-family:Georgia,'Times New Roman',serif;font-size:0.85rem;font-weight:700;color:#fff; }
+.gp-header-title { font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.55);letter-spacing:0.06em;text-transform:uppercase; }
+.gp-summary { background:#f7f8fa;border-bottom:1px solid #e5e7ec;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem; }
+.gp-summary-text { font-size:0.78rem;font-weight:500;color:#3a4255; }
+.gp-summary-count { font-weight:600;color:#142240; }
+.gp-summary-badges { display:flex;gap:0.5rem; }
+.gp-badge { font-size:0.62rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:3px; }
+.gp-badge--warn { background:#fef3cd;color:#8a6d00; }
+.gp-badge--ok { background:#d4edda;color:#2d6a3f; }
+.gp-row { display:grid;grid-template-columns:6.5rem 1fr auto;align-items:center;padding:0.7rem 1.25rem;border-bottom:1px solid #eef0f3;gap:0.75rem; }
+.gp-row:last-child { border-bottom:none; }
+.gp-row--header { background:#fafbfc;padding:0.45rem 1.25rem;border-bottom:1px solid #e5e7ec; }
+.gp-row--header span { font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#8a91a0; }
+.gp-cell-id { font-family:'Courier New',monospace;font-size:0.75rem;font-weight:600;color:#142240; }
+.gp-cell-vendor { font-size:0.8rem;font-weight:500;color:#1a2030; }
+.gp-cell-status { font-size:0.7rem;margin-top:0.1rem; }
+.gp-status--deviation { color:#b8450a;font-weight:500; }
+.gp-status--match { color:#2d6a3f;font-weight:500; }
+.gp-status--missing { color:#8a6d00;font-weight:500; }
+.gp-cell-actions { display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:flex-end; }
+.gp-btn { display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:0.62rem;font-weight:600;padding:0.25rem 0.55rem;border-radius:3px;white-space:nowrap;cursor:default; }
+.gp-btn--primary { background:#142240;color:#fff; }
+.gp-btn--outline { background:#fff;color:#3a4255;border:1px solid #d0d4dc; }
+.gp-btn--danger { background:#fff;color:#a63e2a;border:1px solid #e4b8af; }
+@media(max-width:580px){ .gp-row{grid-template-columns:1fr;gap:0.3rem;} .gp-cell-actions{justify-content:flex-start;} }
+</style>

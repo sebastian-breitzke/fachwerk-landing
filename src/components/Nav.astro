@@ -1,0 +1,69 @@
+---
+interface Props {
+  currentPage: string;
+  locale: 'de' | 'en';
+}
+
+const { currentPage, locale } = Astro.props;
+
+const links = locale === 'de'
+  ? [
+      { href: '/de/', label: 'Home', page: 'home' },
+      { href: '/de/beispiele/', label: 'Beispiele', page: 'beispiele' },
+      { href: '/de/kontakt/', label: 'Kontakt', page: 'kontakt' },
+    ]
+  : [
+      { href: '/en/', label: 'Home', page: 'home' },
+      { href: '/en/examples/', label: 'Examples', page: 'examples' },
+      { href: '/en/contact/', label: 'Contact', page: 'contact' },
+    ];
+
+const langSwitchLabel = locale === 'de' ? 'EN' : 'DE';
+
+// Build equivalent path in opposite locale
+const pathMap: Record<string, Record<string, string>> = {
+  de: { home: '/en/', beispiele: '/en/examples/', kontakt: '/en/contact/' },
+  en: { home: '/de/', examples: '/de/beispiele/', contact: '/de/kontakt/' },
+};
+const langSwitchHref = pathMap[locale]?.[currentPage] ?? (locale === 'de' ? '/en/' : '/de/');
+const logoHref = locale === 'de' ? '/de/' : '/en/';
+---
+
+<nav>
+  <a href={logoHref} class="nav-logo">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="nav-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#nav-frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="wordmark">Fachwerk</span>
+  </a>
+  <div class="nav-links">
+    {links.map(link => (
+      <a href={link.href} class={currentPage === link.page ? 'nav-active' : ''}>
+        {link.label}
+      </a>
+    ))}
+    <a href={langSwitchHref}>{langSwitchLabel}</a>
+  </div>
+  <button class="nav-hamburger" aria-label={locale === 'de' ? 'Menu oeffnen' : 'Open menu'}>
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  {links.map(link => (
+    <a href={link.href} onclick="closeMobileMenu()" class={currentPage === link.page ? 'nav-active' : ''}>
+      {link.label}
+    </a>
+  ))}
+  <a href={langSwitchHref} class="lang-link" onclick="closeMobileMenu()">{langSwitchLabel}</a>
+</div>

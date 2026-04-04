@@ -1,0 +1,14 @@
+---
+interface Props {
+  headline: string;
+  buttonText: string;
+  href: string;
+}
+
+const { headline, buttonText, href } = Astro.props;
+---
+
+<section class="logimat">
+  <h2 class="logimat-headline" set:html={headline} />
+  <a href={href} class="cta-button">{buttonText}</a>
+</section>

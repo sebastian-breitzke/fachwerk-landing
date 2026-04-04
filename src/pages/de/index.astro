@@ -1,0 +1,427 @@
+---
+import Base from '../../layouts/Base.astro';
+import MiniCta from '../../components/MiniCta.astro';
+---
+<Base title="Fachwerk — Baut sich selbst." currentPage="home">
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Construction lines -->
+  <div class="construction-lines">
+    <div class="c-line h" style="top: 25%"></div>
+    <div class="c-line h" style="top: 75%"></div>
+    <div class="c-line v" style="left: 8%"></div>
+    <div class="c-line v" style="right: 8%"></div>
+  </div>
+
+  <div class="hero-row">
+    <div class="hero-text">
+      <h1 class="hero-headline" style="margin-bottom: 0;">
+        <span>Baut</span>
+        <span>sich</span>
+        <span>selbst.</span>
+      </h1>
+    </div>
+
+    <div class="hero-animation">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="fw-clip"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+        <g clip-path="url(#fw-clip)">
+          <g class="draw" style="--d:0s"><line x1="16" y1="112" x2="64" y2="112"/></g>
+          <g class="u" style="--d:0.2s; --ox:64px; --oy:112px; --r:90deg"><line x1="64" y1="112" x2="64" y2="64"/></g>
+          <g class="u" style="--d:0.4s; --ox:64px; --oy:64px; --r:90deg"><line x1="64" y1="64" x2="16" y2="64"/></g>
+          <g class="u" style="--d:0.6s; --ox:16px; --oy:64px; --r:90deg"><line x1="16" y1="64" x2="16" y2="112"/></g>
+          <g class="u" style="--d:0.8s; --ox:16px; --oy:64px; --r:45deg"><line x1="16" y1="64" x2="64" y2="112"/></g>
+          <g class="u" style="--d:1.0s; --ox:64px; --oy:112px; --r:-90deg"><line x1="64" y1="112" x2="112" y2="112"/></g>
+          <g class="u" style="--d:1.2s; --ox:112px; --oy:112px; --r:90deg"><line x1="112" y1="112" x2="112" y2="64"/></g>
+          <g class="u" style="--d:1.4s; --ox:112px; --oy:64px; --r:90deg"><line x1="112" y1="64" x2="64" y2="64"/></g>
+          <g class="u" style="--d:1.6s; --ox:64px; --oy:112px; --r:45deg"><line x1="64" y1="112" x2="112" y2="64"/></g>
+          <g class="u" style="--d:1.8s; --ox:16px; --oy:64px; --r:-90deg"><line x1="16" y1="64" x2="16" y2="16"/></g>
+          <g class="u" style="--d:2.0s; --ox:16px; --oy:16px; --r:-90deg"><line x1="16" y1="16" x2="64" y2="16"/></g>
+          <g class="u" style="--d:2.2s; --ox:64px; --oy:16px; --r:-90deg"><line x1="64" y1="16" x2="64" y2="64"/></g>
+          <g class="u" style="--d:2.4s; --ox:16px; --oy:64px; --r:45deg"><line x1="16" y1="64" x2="64" y2="16"/></g>
+          <g class="u" style="--d:2.6s; --ox:64px; --oy:16px; --r:90deg"><line x1="64" y1="16" x2="112" y2="16"/></g>
+          <g class="u" style="--d:2.8s; --ox:112px; --oy:16px; --r:90deg"><line x1="112" y1="16" x2="112" y2="64"/></g>
+          <g class="u" style="--d:3.0s; --ox:64px; --oy:16px; --r:45deg"><line x1="64" y1="16" x2="112" y2="64"/></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <p class="hero-sub">Fachwerk ist eine Automatisierungs- und Integrationsplattform. Gebaut für die Leute, die am besten wissen, was sie brauchen — Business-Anwender, nicht Entwickler. Kein Budget beantragen. Keinen Dienstleister suchen. Kein Ping-Pong.</p>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section class="section reveal" id="problem">
+  <span class="section-label">// Problem</span>
+  <h2 class="section-headline">
+    Massgeschneiderte Software<br>
+    <span class="strike-through">kann sich niemand leisten.</span>
+    <span class="replacement">In Stunden, nicht Monaten.</span>
+  </h2>
+  <p class="section-text">Du hast 1000 Prozesse, die automatisiert werden müssten. Integrationen zwischen Systemen, die keiner versteht. Manuelle Workarounds, die jeden Tag Zeit und Geld kosten. Aber Custom-Software? Zu teuer. Zu langsam. Zu viel Ping-Pong zwischen Fachbereich, Projektmanagement und Entwicklung.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- PILLARS -->
+<section class="pillars" id="plattform">
+  <span class="section-label">// Die Lösung</span>
+  <div class="pillar reveal">
+    <h3 class="pillar-title">Baut sich selbst.<br>Wartet sich selbst.<br>Heilt sich selbst.</h3>
+    <p class="pillar-text">Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt.</p>
+  </div>
+  <div class="pillar reveal">
+    <h3 class="pillar-title">Gebaut für Business,<br>nicht für Entwickler.</h3>
+    <p class="pillar-text">Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig.</p>
+  </div>
+  <div class="pillar reveal">
+    <h3 class="pillar-title">Code wo Code reicht.<br>AI wo AI zählt.</h3>
+    <p class="pillar-text">Der Grossteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NO-LIST -->
+<section class="no-list reveal">
+  <span class="section-label">// Was du nicht brauchst</span>
+  <div class="no-list-grid">
+    <div class="no-list-item">Kein Budget.</div>
+    <div class="no-list-item">Kein Ping-Pong.</div>
+    <div class="no-list-item">Kein Development-Team.</div>
+    <div class="no-list-item">Kein Setup-Projekt.</div>
+    <div class="no-list-item">Keinen Dienstleister.</div>
+    <div class="no-list-item">Keinen Code.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RUNS WHERE YOU NEED IT -->
+<section class="no-list reveal">
+  <span class="section-label">// Läuft wo du es brauchst</span>
+  <p class="section-text" style="margin-bottom: 2.5rem;">Deine Systeme stehen nicht in der Cloud? Kein Problem. Fachwerk läuft lokal, in der Cloud, oder beides — und verbindet alles miteinander. Keine Migration nötig. Kein Vendor-Lock-in.</p>
+  <div class="no-list-grid">
+    <div class="no-list-item">On-Premise.</div>
+    <div class="no-list-item">Cloud.</div>
+    <div class="no-list-item">Hybrid.</div>
+    <div class="no-list-item">Hinter der Firewall.</div>
+    <div class="no-list-item">Ohne Migration.</div>
+    <div class="no-list-item">Ohne Vendor-Lock-in.</div>
+  </div>
+</section>
+
+<!-- MINI CTA -->
+<MiniCta
+  headline="Klingt interessant?<br>Lass uns reden."
+  buttonText="Kontakt aufnehmen"
+  href="/de/kontakt/"
+/>
+
+<style>
+  /* ═══════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 8vw;
+  }
+
+  .hero-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+  }
+
+  .hero-animation {
+    flex: 0 0 auto;
+    width: clamp(220px, 28vw, 380px);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-bg);
+  }
+
+  .hero-animation svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .hero-animation .u {
+    opacity: 0;
+    animation: fw-unfold 0.3s cubic-bezier(0.22, 0.85, 0.32, 1) var(--d) forwards;
+    transform-origin: var(--ox) var(--oy);
+  }
+
+  @keyframes fw-unfold {
+    from { opacity: 1; transform: rotate(var(--r)); }
+    to   { opacity: 1; transform: rotate(0deg); }
+  }
+
+  .hero-animation .draw {
+    opacity: 1;
+  }
+
+  .hero-animation .draw line {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: fw-draw 0.3s ease-out var(--d) forwards;
+  }
+
+  @keyframes fw-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .hero-animation line {
+    stroke: #5eead4;
+    stroke-width: 4;
+    stroke-linecap: square;
+    fill: none;
+    filter: drop-shadow(0 0 3px rgba(94, 234, 212, 0.3));
+  }
+
+  .hero-headline {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 3rem;
+  }
+
+  .hero-headline span {
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted-text);
+    max-width: 32rem;
+    line-height: 1.7;
+    margin-top: 3rem;
+  }
+
+  /* Construction lines */
+  .construction-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .c-line {
+    position: absolute;
+    background: rgba(42, 144, 128, 0.06);
+  }
+
+  .c-line.h {
+    height: 1px;
+    left: 0;
+    right: 0;
+  }
+
+  .c-line.v {
+    width: 1px;
+    top: 0;
+    bottom: 0;
+  }
+
+  /* ═══════════════════════════════════════════════
+     DIVIDER
+     ═══════════════════════════════════════════════ */
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--primary);
+    margin: 0 8vw;
+  }
+
+  /* ═══════════════════════════════════════════════
+     SECTIONS
+     ═══════════════════════════════════════════════ */
+  .section {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 8vw;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 2rem;
+  }
+
+  .section-headline {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+    color: var(--fg);
+  }
+
+  .section-text {
+    font-size: 1.05rem;
+    color: var(--muted-text);
+    max-width: 40rem;
+    line-height: 1.8;
+  }
+
+  /* Strikethrough effect for the problem headline */
+  .strike-through {
+    position: relative;
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .strike-through::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 52%;
+    height: 3px;
+    background: #c0392b;
+    transform: rotate(-0.5deg);
+  }
+
+  .replacement {
+    display: block;
+    color: var(--fg);
+    margin-top: 0.5rem;
+  }
+
+  /* ═══════════════════════════════════════════════
+     PILLARS
+     ═══════════════════════════════════════════════ */
+  .pillars {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 8vw;
+    gap: 5rem;
+  }
+
+  .pillar {
+    max-width: 48rem;
+  }
+
+  .pillar-title {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-text {
+    font-size: 1rem;
+    color: var(--muted-text);
+    line-height: 1.8;
+    max-width: 36rem;
+  }
+
+  /* ═══════════════════════════════════════════════
+     NO-LIST
+     ═══════════════════════════════════════════════ */
+  .no-list {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 8vw;
+  }
+
+  .no-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 3rem;
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .no-list-item {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    padding-left: 1rem;
+    border-left: 2px solid var(--primary);
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .hero {
+      padding: 7rem 6vw 4rem;
+    }
+    .hero-row {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .hero-animation {
+      width: clamp(180px, 50vw, 280px);
+    }
+    .section,
+    .pillars {
+      padding: 5rem 6vw;
+    }
+    .no-list-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .no-list {
+      padding: 5rem 6vw;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-headline {
+      font-size: clamp(2rem, 12vw, 4rem);
+    }
+    .section-headline {
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+    }
+    .strike-through {
+      font-size: 0.75em;
+    }
+    .no-list-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+</Base>

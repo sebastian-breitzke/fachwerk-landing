@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Fachwerk — Impressum" currentPage="">
+
+<main>
+  <h1>Impressum</h1>
+  <p class="subtitle">Anbieterkennzeichnung gemäss &sect; 5 DDG</p>
+
+  <h2>Angaben gemäss &sect; 5 DDG</h2>
+  <p>
+    Sebastian Breitzke<br>
+    Stöckener Str. 21<br>
+    30419 Hannover<br>
+    Deutschland
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Telefon: +49 151 41928572<br>
+    E-Mail: <a href="mailto:hello@fachwerk.tech">hello@fachwerk.tech</a>
+  </p>
+
+  <h2>Verantwortlich für den Inhalt</h2>
+  <p>
+    Sebastian Breitzke<br>
+    Stöckener Str. 21<br>
+    30419 Hannover
+  </p>
+
+  <h2>Haftungsausschluss</h2>
+
+  <h3>Haftung für Inhalte</h3>
+  <p>Die Inhalte dieser Seiten wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann ich jedoch keine Gewähr übernehmen.</p>
+
+  <h3>Haftung für Links</h3>
+  <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.</p>
+
+  <h3>Urheberrecht</h3>
+  <p>Die durch mich erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechtes bedürfen meiner schriftlichen Zustimmung.</p>
+</main>
+
+<style>
+  main {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--muted-text);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  a {
+    color: var(--primary);
+  }
+</style>
+</Base>
