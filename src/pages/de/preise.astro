@@ -17,9 +17,8 @@ import MiniCta from '../../components/MiniCta.astro';
   <div class="pricing-card">
     <div class="pricing-card-name">Betrieb</div>
     <div class="pricing-card-price">2.500 &euro; <span>/ Monat</span></div>
-    <p class="pricing-card-desc">Produktive Automationen, die laufen. Wenn nicht, kümmern wir uns.</p>
+    <p class="pricing-card-desc">Es läuft. Wenn nicht, kümmern wir uns — du merkst nichts.</p>
     <ul class="pricing-card-list">
-      <li>Deterministische Runtime mit Audit-Trail</li>
       <li>Bis zu 3 aktive produktive Automationen</li>
       <li>Bis 5.000 Geschäftsfälle/Monat</li>
       <li>Run-Diagnosen und Bugfixes durch Fachwerk</li>
@@ -27,7 +26,7 @@ import MiniCta from '../../components/MiniCta.astro';
       <li>Support: innerhalb 24h (dt. Geschäftszeiten)</li>
     </ul>
     <p class="pricing-card-typical">Typisch für: Teams mit kritischen Prozessen, die zuverlässig laufen müssen.</p>
-    <a href="/de/kontakt/" class="cta-button">Kontakt aufnehmen</a>
+    <a href="/de/kontakt/" class="cta-button">Betrieb anfragen</a>
   </div>
 
   <!-- Betrieb + Werkstatt -->
@@ -43,7 +42,7 @@ import MiniCta from '../../components/MiniCta.astro';
       <li>Support: innerhalb 8h (dt. Geschäftszeiten)</li>
     </ul>
     <p class="pricing-card-typical">Typisch für: IT-affine Teams, die Diagnosen und kleine Änderungen selbst anstossen wollen.</p>
-    <a href="/de/kontakt/" class="cta-button">Kontakt aufnehmen</a>
+    <a href="/de/kontakt/" class="cta-button">Werkstatt kennenlernen</a>
   </div>
 
   <!-- Betrieb + Builder -->
@@ -55,15 +54,29 @@ import MiniCta from '../../components/MiniCta.astro';
       <li>Alles aus Werkstatt</li>
       <li>2 Power User mit vollen Build-Rechten</li>
       <li>Volle Build-Phase (Flow-Planung, Implementierung)</li>
-      <li>BYO AI-Credentials (eigene API-Keys)</li>
       <li>4 Advisory-Stunden/Monat</li>
       <li>Support: innerhalb 4h (dt. Geschäftszeiten)</li>
     </ul>
     <p class="pricing-card-typical">Typisch für: Unternehmen mit interner IT, die Fachwerk als Plattform nutzen.</p>
-    <a href="/de/kontakt/" class="cta-button">Kontakt aufnehmen</a>
+    <a href="/de/kontakt/" class="cta-button">Builder-Paket besprechen</a>
   </div>
 
 </div>
+
+<!-- TRUST LINE -->
+<p class="pricing-trust">SAP, DATEV, Salesforce, Shopify — Fachwerk spricht jede Standard-API. Deine Daten bleiben bei dir. On-Premise möglich. DSGVO-konform.</p>
+
+<!-- LAUNCH COSTS -->
+<section class="pricing-note reveal">
+  <h3>Einstieg</h3>
+  <p>Jedes Paket beginnt mit einem Launch-Projekt: Discovery, Build, Handover.</p>
+  <ul>
+    <li>Betrieb: Launch ab 12.000 €</li>
+    <li>Werkstatt: Launch ab 25.000 € (inkl. Schulung und Playbooks)</li>
+    <li>Builder: Launch ab 40.000 € (inkl. Deep Enablement und Governance-Setup)</li>
+  </ul>
+  <p style="margin-top: 1rem;"><strong>Für Erstkunden:</strong> Launch im Jahresvertrag integrierbar — kein separates Budget nötig. Beispiel: Betrieb all-in ab 3.500 €/Monat.</p>
+</section>
 
 <!-- IMMER DABEI -->
 <section class="pricing-note reveal">
@@ -273,6 +286,15 @@ import MiniCta from '../../components/MiniCta.astro';
     border-top: 1px solid var(--border);
     padding-top: 1rem;
     margin-top: auto;
+  }
+
+  .pricing-trust {
+    padding: 0 8vw;
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    max-width: 52rem;
+    line-height: 1.8;
+    margin-top: -1rem;
   }
 
   /* ═══════════════════════════════════════════════
