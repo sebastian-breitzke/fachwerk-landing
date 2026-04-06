@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import IndustryTabs from '../../components/IndustryTabs.astro';
 import NordWare from '../../components/mockups/NordWare.astro';
 import StahlbergWerke from '../../components/mockups/StahlbergWerke.astro';
-import MedVita from '../../components/mockups/MedVita.astro';
+import HartmannElektro from '../../components/mockups/HartmannElektro.astro';
 import Gruenfeld from '../../components/mockups/Gruenfeld.astro';
 import Dachstein from '../../components/mockups/Dachstein.astro';
 ---
@@ -108,49 +108,49 @@ import Dachstein from '../../components/mockups/Dachstein.astro';
     </section>
   </div>
 
-  <!-- Gesundheit -->
-  <div class="industry-panel" data-panel="gesundheit">
+  <!-- Handel -->
+  <div class="industry-panel" data-panel="handel">
     <section class="example">
       <span class="section-label">// Flow</span>
-      <h2 class="section-headline">Kritischer Befund?<br>Sofort beim richtigen Arzt.</h2>
+      <h2 class="section-headline">40 Lieferanten, 40 Formate?<br>Ein System.</h2>
 
-      <p class="example-intro">Labor schickt den Befund als HL7-Nachricht oder PDF. <em>Bisher landet der im Postfach.</em> Irgendwann schaut jemand drauf. Bei kritischen Werten kann "irgendwann" zu spät sein. Ob HL7, FHIR oder proprietäre KIS-Schnittstelle wie Orbis, SAP IS-H oder iMedOne — Fachwerk spricht die Sprache eurer Systeme.</p>
+      <p class="example-intro">Jede Woche kommen tausende Artikel-Updates von Dutzenden Lieferanten — <em>als CSV, Excel, PDF, EDI, oder per E-Mail.</em> Verschiedene Formate, verschiedene Strukturen, verschiedene Logiken. Bisher tippt jemand das manuell ins ERP.</p>
 
-      <p class="example-intro">Fachwerk extrahiert die Werte, ordnet den Patienten zu, <em>routet direkt an den zuständigen Arzt.</em> Kritische Werte lösen sofort eine Push-Benachrichtigung aus.</p>
+      <p class="example-intro">Fachwerk normalisiert die Daten automatisch, <em>gleicht Preise, Verfügbarkeiten und Artikelstammdaten mit eurem ERP ab</em> und meldet Konflikte mit Kontext. Egal ob SAP, proALPHA oder eure Branchensoftware — Fachwerk spricht die Standard-APIs und Importformate.</p>
 
-      <p class="example-intro">Wenn der Befundverlauf auffällig ist, flaggt die AI einen Verschlechterungstrend — <em>nicht als Diagnose, sondern als Hinweis:</em> hier lohnt sich ein genauerer Blick.</p>
+      <p class="example-intro">Wenn Muster erkennbar sind, liefert die AI den Kontext: <em>"Lieferant X hat seit 3 Monaten systematisch höhere Frachtkosten."</em> Nicht geraten — aus den Daten.</p>
 
-      <div class="terminal-quote" data-label="AUTOMATISIERUNG — BEFUND-ROUTING"><strong>Patient 2847</strong> · Laborbefund eingegangen
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — LIEFERANTEN-SYNC"><strong>Wöchentlicher Import</strong> · 40 Lieferanten · 3.247 Artikel
 
-<span class="tq-label">Werte:</span>    Kalium 6.2 mmol/L (kritisch hoch)
-<span class="tq-label">Routing:</span>  Dr. Weber (Nephrologie) · Push gesendet.
-<span class="tq-label">Status:</span>   Befund zugeordnet, Akte aktualisiert.</div>
+<span class="tq-label">Verarbeitet:</span>  3.189 Artikel automatisch übernommen.
+<span class="tq-label">Konflikte:</span>    47 Preisabweichungen, 11 neue Artikel.
+<span class="tq-label">Aktion:</span>       Konflikte an Einkauf, neue Artikel zur Freigabe.</div>
 
-      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Verlaufsanalyse</strong> · Patient 2847 · letzte 8 Wochen
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Musteranalyse</strong> · Lieferant Schneider Electric · 6 Monate
 
-<span class="tq-label">Trend:</span>      Kalium steigend (4.8 → 5.5 → 6.2)
-<span class="tq-label">Kontext:</span>    Medikation seit KW 10 umgestellt.
-<span class="tq-label">Hinweis:</span>    Verschlechterungstrend — Rücksprache empfohlen.</div>
+<span class="tq-label">Muster:</span>      Preiserhöhung in 4 von 6 Lieferungen (Ø +3,2%).
+<span class="tq-label">Kategorie:</span>   Sicherungstechnik, Leitungsschutzschalter.
+<span class="tq-label">Empfehlung:</span>  Konditionsgespräch vor nächster Rahmenvereinbarung.</div>
 
-      <p class="punchline">Kein Befund, der im Postfach wartet. Kritische Werte sind sofort da, wo sie hingehören — beim richtigen Arzt, mit dem richtigen Kontext.</p>
+      <p class="punchline">Kein manuelles Abtippen mehr. Kein "haben wir den Preis schon aktualisiert?". Fachwerk synchronisiert — du entscheidest nur noch bei Ausnahmen.</p>
     </section>
 
     <div class="divider"></div>
 
     <section class="example">
       <span class="section-label">// Oberfläche</span>
-      <h2 class="section-headline">Stations-Übersicht —<br>Handeln, nicht suchen</h2>
+      <h2 class="section-headline">Artikelpflege —<br>Überblick statt Einzelkampf</h2>
 
-      <p class="example-intro">Die Stationsschwester braucht keine Patientenakte mit 40 Tabs. Sie braucht: <em>wer hat offene Befunde, was ist kritisch, was muss jetzt passieren.</em> Und sie braucht Aktionen, die zu ihrer Station passen — <em>Arzt rufen, Verordnung anstoßen, Befund quittieren.</em> Nicht was ein Software-Hersteller für alle Krankenhäuser gebaut hat, sondern was hier, auf dieser Station, gebraucht wird.</p>
+      <p class="example-intro">Dein Einkauf braucht keine Liste mit 3.000 Änderungen zum Durchscrollen. Er braucht: <em>was ist neu, was weicht ab, was muss ich entscheiden.</em> Und er braucht Aktionen die zu seinem Prozess passen — <em>Preis übernehmen, Lieferant eskalieren, Artikel freigeben.</em> Nicht generische Buttons, sondern sein Workflow.</p>
 
-      <MedVita />
+      <HartmannElektro />
 
-      <p class="punchline">Jede Aktion greift direkt ins KIS, ins Labor, in die Verordnung — maßgeschneidert für diese Station, nicht für den Durchschnitt. Alle Daten bleiben im Kliniknetz. DSGVO-konform, auditierbar, auf Wunsch on-premise.</p>
+      <p class="punchline">Jede Aktion greift direkt ins ERP, in die Lieferantenkommunikation, in die Preispflege — ein Klick, kein Systemwechsel. Gebaut für diesen Großhandel, nicht für den Durchschnitt.</p>
     </section>
 
     <section class="logimat" style="border-top: none;">
-      <h2 class="logimat-headline">Befunde warten, Prozesse stocken?</h2>
-      <a href="/de/kontakt/" class="cta-button">30 Minuten für Gesundheitswesen</a>
+      <h2 class="logimat-headline">Dein bester Mitarbeiter macht nur noch Datenpflege?</h2>
+      <a href="/de/kontakt/" class="cta-button">30 Minuten für Handel</a>
     </section>
   </div>
 
@@ -205,28 +205,28 @@ import Dachstein from '../../components/mockups/Dachstein.astro';
   <div class="industry-panel" data-panel="immobilien">
     <section class="example">
       <span class="section-label">// Flow</span>
-      <h2 class="section-headline">Wasserschaden gemeldet?<br>Handwerker beauftragt.</h2>
+      <h2 class="section-headline">Nebenkostenabrechnung<br>in Tagen statt Monaten.</h2>
 
-      <p class="example-intro">Mieter meldet einen Wasserschaden über das Formular. <em>Bisher: Mail an die Hausverwaltung, die weiterleitet, die anruft, die wartet.</em> Tage vergehen. Schaden wächst.</p>
+      <p class="example-intro">Nebenkostenabrechnungen dauern Monate — <em>weil Daten aus 5 verschiedenen Quellen zusammengesucht werden müssen.</em> Versorger-Rechnungen, Verbrauchsdaten, Umlageschlüssel, Mieterwechsel — alles manuell zusammenführen, prüfen, berechnen.</p>
 
-      <p class="example-intro">Fachwerk kategorisiert die Meldung, <em>prüft automatisch die Versicherungsrelevanz</em> und beauftragt den passenden Handwerker aus dem hinterlegten Pool. Egal ob Wodis, iX-Haus oder Domus — Fachwerk verbindet sich über die vorhandenen Schnittstellen. Mieter bekommt direkt einen Terminvorschlag.</p>
+      <p class="example-intro">Fachwerk holt die Daten automatisch aus Hausverwaltungssoftware, Versorgerportalen und Zählerständen, <em>berechnet die Umlagen, erkennt Ausreißer</em> und erstellt die Abrechnungsentwürfe. Egal ob Wodis, iX-Haus oder Domus — Fachwerk spricht die vorhandenen Schnittstellen.</p>
 
-      <p class="example-intro">Bei Fotos in der Meldung schätzt die AI die Dringlichkeit ein: <em>stehendes Wasser = sofort, feuchter Fleck = regulär.</em> Priorisierung mit Grund, nicht nach Bauchgefühl.</p>
+      <p class="example-intro">Bei Auffälligkeiten prüft die AI den Kontext: <em>"Heizkosten Objekt Birkenweg 7 sind 40% über Vorjahr — Ursache: defekte Thermostatventile seit Oktober."</em> Keine Rückfrage an den Versorger nötig, die Erklärung liegt in den Daten.</p>
 
-      <div class="terminal-quote" data-label="AUTOMATISIERUNG — SCHADENSMELDUNG"><strong>Objekt Rosenstraße 14</strong> · Wohnung 3 OG links
+      <div class="terminal-quote" data-label="AUTOMATISIERUNG — NEBENKOSTENABRECHNUNG"><strong>Objekt Rosenstraße 14</strong> · 24 Einheiten · Abrechnungsjahr 2025
 
-<span class="tq-label">Schaden:</span>     Wasserschaden Badezimmer.
-<span class="tq-label">Versicherung:</span> Relevanz geprüft — meldepflichtig.
-<span class="tq-label">Handwerker:</span>  Rohrbau Petersen beauftragt.
-<span class="tq-label">Mieter:</span>      Terminvorschlag morgen 09:00 gesendet.</div>
+<span class="tq-label">Datenquellen:</span>  Stadtwerke, ISTA, Wodis · alle synchronisiert.
+<span class="tq-label">Status:</span>        22 von 24 Abrechnungen erstellt.
+<span class="tq-label">Ausreißer:</span>     2 Einheiten mit Verbrauchsabweichung >30%.
+<span class="tq-label">Aktion:</span>        Entwürfe zur Freigabe, Ausreißer markiert.</div>
 
-      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Foto-Analyse</strong> · Schadensmeldung Wohnung 3 OG
+      <div class="terminal-quote" data-label="AI-ANALYSE — OPTIONAL"><strong>Ausreißer-Analyse</strong> · Whg. 3 OG links
 
-<span class="tq-label">Erkennung:</span>   Stehendes Wasser, Deckenverformung.
-<span class="tq-label">Dringlichkeit:</span> Hoch — sofortige Sperrung empfohlen.
-<span class="tq-label">Empfehlung:</span>  Nachbarwohnung informieren (Wasserschaden von oben möglich).</div>
+<span class="tq-label">Abweichung:</span>   Heizkosten +42% ggü. Vorjahr.
+<span class="tq-label">Ursache:</span>      Thermostatventile defekt seit Okt. 2025 (Schadensmeldung #847).
+<span class="tq-label">Empfehlung:</span>   Kosten teilweise auf Instandhaltung buchen, Mieter informieren.</div>
 
-      <p class="punchline">Kein Ping-Pong zwischen Mieter, Verwaltung und Handwerker. Fachwerk handelt — vom Eingang der Meldung bis zum Terminvorschlag.</p>
+      <p class="punchline">Keine drei Monate Nebenkostenabrechnung mehr. Fachwerk sammelt die Daten, rechnet, markiert Auffälligkeiten — du gibst nur noch frei.</p>
     </section>
 
     <div class="divider"></div>
@@ -239,11 +239,11 @@ import Dachstein from '../../components/mockups/Dachstein.astro';
 
       <Dachstein />
 
-      <p class="punchline">Jede Aktion greift direkt in die Hausverwaltungssoftware, ins Handwerker-Portal, in die Mieter-Kommunikation — ein Klick, kein Umweg. DSGVO-konform. Mieterdaten bleiben geschützt, jeder Vorgang dokumentiert. Gebaut für diese Verwaltung, nicht für den Markt.</p>
+      <p class="punchline">Jede Aktion greift direkt in die Hausverwaltungssoftware, ins Handwerker-Portal, in die Mieter-Kommunikation — ein Klick, kein Umweg. Von der Nebenkostenabrechnung bis zur Schadensmeldung, gebaut für diese Verwaltung.</p>
     </section>
 
     <section class="logimat" style="border-top: none;">
-      <h2 class="logimat-headline">2.800 Einheiten, aber Prozesse für 200?</h2>
+      <h2 class="logimat-headline">Nebenkostenabrechnung dauert 3 Monate?</h2>
       <a href="/de/kontakt/" class="cta-button">30 Minuten für Immobilien</a>
     </section>
   </div>
