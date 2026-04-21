@@ -1,6 +1,25 @@
 ---
 import type { HomeT } from '../i18n/home-de';
+import { Image } from 'astro:assets';
+import appsThumb from '../assets/hero/apps.jpg';
+import appsFull from '../assets/hero/apps-full.jpg';
+import flowThumb from '../assets/hero/flow.jpg';
+import flowFull from '../assets/hero/flow-full.jpg';
+import betriebThumb from '../assets/hero/betrieb-ubersicht.jpg';
+import betriebFull from '../assets/hero/betrieb-ubersicht-full.jpg';
+import datenThumb from '../assets/hero/daten.jpg';
+import datenFull from '../assets/hero/daten-full.jpg';
+import analyseThumb from '../assets/hero/freie-analyse-1.jpg';
+import analyseFull from '../assets/hero/freie-analyse-1-full.jpg';
 import '../styles/home.css';
+
+const SLIDES = {
+  apps: { thumb: appsThumb, full: appsFull },
+  flow: { thumb: flowThumb, full: flowFull },
+  'betrieb-ubersicht': { thumb: betriebThumb, full: betriebFull },
+  daten: { thumb: datenThumb, full: datenFull },
+  'freie-analyse-1': { thumb: analyseThumb, full: analyseFull },
+} as const;
 
 interface Props {
   t: HomeT;
@@ -138,17 +157,24 @@ window.TWEAKS = {
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
       <div class="hr-slides" id="hr-slides">
-        {t.hero.slides.map((s, i) => (
-          <img
-            class={`hr-slide${i === 0 ? ' active' : ''}`}
-            src={s.src}
-            data-full={s.full}
-            alt={s.alt}
-            data-caption={s.caption}
-            loading={i === 0 ? undefined : 'lazy'}
-            width="1600" height="910"
-          />
-        ))}
+        {t.hero.slides.map((s, i) => {
+          const imgs = SLIDES[s.id as keyof typeof SLIDES];
+          return (
+            <Image
+              class={`hr-slide${i === 0 ? ' active' : ''}`}
+              src={imgs.thumb}
+              alt={s.alt}
+              widths={[800, 1200, 1600]}
+              sizes="(min-width: 1100px) 45vw, (min-width: 900px) 90vw, 92vw"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              format="webp"
+              quality={82}
+              data-full={imgs.full.src}
+              data-caption={s.caption}
+            />
+          );
+        })}
         <button class="hr-fs" id="hr-fs" aria-label={t.a11y.fullscreen}>
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
             <path d="M3 7V3h4M17 7V3h-4M3 13v4h4M17 13v4h-4"/>

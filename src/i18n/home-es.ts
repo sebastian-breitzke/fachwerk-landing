@@ -29,11 +29,11 @@ const t: HomeT = {
     ctaPrimary: 'Iniciar un Proof-of-Value',
     ctaSecondary: 'Ver ejemplos',
     slides: [
-      { src: '/hero/apps.jpg', full: '/hero/apps-full.jpg', alt: 'Fachwerk Catálogo — Apps', caption: 'Catálogo · Apps' },
-      { src: '/hero/flow.jpg', full: '/hero/flow-full.jpg', alt: 'Fachwerk Editor de flujos', caption: 'Catálogo · Flow' },
-      { src: '/hero/betrieb-ubersicht.jpg', full: '/hero/betrieb-ubersicht-full.jpg', alt: 'Fachwerk Vista de operación', caption: 'Operación · Vista' },
-      { src: '/hero/daten.jpg', full: '/hero/daten-full.jpg', alt: 'Fachwerk Datos', caption: 'Almacén · Datos' },
-      { src: '/hero/freie-analyse-1.jpg', full: '/hero/freie-analyse-1-full.jpg', alt: 'Fachwerk Análisis libre', caption: 'Conocimiento · Análisis' },
+      { id: 'apps', alt: 'Fachwerk Catálogo — Apps', caption: 'Catálogo · Apps' },
+      { id: 'flow', alt: 'Fachwerk Editor de flujos', caption: 'Catálogo · Flow' },
+      { id: 'betrieb-ubersicht', alt: 'Fachwerk Vista de operación', caption: 'Operación · Vista' },
+      { id: 'daten', alt: 'Fachwerk Datos', caption: 'Almacén · Datos' },
+      { id: 'freie-analyse-1', alt: 'Fachwerk Análisis libre', caption: 'Conocimiento · Análisis' },
     ],
     bullets: [
       { title: 'Estructura, no módulos', desc: 'Fachwerk define la estática' },
