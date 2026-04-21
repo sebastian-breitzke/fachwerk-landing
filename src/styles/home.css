@@ -253,6 +253,7 @@ h1.hero-head .strike {
   color: var(--muted-2);
 }
 h1.hero-head .strike-punct { color: var(--muted-2); }
+h1.hero-head .fw-punct { color: var(--accent); }
 h1.hero-head .strike::after {
   content: '';
   position: absolute;

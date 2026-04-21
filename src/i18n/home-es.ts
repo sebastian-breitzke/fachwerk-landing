@@ -24,7 +24,7 @@ const t: HomeT = {
   hero: {
     eyebrow: 'Software a medida sobre una estructura sólida',
     meta: '// para la mediana empresa exigente',
-    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> rápido.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> vistoso.<br><em>Fachwerk</em>: capacita.`,
+    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> rápido.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> vistoso.<br><em>Fachwerk</em><span class="fw-punct">:</span> capacita.`,
     sub: `<strong>Fachwerk</strong> le da a tus usuarios de negocio una <strong>estructura sólida</strong> — un marco técnicamente limpio en el que ellos mismos diseñan los flujos. <strong>La AI se usa donde aporta</strong>: al construir, al entender, dentro de pasos concretos — con criterio y enfoque. No como magia frágil en tiempo de ejecución, ni como sustituto de una caja de clics. Un catálogo en lugar de un zoo.`,
     ctaPrimary: 'Iniciar un Proof-of-Value',
     ctaSecondary: 'Ver ejemplos',
