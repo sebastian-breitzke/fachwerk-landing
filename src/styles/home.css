@@ -1395,10 +1395,7 @@ section.block {
 .uc-tab.active .num { color: var(--accent); }
 
 .uc-stage {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 3rem;
-  align-items: start;
+  display: block;
 }
 
 .uc-copy h3 {
