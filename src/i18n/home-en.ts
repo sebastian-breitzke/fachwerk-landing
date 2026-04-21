@@ -24,7 +24,7 @@ const t: HomeT = {
   hero: {
     eyebrow: 'Custom software on a solid shell',
     meta: '// for the upper mid-market',
-    headline: `<span class="strike">Vibe coding</span> is fast.<br><span class="strike">Low-code</span> is colorful.<br><em>Fachwerk</em> empowers.`,
+    headline: `<span class="strike">Vibe coding</span>: fast.<br><span class="strike">Low-code</span>: colorful.<br><em>Fachwerk</em>: empowers.`,
     sub: `<strong>Fachwerk</strong> gives your business users a <strong>solid shell</strong> — a technically clean frame in which they design processes themselves. <strong>AI is used where it helps</strong>: for building, for understanding, within individual steps — targeted and with judgment. Not as fragile runtime magic, not as a click-box replacement. A catalog instead of a zoo.`,
     ctaPrimary: 'Start a Proof-of-Value',
     ctaSecondary: 'See examples',

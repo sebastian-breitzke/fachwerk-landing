@@ -315,12 +315,10 @@
 
   const MOCKS = { nord: mockNord, stahl: mockStahl, med: mockMed, gruen: mockGruen, dach: mockDach };
 
-  function renderUseCase(key) {
+  function buildSlide(key) {
     const uc = USE_CASES[key];
-    if (!uc) return;
-    const stage = document.getElementById('uc-stage');
-    if (!stage) return;
-    while (stage.firstChild) stage.removeChild(stage.firstChild);
+    if (!uc) return null;
+    const slide = el('div', { class: 'uc-slide', 'data-uc': key });
 
     const copy = el('div', { class: 'uc-copy' }, [
       el('span', { class: 'uc-branch' }, uc.branch),
@@ -335,18 +333,141 @@
       ]));
     });
     copy.appendChild(dl);
-
-    stage.appendChild(copy);
+    slide.appendChild(copy);
     const mockFn = MOCKS[uc.mock];
-    if (mockFn) stage.appendChild(el('div', null, mockFn()));
-
-    document.querySelectorAll('.uc-tab').forEach(t => t.classList.toggle('active', t.dataset.uc === key));
+    if (mockFn) slide.appendChild(el('div', null, mockFn()));
+    return slide;
   }
 
-  document.querySelectorAll('.uc-tab').forEach(tab => {
-    tab.addEventListener('click', () => renderUseCase(tab.dataset.uc));
-  });
+  function setActiveUC(key) {
+    document.querySelectorAll('.uc-slide').forEach(s => s.classList.toggle('active', s.dataset.uc === key));
+    document.querySelectorAll('.uc-tab').forEach(t => t.classList.toggle('active', t.dataset.uc === key));
+    document.querySelectorAll('.uc-dot').forEach(d => d.classList.toggle('active', d.dataset.uc === key));
+  }
 
-  const initial = (window.TWEAKS && window.TWEAKS.useCase) || Object.keys(USE_CASES)[0];
-  if (initial) renderUseCase(initial);
+  const stage = document.getElementById('uc-stage');
+  const dotsEl = document.getElementById('uc-dots');
+  if (stage) {
+    const keys = Object.keys(USE_CASES);
+    keys.forEach(k => {
+      const s = buildSlide(k);
+      if (s) stage.appendChild(s);
+    });
+    if (dotsEl) {
+      keys.forEach(k => {
+        const d = el('button', { class: 'uc-dot', 'data-uc': k, 'aria-label': k });
+        d.addEventListener('click', () => {
+          const target = stage.querySelector('.uc-slide[data-uc="' + k + '"]');
+          if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          setActiveUC(k);
+        });
+        dotsEl.appendChild(d);
+      });
+    }
+
+    document.querySelectorAll('.uc-tab').forEach(tab => {
+      tab.addEventListener('click', () => setActiveUC(tab.dataset.uc));
+    });
+
+    // Keep dots in sync with horizontal scroll on mobile
+    let scrollTimer;
+    stage.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const slides = stage.querySelectorAll('.uc-slide');
+        const center = stage.scrollLeft + stage.clientWidth / 2;
+        let best = null, bestDist = Infinity;
+        slides.forEach(s => {
+          const d = Math.abs(s.offsetLeft + s.offsetWidth / 2 - center);
+          if (d < bestDist) { bestDist = d; best = s; }
+        });
+        if (best) setActiveUC(best.dataset.uc);
+      }, 80);
+    }, { passive: true });
+
+    const initial = (window.TWEAKS && window.TWEAKS.useCase) || keys[0];
+    if (initial) setActiveUC(initial);
+  }
+})();
+
+/* Pillars mobile carousel — sync dots with scroll */
+(function () {
+  const carousel = document.getElementById('timber-carousel');
+  const dots = document.querySelectorAll('.tc-dot');
+  if (!carousel || !dots.length) return;
+
+  function setActive(i) {
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+
+  dots.forEach(d => d.addEventListener('click', () => {
+    const i = parseInt(d.dataset.i, 10);
+    const slides = carousel.querySelectorAll('.tc-slide');
+    if (slides[i]) slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    setActive(i);
+  }));
+
+  let scrollTimer;
+  carousel.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const slides = carousel.querySelectorAll('.tc-slide');
+      const center = carousel.scrollLeft + carousel.clientWidth / 2;
+      let bestIdx = 0, bestDist = Infinity;
+      slides.forEach((s, i) => {
+        const d = Math.abs(s.offsetLeft + s.offsetWidth / 2 - center);
+        if (d < bestDist) { bestDist = d; bestIdx = i; }
+      });
+      setActive(bestIdx);
+    }, 80);
+  }, { passive: true });
+})();
+
+/* Nav section indicator — IntersectionObserver */
+(function () {
+  const navSection = document.getElementById('nav-section');
+  if (!navSection) return;
+  const sections = document.querySelectorAll('section.block, section.hero, section.cta');
+  if (!sections.length) return;
+
+  function labelFor(sec) {
+    const eb = sec.querySelector('.eyebrow');
+    if (!eb) return '';
+    // eyebrow text is like "02 — Die Plattform" — split num and name
+    const text = eb.textContent.trim();
+    const m = text.match(/^(\S+)\s*[—-]\s*(.+)$/);
+    if (m) {
+      const span = document.createElement('span');
+      span.className = 'num';
+      span.textContent = m[1];
+      navSection.textContent = '';
+      navSection.appendChild(span);
+      navSection.appendChild(document.createTextNode(m[2]));
+      return;
+    }
+    navSection.textContent = text;
+  }
+
+  let current = null;
+  const io = new IntersectionObserver(entries => {
+    // Pick the entry closest to the top of the viewport that's visible
+    let top = null;
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        if (!top || e.boundingClientRect.top < top.boundingClientRect.top) top = e;
+      }
+    });
+    if (top && top.target !== current) {
+      current = top.target;
+      if (current.classList.contains('hero')) {
+        navSection.textContent = '';
+        navSection.classList.add('fade');
+      } else {
+        navSection.classList.remove('fade');
+        labelFor(current);
+      }
+    }
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0.01 });
+
+  sections.forEach(s => io.observe(s));
 })();

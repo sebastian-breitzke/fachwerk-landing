@@ -25,7 +25,7 @@ const t = {
   hero: {
     eyebrow: 'Maßgeschneiderte Software auf solidem Rohbau',
     meta: '// für den gehobenen Mittelstand',
-    headline: `<span class="strike">Vibe Coding</span> ist schnell.<br><span class="strike">Low-Code</span> ist bunt.<br><em>Fachwerk</em> befähigt.`,
+    headline: `<span class="strike">Vibe Coding</span>: schnell.<br><span class="strike">Low-Code</span>: bunt.<br><em>Fachwerk</em>: befähigt.`,
     sub: `<strong>Fachwerk</strong> gibt deinen Fachanwendern einen <strong>soliden Rohbau</strong> — einen technisch sauberen Rahmen, in dem sie selbst Abläufe gestalten. <strong>AI kommt dort zum Einsatz, wo sie hilft</strong>: beim Bauen, beim Verstehen, innerhalb einzelner Schritte — gezielt und mit Augenmaß. Nicht als fragile Laufzeit-Magie, nicht als Klickkasten-Ersatz. Ein Katalog statt ein Zoo.`,
     ctaPrimary: 'Proof-of-Value starten',
     ctaSecondary: 'Beispiele ansehen',

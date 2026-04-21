@@ -14,6 +14,44 @@ const fwRuntime = {
   useCases: t.cases.useCases,
   mock: t.cases.mock,
 };
+
+// Mobile carousel: mini-timber SVG (no clipPath, same geometry as desktop)
+const timberSvg = `
+<svg viewBox="0 0 300 300">
+  <line x1="40"  y1="40"  x2="150" y2="40"  class="beam fw-top-l"/>
+  <line x1="150" y1="40"  x2="260" y2="40"  class="beam fw-top-r"/>
+  <line x1="260" y1="40"  x2="260" y2="150" class="beam fw-right-t"/>
+  <line x1="260" y1="150" x2="260" y2="260" class="beam fw-right-b"/>
+  <line x1="150" y1="260" x2="260" y2="260" class="beam fw-bottom-r"/>
+  <line x1="40"  y1="260" x2="150" y2="260" class="beam fw-bottom-l"/>
+  <line x1="40"  y1="150" x2="40"  y2="260" class="beam fw-left-b"/>
+  <line x1="40"  y1="40"  x2="40"  y2="150" class="beam fw-left-t"/>
+  <line x1="40" y1="150" x2="260" y2="150" class="beam fw-h"/>
+  <line x1="150" y1="40" x2="150" y2="260" class="beam fw-v"/>
+  <line x1="40"  y1="150" x2="150" y2="40"  class="brace fw-d1"/>
+  <line x1="150" y1="40"  x2="260" y2="150" class="brace fw-d2"/>
+  <line x1="40"  y1="150" x2="150" y2="260" class="brace fw-d3"/>
+  <line x1="150" y1="260" x2="260" y2="150" class="brace fw-d4"/>
+  <g class="pillar-node" data-p="0">
+    <circle cx="40" cy="40" r="6" class="node"/>
+    <text x="40" y="28" class="node-label" text-anchor="start">${t.platform.pillarLabels.werkstatt}</text>
+  </g>
+  <g class="pillar-node" data-p="1">
+    <circle cx="260" cy="40" r="6" class="node"/>
+    <text x="260" y="28" class="node-label" text-anchor="end">${t.platform.pillarLabels.katalog}</text>
+  </g>
+  <g class="pillar-node" data-p="2">
+    <circle cx="150" cy="150" r="9" class="node node-center"/>
+  </g>
+  <g class="pillar-node" data-p="3">
+    <circle cx="40" cy="260" r="6" class="node"/>
+    <text x="40" y="282" class="node-label" text-anchor="start">${t.platform.pillarLabels.speicher}</text>
+  </g>
+  <g class="pillar-node" data-p="4">
+    <circle cx="260" cy="260" r="6" class="node"/>
+    <text x="260" y="282" class="node-label" text-anchor="end">${t.platform.pillarLabels.wissen}</text>
+  </g>
+</svg>`;
 ---
 <!DOCTYPE html>
 <html lang={locale}>
@@ -53,6 +91,7 @@ window.TWEAKS = {
     <span class="wordmark">Fachwerk</span>
     <span class="dot"></span>
   </a>
+  <span class="nav-section" id="nav-section" aria-live="polite"></span>
   <div class="nav-links">
     <a href="#problem">{t.nav.problem}</a>
     <a href="#pillars">{t.nav.platform}</a>
@@ -246,6 +285,28 @@ window.TWEAKS = {
       ))}
     </div>
   </div>
+
+  {/* Mobile carousel: one slide = mini-timber (corner highlighted) + pillar copy */}
+  <div class="timber-carousel" id="timber-carousel">
+    {t.platform.pillars.map((p, i) => (
+      <div class="tc-slide" data-i={i} data-p={p.p}>
+        <div class={`timber hovering p-${p.p}`} set:html={timberSvg}></div>
+        <div class="tc-copy">
+          <div class="tc-head">
+            <span class="pillar-num">{p.num}</span>
+            <h3 class="pillar-name">{p.name}</h3>
+          </div>
+          <span class="pillar-tag">{p.tag}</span>
+          <p>{p.body}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="tc-dots" id="tc-dots">
+    {t.platform.pillars.map((p, i) => (
+      <button class={`tc-dot${i === 0 ? ' active' : ''}`} data-i={i} aria-label={p.name}></button>
+    ))}
+  </div>
 </section>
 
 <section class="block sackgassen" id="sackgassen">
@@ -399,6 +460,7 @@ window.TWEAKS = {
   </div>
 
   <div class="uc-stage" id="uc-stage"></div>
+  <div class="uc-dots" id="uc-dots"></div>
 </section>
 
 <section class="block" id="deploy">

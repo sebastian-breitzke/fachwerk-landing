@@ -180,24 +180,18 @@ nav.top {
 }
 .nav-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--paper) !important; }
 
-.lang {
-  color: var(--muted-2) !important;
-  border-left: 1px solid var(--line);
-  padding-left: 1rem !important;
-  margin-left: 0.3rem;
+/* Language switcher: nav-hidden everywhere, footer-only */
+nav.top .lang { display: none; }
+footer .lang {
   display: inline-flex;
   align-items: center;
   gap: 0.15rem;
-}
-.lang .sw {
-  padding: 0 0.2rem;
   color: var(--muted-2);
-  transition: color 0.15s;
 }
-.lang .sw.on { color: var(--fg); }
-.lang a.sw:hover { color: var(--accent); }
-.lang .sw::after { display: none; }
-.lang .sep { color: var(--muted-2); pointer-events: none; }
+footer .lang .sw { color: var(--muted-2); transition: color 0.15s; padding: 0 0.15rem; }
+footer .lang .sw.on { color: var(--fg); }
+footer .lang a.sw:hover { color: var(--accent); }
+footer .lang .sep { color: var(--muted-2); pointer-events: none; }
 footer .fright .on { color: var(--fg); }
 
 .hero {
@@ -1950,6 +1944,37 @@ footer a:hover { color: var(--accent); }
 footer .fleft strong { color: var(--fg); font-weight: 500; }
 footer .fright { display: flex; gap: 1.5rem; }
 
+/* Nav section indicator (mobile) */
+.nav-section {
+  display: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.6rem;
+  min-width: 0;
+  transition: opacity 0.2s;
+}
+.nav-section .num { color: var(--accent); margin-right: 0.35rem; }
+.nav-section.fade { opacity: 0; }
+
+/* Pillars mobile carousel */
+.timber-carousel { display: none; }
+.tc-dots { display: none; }
+
+/* Use case slides — desktop default: only active shows */
+.uc-slide {
+  display: none;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.uc-slide.active { display: grid; }
+
 @media (max-width: 1100px) {
   .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 6rem; }
   .hero-right { max-width: 40rem; }
@@ -1993,9 +2018,112 @@ footer .fright { display: flex; gap: 1.5rem; }
   .block-lede { font-size: 1rem; }
 
   /* Pillars / timber */
-  .timber-wrap { gap: 2rem; }
-  .timber { padding: 1.4rem; }
-  .timber-label-sys, .timber-label-sys2 { font-size: 0.55rem; }
+  .timber-wrap { display: none; }
+  .timber-carousel {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding: 0 4vw 0.5rem;
+    margin: 0 -4vw;
+  }
+  .timber-carousel::-webkit-scrollbar { display: none; }
+  .tc-slide {
+    flex: 0 0 calc(100% - 4vw);
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    background: #242a38;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.4rem 1.4rem 1.8rem;
+  }
+  .tc-slide .timber {
+    background: #1e2430;
+    border: 1px solid rgba(255,255,255,0.18);
+    aspect-ratio: 1 / 1;
+    max-width: 16rem;
+    margin: 0 auto 1.6rem;
+    padding: 1.4rem;
+    box-shadow: none;
+    position: relative;
+  }
+  .tc-slide .timber svg { overflow: visible; }
+  .tc-slide .tc-copy { color: var(--paper); }
+  .tc-slide .tc-head { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.5rem; }
+  .tc-slide .pillar-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: rgba(244,237,224,0.4); letter-spacing: 0.12em; }
+  .tc-slide .pillar-name { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.6rem; color: #5eead4; }
+  .tc-slide .pillar-tag { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: rgba(94,234,212,0.75); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .tc-slide p { color: rgba(244,237,224,0.75); font-size: 0.95rem; line-height: 1.6; }
+  .tc-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 1.2rem;
+  }
+  .tc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(94,234,212,0.45);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .tc-dot.active { background: #5eead4; border-color: #5eead4; }
+
+  /* Use cases mobile carousel */
+  .uc-nav { display: none; }
+  .uc-stage {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding: 0 4vw 0.5rem;
+    margin: 0 -4vw;
+    grid-template-columns: none;
+  }
+  .uc-stage::-webkit-scrollbar { display: none; }
+  .uc-slide {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(100% - 4vw);
+    scroll-snap-align: center;
+    grid-template-columns: none;
+    gap: 1.5rem;
+  }
+  .uc-slide.active { display: flex; }
+  .uc-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 1.2rem;
+  }
+  .uc-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--muted-2);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .uc-dot.active { background: var(--accent); border-color: var(--accent); }
+
+  /* Nav section indicator visible on mobile */
+  .nav-section {
+    display: inline-block;
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 0 0.4rem;
+  }
 
   /* Sackgassen table — horizontal scroll */
   .sg-table { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
