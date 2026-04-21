@@ -1,0 +1,523 @@
+---
+import type { HomeT } from '../i18n/home-de';
+import '../styles/home.css';
+
+interface Props {
+  t: HomeT;
+  locale: 'de' | 'en' | 'es';
+}
+
+const { t, locale } = Astro.props;
+
+const allLocales: Array<'de' | 'en' | 'es'> = ['de', 'en', 'es'];
+const fwRuntime = {
+  useCases: t.cases.useCases,
+  mock: t.cases.mock,
+};
+---
+<!DOCTYPE html>
+<html lang={locale}>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{t.meta.title}</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<script is:inline>
+window.TWEAKS = {
+  "accentHue": 194,
+  "gridDensity": 24,
+  "dark": false,
+  "showGrid": true,
+  "useCase": "nordware"
+};
+</script>
+</head>
+<body>
+
+<nav class="top">
+  <a href={`/${locale}/`} class="nav-logo">
+    <svg viewBox="0 0 128 128" aria-label="Fachwerk" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#1e2430"/>
+      <defs><clipPath id="nav-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+      <g stroke="#5eead4" stroke-width="7" stroke-linecap="square" fill="none" clip-path="url(#nav-frame)">
+        <rect x="16" y="16" width="96" height="96"/>
+        <line x1="16" y1="64" x2="112" y2="64"/>
+        <line x1="64" y1="16" x2="64" y2="112"/>
+        <line x1="16" y1="64" x2="64" y2="16"/>
+        <line x1="64" y1="16" x2="112" y2="64"/>
+        <line x1="16" y1="64" x2="64" y2="112"/>
+        <line x1="64" y1="112" x2="112" y2="64"/>
+      </g>
+    </svg>
+    <span class="wordmark">Fachwerk</span>
+    <span class="dot"></span>
+  </a>
+  <div class="nav-links">
+    <a href="#problem">{t.nav.problem}</a>
+    <a href="#pillars">{t.nav.platform}</a>
+    <a href="#sackgassen">{t.nav.deadends}</a>
+    <a href="#ai" set:html={t.nav.ai}></a>
+    <a href="#katalog">{t.nav.catalog}</a>
+    <a href="#cases">{t.nav.examples}</a>
+    <a href="#pricing">{t.nav.pricing}</a>
+    <a href="#kontakt" class="nav-cta">{t.nav.contact}</a>
+    <span class="lang">{allLocales.map((l, i) => (
+      <>
+        {i > 0 && <span class="sep"> · </span>}
+        {l === locale
+          ? <span class="sw on">{l.toUpperCase()}</span>
+          : <a href={`/${l}/`} class="sw">{l.toUpperCase()}</a>}
+      </>
+    ))}</span>
+  </div>
+</nav>
+
+<div class="content">
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="eyebrow">{t.hero.eyebrow}</span>
+      <span class="hero-meta">{t.hero.meta}</span>
+    </div>
+
+    <h1 class="hero-head" set:html={t.hero.headline}></h1>
+
+    <p class="hero-sub" set:html={t.hero.sub}></p>
+
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn">{t.hero.ctaPrimary} <span class="arr">→</span></a>
+      <a href="#cases" class="btn ghost">{t.hero.ctaSecondary}</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hr-card">
+      <div class="hr-chrome">
+        <span id="slide-caption" class="hr-caption">{t.hero.slides[0].caption}</span>
+        <div class="dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="hr-slides" id="hr-slides">
+        {t.hero.slides.map((s, i) => (
+          <img
+            class={`hr-slide${i === 0 ? ' active' : ''}`}
+            src={s.src}
+            data-full={s.full}
+            alt={s.alt}
+            data-caption={s.caption}
+            loading={i === 0 ? undefined : 'lazy'}
+            width="1600" height="910"
+          />
+        ))}
+        <button class="hr-fs" id="hr-fs" aria-label={t.a11y.fullscreen}>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+            <path d="M3 7V3h4M17 7V3h-4M3 13v4h4M17 13v4h-4"/>
+          </svg>
+        </button>
+        <div class="hr-dots" id="hr-dots">
+          {t.hero.slides.map((_s, i) => (
+            <button class={`hr-dot${i === 0 ? ' active' : ''}`} data-i={i} aria-label={`Slide ${i + 1}`}></button>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="hr-lightbox" id="hr-lightbox" aria-hidden="true">
+      <button class="hr-lb-close" id="hr-lb-close" aria-label={t.a11y.close}>✕</button>
+      <button class="hr-lb-nav prev" id="hr-lb-prev" aria-label={t.a11y.prev}>‹</button>
+      <img class="hr-lb-img" id="hr-lb-img" alt="">
+      <button class="hr-lb-nav next" id="hr-lb-next" aria-label={t.a11y.next}>›</button>
+    </div>
+
+    <div class="hero-bullets">
+      {t.hero.bullets.map(b => (
+        <div class="hero-bullet"><strong>{b.title}</strong>{b.desc}</div>
+      ))}
+    </div>
+  </div>
+
+  <span class="hero-corner br">{t.hero.scroll}</span>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    {[0, 1].map(() => (
+      <>
+        {t.marquee.pillars.map(p => (
+          <span><span class="mark">◆</span> {p}</span>
+        ))}
+        {t.marquee.systems.map(s => (
+          <span><span class="mark">✕</span> {s}</span>
+        ))}
+      </>
+    ))}
+  </div>
+</div>
+
+<section class="block" id="problem">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.problem.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.problem.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.problem.title}></h2>
+      <p class="block-lede" set:html={t.problem.lede}></p>
+    </div>
+  </div>
+
+  <div class="problem-grid">
+    {t.problem.cells.map(c => (
+      <div class="problem-cell" data-num={c.num}>
+        <h4><span class="warn">{c.warn}</span>{c.title}</h4>
+        <p>{c.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="block dark-section" id="pillars">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.platform.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.platform.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.platform.title}></h2>
+      <p class="block-lede" set:html={t.platform.lede}></p>
+    </div>
+  </div>
+
+  <div class="timber-wrap">
+    <div class="timber">
+      <span class="timber-label-sys">{t.platform.timberSys1}</span>
+      <span class="timber-label-sys2">{t.platform.timberSys2}</span>
+      <svg viewBox="0 0 300 300">
+        <defs>
+          <clipPath id="fwframe"><rect x="36" y="36" width="228" height="228"/></clipPath>
+        </defs>
+        <line x1="40"  y1="40"  x2="150" y2="40"  class="beam fw-top-l"/>
+        <line x1="150" y1="40"  x2="260" y2="40"  class="beam fw-top-r"/>
+        <line x1="260" y1="40"  x2="260" y2="150" class="beam fw-right-t"/>
+        <line x1="260" y1="150" x2="260" y2="260" class="beam fw-right-b"/>
+        <line x1="150" y1="260" x2="260" y2="260" class="beam fw-bottom-r"/>
+        <line x1="40"  y1="260" x2="150" y2="260" class="beam fw-bottom-l"/>
+        <line x1="40"  y1="150" x2="40"  y2="260" class="beam fw-left-b"/>
+        <line x1="40"  y1="40"  x2="40"  y2="150" class="beam fw-left-t"/>
+        <line x1="40" y1="150" x2="260" y2="150" class="beam fw-h"/>
+        <line x1="150" y1="40" x2="150" y2="260" class="beam fw-v"/>
+        <line x1="40"  y1="150" x2="150" y2="40"  class="brace fw-d1"/>
+        <line x1="150" y1="40"  x2="260" y2="150" class="brace fw-d2"/>
+        <line x1="40"  y1="150" x2="150" y2="260" class="brace fw-d3"/>
+        <line x1="150" y1="260" x2="260" y2="150" class="brace fw-d4"/>
+
+        <g class="pillar-node" data-p="0">
+          <circle cx="40" cy="40" r="6" class="node"/>
+          <text x="40" y="28" class="node-label" text-anchor="start">{t.platform.pillarLabels.werkstatt}</text>
+        </g>
+        <g class="pillar-node" data-p="1">
+          <circle cx="260" cy="40" r="6" class="node"/>
+          <text x="260" y="28" class="node-label" text-anchor="end">{t.platform.pillarLabels.katalog}</text>
+        </g>
+        <g class="pillar-node" data-p="2">
+          <circle cx="150" cy="150" r="9" class="node node-center"/>
+        </g>
+        <g class="pillar-node" data-p="3">
+          <circle cx="40" cy="260" r="6" class="node"/>
+          <text x="40" y="282" class="node-label" text-anchor="start">{t.platform.pillarLabels.speicher}</text>
+        </g>
+        <g class="pillar-node" data-p="4">
+          <circle cx="260" cy="260" r="6" class="node"/>
+          <text x="260" y="282" class="node-label" text-anchor="end">{t.platform.pillarLabels.wissen}</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="pillars-list" id="pillars-list">
+      {t.platform.pillars.map(p => (
+        <div class={`pillar${p.active ? ' active' : ''}`} data-p={p.p}>
+          <div class="pillar-head">
+            <span class="pillar-num">{p.num}</span>
+            <h3 class="pillar-name">{p.name}</h3>
+            <span class="pillar-tag">{p.tag}</span>
+          </div>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="block sackgassen" id="sackgassen">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.deadends.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.deadends.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.deadends.title}></h2>
+      <p class="block-lede" set:html={t.deadends.lede}></p>
+    </div>
+  </div>
+
+  <div class="sg-table">
+    <div class="sg-row sg-head">
+      <div class="sg-label">{t.deadends.dimension}</div>
+      <div class="sg-col sg-lowcode">{t.deadends.cols.lowcode}</div>
+      <div class="sg-col sg-vibe">{t.deadends.cols.vibe}</div>
+      <div class="sg-col sg-dl">{t.deadends.cols.dl}</div>
+      <div class="sg-col sg-fw">{t.deadends.cols.fw}</div>
+    </div>
+    {t.deadends.rows.map(r => (
+      <div class="sg-row">
+        <div class="sg-label">{r.label}</div>
+        <div class="sg-col sg-lowcode">{r.lowcode}</div>
+        <div class="sg-col sg-vibe">{r.vibe}</div>
+        <div class="sg-col sg-dl">{r.dl}</div>
+        <div class="sg-col sg-fw" set:html={r.fw}></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="block ai-section" id="ai">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.ai.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.ai.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.ai.title}></h2>
+      <p class="block-lede" set:html={t.ai.lede}></p>
+    </div>
+  </div>
+
+  <div class="ai-grid">
+    <div class="ai-diagram">
+      <div class="ai-chrome">{t.ai.flowTitle}</div>
+      <div class="ai-flow">
+        {t.ai.steps.map((s, i) => (
+          <>
+            <div class={`ai-step s-${s.type}`}>
+              <div class="s-type">{s.type === 'ai' ? 'AI' : 'Code'}</div>
+              <div class="s-name">{s.name}</div>
+              <div class="s-meta">{s.meta}</div>
+            </div>
+            {i < t.ai.steps.length - 1 && <div class="ai-arrow"></div>}
+          </>
+        ))}
+      </div>
+      <div class="ai-legend">
+        <span class="ai-legend-item"><span class="dot dot-code"></span> {t.ai.legend.code}</span>
+        <span class="ai-legend-item"><span class="dot dot-ai"></span> {t.ai.legend.ai}</span>
+      </div>
+    </div>
+
+    <div class="ai-points">
+      {t.ai.points.map(p => (
+        <div class="ai-point">
+          <span class="ai-num">{p.num}</span>
+          <h4>{p.title}</h4>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="block zoo-section" id="katalog">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.zoo.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.zoo.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.zoo.title}></h2>
+      <p class="block-lede" set:html={t.zoo.lede}></p>
+    </div>
+  </div>
+
+  <div class="zoo-compare">
+    <div class="zoo-side zoo-bad">
+      <h4>{t.zoo.bad.h}</h4>
+      <div class="zoo-canvas">
+        {t.zoo.bad.apps.map((app, i) => (
+          <div class={`zoo-app za-${i + 1}`}>
+            {app.label}
+            {app.tag && <span class="ztag">{app.tag}</span>}
+          </div>
+        ))}
+        {t.zoo.bad.warns.map((w, i) => (
+          <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
+        ))}
+      </div>
+      <ul class="zoo-list">
+        {t.zoo.bad.list.map(li => <li>{li}</li>)}
+      </ul>
+    </div>
+
+    <div class="zoo-side zoo-good">
+      <h4>{t.zoo.good.h}</h4>
+      <div class="zoo-catalog">
+        <div class="kc-head">
+          {t.zoo.good.head.map(h => <span>{h}</span>)}
+        </div>
+        {t.zoo.good.rows.map(r => (
+          <div class="kc-row">
+            <span>{r.name}</span>
+            <span>{r.owner}</span>
+            <span>{r.ver}</span>
+            <span class={r.kind === 'warn' ? 'kc-warn' : 'kc-ok'}>{r.health}</span>
+          </div>
+        ))}
+      </div>
+      <ul class="zoo-list">
+        {t.zoo.good.list.map(li => <li>{li}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block uc-solid" id="cases">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.cases.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.cases.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.cases.title}></h2>
+      <p class="block-lede" set:html={t.cases.lede}></p>
+    </div>
+  </div>
+
+  <div class="uc-nav" id="uc-nav">
+    {t.cases.tabs.map((tab, i) => (
+      <button class={`uc-tab${i === 0 ? ' active' : ''}`} data-uc={tab.uc}>
+        <span class="num">{tab.num}</span> {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <div class="uc-stage" id="uc-stage"></div>
+</section>
+
+<section class="block" id="deploy">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.deploy.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.deploy.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.deploy.title}></h2>
+    </div>
+  </div>
+
+  <div class="deploy-grid">
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 16 a6 4 0 1 1 0 0 M8 16 h12 a3 3 0 0 0 0-6 a5 5 0 0 0-9-3 a4 4 0 0 0-7 6"/>
+        </svg>
+      </div>
+      <h4>{t.deploy.cells[0].title}</h4>
+      <p set:html={t.deploy.cells[0].body}></p>
+      <div class="tag-row">{t.deploy.cells[0].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="5" width="18" height="14"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="7" cy="7.5" r="0.8" fill="currentColor"/>
+        </svg>
+      </div>
+      <h4>{t.deploy.cells[1].title}</h4>
+      <p set:html={t.deploy.cells[1].body}></p>
+      <div class="tag-row">{t.deploy.cells[1].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="12" r="4"/>
+          <circle cx="16" cy="12" r="4"/>
+        </svg>
+      </div>
+      <h4>{t.deploy.cells[2].title}</h4>
+      <p set:html={t.deploy.cells[2].body}></p>
+      <div class="tag-row">{t.deploy.cells[2].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pricing">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.pricing.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.pricing.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.pricing.title}></h2>
+      <p class="block-lede" set:html={t.pricing.lede}></p>
+    </div>
+  </div>
+
+  <div class="price-grid">
+    {[t.pricing.core, t.pricing.platform].map(pk => (
+      <div class="price-card">
+        <span class="price-tier">{pk.tier}</span>
+        <h3>{pk.h3}</h3>
+        <p class="price-desc">{pk.desc}</p>
+        <div class="price-num">{pk.num}<span class="unit">{pk.unit}</span></div>
+        <div class="price-sub">{pk.sub}</div>
+        <ul class="price-list">
+          {pk.list.map(li => <li>{li}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="price-note">
+    <p set:html={t.pricing.note}></p>
+    <p>{t.pricing.limit}</p>
+  </div>
+</section>
+
+<section class="cta" id="kontakt">
+  <div class="cta-inner">
+    <span class="eyebrow">{t.cta.eyebrow}</span>
+    <h2 set:html={t.cta.title}></h2>
+    <p>{t.cta.body}</p>
+
+    <div class="cta-row">
+      <a href="mailto:sebastian@s16e.de" class="btn">{t.cta.emailLabel} <span class="arr">→</span></a>
+      <a href="tel:+4915141928572" class="btn ghost">{t.cta.phoneLabel}</a>
+      <a href="https://www.linkedin.com/in/sebastian-breitzke/" class="btn ghost">{t.cta.linkedinLabel}</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="finner">
+    <span class="fleft"><strong>s16e</strong> · Sebastian Breitzke · <a href="https://s16e.de">s16e.de</a></span>
+    <span class="fright">
+      <a href={t.footer.impressumHref}>{t.footer.impressum}</a>
+      <a href={t.footer.datenschutzHref}>{t.footer.datenschutz}</a>
+      {allLocales.map((l, i) => (
+        <>
+          {i > 0 && <span> · </span>}
+          {l === locale
+            ? <span class="on">{l.toUpperCase()}</span>
+            : <a href={`/${l}/`}>{l.toUpperCase()}</a>}
+        </>
+      ))}
+    </span>
+  </div>
+</footer>
+
+</div>
+
+<script is:inline set:html={`window.FW_HOME = ${JSON.stringify(fwRuntime)};`}></script>
+<script is:inline src="/fw-home.js"></script>
+
+</body>
+</html>
