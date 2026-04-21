@@ -229,43 +229,6 @@
     ]);
   }
 
-  function makeFinding(cls, label, val, unit, flag) {
-    const valSpan = el('span', { class: 'val' }, val + ' ');
-    if (unit) valSpan.appendChild(el('span', { class: 'unit' }, unit));
-    return el('div', { class: 'finding ' + cls }, [
-      el('span', { class: 'label' }, label),
-      el('span'),
-      valSpan,
-      el('span', { class: 'flag' }, flag),
-    ]);
-  }
-
-  function mockMed() {
-    const t = MT.med || {};
-    const f = t.findings || [];
-    return el('div', { class: 'uc-mock mk-med' }, [
-      el('div', { class: 'uc-mock-chrome' }, [
-        el('span', null, t.chrome || ''),
-        el('div', { class: 'dots' }, [el('span'), el('span'), el('span')]),
-      ]),
-      el('div', { class: 'uc-mock-body' }, [
-        el('div', { class: 'patient-head' }, [
-          el('h6', null, t.h6 || ''),
-          el('span', { class: 'id' }, t.id || ''),
-        ]),
-        el('div', { class: 'findings' }, [
-          ...f.map(row => makeFinding(row[0], row[1], row[2], row[3], row[4])),
-          el('div', { class: 'finding' }, [
-            el('span', { class: 'label' }, t.routeLabel || ''),
-            el('span', { style: 'font-family:IBM Plex Sans; color:var(--accent); font-size:0.7rem;' }, t.routeValue || ''),
-            el('span'),
-            el('span'),
-          ]),
-        ]),
-      ]),
-    ]);
-  }
-
   function mockGruen() {
     const t = MT.gruen || {};
     const m = t.match || [];
@@ -327,7 +290,7 @@
     ]);
   }
 
-  const MOCKS = { nord: mockNord, stahl: mockStahl, med: mockMed, gruen: mockGruen, dach: mockDach };
+  const MOCKS = { nord: mockNord, stahl: mockStahl, gruen: mockGruen, dach: mockDach };
 
   function buildSlide(key) {
     const uc = USE_CASES[key];
