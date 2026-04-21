@@ -1,0 +1,33 @@
+# Michael Grünfeld — Inhaber Steuerberatung (Grünfeld & Partner)
+
+**Erster Eindruck (30 Sekunden):** Ich lese „Standardsoftware passt nie. Individualsoftware dauert ewig." — ja, das kenne ich. DATEV ist mein Fundament, und trotzdem baue ich drum herum Excel-Krücken. Dann sehe ich „Rohbau statt Baukasten" und denke: ok, die verstehen handwerklich. Das „Fachwerk" als Bild trifft mich — ich bin 56, Macher-Inhaber, ich mag Statik und tragende Balken mehr als Buzzwords. Der durchgestrichene „Vibe Coding" / „Low-Code"-Block im Hero gefällt mir, weil ich genau das meine, wenn ich sage „jedes neue Tool verspricht Vereinfachung". Aber: das hier riecht nach großer Mittelstand. Ich scrolle zu Preisen, weil da entscheidet sich für mich schon immer alles.
+
+**Was landet (jetzt besser):**
+- Das Grünfeld-Szenario im Use-Case-Tab ist konkret und erkennt meinen Alltag: Rechnungseingang, 3-Wege-Match, GoBD-konform, Freigabe-Board. Nicht generisch. Nicht „Finanz-Dashboard". Arbeitet statt anzeigt — genau die Sprache, die bei mir ankommt.
+- „Fiktive Szenarien — keine Referenzkunden" ist ehrlich. Ich hasse gefälschte Logo-Wände. Dass hier jemand zugibt „wir sind in Welle 1" stärkt das Vertrauen, nicht das Gegenteil.
+- Scope-first-Logik auf der Pricing-Seite: „Scope entscheidet, nicht Umsatz." Der Satz ist für mich wichtig, weil meine Kanzlei klein ist (6 Mio), aber die Prozesse nicht banal (Fristen, Mandantenportale, DATEV-Tiefe).
+- „Code gehört dir, ein Repo pro Kunde" in der Sackgassen-Tabelle — das nehme ich mit. Mein ewiges Thema mit Software-Anbietern: was passiert, wenn wir uns trennen?
+- Hero-Claim „baut. wartet. trägt." ist Handwerker-Sprache. Das mag ich. Kein „revolutionäre AI-Transformation".
+
+**Was immer noch stolpert:**
+- **§203 StGB taucht nirgends auf.** Nicht ein Wort. Kein „Berufsrechtskonform für steuerberatende und rechtsberatende Berufe", keine Auseinandersetzung mit Verschwiegenheit. Für mich als Steuerberater ist das kein Feature — das ist die Eingangstür. Wenn ich die nicht finde, gehe ich nicht rein. Bei „Finanzen · Grünfeld" steht GoBD — gut, aber GoBD ist Buchhaltung. §203 ist mein Berufsstand.
+- **Cloud-Standard „auf StackIT, dem souveränen europäischen Hyperscaler"** — für mich ist das nicht automatisch beruhigend. Mein Mandantendaten-Versprechen verträgt keine pauschale Cloud-Aussage. Ich brauche: Auftragsverarbeitungsvertrag, Unterauftragnehmer-Liste, Serverstandort belegt, Zugriffsrechte Fachwerk-Mitarbeiter geregelt. Davon sehe ich nichts konkret.
+- Das Hero spricht vom „teuersten Prozess-Problem" — ich habe kein einzelnes 1000-Prozesse-Problem. Ich habe 20 kleine, die in Summe meine Partner und Mitarbeiter ausbremsen. Die Seite fühlt sich teilweise zu industriell an (SPS, Modbus, Air-Gap — nicht meine Welt).
+- DATEV wird einmal beim Szenario genannt, aber nicht in der Marquee-Leiste oben (SAP, proALPHA, Microsoft 365, Wodis, …). Wenn ich DATEV nicht prominent sehe, denke ich: „die haben Steuerberater nicht wirklich auf dem Radar, wir sind Beifang."
+- „Proof-of-Value starten" als Haupt-CTA — für einen 56-jährigen Inhaber klingt das nach Berater-Englisch. „Erstgespräch" im Footer-CTA ist besser. Der Knopf oben sollte das auch sagen.
+- Der Katalog-Vergleich „Zoo vs Katalog" trifft mich emotional, aber „Lisas Excel-Makro" und „Kais Laptop" sind E-Commerce-Memes. Für Kanzleien wäre „Lotte's Fristen-Excel" oder „Alte DMS-Makros vom Ex-Partner" das Bild. Ich fühle mich nicht 100% gemeint.
+
+**Neu: Wie wirkt das Starter-Tier auf dich?**
+- **Preis passt überraschend gut.** 3–8k Launch, 0,5–1,5k/Monat, 9–25k Jahresbudget — das ist für mich kein „ich bin raus"-Bereich mehr. Das ist der Preis von einem halben Mitarbeiter-Monat. Für 1–3 Automationen (Rechnungseingang, Fristen-Überwachung, Mandanten-Dokumenten-Triage) würde ich das rechnen.
+- **Aber: Self-Service + Community-Support, keine SLA.** Das ist für eine Kanzlei mit 40 Mitarbeitern und Berufshaftpflicht ein Problem. Wenn der Rechnungseingang-Flow Freitag 17 Uhr bricht und Montag ist Abgabetermin für Mandant X, brauche ich jemanden am Telefon. „Community-Support" heißt für mich: niemand. Das kollidiert mit Starter als ernsthaftem Einstieg für regulierte Dienstleister.
+- **„Für Macher, die selbst Hand anlegen" — ja und nein.** Ich bin Macher, aber ich lege nicht selbst Hand an Software an. Ich lege Hand an Mandate. Meine DATEV-Betreuung ist extern. Starter liest sich für mich wie „für IT-affine Einzelkämpfer" — das bin ich nicht, und mein Sohn, der IT-affin ist, arbeitet nicht bei mir.
+- **Was fehlt für Steuerberater-Starter:** ein „Starter+Beratung"-Angebot (z.B. Launch-Fee oben, dafür Aufsetzhilfe inklusive, wie bei Core, aber in kleinerem Scope). Oder eine klare Aussage „Für regulierte Berufsstände empfehlen wir direkt Core, weil ...". Aktuelle Positionierung lässt mich unentschieden zwischen Starter (passt zum Budget, nicht zum Support-Bedarf) und Core (passt zum Support, nicht zum Scope — ich brauche keine 5-10 Automationen auf einmal).
+- **§203 + Starter:** ohne explizite Berufsrechts-Aussage ist Starter für mich definitiv nicht der Einstieg. Für Core wäre das Vertrauen größer, weil „Bootstrap durch Fachwerk" heißt: da sitzt jemand mit mir und hört zu, was meine Rahmenbedingungen sind. Bei Starter beuge ich mich über Dokumentation und Onboarding-Videos — und die werden nicht über §203 reden.
+
+**Buche ich ein Erstgespräch?** **Bedingt ja** — aber nicht über den „Proof-of-Value"-Button. Ich würde eine Mail schreiben, konkret, mit zwei Fragen: (1) Wie löst ihr Verschwiegenheit nach §203 StGB technisch und vertraglich? (2) Gibt es einen Weg, klein anzufangen (Starter-Preis), aber mit echter Betreuung (Core-Service-Level) für regulierte Berufe? Wenn die Antwort auf beides substanziell kommt, gehe ich ins Gespräch. Wenn die Antwort „StackIT + DSGVO" ist und „Core ab 15k Launch-Fee", bin ich raus.
+
+**Bewertung:** 7,5/10 (Vergleich: vorher 6/10)
+
+Die Seite ist deutlich besser geworden — das Starter-Tier ist der richtige Zug, das Grünfeld-Szenario ist konkret, die Scope-Logik ist ehrlich. Punkte ziehe ich für: §203 nicht adressiert, DATEV zu schwach gewichtet, Starter-Support-Modell kollidiert mit regulierten Dienstleistern, CTA-Sprache zu Berater-haft.
+
+**Eine konkrete Änderung:** Ein eigener kleiner Block auf der Seite oder eine Zeile im Grünfeld-Szenario: **„Berufsrechtskonform: Verschwiegenheit nach §203 StGB — vertraglich geregelt, technisch abgesichert (Mandanten-Mandantentrennung, deutsche Rechenzentren, Auftragsverarbeitungsvertrag inkl. Unterauftragnehmer-Transparenz, Zugriffsrechte Fachwerk-Personal dokumentiert)."** Ein Satz. An der richtigen Stelle. Wenn der fehlt, bin ich als Steuerberater trotz gutem Preis und gutem Konzept nicht Kunde, sondern Zuschauer.
