@@ -1960,10 +1960,119 @@ footer .fright { display: flex; gap: 1.5rem; }
   .deploy-grid { grid-template-columns: 1fr; }
   .price-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
+  html, body { overflow-x: hidden; }
   .nav-links a:not(.nav-cta):not(.lang):not(.sw) { display: none; }
+}
+
+@media (max-width: 900px) {
+
+  /* Nav */
+  .nav-links { gap: 0.1rem; }
+  .nav-links a, .nav-links .lang { padding: 0.45rem 0.6rem; font-size: 0.68rem; }
+  .lang { padding-left: 0.5rem !important; margin-left: 0.1rem; }
+  nav.top { padding: 0.7rem 3vw; }
+
+  /* Hero */
+  .hero { padding: 6rem 4vw 3rem; gap: 2.5rem; min-height: auto; }
+  h1.hero-head { font-size: clamp(2rem, 9vw, 3rem); }
+  .hero-sub { font-size: 1rem; }
+  .hero-actions { gap: 0.7rem; }
+  .hero-actions .btn { font-size: 0.7rem; padding: 0.85rem 1.1rem; }
+  .hero-corner { display: none; }
   .problem-grid { grid-template-columns: 1fr; }
   .hero-bullets { grid-template-columns: 1fr; }
   .hero-bullet { border-right: none; border-bottom: 1px solid var(--line); }
-  .cta-contact { grid-template-columns: 1fr; gap: 1.2rem; }
+  .hero-bullet:last-child { border-bottom: none; }
+
+  /* Section padding */
+  section.block { padding: 4.5rem 4vw; }
+  .cta { padding: 5rem 4vw 4rem; }
+  .block-head { margin-bottom: 2.5rem; }
+  .block-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .block-lede { font-size: 1rem; }
+
+  /* Pillars / timber */
+  .timber-wrap { gap: 2rem; }
+  .timber { padding: 1.4rem; }
+  .timber-label-sys, .timber-label-sys2 { font-size: 0.55rem; }
+
+  /* Sackgassen table — horizontal scroll */
+  .sg-table { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+  .sg-row { grid-template-columns: 6.5rem repeat(4, 10rem); min-width: 46.5rem; }
+  .sg-head .sg-label, .sg-head .sg-col, .sg-label, .sg-col { padding: 0.9rem 0.9rem; font-size: 0.8rem; }
+
+  /* AI flow — stack vertical, arrows rotate */
+  .ai-flow {
+    grid-template-columns: 1fr;
+    gap: 0.8rem 0;
+    padding: 2rem 1.2rem 1.6rem;
+  }
+  .ai-arrow {
+    width: 2px;
+    height: 1.2rem;
+    margin: 0 auto;
+    align-self: center;
+    justify-self: center;
+  }
+  .ai-arrow::after {
+    right: 50%;
+    top: auto;
+    bottom: -1px;
+    transform: translateX(50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid var(--fg);
+    border-bottom: none;
+  }
+  .ai-step { padding: 0.9rem 0.9rem 0.8rem; }
+  .ai-points { grid-template-columns: 1fr; gap: 1.6rem; }
+
+  /* Katalog vs Zoo */
+  .zoo-compare { grid-template-columns: 1fr; gap: 2.5rem; }
+  .zoo-canvas { height: 240px; }
+  .kc-head, .kc-row { grid-template-columns: 1.4fr 0.9fr 0.55fr 0.7fr; font-size: 0.66rem; padding: 0.5rem 0.7rem; gap: 0.3rem; }
+  .zoo-catalog { height: auto; }
+
+  /* Use cases */
+  .uc-nav { gap: 0; }
+  .uc-tab { padding: 0.8rem 0.9rem; font-size: 0.66rem; }
+  .uc-copy h3 { font-size: 1.5rem; }
+  .uc-copy, .uc-mock { min-width: 0; }
+  .uc-meta { grid-template-columns: 1fr; }
+  .uc-mock { max-width: 100%; }
+  .mk-nord .alert, .mk-stahl .charge { grid-template-columns: auto 1fr; gap: 0.4rem 0.7rem; }
+  .mk-nord .alert .act, .mk-stahl .charge .btn-mini { grid-column: 1 / -1; justify-self: start; }
+  .kpi-row { grid-template-columns: 1fr; gap: 0.4rem; }
+  .mk-nord .kpi-row { grid-template-columns: 1fr; }
+  .mk-stahl .charge { grid-template-columns: auto 1fr; }
+  .mk-med .finding { grid-template-columns: auto 1fr auto; }
+  .mk-med .finding .unit { display: inline; }
+
+  /* Deploy already 1-col via 1100px rule */
+  .deploy-cell { padding: 1.8rem 1.5rem; }
+
+  /* Pricing */
+  .price-card { padding: 2rem 1.6rem; }
+  .price-num { font-size: 1.8rem; }
+
+  /* CTA */
+  .cta h2 { font-size: clamp(2rem, 8vw, 3rem); }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .cta-row .btn { justify-content: center; }
+
+  /* Hero slideshow dots / fullscreen button */
+  .hr-fs { opacity: 1; }
+
+  /* Footer */
+  footer .finner { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  footer .fright { gap: 1rem; flex-wrap: wrap; }
+}
+
+@media (max-width: 500px) {
+  .nav-logo .wordmark { display: none; }
+  section.block { padding: 3.5rem 4vw; }
+  .hero { padding-top: 5.5rem; }
+  .uc-tab { font-size: 0.62rem; padding: 0.7rem 0.7rem; }
+  .uc-tab .num { margin-right: 0.3rem; }
 }
