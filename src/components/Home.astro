@@ -1,6 +1,6 @@
 ---
 import type { HomeT } from '../i18n/home-de';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import flowsThumb from '../assets/hero/flows.jpg';
 import flowsFull from '../assets/hero/flows-full.jpg';
 import flowThumb from '../assets/hero/flow.jpg';
@@ -19,7 +19,7 @@ import daten2Thumb from '../assets/hero/daten-2.jpg';
 import daten2Full from '../assets/hero/daten-2-full.jpg';
 import '../styles/home.css';
 
-const SLIDES = {
+const rawSlides = {
   flows: { thumb: flowsThumb, full: flowsFull },
   flow: { thumb: flowThumb, full: flowFull },
   'freie-analyse-1': { thumb: analyse1Thumb, full: analyse1Full },
@@ -28,7 +28,14 @@ const SLIDES = {
   'outreach-mail': { thumb: outreachThumb, full: outreachFull },
   'daten-1': { thumb: daten1Thumb, full: daten1Full },
   'daten-2': { thumb: daten2Thumb, full: daten2Full },
-} as const;
+};
+
+// Build WebP URLs for the full-size lightbox variant at build time
+const SLIDES: Record<string, { thumb: typeof flowsThumb; fullUrl: string }> = {};
+for (const [id, imgs] of Object.entries(rawSlides)) {
+  const processed = await getImage({ src: imgs.full, format: 'webp', width: 3200, quality: 86 });
+  SLIDES[id] = { thumb: imgs.thumb, fullUrl: processed.src };
+}
 
 interface Props {
   t: HomeT;
@@ -179,7 +186,7 @@ window.TWEAKS = {
               decoding="async"
               format="webp"
               quality={82}
-              data-full={imgs.full.src}
+              data-full={imgs.fullUrl}
               data-caption={s.caption}
             />
           );

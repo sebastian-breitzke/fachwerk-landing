@@ -38,6 +38,19 @@
     schedule();
   }));
 
+  let preloaded = false;
+  function preloadAllFull() {
+    if (preloaded) return;
+    preloaded = true;
+    slides.forEach(s => {
+      const url = s.dataset.full;
+      if (!url) return;
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+    });
+  }
+
   function openLb() {
     clearTimeout(timer);
     lbImg.src = slides[idx].dataset.full || slides[idx].src;
@@ -45,6 +58,7 @@
     lb.classList.add('open');
     lb.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    preloadAllFull();
   }
   function closeLb() {
     lb.classList.remove('open');
