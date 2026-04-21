@@ -22,9 +22,9 @@ const t: HomeT = {
     next: 'Siguiente',
   },
   hero: {
-    eyebrow: 'Software a medida sobre una estructura sólida',
-    meta: '// para la mediana empresa exigente',
-    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> rápido.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> vistoso.<br><em>Fachwerk</em><span class="fw-punct">:</span> construye. mantiene. sostiene.`,
+    eyebrow: 'Software a medida sobre una estructura sólida para la mediana empresa',
+    meta: '',
+    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> rápido.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> vistoso.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>construye. mantiene. sostiene.`,
     sub: `<strong>Fachwerk</strong> construye y mantiene tu <strong>software a medida</strong>. En diálogo con los hacedores de tu empresa — no esperando a IT. En tres años tienes un <strong>catálogo</strong> mantenible, no un <strong>zoo</strong> de 50 apps medio muertas en el portátil de Lisa.`,
     ctaPrimary: 'Iniciar un Proof-of-Value',
     ctaSecondary: 'Ver ejemplos',
