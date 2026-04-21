@@ -313,7 +313,7 @@ const t = {
     core: {
       tier: '§ Core',
       h3: 'Für den fokussierten Mittelständler.',
-      desc: '20–80 Mio. Umsatz · Cloud-by-Fachwerk · 1–3 Automationen · standardisierter Bootstrap.',
+      desc: '20–80 Mio. Umsatz · Cloud-by-Fachwerk · standardisierter Bootstrap.',
       num: '15–40k',
       unit: '€ Launch-Fee',
       sub: '+ 3–8k / Monat Subscription · Ziel-ARR 40–100k',
@@ -327,7 +327,7 @@ const t = {
     platform: {
       tier: '§ Platform',
       h3: 'Für den Konzern-nahen Mittelstand.',
-      desc: '80–200 Mio. Umsatz · On-Premise oder Cloud · 4+ Automationen · Advisory.',
+      desc: '80–200 Mio. Umsatz · On-Premise oder Cloud · 10+ Automationen · Advisory.',
       num: '80–150k',
       unit: '€ Launch-Fee',
       sub: '+ 15–35k / Monat Subscription · Ziel-ARR 200–420k',

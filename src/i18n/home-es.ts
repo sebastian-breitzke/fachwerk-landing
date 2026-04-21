@@ -312,7 +312,7 @@ const t: HomeT = {
     core: {
       tier: '§ Core',
       h3: 'Para la mediana empresa enfocada.',
-      desc: '€20–80 M facturación · Cloud by Fachwerk · 1–3 automatizaciones · bootstrap estandarizado.',
+      desc: '€20–80 M facturación · Cloud by Fachwerk · bootstrap estandarizado.',
       num: '15–40k',
       unit: '€ Launch fee',
       sub: '+ 3–8k / mes suscripción · ARR objetivo 40–100k',
@@ -326,7 +326,7 @@ const t: HomeT = {
     platform: {
       tier: '§ Platform',
       h3: 'Para mediana empresa cercana al grupo.',
-      desc: '€80–200 M facturación · On-premise o cloud · 4+ automatizaciones · advisory.',
+      desc: '€80–200 M facturación · On-premise o cloud · 10+ automatizaciones · advisory.',
       num: '80–150k',
       unit: '€ Launch fee',
       sub: '+ 15–35k / mes suscripción · ARR objetivo 200–420k',

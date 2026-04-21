@@ -312,7 +312,7 @@ const t: HomeT = {
     core: {
       tier: '§ Core',
       h3: 'For the focused mid-market.',
-      desc: '€20–80 M revenue · Cloud by Fachwerk · 1–3 automations · standardized bootstrap.',
+      desc: '€20–80 M revenue · Cloud by Fachwerk · standardized bootstrap.',
       num: '15–40k',
       unit: '€ Launch fee',
       sub: '+ 3–8k / month subscription · target ARR 40–100k',
@@ -326,7 +326,7 @@ const t: HomeT = {
     platform: {
       tier: '§ Platform',
       h3: 'For the enterprise-adjacent mid-market.',
-      desc: '€80–200 M revenue · On-premise or cloud · 4+ automations · advisory.',
+      desc: '€80–200 M revenue · On-premise or cloud · 10+ automations · advisory.',
       num: '80–150k',
       unit: '€ Launch fee',
       sub: '+ 15–35k / month subscription · target ARR 200–420k',
