@@ -1,0 +1,313 @@
+---
+const base = '/share/bdo-b5149cf09c57b337fbc03393/img';
+
+const shots = [
+  { src: `${base}/apps.png`,             title: 'Apps',                          desc: 'Übersicht der verfügbaren Anwendungen' },
+  { src: `${base}/flows.png`,            title: 'Flows',                         desc: 'Übersicht aller angelegten Flows' },
+  { src: `${base}/flow.png`,             title: 'Flow — Detail',                 desc: 'Detailansicht eines einzelnen Flows' },
+  { src: `${base}/auftraege.png`,        title: 'Aufträge',                      desc: 'Auftragsverwaltung und -status' },
+  { src: `${base}/betrieb-1.png`,        title: 'Betrieb — 1',                   desc: 'Betriebsansicht, Teil 1' },
+  { src: `${base}/betrieb-2.png`,        title: 'Betrieb — 2',                   desc: 'Betriebsansicht, Teil 2' },
+  { src: `${base}/daten-1.png`,          title: 'Daten — 1',                     desc: 'Datenbestand, Teil 1' },
+  { src: `${base}/daten-2.png`,          title: 'Daten — 2',                     desc: 'Datenbestand, Teil 2' },
+  { src: `${base}/kundenkontext.png`,    title: 'Kundenkontext',                 desc: 'Kontextansicht je Kunde' },
+  { src: `${base}/analyse-1.png`,        title: 'Freie Analyse — 1',             desc: 'Einstieg in die freie Analyse' },
+  { src: `${base}/analyse-2.png`,        title: 'Freie Analyse — 2',             desc: 'Auswertung der freien Analyse' },
+  { src: `${base}/analyse-output.png`,   title: 'Freie Analyse — Output',        desc: 'Output der freien Analyse' },
+  { src: `${base}/analyse-overview.png`, title: 'Freie Analyse — Übersicht',     desc: 'Output-Übersicht der freien Analyse' },
+  { src: `${base}/analyse-pdf.png`,      title: 'Freie Analyse — PDF',           desc: 'PDF-Export der freien Analyse' },
+  { src: `${base}/analyse-abschluss.png`,title: 'Freie Analyse — Abschluss',     desc: 'Abschluss der freien Analyse' },
+  { src: `${base}/outreach-mail.png`,    title: 'Outreach-Mail',                 desc: 'Versand von Outreach-Mails' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>BDO — Vorschau für Ulf Thiele · Fachwerk</title>
+  <style>
+    @font-face { font-family: 'IBM Plex Sans'; font-weight: 400; src: url(/fonts/ibm-plex-sans-400.ttf) format('truetype'); font-display: swap; }
+    @font-face { font-family: 'IBM Plex Sans'; font-weight: 500; src: url(/fonts/ibm-plex-sans-500.ttf) format('truetype'); font-display: swap; }
+    @font-face { font-family: 'IBM Plex Sans'; font-weight: 600; src: url(/fonts/ibm-plex-sans-600.ttf) format('truetype'); font-display: swap; }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f4f5f7;
+      --fg: #1a2030;
+      --primary: #2a9080;
+      --muted-text: #5a6270;
+      --border: #dfe2e6;
+      --warning: #b8860b;
+      --dark-bg: #1e2430;
+    }
+
+    html { font-size: 17px; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        linear-gradient(rgba(42, 144, 128, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 144, 128, 0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    header {
+      padding: 2rem 6vw 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-weight: 600; font-size: 1.1rem; color: var(--fg);
+      margin-bottom: 0.75rem;
+    }
+    .brand svg { width: 28px; height: 28px; }
+    h1 {
+      font-size: 1.5rem; font-weight: 600; margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+    .subtitle { color: var(--muted-text); font-size: 0.95rem; }
+
+    .disclaimer {
+      margin: 1.5rem 6vw 0;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid var(--warning);
+      background: #fffaf0;
+      color: #4a3a12;
+      font-size: 0.92rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .disclaimer strong { display: block; font-weight: 600; margin-bottom: 0.15rem; color: #3d2f0e; }
+    .disclaimer-icon {
+      flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px;
+      color: var(--warning);
+    }
+
+    main { padding: 2rem 6vw 4rem; }
+
+    .count { color: var(--muted-text); font-size: 0.88rem; margin-bottom: 1rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: zoom-in;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      display: flex; flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px -8px rgba(26, 32, 48, 0.2);
+    }
+    .card-img {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #0f1320;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .card-body {
+      padding: 0.85rem 1rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .card-title { font-weight: 600; font-size: 0.98rem; margin-bottom: 0.15rem; }
+    .card-desc { color: var(--muted-text); font-size: 0.85rem; line-height: 1.45; }
+
+    footer {
+      padding: 1.5rem 6vw;
+      border-top: 1px solid var(--border);
+      color: var(--muted-text);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    /* Lightbox */
+    .lb {
+      position: fixed; inset: 0;
+      background: rgba(15, 19, 32, 0.94);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 1000;
+      padding: 2rem;
+    }
+    .lb.open { display: flex; }
+    .lb-img {
+      max-width: 100%;
+      max-height: calc(100vh - 8rem);
+      object-fit: contain;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      background: #0f1320;
+    }
+    .lb-caption {
+      position: absolute;
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      color: #e8eaee;
+      font-size: 0.95rem;
+      background: rgba(15, 19, 32, 0.8);
+      padding: 0.5rem 1rem;
+      max-width: 80%;
+      text-align: center;
+    }
+    .lb-close, .lb-prev, .lb-next {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: background 0.15s;
+    }
+    .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.18); }
+    .lb-close { top: 1.25rem; right: 1.25rem; }
+    .lb-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lb-counter {
+      position: absolute;
+      top: 1.5rem; left: 1.5rem;
+      color: #c0c5cf; font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 1.5rem 5vw 1rem; }
+      .disclaimer { margin: 1rem 5vw 0; }
+      main { padding: 1.5rem 5vw 3rem; }
+      .grid { grid-template-columns: 1fr; gap: 1rem; }
+      .lb { padding: 0.75rem; }
+      .lb-prev { left: 0.5rem; }
+      .lb-next { right: 0.5rem; }
+      .lb-caption { font-size: 0.82rem; bottom: 0.75rem; max-width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://fachwerk.tech" class="brand" style="text-decoration:none;color:inherit;">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <rect width="128" height="128" fill="#1e2430"/>
+        <defs><clipPath id="nav-frame"><rect x="14" y="14" width="100" height="100"/></clipPath></defs>
+        <g stroke="#5eead4" stroke-width="4" stroke-linecap="square" fill="none" clip-path="url(#nav-frame)">
+          <rect x="16" y="16" width="96" height="96"/>
+          <line x1="16" y1="64" x2="112" y2="64"/>
+          <line x1="64" y1="16" x2="64" y2="112"/>
+          <line x1="16" y1="64" x2="64" y2="16"/>
+          <line x1="64" y1="16" x2="112" y2="64"/>
+          <line x1="16" y1="64" x2="64" y2="112"/>
+          <line x1="64" y1="112" x2="112" y2="64"/>
+        </g>
+      </svg>
+      <span>Fachwerk</span>
+    </a>
+    <h1>BDO — Vorschau</h1>
+    <div class="subtitle">Persönlich für Ulf Thiele · {shots.length} Screenshots</div>
+  </header>
+
+  <div class="disclaimer">
+    <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 9v4M12 17h.01"/>
+      <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+    </svg>
+    <div>
+      <strong>Vertraulich · Nur für Ulf Thiele freigegeben</strong>
+      Diese Seite und die darauf gezeigten Inhalte sind ausschließlich zur persönlichen Einsicht durch Ulf Thiele bestimmt. Eine Weitergabe des Links oder der Inhalte bitte nur nach vorheriger Absprache oder im Rahmen der vereinbarten Verwendung.
+    </div>
+  </div>
+
+  <main>
+    <div class="count">{shots.length} Screenshots · Klick öffnet Vollbildansicht</div>
+    <div class="grid" id="grid">
+      {shots.map((s, i) => (
+        <figure class="card" data-idx={i} data-src={s.src} data-title={s.title} data-desc={s.desc}>
+          <div class="card-img">
+            <img src={s.src} alt={s.title} loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="card-body">
+            <div class="card-title">{s.title}</div>
+            <div class="card-desc">{s.desc}</div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </main>
+
+  <footer>
+    Fachwerk · Vertraulich · Bitte nicht weiterleiten ohne Rücksprache
+  </footer>
+
+  <div class="lb" id="lb" aria-hidden="true" role="dialog">
+    <div class="lb-counter" id="lb-counter"></div>
+    <button class="lb-close" id="lb-close" aria-label="Schließen">×</button>
+    <button class="lb-prev" id="lb-prev" aria-label="Zurück">‹</button>
+    <img class="lb-img" id="lb-img" alt="" />
+    <button class="lb-next" id="lb-next" aria-label="Weiter">›</button>
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
+
+  <script is:inline>
+    (function() {
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const lb = document.getElementById('lb');
+      const lbImg = document.getElementById('lb-img');
+      const lbCaption = document.getElementById('lb-caption');
+      const lbCounter = document.getElementById('lb-counter');
+      let idx = 0;
+
+      function open(i) {
+        idx = i;
+        const c = cards[idx];
+        lbImg.src = c.dataset.src;
+        lbImg.alt = c.dataset.title;
+        lbCaption.textContent = c.dataset.title + ' — ' + c.dataset.desc;
+        lbCounter.textContent = (idx + 1) + ' / ' + cards.length;
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+      function step(dir) {
+        open((idx + dir + cards.length) % cards.length);
+      }
+
+      cards.forEach((c, i) => c.addEventListener('click', () => open(i)));
+      document.getElementById('lb-close').addEventListener('click', close);
+      document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); step(-1); });
+      document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); step(1); });
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+      });
+    })();
+  </script>
+</body>
+</html>
