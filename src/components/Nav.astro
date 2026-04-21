@@ -8,13 +8,17 @@ const { currentPage, locale } = Astro.props;
 
 const links = locale === 'de'
   ? [
-      { href: '/de/', label: 'Home', page: 'home' },
+      { href: '/de/', label: 'Start', page: 'home' },
+      { href: '/de/so-funktionierts/', label: "So funktioniert's", page: 'so-funktionierts' },
       { href: '/de/beispiele/', label: 'Beispiele', page: 'beispiele' },
+      { href: '/de/preise/', label: 'Preise', page: 'preise' },
       { href: '/de/kontakt/', label: 'Kontakt', page: 'kontakt' },
     ]
   : [
-      { href: '/en/', label: 'Home', page: 'home' },
+      { href: '/en/', label: 'Start', page: 'home' },
+      { href: '/en/how-it-works/', label: 'How it works', page: 'how-it-works' },
       { href: '/en/examples/', label: 'Examples', page: 'examples' },
+      { href: '/en/pricing/', label: 'Pricing', page: 'pricing' },
       { href: '/en/contact/', label: 'Contact', page: 'contact' },
     ];
 
@@ -22,8 +26,20 @@ const langSwitchLabel = locale === 'de' ? 'EN' : 'DE';
 
 // Build equivalent path in opposite locale
 const pathMap: Record<string, Record<string, string>> = {
-  de: { home: '/en/', beispiele: '/en/examples/', kontakt: '/en/contact/' },
-  en: { home: '/de/', examples: '/de/beispiele/', contact: '/de/kontakt/' },
+  de: {
+    home: '/en/',
+    'so-funktionierts': '/en/how-it-works/',
+    beispiele: '/en/examples/',
+    preise: '/en/pricing/',
+    kontakt: '/en/contact/',
+  },
+  en: {
+    home: '/de/',
+    'how-it-works': '/de/so-funktionierts/',
+    examples: '/de/beispiele/',
+    pricing: '/de/preise/',
+    contact: '/de/kontakt/',
+  },
 };
 const langSwitchHref = pathMap[locale]?.[currentPage] ?? (locale === 'de' ? '/en/' : '/de/');
 const logoHref = locale === 'de' ? '/de/' : '/en/';

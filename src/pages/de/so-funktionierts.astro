@@ -1,0 +1,346 @@
+---
+import Base from '../../layouts/Base.astro';
+import MiniCta from '../../components/MiniCta.astro';
+---
+<Base title="Fachwerk — So funktioniert's" currentPage="so-funktionierts">
+
+<!-- HERO -->
+<section class="page-hero">
+  <span class="section-label">// So funktioniert's</span>
+  <h1 class="page-headline">Rohbau.<br>Nicht Framework.<br>Nicht Plattform.</h1>
+  <p class="page-sub">Fachwerk ist die tragende Struktur, in der eure Apps leben. Baut sich selbst, wartet sich selbst, heilt sich selbst — und lässt eurem Fachbereich den Raum, den sie brauchen, um den Innenausbau selbst zu machen.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- PILLARS -->
+<section class="pillars reveal" id="pillars">
+  <span class="section-label">// Die drei Prinzipien</span>
+
+  <div class="pillar">
+    <h3 class="pillar-title">Baut sich selbst.<br>Wartet sich selbst.<br>Heilt sich selbst.</h3>
+    <p class="pillar-text">Fachwerk versteht dein gesamtes System — jede Schnittstelle, jeden Prozess, jede Abhängigkeit. Das Wissen, das sonst bei einer Person im ganzen Konzern steckt. Ändert sich ein Vorsystem, passt Fachwerk sich an. Bricht ein Lauf, diagnostiziert Fachwerk selbst.</p>
+  </div>
+
+  <div class="pillar">
+    <h3 class="pillar-title">Gebaut für Business,<br>nicht für Entwickler.</h3>
+    <p class="pillar-text">Die Leute, die am besten verstehen was gebraucht wird, können es selbst beschreiben. Fachwerk analysiert, baut und liefert. Kein Code schreiben. Kein technisches Vorwissen nötig. Kein Ticket an die IT.</p>
+  </div>
+
+  <div class="pillar">
+    <h3 class="pillar-title">Code wo Code reicht.<br>AI wo AI zählt.</h3>
+    <p class="pillar-text">Der Grossteil dessen, was Fachwerk baut, ist zuverlässiger, harter Code. Schnell, stabil, berechenbar. AI kommt gezielt dort zum Einsatz, wo sie echten Mehrwert bringt — als Eskalationsstufe, nicht als Hammer auf alles.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROHBAU vs INNENAUSBAU -->
+<section class="section reveal">
+  <span class="section-label">// Rohbau vs. Innenausbau</span>
+  <h2 class="section-headline">Zwei Aufgaben.<br>Klare Trennung.</h2>
+
+  <div class="split-grid">
+    <div class="split-col">
+      <div class="split-header">Rohbau — Fachwerk</div>
+      <ul class="split-list">
+        <li>Auth, Rollen, Rechte</li>
+        <li>Datenhaltung mit Schema</li>
+        <li>Integration zu Vorsystemen</li>
+        <li>Audit-Trail</li>
+        <li>Secrets-Management</li>
+        <li>Backup & Wiederherstellung</li>
+        <li>Observability & Alerting</li>
+        <li>Deployment & Betrieb</li>
+      </ul>
+    </div>
+    <div class="split-col">
+      <div class="split-header">Innenausbau — Fachbereich</div>
+      <ul class="split-list">
+        <li>Das konkrete Geschäftsproblem</li>
+        <li>Workflow-Logik</li>
+        <li>UI für den Anwender</li>
+        <li>Regeln, die sich ständig ändern</li>
+        <li>Individuelle Reports</li>
+        <li>Fachliche Validierungen</li>
+        <li>Das, was euer Unternehmen einzigartig macht</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top: 3rem;">Die Fachabteilung muss kein Enterprise-Architekt werden, um Software zu bauen. Und die IT muss nicht jeder App hinterherlaufen, damit sie dem Audit standhält.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- RUNS WHERE YOU NEED IT -->
+<section class="no-list reveal">
+  <span class="section-label">// Läuft wo du es brauchst</span>
+  <p class="section-text" style="margin-bottom: 2.5rem;">Deine Systeme stehen nicht in der Cloud? Kein Problem. Fachwerk läuft lokal, in der Cloud, oder beides — und verbindet alles miteinander. Keine Migration nötig. Kein Vendor-Lock-in.</p>
+  <div class="no-list-grid">
+    <div class="no-list-item">On-Premise.</div>
+    <div class="no-list-item">Cloud.</div>
+    <div class="no-list-item">Hybrid.</div>
+    <div class="no-list-item">Hinter der Firewall.</div>
+    <div class="no-list-item">Ohne Migration.</div>
+    <div class="no-list-item">Ohne Vendor-Lock-in.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NO-LIST -->
+<section class="no-list reveal">
+  <span class="section-label">// Was du nicht brauchst</span>
+  <div class="no-list-grid">
+    <div class="no-list-item">Kein Budget.</div>
+    <div class="no-list-item">Kein Ping-Pong.</div>
+    <div class="no-list-item">Kein Development-Team.</div>
+    <div class="no-list-item">Kein Setup-Projekt.</div>
+    <div class="no-list-item">Keinen Dienstleister.</div>
+    <div class="no-list-item">Keinen Code.</div>
+  </div>
+</section>
+
+<!-- MINI CTA -->
+<MiniCta
+  headline="Klingt interessant?<br>Lass uns reden."
+  buttonText="Kontakt aufnehmen"
+  href="/de/kontakt/"
+/>
+
+<style>
+  /* ═══════════════════════════════════════════════
+     PAGE HERO
+     ═══════════════════════════════════════════════ */
+  .page-hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 8vw 4rem;
+  }
+
+  .page-headline {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 2rem;
+  }
+
+  .page-sub {
+    font-size: 1.1rem;
+    color: var(--muted-text);
+    max-width: 40rem;
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════════════
+     DIVIDER
+     ═══════════════════════════════════════════════ */
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--primary);
+    margin: 0 8vw;
+  }
+
+  /* ═══════════════════════════════════════════════
+     SECTIONS
+     ═══════════════════════════════════════════════ */
+  .section {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 8vw;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 2rem;
+  }
+
+  .section-headline {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    margin-bottom: 2.5rem;
+    color: var(--fg);
+  }
+
+  .section-text {
+    font-size: 1.05rem;
+    color: var(--muted-text);
+    max-width: 44rem;
+    line-height: 1.8;
+  }
+
+  /* ═══════════════════════════════════════════════
+     PILLARS
+     ═══════════════════════════════════════════════ */
+  .pillars {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 8vw;
+    gap: 4rem;
+  }
+
+  .pillar {
+    max-width: 48rem;
+  }
+
+  .pillar-title {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-text {
+    font-size: 1rem;
+    color: var(--muted-text);
+    line-height: 1.8;
+    max-width: 36rem;
+  }
+
+  /* ═══════════════════════════════════════════════
+     SPLIT GRID (Rohbau vs Innenausbau)
+     ═══════════════════════════════════════════════ */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 1rem;
+    max-width: 60rem;
+  }
+
+  .split-col {
+    border: 2px solid var(--primary);
+    padding: 2rem;
+    background: rgba(42, 144, 128, 0.04);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .split-header {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--primary);
+  }
+
+  .split-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .split-list li {
+    font-size: 0.95rem;
+    color: var(--fg);
+    line-height: 1.5;
+    padding: 0.5rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .split-list li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  /* ═══════════════════════════════════════════════
+     NO-LIST
+     ═══════════════════════════════════════════════ */
+  .no-list {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 8vw;
+  }
+
+  .no-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 3rem;
+    margin-top: 2.5rem;
+    max-width: 52rem;
+  }
+
+  .no-list-item {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--fg);
+    padding-left: 1rem;
+    border-left: 2px solid var(--primary);
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════ */
+  @media (max-width: 900px) {
+    .page-hero {
+      padding: 7rem 6vw 3rem;
+    }
+    .section,
+    .pillars,
+    .no-list {
+      padding: 5rem 6vw;
+    }
+    .split-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .no-list-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .page-headline {
+      font-size: clamp(1.8rem, 10vw, 3rem);
+    }
+    .section-headline {
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+    }
+    .no-list-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .split-col {
+      padding: 1.5rem;
+    }
+  }
+</style>
+</Base>
