@@ -252,6 +252,7 @@ h1.hero-head .strike {
   display: inline-block;
   color: var(--muted-2);
 }
+h1.hero-head .strike-punct { color: var(--muted-2); }
 h1.hero-head .strike::after {
   content: '';
   position: absolute;
