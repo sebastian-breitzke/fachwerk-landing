@@ -29,11 +29,14 @@ const t: HomeT = {
     ctaPrimary: 'Start a Proof-of-Value',
     ctaSecondary: 'See examples',
     slides: [
-      { id: 'apps', alt: 'Fachwerk Catalog — Apps', caption: 'Catalog · Apps' },
-      { id: 'flow', alt: 'Fachwerk Flow Editor', caption: 'Catalog · Flow' },
-      { id: 'betrieb-ubersicht', alt: 'Fachwerk Operations Overview', caption: 'Operations · Overview' },
-      { id: 'daten', alt: 'Fachwerk Data', caption: 'Storage · Data' },
+      { id: 'flows', alt: 'Fachwerk Catalog — Flows', caption: 'Catalog · Flows' },
+      { id: 'flow', alt: 'Fachwerk example flow', caption: 'Catalog · Flow detail' },
       { id: 'freie-analyse-1', alt: 'Fachwerk Free Analysis', caption: 'Knowledge · Free Analysis' },
+      { id: 'freie-analyse-2', alt: 'Fachwerk research output', caption: 'Knowledge · Research output' },
+      { id: 'apps', alt: 'Fachwerk Catalog — Apps', caption: 'Catalog · Apps' },
+      { id: 'outreach-mail', alt: 'Fachwerk app example: Outreach Mail', caption: 'App · Outreach Mail' },
+      { id: 'daten-1', alt: 'Fachwerk Data — Overview', caption: 'Storage · Data overview' },
+      { id: 'daten-2', alt: 'Fachwerk Data — Detail', caption: 'Storage · Data detail' },
     ],
     bullets: [
       { title: 'Shell, not kit', desc: 'Fachwerk sets the structure' },

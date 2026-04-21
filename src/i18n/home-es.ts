@@ -29,11 +29,14 @@ const t: HomeT = {
     ctaPrimary: 'Iniciar un Proof-of-Value',
     ctaSecondary: 'Ver ejemplos',
     slides: [
+      { id: 'flows', alt: 'Fachwerk Catálogo — Flujos', caption: 'Catálogo · Flujos' },
+      { id: 'flow', alt: 'Fachwerk flujo de ejemplo', caption: 'Catálogo · Detalle de flujo' },
+      { id: 'freie-analyse-1', alt: 'Fachwerk Análisis libre', caption: 'Conocimiento · Análisis libre' },
+      { id: 'freie-analyse-2', alt: 'Fachwerk resultado de investigación', caption: 'Conocimiento · Resultado' },
       { id: 'apps', alt: 'Fachwerk Catálogo — Apps', caption: 'Catálogo · Apps' },
-      { id: 'flow', alt: 'Fachwerk Editor de flujos', caption: 'Catálogo · Flow' },
-      { id: 'betrieb-ubersicht', alt: 'Fachwerk Vista de operación', caption: 'Operación · Vista' },
-      { id: 'daten', alt: 'Fachwerk Datos', caption: 'Almacén · Datos' },
-      { id: 'freie-analyse-1', alt: 'Fachwerk Análisis libre', caption: 'Conocimiento · Análisis' },
+      { id: 'outreach-mail', alt: 'Fachwerk app de ejemplo: Outreach Mail', caption: 'App · Outreach Mail' },
+      { id: 'daten-1', alt: 'Fachwerk Datos — Vista', caption: 'Almacén · Vista de datos' },
+      { id: 'daten-2', alt: 'Fachwerk Datos — Detalle', caption: 'Almacén · Detalle de datos' },
     ],
     bullets: [
       { title: 'Estructura, no módulos', desc: 'Fachwerk define la estática' },

@@ -30,11 +30,14 @@ const t = {
     ctaPrimary: 'Proof-of-Value starten',
     ctaSecondary: 'Beispiele ansehen',
     slides: [
-      { id: 'apps', alt: 'Fachwerk Katalog — Apps', caption: 'Katalog · Apps' },
-      { id: 'flow', alt: 'Fachwerk Flow Editor', caption: 'Katalog · Flow' },
-      { id: 'betrieb-ubersicht', alt: 'Fachwerk Betrieb Übersicht', caption: 'Betrieb · Übersicht' },
-      { id: 'daten', alt: 'Fachwerk Daten', caption: 'Speicher · Daten' },
+      { id: 'flows', alt: 'Fachwerk Katalog — Flows', caption: 'Katalog · Flows' },
+      { id: 'flow', alt: 'Fachwerk Beispiel-Flow', caption: 'Katalog · Flow-Detail' },
       { id: 'freie-analyse-1', alt: 'Fachwerk Freie Analyse', caption: 'Wissen · Freie Analyse' },
+      { id: 'freie-analyse-2', alt: 'Fachwerk Research-Output', caption: 'Wissen · Research-Output' },
+      { id: 'apps', alt: 'Fachwerk Katalog — Apps', caption: 'Katalog · Apps' },
+      { id: 'outreach-mail', alt: 'Fachwerk App-Beispiel: Outreach Mail', caption: 'App · Outreach Mail' },
+      { id: 'daten-1', alt: 'Fachwerk Daten — Übersicht', caption: 'Speicher · Daten-Übersicht' },
+      { id: 'daten-2', alt: 'Fachwerk Daten — Detail', caption: 'Speicher · Daten-Detail' },
     ],
     bullets: [
       { title: 'Rohbau statt Baukasten', desc: 'Fachwerk gibt die Statik vor' },
