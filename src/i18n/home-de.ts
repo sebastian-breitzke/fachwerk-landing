@@ -25,7 +25,7 @@ const t = {
   hero: {
     eyebrow: 'Maßgeschneiderte Software auf solidem Rohbau für den Mittelstand',
     meta: '',
-    headline: `<span class="strike">Vibe Coding</span><span class="strike-punct">:</span> schnell.<br><span class="strike">Low-Code</span><span class="strike-punct">:</span> bunt.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>baut. wartet. trägt.`,
+    headline: `<span class="strike">Vibe Coding</span><span class="strike-punct">:</span> schnell.<br><span class="strike">Low-Code</span><span class="strike-punct">:</span> eng.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>baut. wartet. trägt.`,
     sub: `<strong>Fachwerk</strong> baut und wartet deine <strong>maßgeschneiderte Software</strong>. Im Dialog mit den Machern in deiner Firma — nicht im Warten auf die IT. In drei Jahren hast du einen wartbaren <strong>Katalog</strong>, keinen <strong>Zoo</strong> aus 50 halbtoten Apps auf Lisas Laptop.`,
     ctaPrimary: 'Proof-of-Value starten',
     ctaSecondary: 'Beispiele ansehen',

@@ -24,7 +24,7 @@ const t: HomeT = {
   hero: {
     eyebrow: 'Custom software on a solid shell for the mid-market',
     meta: '',
-    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> fast.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> colorful.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>builds. maintains. holds.`,
+    headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> fast.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> narrow.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>builds. maintains. holds.`,
     sub: `<strong>Fachwerk</strong> builds and maintains your <strong>custom software</strong>. In dialog with the makers in your company — not waiting on IT. In three years you have a maintainable <strong>catalog</strong>, not a <strong>zoo</strong> of 50 half-dead apps on Lisa's laptop.`,
     ctaPrimary: 'Start a Proof-of-Value',
     ctaSecondary: 'See examples',
