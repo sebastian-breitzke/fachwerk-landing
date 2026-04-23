@@ -68,14 +68,14 @@ const t = {
     eyebrow: '02 — Die Plattform',
     index: '// fünf Säulen, eine Instanz',
     title: `Fachwerk ist ein <em>Tragwerk</em>. Nicht eine Liste von Tools.`,
-    lede: `Werkstatt, Katalog, Betrieb, Speicher, Wissen — alle fünf teilen sich einen Datenraum und einen Dialog-Kontext. <strong>Jeder Flow erklärt sich selbst</strong>, jede Änderung ist in einer Konversation belegt, jedes Learning hat eine Herkunft.`,
+    lede: `Werkstatt, Katalog, Betrieb, Speicher, Wissen — alle fünf teilen sich einen Datenraum und einen Dialog-Kontext. <strong>Jeder Flow erklärt sich selbst</strong>, jede Änderung ist in einer Konversation belegt, jedes Learning weiß, aus welchem Ticket es kommt und zu welchen Daten es gehört.`,
     timberSys1: '// fachwerk.svg',
     timberSys2: '5 knoten · 10 balken',
     pillarLabels: { werkstatt: 'Werkstatt', katalog: 'Katalog', speicher: 'Speicher', wissen: 'Wissen' },
     pillars: [
       { p: 2, num: '§ 01', name: 'Betrieb', tag: '// Ausführung mit Audit-Trail', body: 'Ausführung in kontrollierter Bahn: Tickets, Runs, Zustellungen — alles auditierbar. Wiederholen, zurücksetzen, prüfen ohne Kopfkino. Nichts verschwindet.', active: true },
       { p: 1, num: '§ 02', name: 'Katalog', tag: '// alles was läuft — mit Owner und Version', body: 'Jeder Flow, jede Oberfläche, jeder AI-Schritt liegt versioniert im Katalog — mit Owner, Release-Historie und Health-Status. Ein Ort, an dem alles sichtbar und wartbar bleibt. Kein Insel-Zoo.' },
-      { p: 0, num: '§ 03', name: 'Werkstatt', tag: '// hier wird gebaut — im Dialog', body: 'Hier wird gebaut — im Dialog. Fachanwender beschreiben, Fachwerk baut Flows, UIs und AI-Schritte in den Katalog. Dazu laufen automatische wie AI-gestützte Diagnosen: Fachwerk erklärt sich selbst, prüft Daten, findet Probleme in Abläufen.' },
+      { p: 0, num: '§ 03', name: 'Werkstatt', tag: '// hier wird gebaut — im Dialog', body: 'Fachanwender beschreiben, Fachwerk baut. Flows, UIs und AI-Schritte landen versioniert im Katalog. Dazu laufen automatische wie AI-gestützte Diagnosen: Fachwerk erklärt sich selbst, prüft Daten, findet Probleme in Abläufen.' },
       { p: 3, num: '§ 04', name: 'Speicher', tag: '// eine Wahrheit über alle Systeme', body: 'Die fachlichen Effekte der Ausführung — über SAP, WMS, Shop, CRM hinweg zusammengeführt und historisiert. Eine einzige Wahrheit darüber, was wann an deinem Geschäft passiert ist.' },
       { p: 4, num: '§ 05', name: 'Wissen', tag: '// einmal gelöst, wiederverwendbar', body: 'Strukturierte Ablage der Learnings aus Runs, Tickets und Reviews — als Datenbasis für AI-gestützte Flows und Resolutionen. Support-Fälle, Maschinen-Probleme, FAQs: einmal gelöst, bei der nächsten Instanz wiederverwendbar.' },
     ],
@@ -88,7 +88,7 @@ const t = {
     dimension: 'Dimension',
     cols: { lowcode: 'Low-Code', vibe: 'Vibe Coding', dl: 'Dienstleister', fw: 'Fachwerk' },
     rows: [
-      { label: 'Tempo', lowcode: 'Mittel — bis zum 81. Fall', vibe: 'Sehr schnell, einmalig', dl: 'Langsam, Ticket-getrieben', fw: 'Schnell <em>und</em> nachhaltig' },
+      { label: 'Tempo', lowcode: 'Schnell — bis zum Sonderfall', vibe: 'Sehr schnell, einmalig', dl: 'Langsam, Ticket-getrieben', fw: 'Schnell <em>und</em> nachhaltig' },
       { label: 'Wartbarkeit', lowcode: 'Klickkasten kollabiert', vibe: 'Keine — jede App eine Insel', dl: 'Gut, aber nicht bei dir', fw: 'Rohbau gibt die Statik vor' },
       { label: 'Governance', lowcode: 'Proprietärer Katalog', vibe: 'Keiner weiß, was läuft', dl: 'Extern, intransparent', fw: 'Zentraler Katalog, Owner, Releases' },
       { label: 'Sicherheit', lowcode: 'Vendor-Blackbox', vibe: `Lisas Laptop, Max' API-Key`, dl: 'Projektvertrag regelt', fw: 'Einheitlicher Rahmen, Audit-Trail' },
@@ -98,7 +98,7 @@ const t = {
   },
   ai: {
     eyebrow: '04 — AI + Code',
-    index: '// das beste aus beiden welten',
+    index: '// code wo es zählt, ai wo sie hilft',
     title: `AI wo sie hilft. <em>Code</em> wo es zählt.`,
     lede: `Fachwerk setzt AI nicht als Zaubertrick über das ganze System, sondern <strong>gezielt pro Schritt</strong>. In jedem Ablauf kannst du AI-Schritte und klassische Integrationen frei koppeln: Klassifizieren per LLM, Buchen per SAP-Call, Prüfen per Regel, Mailen per Template. Determinismus wo nötig, Intelligenz wo sie Mehrwert bringt.`,
     flowTitle: 'Flow · Eingangsrechnung prüfen',
@@ -115,7 +115,7 @@ const t = {
     },
     points: [
       { num: '01', title: 'AI baut.', body: 'Aus dem Dialog mit Fachanwendern entsteht echter, lesbarer Code im Katalog — kein Prompt zur Laufzeit, keine Halluzination im heißen Pfad.' },
-      { num: '02', title: 'AI arbeitet mit.', body: 'In jedem Flow sind AI-Schritte und klassische Integrationen frei koppelbar. Pro Schritt entscheidest du: deterministisch oder intelligent. Das Beste aus beiden Welten.' },
+      { num: '02', title: 'AI arbeitet mit.', body: 'In jedem Flow sind AI-Schritte und klassische Integrationen frei koppelbar. Pro Schritt entscheidest du: deterministisch oder intelligent. Du wählst — nicht das Tool.' },
       { num: '03', title: 'AI bleibt auditierbar.', body: 'Jeder AI-Schritt hat definierte Ein- und Ausgaben, Logs, Modell-Versionen, Ergebnis-Historie. Kein Blackbox-Zauber. Governance auf demselben Niveau wie Code.' },
     ],
   },
@@ -285,7 +285,7 @@ const t = {
       {
         title: 'On-Premise',
         body: `Bei dir auf dem Metall. Bis runter zu SPS, Modbus/TCP, lokalen Datenbanken. Kein Byte verlässt dein Netz, wenn du das nicht willst.`,
-        tags: ['SPS', 'Modbus', 'Air-Gapped'],
+        tags: ['SPS', 'Modbus', 'Air-Gap'],
       },
       {
         title: 'Hybrid',
@@ -305,7 +305,7 @@ const t = {
       desc: 'Self-Service · 1–3 Automationen · Cloud-by-Fachwerk.',
       num: '3–8k',
       unit: '€ Launch-Fee',
-      sub: '+ 0,5–1,5k / Monat · typisch 9–25k Jahresbudget',
+      sub: '+ 0,5–1,5k / Monat · Launch + ~6–18k pro Jahr',
       list: [
         'Plattform-Zugang, Werkstatt-Dialog, Katalog',
         'Dokumentation und Onboarding-Videos',
@@ -319,7 +319,7 @@ const t = {
       desc: 'Cloud-Standard · 5–10 Automationen · Aufsetzhilfe inklusive.',
       num: '15–40k',
       unit: '€ Launch-Fee',
-      sub: '+ 3–8k / Monat · typisch 40–100k Jahresbudget · häufig ab ~20 Mio Umsatz',
+      sub: '+ 3–8k / Monat · Launch + ~36–96k pro Jahr · häufig ab ~20 Mio Umsatz',
       list: [
         'Bootstrap durch Fachwerk in wenigen Tagen Beratung',
         'Fünf Säulen produktiv, Betrieb Self-Service',
@@ -333,7 +333,7 @@ const t = {
       desc: 'On-Premise / Multi-Site möglich · 10+ Automationen · Advisory.',
       num: '80–150k',
       unit: '€ Launch-Fee',
-      sub: '+ 15–35k / Monat · typisch 200–420k Jahresbudget · häufig ab ~80 Mio Umsatz',
+      sub: '+ 15–35k / Monat · Launch + ~180–420k pro Jahr · häufig ab ~80 Mio Umsatz',
       list: [
         'Multi-Site · On-Premise · SPS/Modbus-Anbindung',
         '5+ angebundene Systeme, Custom-Scope',
@@ -347,7 +347,7 @@ const t = {
   cta: {
     eyebrow: '09 — Klingt interessant?',
     title: `Dann lass uns über dein <em>teuerstes 1000-Prozesse-Problem</em> reden.`,
-    body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem Schmerz — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
+    body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem teuersten Engpass — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
     emailLabel: 'E-Mail an Sebastian',
     phoneLabel: '+49 151 41928572',
     linkedinLabel: 'LinkedIn',
