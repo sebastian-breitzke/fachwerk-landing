@@ -165,7 +165,7 @@ const t = {
     eyebrow: '06 — Vier Szenarien',
     index: '// flow + actionable UI',
     title: `Was Fachwerk konkret baut. <em>Custom pro Kunde.</em>`,
-    lede: `Vier fiktive Szenarien — <strong>keine Referenzkunden</strong>, sondern Illustrationen, damit du dir vorstellen kannst, wie Fachwerk in deiner Firma aussieht. Jedes Szenario: ein Flow plus eine Oberfläche, die <strong>arbeitet statt anzuzeigt</strong>. Keine Standard-Dashboards. Kein Power-BI-Zoo.`,
+    lede: `Vier fiktive Szenarien — <strong>keine Referenzkunden</strong>, sondern Illustrationen, damit du dir vorstellen kannst, wie Fachwerk in deiner Firma aussieht. Jedes Szenario: ein Flow plus eine Oberfläche, die <strong>arbeitet statt anzuzeigen</strong>. Keine Standard-Dashboards. Kein Power-BI-Zoo.`,
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-Commerce · NordWare' },
       { uc: 'stahlberg', num: '02', label: 'Fertigung · StahlbergWerke' },
@@ -188,7 +188,7 @@ const t = {
         branch: '// Fertigung · StahlbergWerke',
         title: 'Temperaturabweichung sperrt die Charge.',
         body: [
-          ['Fachwerk läuft on-premise neben SPS und Modbus/TCP. Bei einer Temperaturabweichung sperrt der Flow die Charge ', { em: 'direkt im ERP' }, '. AI erklärt das Muster im Kontext — z.\u00A0B. „Abweichung tritt seit Werkzeugwechsel in KW 12 auf“'],
+          ['Fachwerk läuft on-premise neben SPS und Modbus/TCP. Bei einer Temperaturabweichung sperrt der Flow die Charge ', { em: 'direkt im ERP' }, '. AI erklärt das Muster im Kontext — z.\u00A0B. „Abweichung tritt seit Werkzeugwechsel in KW 12 auf“.'],
           ['Am Band steht ein Tablet mit klaren Aktionen: ', { strong: 'Charge freigeben · Wartung verschieben · QS eskalieren.' }, ' Kein Papier, keine Excel-Liste am Schichtende.'],
         ],
         meta: [['Flow', 'Sensor → Sperre → Kontext'], ['Systeme', 'SPS · SAP · QS-System'], ['Rolle', 'Schichtleiter · QS'], ['Deploy', 'On-Premise · Air-Gap']],
