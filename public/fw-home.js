@@ -307,6 +307,19 @@
       copy.appendChild(stackBadge);
     }
     uc.body.forEach(parts => copy.appendChild(renderPara(parts)));
+    if (uc.voice) {
+      const voice = el('blockquote', { class: 'uc-voice' }, [
+        el('p', null, uc.voice.quote),
+        el('footer', null, '— ' + uc.voice.role + ', ' + uc.voice.segment),
+      ]);
+      copy.appendChild(voice);
+    }
+    slide.appendChild(copy);
+
+    // Right column: mockup + meta as one visual card
+    const aside = el('div', { class: 'uc-aside' });
+    const mockFn = MOCKS[uc.mock];
+    if (mockFn) aside.appendChild(mockFn());
     const dl = el('dl', { class: 'uc-meta' });
     uc.meta.forEach(m => {
       dl.appendChild(el('div', null, [
@@ -314,21 +327,8 @@
         el('dd', null, m[1]),
       ]));
     });
-    copy.appendChild(dl);
-    if (uc.voice) {
-      const voice = el('blockquote', { class: 'uc-voice' }, [
-        el('span', { class: 'uc-voice-tag' }, FW.voiceTag || 'fiktive Stimme'),
-        el('p', null, uc.voice.quote),
-        el('footer', null, [
-          el('span', { class: 'uc-voice-role' }, uc.voice.role),
-          ' · ' + uc.voice.segment,
-        ]),
-      ]);
-      copy.appendChild(voice);
-    }
-    slide.appendChild(copy);
-    const mockFn = MOCKS[uc.mock];
-    if (mockFn) slide.appendChild(el('div', null, mockFn()));
+    aside.appendChild(dl);
+    slide.appendChild(aside);
     return slide;
   }
 

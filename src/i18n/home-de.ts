@@ -459,15 +459,20 @@ const t = {
       ],
     },
     platform: {
-      title: `Phoenix · Postgres · OTP. <em>Eine Instanz</em>, fünf Säulen.`,
-      lede: `Backend in Elixir/OTP, UIs in React/Vite. Eine Instanz, dein Repo.`,
-      detail: `<p><strong>Werkstatt</strong> erzeugt zwei Schichten aus Dialog: Elixir-Module für Flows und Backend, React 19 + TanStack Router/Query + Tailwind für die UIs — gebaut mit Vite, type-safe, in deinem Repo. Phoenix dahinter als JSON-Backend.</p><p><strong>Katalog</strong> hält Versionen, Health, Owner — Git-backed, CI-gated. <strong>Betrieb</strong> ist ein OTP-Supervisor-Tree — jeder Flow ein Process, jeder Run ein Event-Log. <strong>Speicher</strong> = Postgres mit Event-Sourcing. <strong>Wissen</strong> = pgvector + strukturierte Refs.</p><p><strong>OTP</strong> ist Erlangs battle-tested Runtime-Modell: stürzt ein Flow ab, startet ihn der Supervisor neu — ohne den Rest des Systems anzufassen. Telco-Standard seit 30 Jahren, deshalb läuft auch dein 3-Uhr-nachts-Run noch um 3:01.</p>`,
+      detail: `<p><strong>OTP</strong> ist Erlangs battle-tested Runtime-Modell: stürzt ein Flow ab, startet ihn der Supervisor neu — ohne den Rest des Systems anzufassen. Telco-Standard seit 30 Jahren, deshalb läuft auch dein 3-Uhr-nachts-Run noch um 3:01.</p>`,
       pillarSubs: {
         werkstatt: 'Codegen → Elixir-Module + React-Routes',
         katalog: 'Git-backed · CI-gated · Health-Probes',
         betrieb: 'OTP Supervisor · Oban · Event Log',
         speicher: 'Postgres · Event Sourcing · pgvector',
         wissen: 'Embeddings · Strukturierte Refs · Replay-Index',
+      },
+      pillarBodies: {
+        werkstatt: 'Aus Dialog werden zwei Schichten: <strong>Elixir-Module</strong> für Flows und Backend, <strong>React 19 + TanStack Router/Query + Tailwind</strong> für UIs — gebaut mit Vite, type-safe, in deinem Repo. Jeder Output ist ein PR, läuft durch CI, landet versioniert im Katalog.',
+        katalog: 'Jeder Flow, jede Route, jeder KI-Step ist ein Git-Commit mit Owner, Health-Probes und Release-History. Repo-driven, CI-gated, deployment-aware — kein Vendor-Dashboard, sondern dein eigener Stack.',
+        betrieb: 'Jeder Flow ist ein <strong>OTP-Process</strong> unter Supervision: Crashes werden isoliert, jede Ausführung ist ein Event-Log-Eintrag in Postgres. Oban für Background-Jobs, OpenTelemetry für Traces.',
+        speicher: '<strong>Postgres mit Event-Sourcing</strong>: jeder Side-Effect ist ein Append, kein Update. Replay aus dem Event-Log baut den State neu auf. Materialized Views für Reads — keine N+1, keine Rätsel.',
+        wissen: '<strong>pgvector</strong> für Embeddings, strukturierte Refs auf Run-Logs. AI-Antworten sind keyed by content-hash + model-version — Replay deterministisch, Index inkrementell.',
       },
     },
     deadends: {

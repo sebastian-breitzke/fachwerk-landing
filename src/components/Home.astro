@@ -343,10 +343,8 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
       <div class="block-index" style="margin-top:1rem">{t.platform.index}</div>
     </div>
     <div>
-      <h2 class="block-title" data-view-only="business" set:html={t.platform.title}></h2>
-      <h2 class="block-title" data-view-only="macher" set:html={m.platform.title}></h2>
-      <p class="block-lede" data-view-only="business" set:html={t.platform.lede}></p>
-      <p class="block-lede" data-view-only="macher" set:html={m.platform.lede}></p>
+      <h2 class="block-title" set:html={t.platform.title}></h2>
+      <p class="block-lede" set:html={t.platform.lede}></p>
     </div>
   </div>
 
@@ -404,7 +402,8 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
             <span class="pillar-tag" data-view-only="business">{p.tag}</span>
             <span class="pillar-tag pillar-stack" data-view-only="macher">{m.platform.pillarSubs[pillarSubKey(p.p)]}</span>
           </div>
-          <p>{p.body}</p>
+          <p data-view-only="business">{p.body}</p>
+          <p data-view-only="macher" set:html={m.platform.pillarBodies[pillarSubKey(p.p)]}></p>
         </div>
       ))}
     </div>
@@ -422,7 +421,8 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
           </div>
           <span class="pillar-tag" data-view-only="business">{p.tag}</span>
           <span class="pillar-tag pillar-stack" data-view-only="macher">{m.platform.pillarSubs[pillarSubKey(p.p)]}</span>
-          <p>{p.body}</p>
+          <p data-view-only="business">{p.body}</p>
+          <p data-view-only="macher" set:html={m.platform.pillarBodies[pillarSubKey(p.p)]}></p>
         </div>
       </div>
     ))}
@@ -433,8 +433,7 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     ))}
   </div>
 
-  <div class="platform-detail" data-view-only="business" set:html={t.platform.detail}></div>
-  <div class="platform-detail" data-view-only="macher" set:html={m.platform.detail}></div>
+  <div class="platform-otp-spotlight" data-view-only="macher" set:html={m.platform.detail}></div>
 </section>
 
 <section class="block sackgassen" id="sackgassen">
