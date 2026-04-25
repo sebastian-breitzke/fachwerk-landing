@@ -21,12 +21,18 @@ const t: HomeT = {
     prev: 'Anterior',
     next: 'Siguiente',
   },
-  persona: {
-    label: 'Perspectiva',
-    techie: 'Constructor',
-    fachlich: 'Experto',
-    business: 'Decisor',
-    hint: 'opcional · clic muestra notas adicionales',
+  view: {
+    label: 'Vista',
+    business: 'Business',
+    macher: 'Técnica',
+    hint: 'cambia la perspectiva',
+    ctaPrompt: '// ¿curioso por la otra perspectiva?',
+    heroPromptToTech: '// ¿curioso por la perspectiva técnica?',
+    heroPromptToBusiness: '// ¿curioso por la perspectiva business?',
+    navSwitchToTech: 'Cambiar a vista técnica',
+    navSwitchToBusiness: 'Cambiar a vista business',
+    ctaSwitchToTech: 'Cambiar a vista técnica',
+    ctaSwitchToBusiness: 'Cambiar a vista business',
   },
   hero: {
     eyebrow: 'Software a medida sobre una estructura sólida para la mediana empresa',
@@ -74,7 +80,8 @@ const t: HomeT = {
     eyebrow: '02 — La plataforma',
     index: '// cinco pilares, una instancia',
     title: `Fachwerk es un <em>armazón</em>. No una lista de herramientas.`,
-    lede: `Taller, Catálogo, Operación, Almacén, Conocimiento — los cinco comparten espacio de datos y contexto de diálogo. <strong>Cada flujo se explica a sí mismo</strong>, cada cambio está respaldado por una conversación, cada aprendizaje tiene un origen.`,
+    lede: `Una plataforma, no un stack de herramientas. Una instancia, un contexto de diálogo, todo versionado.`,
+    detail: ``,
     timberSys1: '// fachwerk.svg',
     timberSys2: '5 nodos · 10 vigas',
     pillarLabels: { werkstatt: 'Taller', katalog: 'Catálogo', speicher: 'Almacén', wissen: 'Conocimiento' },
@@ -416,7 +423,7 @@ const t: HomeT = {
     title: `Entonces hablemos de tu <em>problema de 1000 procesos más caro.</em>`,
     body: `Primera conversación directamente con el arquitecto. Sin cadena comercial, sin teatro de RFP, sin tour de demos. Una hipótesis sobre tu dolor — y una propuesta de cómo podría ser un Proof-of-Value de 6 semanas.`,
     emailLabel: 'Escribir a Sebastian',
-    phoneLabel: '+49 151 41928572',
+    phoneLabel: '+49 172 4290654',
     linkedinLabel: 'LinkedIn',
   },
   footer: {
@@ -425,6 +432,98 @@ const t: HomeT = {
     datenschutz: 'Privacidad',
     impressumHref: '/de/impressum/',
     datenschutzHref: '/de/datenschutz/',
+  },
+  macher: {
+    hero: {
+      eyebrow: 'Vibe coding es la nueva Shadow IT · Fachwerk es el marco',
+      headline: `<span class="strike">SaaS lock-in</span><span class="strike-punct">.</span><br><span class="strike">Límites no-code</span><span class="strike-punct">.</span><br><em>Fachwerk</em><span class="fw-punct">:</span><br>el marco donde sobrevive el AI-code.`,
+      sub: `Tus business users van a vibe-codear — contigo o sin ti. En Lovable, Bolt, v0, ChatGPT. Con claves API en DMs de Slack y scripts en portátiles privados. <strong>Fachwerk es la runtime donde eso sigue corriendo dentro de 3 años</strong>: Elixir/Phoenix sobre Postgres, cada flujo en tu repo, cada run replay-able, cada respuesta AI loggeada con versión del modelo.`,
+      ctaPrimary: 'Reservar sesión de arquitectura',
+      bullets: [
+        { title: 'Elixir/OTP · Postgres', desc: 'Backend con aislamiento de crash por flujo' },
+        { title: 'React 19 · TanStack · Vite', desc: 'SPAs type-safe, tu repo, tu CI' },
+        { title: 'Audit trail por defecto', desc: 'Cada run = event log, replay-able' },
+      ],
+    },
+    problem: {
+      title: `Vibe coding es la nueva <em>Shadow IT</em>.`,
+      lede: `Stack Overflow Survey 2025: la seguridad es la mayor debilidad del AI-code. Veracode 2025: <strong>el 45 % del code generado por AI tiene vulnerabilidades</strong>. Tienes 12 herramientas SaaS, cuatro scripts vibe-codeados en portátiles privados, claves API en DMs de Slack. Nadie sabe qué corre. Nadie puede tomar el relevo. <strong>Fachwerk no está contra el vibe coding — es la estructura debajo.</strong>`,
+      cells: [
+        { num: '// 01', warn: 'Vendor lock-in', title: 'Migrar es reescribir.', body: 'El proveedor low-code es dueño de tu lógica. Migrar significa: empezar de cero. La capa API es propietaria, los datos solo salen como CSV.' },
+        { num: '// 02', warn: 'Sin control', title: 'No ves qué corre.', body: '¿Qué flujo produjo último? ¿Qué versión del modelo se usó? ¿Dónde están los logs? En el dashboard SaaS, si acaso — no en tu stack.' },
+        { num: '// 03', warn: 'Shadow IT', title: 'Apps en portátiles privados.', body: 'Lisa tiene un script Python. Kai tiene un workflow GPT. Nadie sabe dónde, nadie tiene credenciales, nadie revisa código. Mantenimiento = lotería.' },
+        { num: '// 04', warn: 'Caos de claves', title: 'API keys por todas partes.', body: 'Clave OpenAI en un pastebin. Credenciales SAP en un Excel. Secret Stripe en localStorage del browser. Sin vault, sin rotación, sin auditoría.' },
+        { num: '// 05', warn: 'Sin tests', title: 'No-code no testea nada.', body: 'Click flows no tienen unit tests, sin CI, sin branching. Cambio = clic en el tenant en producción. Rollback = suerte.' },
+        { num: '// 06', warn: 'Sin observabilidad', title: 'Stack sin telemetría.', body: 'Cuando el flujo falla a las 3 de la mañana, no hay trace, ni span, ni histogram. Lo sabes por el cliente, no por el monitoring.' },
+      ],
+    },
+    platform: {
+      title: `Phoenix · Postgres · OTP. <em>Una instancia</em>, cinco pilares.`,
+      lede: `Backend en Elixir/OTP, UIs en React/Vite. Una instancia, tu repo.`,
+      detail: `<p><strong>Taller</strong> produce dos capas desde el diálogo: módulos Elixir para flows y backend, React 19 + TanStack Router/Query + Tailwind para las UIs — construido con Vite, type-safe, en tu repo. Phoenix detrás como backend JSON.</p><p><strong>Catálogo</strong> guarda versiones, salud, owner — Git-backed, CI-gated. <strong>Operación</strong> es un árbol supervisor OTP — cada flujo un proceso, cada run un event log. <strong>Storage</strong> = Postgres con event sourcing. <strong>Conocimiento</strong> = pgvector + refs estructurados.</p><p><strong>OTP</strong> es el runtime battle-tested de Erlang: si un flujo crashea, el supervisor lo reinicia — sin tocar el resto del sistema. Estándar en Telco desde hace 30 años, por eso tu run de las 3 de la mañana sigue corriendo a las 3:01.</p>`,
+      pillarSubs: {
+        werkstatt: 'Codegen → módulos Elixir + rutas React',
+        katalog: 'Git-backed · CI-gated · Health probes',
+        betrieb: 'OTP Supervisor · Oban · Event log',
+        speicher: 'Postgres · Event sourcing · pgvector',
+        wissen: 'Embeddings · Refs estructuradas · Replay-index',
+      },
+    },
+    deadends: {
+      title: `Tres caminos <em>que no sostienen.</em>`,
+      lede: `Cuatro opciones, las mismas seis dimensiones — esta vez con lente técnico. Stack-ownership, versionado, audit trail, observabilidad, tests, coste de migración. <strong>Lo que te quita el sueño</strong>, no lo que convence al CFO.`,
+      rows: [
+        { label: 'Stack-ownership', lowcode: 'Runtime del proveedor', vibe: 'Scripts en portátiles privados', dl: 'Su code, tu factura', fw: 'Tu repo · Elixir/Postgres' },
+        { label: 'Versionado', lowcode: 'Versiones del proveedor', vibe: 'Ninguno — fecha de archivo', dl: 'Git, en su lado', fw: 'Git, tu CI, tus branches' },
+        { label: 'Audit trail', lowcode: 'Dashboard, si acaso', vibe: 'print() en el mejor caso', dl: 'Depende del contrato', fw: 'Event log por run, replay-able' },
+        { label: 'Observabilidad', lowcode: 'Métricas del proveedor', vibe: 'localhost:8080 si acaso', dl: 'Su stack', fw: 'OpenTelemetry · tus dashboards' },
+        { label: 'Tests / CI', lowcode: 'Ninguno — clic en producción', vibe: 'Cero', dl: 'Sí, pero cerrado', fw: 'ExUnit estándar · tu CI' },
+        { label: 'Coste de migración', lowcode: 'Reescritura desde cero', vibe: 'Reescritura desde el chat', dl: 'Retainer o reescritura', fw: 'Es <em>la</em> reescritura — el code es tuyo' },
+      ],
+    },
+    ai: {
+      eyebrow: '04 — // audit-trail by default',
+      title: `AI como <em>tool call</em>. Code como backbone.`,
+      lede: `Cada flujo es code en tu repo. <strong>Cada run un event log. Cada respuesta AI replay-able.</strong> Los LLMs en Fachwerk son funciones con JSON-schema in/out, versión del modelo fija. Validación estilo Pydantic antes de cualquier side-effect. Sin agente libre en el buzón. Sin prompt en el camino caliente.`,
+      points: [
+        { num: '01', title: 'Audit trail por defecto.', body: 'Model ID, hash del prompt, temperatura, output, conteo de tokens. Persistente. Replay con input idéntico contra una nueva versión del modelo. Auditable contra GoBD y EU AI Act, sin trabajo extra.' },
+        { num: '02', title: 'Gen-time vs run-time.', body: 'AI construye code en el diálogo del taller (gen-time). En runtime corre Elixir compilado con supervisión OTP. Sin prompts en el camino caliente. Sin riesgo de prompt-injection en el flujo productivo.' },
+        { num: '03', title: 'Tool calls con schema.', body: 'Pasos AI son funciones tipadas: JSON-schema in, JSON-schema out. OpenAI API, Anthropic API, modelos locales (Ollama, vLLM) — todo bajo la misma interfaz. Cambiar = línea de config.' },
+      ],
+    },
+    zoo: {
+      title: `Del <em>vibe-code zoo</em> al catálogo versionado.`,
+      lede: `No "low-code vs custom code", sino "scripts en portátiles privados vs Git repo con CI". Fachwerk le da hogar a tu output de vibe coding: <strong>owner, branch, PR, CI run, health probe</strong>. Como code real, porque es code real.`,
+    },
+    cases: {
+      lede: `Cuatro escenarios — los mismos cuatro, pero con el tech stack en primer plano. <strong>Modbus/TCP, SAP RFC, REST/GraphQL, IMAP, webhooks</strong> — cada uno como módulos adapter concretos, no como "connector". Code en el repo, tests en CI, logs en OpenTelemetry.`,
+      stackTags: {
+        nordware: 'Shopify GraphQL · Meta Marketing API · ERP REST · pgvector',
+        stahlberg: 'Modbus/TCP · OPC UA · SAP RFC · OTP isolation por línea',
+        gruenfeld: 'DATEV-Connect · SAP RFC · DMS · React 19 + TanStack · audit log',
+        dachstein: 'Wodis API · iX-Haus REST · XML del proveedor · IMAP · WhatsApp Business',
+      },
+    },
+    deploy: {
+      title: `Docker · Caddy · Postgres. <em>Detrás de tu firewall</em> o con nosotros.`,
+      cells: [
+        { title: 'Cloud estándar', body: `Container single-tenant en <strong>StackIT</strong> o tu hoster. Una DB Postgres por cliente. Caddy para TLS y routing. Logs al endpoint OpenTelemetry de tu elección.`, tags: ['StackIT', 'Postgres', 'Caddy', 'OTel'] },
+        { title: 'On-premise', body: `Bare metal o hypervisor. Docker Compose o Helm chart de K8s. Acceso directo a PLCs, Modbus/TCP, DBs locales. Air-gap-capable — sin egress necesario.`, tags: ['Docker', 'K8s', 'Air-gap', 'Modbus'] },
+        { title: 'Híbrido', body: `Taller + catálogo en nuestra cloud (codegen, reviews, llamadas AI). Operación en tu entorno. Conectados vía túnel mTLS, audit logs en ambos mundos.`, tags: ['mTLS', 'Split-plane', 'Single-source'] },
+      ],
+    },
+    pricing: {
+      title: `Setup, stack, tu repo. <em>Sin licencias por asiento.</em>`,
+      lede: `Tres tiers — por <strong>scope</strong>, no por asientos. <strong>Un setup sprint</strong> es acreditable. Code vive en tu repo (o el nuestro, contigo como miembro de la org). El esquema Postgres es tuyo.`,
+      starterSub: '+ 0,5–1,5k € / mes · setup + hosting',
+      coreSub: '+ 3–8k € / mes · setup + ~36–96k al año · típicamente desde ~20 M facturación',
+      platformSub: '+ 15–35k € / mes · setup + ~180–420k al año · típicamente desde ~80 M facturación',
+    },
+    cta: {
+      title: `Muéstrame tu <em>ruta de integración más dolorosa.</em>`,
+      body: `Sesión de arquitectura directamente con el arquitecto. Recorremos tu stack, identificamos la integración más cara, y esbozamos un sprint de 6 semanas. Setup del repo, lista de adapters, plan de runs.`,
+      emailLabel: 'Sesión de arquitectura',
+    },
   },
 };
 

@@ -18,7 +18,6 @@ import daten1Full from '../assets/hero/daten-1-full.jpg';
 import daten2Thumb from '../assets/hero/daten-2.jpg';
 import daten2Full from '../assets/hero/daten-2-full.jpg';
 import '../styles/home.css';
-import PersonaSelector from './PersonaSelector.astro';
 
 const rawSlides = {
   flows: { thumb: flowsThumb, full: flowsFull },
@@ -44,12 +43,17 @@ interface Props {
 }
 
 const { t, locale } = Astro.props;
+const m = t.macher;
+const pillarSubKey = (p: number): keyof typeof m.platform.pillarSubs => {
+  return (['werkstatt', 'katalog', 'betrieb', 'speicher', 'wissen'] as const)[p];
+};
 
 const allLocales: Array<'de' | 'en' | 'es'> = ['de', 'en', 'es'];
 const fwRuntime = {
   useCases: t.cases.useCases,
   mock: t.cases.mock,
   voiceTag: t.cases.voiceTag,
+  macherStackTags: m.cases.stackTags,
 };
 
 // Mobile carousel: mini-timber SVG (no clipPath, same geometry as desktop)
@@ -108,8 +112,8 @@ window.TWEAKS = {
 };
 </script>
 <script is:inline>
-try { document.documentElement.dataset.persona = localStorage.getItem('fw-persona') || 'fachlich'; }
-catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
+try { document.documentElement.dataset.view = localStorage.getItem('fw-view') || 'business'; }
+catch (e) { document.documentElement.dataset.view = 'business'; }
 </script>
 </head>
 <body>
@@ -142,6 +146,34 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
     <a href="#cases">{t.nav.examples}</a>
     <a href="#pricing">{t.nav.pricing}</a>
     <a href="#kontakt" class="nav-cta">{t.nav.contact}</a>
+    <button
+      class="nav-view-icon"
+      type="button"
+      data-set-view="macher"
+      data-view-only="business"
+      aria-label={t.view.navSwitchToTech}
+      title={t.view.navSwitchToTech}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16"/>
+        <path d="M7 9 l3 3 -3 3"/>
+        <path d="M13 16 h4"/>
+      </svg>
+    </button>
+    <button
+      class="nav-view-icon"
+      type="button"
+      data-set-view="business"
+      data-view-only="macher"
+      aria-label={t.view.navSwitchToBusiness}
+      title={t.view.navSwitchToBusiness}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true">
+        <rect x="3" y="7" width="18" height="13"/>
+        <path d="M9 7 V5 a1 1 0 0 1 1 -1 h4 a1 1 0 0 1 1 1 v2"/>
+        <path d="M3 13 h18"/>
+      </svg>
+    </button>
     <span class="lang">{allLocales.map((l, i) => (
       <>
         {i > 0 && <span class="sep"> · </span>}
@@ -158,21 +190,46 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">
-      <span class="eyebrow">{t.hero.eyebrow}</span>
+      <span class="eyebrow" data-view-only="business">{t.hero.eyebrow}</span>
+      <span class="eyebrow" data-view-only="macher">{m.hero.eyebrow}</span>
       <span class="hero-meta">{t.hero.meta}</span>
     </div>
 
-    <h1 class="hero-head" set:html={t.hero.headline}></h1>
+    <h1 class="hero-head" data-view-only="business" set:html={t.hero.headline}></h1>
+    <h1 class="hero-head" data-view-only="macher" set:html={m.hero.headline}></h1>
 
-    <p class="hero-sub" set:html={t.hero.sub}></p>
+    <p class="hero-sub" data-view-only="business" set:html={t.hero.sub}></p>
+    <p class="hero-sub" data-view-only="macher" set:html={m.hero.sub}></p>
 
     <div class="hero-actions">
-      <a href="#kontakt" class="btn">{t.hero.ctaPrimary} <span class="arr">→</span></a>
+      <a href="#kontakt" class="btn" data-view-only="business">{t.hero.ctaPrimary} <span class="arr">→</span></a>
+      <a href="#kontakt" class="btn" data-view-only="macher">{m.hero.ctaPrimary} <span class="arr">→</span></a>
       <a href="#cases" class="btn ghost">{t.hero.ctaSecondary}</a>
     </div>
   </div>
 
   <div class="hero-right">
+    <div class="hero-view-hint">
+      <span class="hvh-prompt" data-view-only="business">{t.view.heroPromptToTech}</span>
+      <span class="hvh-prompt" data-view-only="macher">{t.view.heroPromptToBusiness}</span>
+      <button
+        class="view-text-link"
+        type="button"
+        data-set-view="macher"
+        data-view-only="business"
+      >
+        {t.view.ctaSwitchToTech} <span class="vtl-arrow">→</span>
+      </button>
+      <button
+        class="view-text-link"
+        type="button"
+        data-set-view="business"
+        data-view-only="macher"
+      >
+        {t.view.ctaSwitchToBusiness} <span class="vtl-arrow">→</span>
+      </button>
+    </div>
+
     <div class="hr-card">
       <div class="hr-chrome">
         <span id="slide-caption" class="hr-caption">{t.hero.slides[0].caption}</span>
@@ -216,8 +273,13 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <button class="hr-lb-nav next" id="hr-lb-next" aria-label={t.a11y.next}>›</button>
     </div>
 
-    <div class="hero-bullets">
+    <div class="hero-bullets" data-view-only="business">
       {t.hero.bullets.map(b => (
+        <div class="hero-bullet"><strong>{b.title}</strong>{b.desc}</div>
+      ))}
+    </div>
+    <div class="hero-bullets" data-view-only="macher">
+      {m.hero.bullets.map(b => (
         <div class="hero-bullet"><strong>{b.title}</strong>{b.desc}</div>
       ))}
     </div>
@@ -241,13 +303,6 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
   </div>
 </div>
 
-<PersonaSelector
-  label={t.persona.label}
-  techie={t.persona.techie}
-  fachlich={t.persona.fachlich}
-  business={t.persona.business}
-  hint={t.persona.hint}
-/>
 
 <section class="block" id="problem">
   <div class="block-head">
@@ -256,13 +311,23 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.problem.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.problem.title}></h2>
-      <p class="block-lede" set:html={t.problem.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.problem.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.problem.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.problem.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.problem.lede}></p>
     </div>
   </div>
 
-  <div class="problem-grid">
+  <div class="problem-grid" data-view-only="business">
     {t.problem.cells.map(c => (
+      <div class="problem-cell" data-num={c.num}>
+        <h4><span class="warn">{c.warn}</span>{c.title}</h4>
+        <p>{c.body}</p>
+      </div>
+    ))}
+  </div>
+  <div class="problem-grid" data-view-only="macher">
+    {m.problem.cells.map(c => (
       <div class="problem-cell" data-num={c.num}>
         <h4><span class="warn">{c.warn}</span>{c.title}</h4>
         <p>{c.body}</p>
@@ -278,8 +343,10 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.platform.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.platform.title}></h2>
-      <p class="block-lede" set:html={t.platform.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.platform.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.platform.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.platform.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.platform.lede}></p>
     </div>
   </div>
 
@@ -334,7 +401,8 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
           <div class="pillar-head">
             <span class="pillar-num">{p.num}</span>
             <h3 class="pillar-name">{p.name}</h3>
-            <span class="pillar-tag">{p.tag}</span>
+            <span class="pillar-tag" data-view-only="business">{p.tag}</span>
+            <span class="pillar-tag pillar-stack" data-view-only="macher">{m.platform.pillarSubs[pillarSubKey(p.p)]}</span>
           </div>
           <p>{p.body}</p>
         </div>
@@ -352,7 +420,8 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
             <span class="pillar-num">{p.num}</span>
             <h3 class="pillar-name">{p.name}</h3>
           </div>
-          <span class="pillar-tag">{p.tag}</span>
+          <span class="pillar-tag" data-view-only="business">{p.tag}</span>
+          <span class="pillar-tag pillar-stack" data-view-only="macher">{m.platform.pillarSubs[pillarSubKey(p.p)]}</span>
           <p>{p.body}</p>
         </div>
       </div>
@@ -363,6 +432,9 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <button class={`tc-dot${i === 0 ? ' active' : ''}`} data-i={i} aria-label={p.name}></button>
     ))}
   </div>
+
+  <div class="platform-detail" data-view-only="business" set:html={t.platform.detail}></div>
+  <div class="platform-detail" data-view-only="macher" set:html={m.platform.detail}></div>
 </section>
 
 <section class="block sackgassen" id="sackgassen">
@@ -372,12 +444,14 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.deadends.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.deadends.title}></h2>
-      <p class="block-lede" set:html={t.deadends.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.deadends.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.deadends.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.deadends.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.deadends.lede}></p>
     </div>
   </div>
 
-  <div class="sg-table">
+  <div class="sg-table" data-view-only="business">
     <div class="sg-row sg-head">
       <div class="sg-label">{t.deadends.dimension}</div>
       <div class="sg-col sg-lowcode">{t.deadends.cols.lowcode}</div>
@@ -386,6 +460,24 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="sg-col sg-fw">{t.deadends.cols.fw}</div>
     </div>
     {t.deadends.rows.map(r => (
+      <div class="sg-row">
+        <div class="sg-label">{r.label}</div>
+        <div class="sg-col sg-lowcode">{r.lowcode}</div>
+        <div class="sg-col sg-vibe">{r.vibe}</div>
+        <div class="sg-col sg-dl">{r.dl}</div>
+        <div class="sg-col sg-fw" set:html={r.fw}></div>
+      </div>
+    ))}
+  </div>
+  <div class="sg-table" data-view-only="macher">
+    <div class="sg-row sg-head">
+      <div class="sg-label">{t.deadends.dimension}</div>
+      <div class="sg-col sg-lowcode">{t.deadends.cols.lowcode}</div>
+      <div class="sg-col sg-vibe">{t.deadends.cols.vibe}</div>
+      <div class="sg-col sg-dl">{t.deadends.cols.dl}</div>
+      <div class="sg-col sg-fw">{t.deadends.cols.fw}</div>
+    </div>
+    {m.deadends.rows.map(r => (
       <div class="sg-row">
         <div class="sg-label">{r.label}</div>
         <div class="sg-col sg-lowcode">{r.lowcode}</div>
@@ -424,12 +516,15 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
 <section class="block ai-section" id="ai">
   <div class="block-head">
     <div>
-      <span class="eyebrow">{t.ai.eyebrow}</span>
+      <span class="eyebrow" data-view-only="business">{t.ai.eyebrow}</span>
+      <span class="eyebrow" data-view-only="macher">{m.ai.eyebrow}</span>
       <div class="block-index" style="margin-top:1rem">{t.ai.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.ai.title}></h2>
-      <p class="block-lede" set:html={t.ai.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.ai.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.ai.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.ai.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.ai.lede}></p>
     </div>
   </div>
 
@@ -454,8 +549,17 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       </div>
     </div>
 
-    <div class="ai-points">
+    <div class="ai-points" data-view-only="business">
       {t.ai.points.map(p => (
+        <div class="ai-point">
+          <span class="ai-num">{p.num}</span>
+          <h4>{p.title}</h4>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+    <div class="ai-points" data-view-only="macher">
+      {m.ai.points.map(p => (
         <div class="ai-point">
           <span class="ai-num">{p.num}</span>
           <h4>{p.title}</h4>
@@ -482,8 +586,10 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.zoo.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.zoo.title}></h2>
-      <p class="block-lede" set:html={t.zoo.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.zoo.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.zoo.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.zoo.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.zoo.lede}></p>
     </div>
   </div>
 
@@ -536,7 +642,8 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
     </div>
     <div>
       <h2 class="block-title" set:html={t.cases.title}></h2>
-      <p class="block-lede" set:html={t.cases.lede}></p>
+      <p class="block-lede" data-view-only="business" set:html={t.cases.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.cases.lede}></p>
     </div>
   </div>
 
@@ -559,11 +666,12 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.deploy.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.deploy.title}></h2>
+      <h2 class="block-title" data-view-only="business" set:html={t.deploy.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.deploy.title}></h2>
     </div>
   </div>
 
-  <div class="deploy-grid">
+  <div class="deploy-grid" data-view-only="business">
     <div class="deploy-cell">
       <div class="icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -598,6 +706,41 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="tag-row">{t.deploy.cells[2].tags.map(tag => <span class="tag">{tag}</span>)}</div>
     </div>
   </div>
+  <div class="deploy-grid" data-view-only="macher">
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 16 a6 4 0 1 1 0 0 M8 16 h12 a3 3 0 0 0 0-6 a5 5 0 0 0-9-3 a4 4 0 0 0-7 6"/>
+        </svg>
+      </div>
+      <h4>{m.deploy.cells[0].title}</h4>
+      <p set:html={m.deploy.cells[0].body}></p>
+      <div class="tag-row">{m.deploy.cells[0].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="5" width="18" height="14"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="7" cy="7.5" r="0.8" fill="currentColor"/>
+        </svg>
+      </div>
+      <h4>{m.deploy.cells[1].title}</h4>
+      <p set:html={m.deploy.cells[1].body}></p>
+      <div class="tag-row">{m.deploy.cells[1].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+    <div class="deploy-cell">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="12" r="4"/>
+          <circle cx="16" cy="12" r="4"/>
+        </svg>
+      </div>
+      <h4>{m.deploy.cells[2].title}</h4>
+      <p set:html={m.deploy.cells[2].body}></p>
+      <div class="tag-row">{m.deploy.cells[2].tags.map(tag => <span class="tag">{tag}</span>)}</div>
+    </div>
+  </div>
 </section>
 
 <section class="block" id="pricing">
@@ -607,19 +750,26 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
       <div class="block-index" style="margin-top:1rem">{t.pricing.index}</div>
     </div>
     <div>
-      <h2 class="block-title" set:html={t.pricing.title}></h2>
-      <p class="block-lede" set:html={t.pricing.lede}></p>
+      <h2 class="block-title" data-view-only="business" set:html={t.pricing.title}></h2>
+      <h2 class="block-title" data-view-only="macher" set:html={m.pricing.title}></h2>
+      <p class="block-lede" data-view-only="business" set:html={t.pricing.lede}></p>
+      <p class="block-lede" data-view-only="macher" set:html={m.pricing.lede}></p>
     </div>
   </div>
 
   <div class="price-grid">
-    {[t.pricing.starter, t.pricing.core, t.pricing.platform].map(pk => (
+    {[
+      { ...t.pricing.starter, mSub: m.pricing.starterSub },
+      { ...t.pricing.core, mSub: m.pricing.coreSub },
+      { ...t.pricing.platform, mSub: m.pricing.platformSub },
+    ].map(pk => (
       <div class="price-card">
         <span class="price-tier">{pk.tier}</span>
         <h3>{pk.h3}</h3>
         <p class="price-desc">{pk.desc}</p>
         <div class="price-num">{pk.num}<span class="unit">{pk.unit}</span></div>
-        <div class="price-sub">{pk.sub}</div>
+        <div class="price-sub" data-view-only="business">{pk.sub}</div>
+        <div class="price-sub" data-view-only="macher">{pk.mSub}</div>
         <ul class="price-list">
           {pk.list.map(li => <li>{li}</li>)}
         </ul>
@@ -635,13 +785,38 @@ catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
 <section class="cta" id="kontakt">
   <div class="cta-inner">
     <span class="eyebrow">{t.cta.eyebrow}</span>
-    <h2 set:html={t.cta.title}></h2>
-    <p>{t.cta.body}</p>
+    <h2 data-view-only="business" set:html={t.cta.title}></h2>
+    <h2 data-view-only="macher" set:html={m.cta.title}></h2>
+    <p data-view-only="business">{t.cta.body}</p>
+    <p data-view-only="macher">{m.cta.body}</p>
 
     <div class="cta-row">
-      <a href="mailto:sebastian@s16e.de" class="btn">{t.cta.emailLabel} <span class="arr">→</span></a>
-      <a href="tel:+4915141928572" class="btn ghost">{t.cta.phoneLabel}</a>
+      <a href="mailto:sebastian@s16e.de" class="btn" data-view-only="business">{t.cta.emailLabel} <span class="arr">→</span></a>
+      <a href="mailto:sebastian@s16e.de" class="btn" data-view-only="macher">{m.cta.emailLabel} <span class="arr">→</span></a>
+      <a href="tel:+491724290654" class="btn ghost">{t.cta.phoneLabel}</a>
       <a href="https://www.linkedin.com/in/sebastian-breitzke/" class="btn ghost">{t.cta.linkedinLabel}</a>
+    </div>
+
+    <div class="cta-view-switch">
+      <span class="cta-view-switch-prompt">{t.view.ctaPrompt}</span>
+      <button
+        class="view-switch-link"
+        type="button"
+        data-set-view="macher"
+        data-scroll-top
+        data-view-only="business"
+      >
+        {t.view.ctaSwitchToTech} <span class="vsl-arrow">↑</span>
+      </button>
+      <button
+        class="view-switch-link"
+        type="button"
+        data-set-view="business"
+        data-scroll-top
+        data-view-only="macher"
+      >
+        {t.view.ctaSwitchToBusiness} <span class="vsl-arrow">↑</span>
+      </button>
     </div>
   </div>
 </section>

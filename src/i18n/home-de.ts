@@ -4,13 +4,13 @@
 const t = {
   meta: {
     lang: 'de',
-    title: 'Fachwerk — Maßgeschneiderte Software. AI-gebaut, nicht Low-Code-geklickt.',
+    title: 'Fachwerk — Maßgeschneiderte Software. KI-gebaut, nicht Low-Code-geklickt.',
   },
   nav: {
     problem: 'Problem',
     platform: 'Plattform',
     deadends: 'Sackgassen',
-    ai: 'AI &amp; Code',
+    ai: 'KI &amp; Code',
     catalog: 'Katalog',
     examples: 'Beispiele',
     pricing: 'Preise',
@@ -22,12 +22,18 @@ const t = {
     prev: 'Vorheriges',
     next: 'Nächstes',
   },
-  persona: {
-    label: 'Perspektive',
-    techie: 'Macher',
-    fachlich: 'Fachlich',
-    business: 'Entscheider',
-    hint: 'optional · klick blendet zusatztexte ein',
+  view: {
+    label: 'Ansicht',
+    business: 'Business',
+    macher: 'Technik',
+    hint: 'wechsel die Perspektive',
+    ctaPrompt: '// neugierig auf die andere Perspektive?',
+    heroPromptToTech: '// neugierig auf die technische Perspektive?',
+    heroPromptToBusiness: '// neugierig auf die geschäftliche Perspektive?',
+    navSwitchToTech: 'Zur technischen Ansicht',
+    navSwitchToBusiness: 'Zur Business-Ansicht',
+    ctaSwitchToTech: 'Zur technischen Ansicht wechseln',
+    ctaSwitchToBusiness: 'Zur Business-Ansicht wechseln',
   },
   hero: {
     eyebrow: 'Maßgeschneiderte Software auf solidem Rohbau für den Mittelstand',
@@ -48,7 +54,7 @@ const t = {
     ],
     bullets: [
       { title: 'Rohbau statt Baukasten', desc: 'Fachwerk gibt die Statik vor' },
-      { title: 'AI + Code koppelbar', desc: 'Pro Schritt entscheidbar' },
+      { title: 'KI + Code koppelbar', desc: 'Pro Schritt entscheidbar' },
       { title: 'Katalog statt Zoo', desc: 'Übersicht. Governance. Kontrolle.' },
     ],
     scroll: 'scroll ↓ [01/09]',
@@ -66,7 +72,7 @@ const t = {
       { num: '// 01', warn: 'Standard-Software', title: 'Passt nie richtig.', body: 'SAP, ERP, WMS, CRM. Gutes Fundament — aber das Wichtige in deinem Geschäft steht nie drin. Der Fachbereich baut Excel-Krücken. Die Listen wuchern.' },
       { num: '// 02', warn: 'Dienstleister-Projekt', title: 'Dauert Monate.', body: 'Lastenheft. Pflichtenheft. Kick-off. Change Request. Abnahme. Regression. Am Ende ist das Problem drei Quartale alt und das Budget ist weg.' },
       { num: '// 03', warn: 'Low-Code', title: 'Endet in der Sackgasse.', body: 'Klick-Kästchen für den Fachbereich, Lock-in für die IT. Der Baustein-Katalog passt nie — und was nicht im Katalog ist, wird nie gebaut.' },
-      { num: '// 04', warn: 'Pure AI-Agenten', title: 'Halluzinieren im Betrieb.', body: 'Demo funktioniert. Pilot funktioniert. Im Produktivbetrieb fängt das Modell an zu raten. Kein Audit-Trail, kein Replay, keine Gewissheit.' },
+      { num: '// 04', warn: 'Pure KI-Agenten', title: 'Halluzinieren im Betrieb.', body: 'Demo funktioniert. Pilot funktioniert. Im Produktivbetrieb fängt das Modell an zu raten. Kein Audit-Trail, kein Replay, keine Gewissheit.' },
       { num: '// 05', warn: 'Eigene Entwicklung', title: 'Bindet den Kern.', body: 'Ein eigenes Dev-Team auf Mittelstands-Umsatz skaliert nicht. Das Team arbeitet an Integrationen statt am Geschäft. Fluktuation killt Wissen.' },
       { num: '// 06', warn: 'Der Chef', title: 'Sieht nichts.', body: 'Fünf Tools, fünfzehn Dashboards, dreißig KPIs. Die eine Regel, die verletzt wurde, taucht im Kaffee-Gespräch auf — nicht im System.' },
     ],
@@ -75,23 +81,24 @@ const t = {
     eyebrow: '02 — Die Plattform',
     index: '// fünf Säulen, eine Instanz',
     title: `Fachwerk ist ein <em>Tragwerk</em>. Nicht eine Liste von Tools.`,
-    lede: `Werkstatt, Katalog, Betrieb, Speicher, Wissen — alle fünf teilen sich einen Datenraum und einen Dialog-Kontext. <strong>Jeder Flow erklärt sich selbst</strong>, jede Änderung ist in einer Konversation belegt, jedes Learning weiß, aus welchem Ticket es kommt und zu welchen Daten es gehört.`,
+    lede: `Plattform statt Tool-Stack. Eine Instanz, ein Dialog-Kontext, alles versioniert.`,
+    detail: ``,
     timberSys1: '// fachwerk.svg',
     timberSys2: '5 knoten · 10 balken',
     pillarLabels: { werkstatt: 'Werkstatt', katalog: 'Katalog', speicher: 'Speicher', wissen: 'Wissen' },
     pillars: [
       { p: 2, num: '§ 01', name: 'Betrieb', tag: '// Ausführung mit Audit-Trail', body: 'Ausführung in kontrollierter Bahn: Tickets, Runs, Zustellungen — alles auditierbar. Wiederholen, zurücksetzen, prüfen ohne Kopfkino. Nichts verschwindet.', active: true },
-      { p: 1, num: '§ 02', name: 'Katalog', tag: '// alles was läuft — mit Owner und Version', body: 'Jeder Flow, jede Oberfläche, jeder AI-Schritt liegt versioniert im Katalog — mit Owner, Release-Historie und Health-Status. Ein Ort, an dem alles sichtbar und wartbar bleibt. Kein Insel-Zoo.' },
-      { p: 0, num: '§ 03', name: 'Werkstatt', tag: '// hier wird gebaut — im Dialog', body: 'Fachanwender beschreiben, Fachwerk baut. Flows, UIs und AI-Schritte landen versioniert im Katalog. Dazu laufen automatische wie AI-gestützte Diagnosen: Fachwerk erklärt sich selbst, prüft Daten, findet Probleme in Abläufen.' },
+      { p: 1, num: '§ 02', name: 'Katalog', tag: '// alles was läuft — mit Owner und Version', body: 'Jeder Flow, jede Oberfläche, jeder KI-Schritt liegt versioniert im Katalog — mit Owner, Release-Historie und Health-Status. Ein Ort, an dem alles sichtbar und wartbar bleibt. Kein Insel-Zoo.' },
+      { p: 0, num: '§ 03', name: 'Werkstatt', tag: '// hier wird gebaut — im Dialog', body: 'Fachanwender beschreiben, Fachwerk baut. Flows, UIs und KI-Schritte landen versioniert im Katalog. Dazu laufen automatische wie KI-gestützte Diagnosen: Fachwerk erklärt sich selbst, prüft Daten, findet Probleme in Abläufen.' },
       { p: 3, num: '§ 04', name: 'Speicher', tag: '// eine Wahrheit über alle Systeme', body: 'Die fachlichen Effekte der Ausführung — über SAP, WMS, Shop, CRM hinweg zusammengeführt und historisiert. Eine einzige Wahrheit darüber, was wann an deinem Geschäft passiert ist.' },
-      { p: 4, num: '§ 05', name: 'Wissen', tag: '// einmal gelöst, wiederverwendbar', body: 'Strukturierte Ablage der Learnings aus Runs, Tickets und Reviews — als Datenbasis für AI-gestützte Flows und Resolutionen. Support-Fälle, Maschinen-Probleme, FAQs: einmal gelöst, bei der nächsten Instanz wiederverwendbar.' },
+      { p: 4, num: '§ 05', name: 'Wissen', tag: '// einmal gelöst, wiederverwendbar', body: 'Strukturierte Ablage der Learnings aus Runs, Tickets und Reviews — als Datenbasis für KI-gestützte Flows und Resolutionen. Support-Fälle, Maschinen-Probleme, FAQs: einmal gelöst, bei der nächsten Instanz wiederverwendbar.' },
     ],
   },
   deadends: {
     eyebrow: '03 — Drei Sackgassen',
     index: '// und warum keine davon trägt',
     title: `Es gibt heute drei Wege, <em>die nicht tragen.</em>`,
-    lede: `Low-Code kollabiert an Komplexität. Vibe-Coded Insel-Apps werden zum Wartungs-Zoo. Klassische Dienstleister-Projekte sind solide — und lebenslange Abhängigkeit. Fachwerk ist <strong>die vierte Option</strong>: Rohbau mit Statik, AI-gestützt, auditierbar.`,
+    lede: `Low-Code kollabiert an Komplexität. Vibe-Coded Insel-Apps werden zum Wartungs-Zoo. Klassische Dienstleister-Projekte sind solide — und lebenslange Abhängigkeit. Fachwerk ist <strong>die vierte Option</strong>: Rohbau mit Statik, KI-gestützt, auditierbar.`,
     dimension: 'Dimension',
     cols: { lowcode: 'Low-Code', vibe: 'Vibe Coding', dl: 'Dienstleister', fw: 'Fachwerk' },
     rows: [
@@ -116,9 +123,9 @@ const t = {
         tip: 'Versionen, Rollbacks, Fehlerdiagnose, Berechtigungen und produktiver Betrieb wichtiger werden als das schnelle Zusammenklicken.',
       },
       {
-        category: 'AI-Agenten',
+        category: 'KI-Agenten',
         good: 'die Aufgabe ad hoc, niedrig riskant und eher Recherche, Text oder Assistenz ist.',
-        tip: 'AI nicht alles sehen darf, erst deterministisch gefiltert werden muss und jeder AI-Schritt Eingaben, Ausgaben und Modellstand braucht.',
+        tip: 'KI nicht alles sehen darf, erst deterministisch gefiltert werden muss und jeder KI-Schritt Eingaben, Ausgaben und Modellstand braucht.',
       },
       {
         category: 'RPA',
@@ -138,10 +145,10 @@ const t = {
     ],
   },
   ai: {
-    eyebrow: '04 — AI + Code',
-    index: '// code wo es zählt, ai wo sie hilft',
-    title: `AI wo sie hilft. <em>Code</em> wo es zählt.`,
-    lede: `Fachwerk setzt AI nicht als Zaubertrick über das ganze System, sondern <strong>gezielt pro Schritt</strong>. In jedem Ablauf kannst du AI-Schritte und klassische Integrationen frei koppeln: Klassifizieren per LLM, Buchen per SAP-Call, Prüfen per Regel, Mailen per Template. Determinismus wo nötig, Intelligenz wo sie Mehrwert bringt.`,
+    eyebrow: '04 — KI + Code',
+    index: '// code als Standard, KI wo sie hilft',
+    title: `KI wo sie hilft. <em>Code</em> wo es zählt.`,
+    lede: `Fachwerk setzt KI nicht als Zaubertrick über das ganze System, sondern <strong>gezielt pro Schritt</strong>. In jedem Ablauf kannst du KI-Schritte und klassische Integrationen frei koppeln: Klassifizieren per LLM, Buchen per SAP-Call, Prüfen per Regel, Mailen per Template. Determinismus wo nötig, Intelligenz wo sie Mehrwert bringt.`,
     flowTitle: 'Flow · Eingangsrechnung prüfen',
     steps: [
       { type: 'code', name: 'Mail empfangen', meta: 'IMAP · deterministisch' },
@@ -152,18 +159,18 @@ const t = {
     ],
     legend: {
       code: 'Klassischer Code — deterministisch, schnell, auditierbar',
-      ai: 'AI-Schritt — gezielt, mit Ein-/Ausgaben, Logs, Versionen',
+      ai: 'KI-Schritt — gezielt, mit Ein-/Ausgaben, Logs, Versionen',
     },
     points: [
-      { num: '01', title: 'AI baut.', body: 'Aus dem Dialog mit Fachanwendern entsteht echter, lesbarer Code im Katalog — kein Prompt zur Laufzeit, keine Halluzination im heißen Pfad.' },
-      { num: '02', title: 'AI arbeitet mit.', body: 'In jedem Flow sind AI-Schritte und klassische Integrationen frei koppelbar. Pro Schritt entscheidest du: deterministisch oder intelligent. Du wählst — nicht das Tool.' },
-      { num: '03', title: 'AI bleibt auditierbar.', body: 'Jeder AI-Schritt hat definierte Ein- und Ausgaben, Logs, Modell-Versionen, Ergebnis-Historie. Kein Blackbox-Zauber. Governance auf demselben Niveau wie Code.' },
+      { num: '01', title: 'KI baut.', body: 'Aus dem Dialog mit Fachanwendern entsteht echter, lesbarer Code im Katalog — kein Prompt zur Laufzeit, keine Halluzination im heißen Pfad.' },
+      { num: '02', title: 'KI arbeitet mit.', body: 'In jedem Flow sind KI-Schritte und klassische Integrationen frei koppelbar. Pro Schritt entscheidest du: deterministisch oder intelligent. Du wählst — nicht das Tool.' },
+      { num: '03', title: 'KI bleibt auditierbar.', body: 'Jeder KI-Schritt hat definierte Ein- und Ausgaben, Logs, Modell-Versionen, Ergebnis-Historie. Kein Blackbox-Zauber. Governance auf demselben Niveau wie Code.' },
     ],
     controlled: {
-      eyebrow: '// kontrollierte AI',
-      title: `Die AI sieht nicht alles. Sie sieht, <em>was der Flow freigibt.</em>`,
-      lede: `Erst klassifiziert, filtert und routet Code. Dann bekommt AI genau den Kontext, der für diesen Pfad erlaubt und nötig ist. Kein freier Agent im Postfach. Keine Blackbox am heißen Pfad.`,
-      path: ['Postfach', 'Regel-Filter', 'erlaubter Typ', 'AI-Schritt', 'Prozesspfad', 'Run-Journal'],
+      eyebrow: '// kontrollierte KI',
+      title: `Die KI sieht nicht alles. Sie sieht, <em>was der Flow freigibt.</em>`,
+      lede: `Erst klassifiziert, filtert und routet Code. Dann bekommt KI genau den Kontext, der für diesen Pfad erlaubt und nötig ist. Kein freier Agent im Postfach. Keine Blackbox am heißen Pfad.`,
+      path: ['Postfach', 'Regel-Filter', 'erlaubter Typ', 'KI-Schritt', 'Prozesspfad', 'Run-Journal'],
     },
   },
   zoo: {
@@ -241,7 +248,7 @@ const t = {
         branch: '// Fertigung · StahlbergWerke',
         title: 'Temperaturabweichung sperrt die Charge.',
         body: [
-          ['Fachwerk läuft on-premise neben SPS und Modbus/TCP. Bei einer Temperaturabweichung sperrt der Flow die Charge ', { em: 'direkt im ERP' }, '. AI erklärt das Muster im Kontext — z.\u00A0B. „Abweichung tritt seit Werkzeugwechsel in KW 12 auf“.'],
+          ['Fachwerk läuft on-premise neben SPS und Modbus/TCP. Bei einer Temperaturabweichung sperrt der Flow die Charge ', { em: 'direkt im ERP' }, '. KI erklärt das Muster im Kontext — z.\u00A0B. „Abweichung tritt seit Werkzeugwechsel in KW 12 auf“.'],
           ['Am Band steht ein Tablet mit klaren Aktionen: ', { strong: 'Charge freigeben · Wartung verschieben · QS eskalieren.' }, ' Kein Papier, keine Excel-Liste am Schichtende.'],
         ],
         meta: [['Flow', 'Sensor → Sperre → Kontext'], ['Systeme', 'SPS · SAP · QS-System'], ['Rolle', 'Schichtleiter · QS'], ['Deploy', 'On-Premise · Air-Gap']],
@@ -261,7 +268,7 @@ const t = {
         ],
         meta: [['Flow', '3-Wege-Match'], ['Systeme', 'DATEV · SAP · DMS'], ['Rolle', 'Buchhaltung · Einkauf'], ['Compliance', 'GoBD-konform']],
         voice: {
-          quote: 'GoBD heißt: jeder Schritt nachvollziehbar, jeder Beleg revisionssicher. Wenn AI eine Rechnung freigibt, brauche ich pro Run: Modell-Version, Eingangsdaten, Entscheidung — sonst hält das im nächsten DSFA nicht.',
+          quote: 'GoBD heißt: jeder Schritt nachvollziehbar, jeder Beleg revisionssicher. Wenn KI eine Rechnung freigibt, brauche ich pro Run: Modell-Version, Eingangsdaten, Entscheidung — sonst hält das im nächsten DSFA nicht.',
           role: 'Leiterin Buchhaltung',
           segment: 'Mittelstand-Industrie, DATEV + SAP',
         },
@@ -293,7 +300,7 @@ const t = {
         ],
         alerts: [
           ['SKU-NW-4411', 'Retourenquote 18% · Meta-Kampagne pausiert', 'Listing prüfen'],
-          ['SKU-NW-8820', 'Reklamation „Maße abweichend“ · 12 Fälle', 'AI-Analyse'],
+          ['SKU-NW-8820', 'Reklamation „Maße abweichend“ · 12 Fälle', 'KI-Analyse'],
           ['SKU-NW-2207', 'Listing angepasst, Quote fällt', 'Freigeben'],
         ],
       },
@@ -417,7 +424,7 @@ const t = {
     title: `Dann lass uns über dein <em>teuerstes 1000-Prozesse-Problem</em> reden.`,
     body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem teuersten Engpass — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
     emailLabel: 'E-Mail an Sebastian',
-    phoneLabel: '+49 151 41928572',
+    phoneLabel: '+49 172 4290654',
     linkedinLabel: 'LinkedIn',
   },
   footer: {
@@ -426,6 +433,98 @@ const t = {
     datenschutz: 'Datenschutz',
     impressumHref: '/de/impressum/',
     datenschutzHref: '/de/datenschutz/',
+  },
+  macher: {
+    hero: {
+      eyebrow: 'Vibe Coding ist die neue Shadow-IT · Fachwerk ist der Rahmen',
+      headline: `<span class="strike">SaaS-Lock-in</span><span class="strike-punct">.</span><br><span class="strike">No-Code-Limit</span><span class="strike-punct">.</span><br><em>Fachwerk</em><span class="fw-punct">:</span><br>der Rahmen, in dem AI-Code überlebt.`,
+      sub: `Deine Business-User werden vibe-coden — mit oder ohne dich. Bei Lovable, Bolt, v0, ChatGPT. Mit API-Keys in Slack-DMs und Skripten auf Privat-Laptops. <strong>Fachwerk ist die Runtime, in der das auch in 3 Jahren noch läuft</strong>: Elixir/Phoenix auf Postgres, jeder Flow in deinem Repo, jeder Run replay-fähig, jede AI-Antwort mit Modell-Version geloggt.`,
+      ctaPrimary: 'Architektur-Session buchen',
+      bullets: [
+        { title: 'Elixir/OTP · Postgres', desc: 'Backend mit Crash-Isolation pro Flow' },
+        { title: 'React 19 · TanStack · Vite', desc: 'Type-safe SPAs, dein Repo, deine CI' },
+        { title: 'Audit-Trail by default', desc: 'Jeder Run = Event-Log, replay-fähig' },
+      ],
+    },
+    problem: {
+      title: `Vibe Coding ist die neue <em>Shadow-IT</em>.`,
+      lede: `Stack Overflow Survey 2025: Security ist die größte Schwäche von AI-Code. Veracode 2025: <strong>45 % von AI-generated code hat Security-Lücken</strong>. Du hast 12 SaaS-Tools, vier Vibe-Code-Skripte auf privaten Laptops, API-Keys in Slack-DMs. Niemand weiß, was läuft. Niemand kann es übernehmen. <strong>Fachwerk ist nicht gegen Vibe Coding — es ist die Statik darunter.</strong>`,
+      cells: [
+        { num: '// 01', warn: 'Vendor-Lock-in', title: 'Migration ist Rebuild.', body: 'Der Low-Code-Vendor besitzt deine Logik. Migration heißt: nochmal von vorn. Der API-Layer ist proprietär, die Daten kommen nur als CSV raus.' },
+        { num: '// 02', warn: 'Fehlende Kontrolle', title: 'Du siehst nicht, was läuft.', body: 'Welcher Flow hat zuletzt produziert? Welche Modell-Version war im Einsatz? Wo liegen die Logs? Im SaaS-Dashboard, wenn überhaupt — nicht in deinem Stack.' },
+        { num: '// 03', warn: 'Shadow-IT', title: 'Apps auf Privat-Laptops.', body: 'Lisa hat ein Python-Skript. Kai hat einen GPT-Workflow. Niemand weiß wo, niemand hat die Credentials, niemand reviewt Code. Wartung = Lottery.' },
+        { num: '// 04', warn: 'Key-Chaos', title: 'API-Keys überall.', body: 'OpenAI-Key in einem Pastebin. SAP-Credentials in einem Excel. Stripe-Secret im Browser-LocalStorage. Kein Vault, keine Rotation, kein Audit.' },
+        { num: '// 05', warn: 'Keine Tests', title: 'No-Code testet nichts.', body: 'Click-Flows haben keine Unit-Tests, keine CI, kein Branching. Änderung = Klick im Live-Mandanten. Rollback = Glück.' },
+        { num: '// 06', warn: 'Keine Beobachtbarkeit', title: 'Stack ohne Telemetrie.', body: 'Wenn der Flow um 3 Uhr nachts kippt, gibt es keinen Trace, kein Span, kein Histogram. Du erfährst es vom Kunden, nicht vom Monitoring.' },
+      ],
+    },
+    platform: {
+      title: `Phoenix · Postgres · OTP. <em>Eine Instanz</em>, fünf Säulen.`,
+      lede: `Backend in Elixir/OTP, UIs in React/Vite. Eine Instanz, dein Repo.`,
+      detail: `<p><strong>Werkstatt</strong> erzeugt zwei Schichten aus Dialog: Elixir-Module für Flows und Backend, React 19 + TanStack Router/Query + Tailwind für die UIs — gebaut mit Vite, type-safe, in deinem Repo. Phoenix dahinter als JSON-Backend.</p><p><strong>Katalog</strong> hält Versionen, Health, Owner — Git-backed, CI-gated. <strong>Betrieb</strong> ist ein OTP-Supervisor-Tree — jeder Flow ein Process, jeder Run ein Event-Log. <strong>Speicher</strong> = Postgres mit Event-Sourcing. <strong>Wissen</strong> = pgvector + strukturierte Refs.</p><p><strong>OTP</strong> ist Erlangs battle-tested Runtime-Modell: stürzt ein Flow ab, startet ihn der Supervisor neu — ohne den Rest des Systems anzufassen. Telco-Standard seit 30 Jahren, deshalb läuft auch dein 3-Uhr-nachts-Run noch um 3:01.</p>`,
+      pillarSubs: {
+        werkstatt: 'Codegen → Elixir-Module + React-Routes',
+        katalog: 'Git-backed · CI-gated · Health-Probes',
+        betrieb: 'OTP Supervisor · Oban · Event Log',
+        speicher: 'Postgres · Event Sourcing · pgvector',
+        wissen: 'Embeddings · Strukturierte Refs · Replay-Index',
+      },
+    },
+    deadends: {
+      title: `Drei Wege, <em>die nicht tragen.</em>`,
+      lede: `Vier Optionen, dieselben 6 Dimensionen — nur diesmal mit Tech-Brille. Stack-Ownership, Versionierung, Audit-Trail, Observability, Tests, Migrations-Kosten. <strong>Was dich nachts wachhält</strong>, nicht was den CFO überzeugt.`,
+      rows: [
+        { label: 'Stack-Ownership', lowcode: 'Vendor-Runtime', vibe: 'Skripte auf Privat-Laptops', dl: 'Ihr Code, deine Rechnung', fw: 'Dein Repo · Elixir/Postgres' },
+        { label: 'Versionierung', lowcode: 'Vendor-Versions', vibe: 'None — Datei-Datum', dl: 'Git, bei ihnen', fw: 'Git, deine CI, deine Branches' },
+        { label: 'Audit-Trail', lowcode: 'Dashboard, wenn überhaupt', vibe: 'print() im besten Fall', dl: 'Vertrags-abhängig', fw: 'Event-Log pro Run, replay-fähig' },
+        { label: 'Observability', lowcode: 'Vendor-Metriken', vibe: 'localhost:8080 wenn überhaupt', dl: 'Ihr Stack', fw: 'OpenTelemetry · deine Dashboards' },
+        { label: 'Tests / CI', lowcode: 'None — Klick im Live-Mandanten', vibe: 'Zero', dl: 'Ja, aber zugesperrt', fw: 'Standard ExUnit · deine CI' },
+        { label: 'Migration-Kosten', lowcode: 'Rebuild from scratch', vibe: 'Rebuild from chat history', dl: 'Retainer oder Rebuild', fw: 'Es <em>ist</em> der Rebuild — Code gehört dir' },
+      ],
+    },
+    ai: {
+      eyebrow: '04 — // audit-trail by default',
+      title: `AI als <em>Tool-Call</em>. Code als Backbone.`,
+      lede: `Jeder Flow ist Code in deinem Repo. <strong>Jeder Run ein Event-Log. Jede AI-Antwort replayable.</strong> LLMs sind in Fachwerk Funktionen mit JSON-Schema In/Out, Modell-Version pinned. Pydantic-style validation vor jedem Side-Effect. Kein freier Agent im Postfach. Kein Prompt im heißen Pfad.`,
+      points: [
+        { num: '01', title: 'Audit-Trail by default.', body: 'Modell-ID, Prompt-Hash, Temperatur, Output, Token-Counts. Persistent. Replay mit identischem Input gegen neue Modell-Version. Auditierbar gegen GoBD und EU-AI-Act, ohne dass du dafür extra etwas tun musst.' },
+        { num: '02', title: 'Gen-Time vs Run-Time.', body: 'AI baut Code im Werkstatt-Dialog (Gen-Time). Zur Laufzeit (Run-Time) läuft kompilierter Elixir-Code mit OTP-Supervision. Keine Prompts im heißen Pfad. Kein Prompt-Injection-Risk im Produktivflow.' },
+        { num: '03', title: 'Tool-Calls mit Schema.', body: 'AI-Schritte sind getypte Funktionen: JSON-Schema In, JSON-Schema Out. OpenAI-API, Anthropic-API, lokale Modelle (Ollama, vLLM) — alles über dasselbe Interface. Wechsel = Config-Zeile.' },
+      ],
+    },
+    zoo: {
+      title: `Vom <em>Vibe-Code-Zoo</em> zum versionierten Katalog.`,
+      lede: `Nicht "Low-Code vs Custom-Code", sondern "Skripte auf Privat-Laptops vs Git-Repo mit CI". Fachwerk gibt deinem Vibe-Coding-Output eine Heimat: <strong>Owner, Branch, PR, CI-Run, Health-Probe</strong>. Wie richtiger Code, weil es richtiger Code ist.`,
+    },
+    cases: {
+      lede: `Vier Szenarien — gleiche 4, aber Tech-Stack im Vordergrund. <strong>Modbus/TCP, SAP-RFC, REST/GraphQL, IMAP, Webhooks</strong> — jeweils mit konkreten Adapter-Modulen, nicht als "Connector". Code im Repo, Tests in CI, Logs in OpenTelemetry.`,
+      stackTags: {
+        nordware: 'Shopify GraphQL · Meta Marketing API · ERP-REST · pgvector',
+        stahlberg: 'Modbus/TCP · OPC UA · SAP-RFC · OTP isolation per line',
+        gruenfeld: 'DATEV-Connect · SAP-RFC · DMS · React 19 + TanStack · audit log',
+        dachstein: 'Wodis-API · iX-Haus REST · Versorger-XML · IMAP · WhatsApp Business',
+      },
+    },
+    deploy: {
+      title: `Docker · Caddy · Postgres. <em>Hinter deiner Firewall</em> oder bei uns.`,
+      cells: [
+        { title: 'Cloud-Standard', body: `Single-tenant Container auf <strong>StackIT</strong> oder deinem Hoster. Postgres-DB pro Kunde. Caddy für TLS und Routing. Logs nach OpenTelemetry-Endpoint deiner Wahl.`, tags: ['StackIT', 'Postgres', 'Caddy', 'OTel'] },
+        { title: 'On-Premise', body: `Bare-Metal oder Hypervisor. Docker-Compose oder K8s-Helm-Chart. Direkter Zugriff auf SPS, Modbus/TCP, lokale DBs. Air-Gap-fähig — kein egress notwendig.`, tags: ['Docker', 'K8s', 'Air-Gap', 'Modbus'] },
+        { title: 'Hybrid', body: `Werkstatt + Katalog in unserer Cloud (Codegen, Reviews, AI-Calls). Betrieb in deiner Umgebung. Verbindung über mTLS-Tunnel, Audit-Logs in beiden Welten.`, tags: ['mTLS', 'Split-Plane', 'Single-Source'] },
+      ],
+    },
+    pricing: {
+      title: `Setup, Stack, dein Repo. <em>Keine Seat-Lizenz.</em>`,
+      lede: `Drei Tiers — nach <strong>Scope</strong>, nicht nach Seats. <strong>Ein Setup-Sprint</strong> ist anrechenbar. Code lebt in deinem Repo (oder unserem, mit dir als Org-Member). Postgres-Schema gehört dir.`,
+      starterSub: '+ 0,5–1,5k / Monat · Setup + Hosting',
+      coreSub: '+ 3–8k / Monat · Setup + ~36–96k pro Jahr · meist ab ~20 Mio Umsatz',
+      platformSub: '+ 15–35k / Monat · Setup + ~180–420k pro Jahr · meist ab ~80 Mio Umsatz',
+    },
+    cta: {
+      title: `Zeig mir deinen <em>schmerzhaftesten Integrationspfad.</em>`,
+      body: `Architektur-Session direkt mit dem Architekten. Wir gehen deinen Stack durch, identifizieren die teuerste Integration, und skizzieren einen 6-Wochen-Sprint. Repo-Setup, Adapter-Liste, Run-Plan.`,
+      emailLabel: 'Architektur-Session',
+    },
   },
 };
 

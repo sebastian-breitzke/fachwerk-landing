@@ -747,6 +747,26 @@ section.block {
   align-items: center;
 }
 
+/* Full-width detail block under the interactive timber/pillars */
+.platform-detail {
+  margin-top: 4.5rem;
+  max-width: 64rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.platform-detail p { margin-bottom: 1.2rem; }
+.platform-detail p:last-child { margin-bottom: 0; }
+.platform-detail strong { color: var(--fg); font-weight: 600; }
+
+/* Pillars-Section ist .dark-section (dunkler bg) — Text muss hell sein.
+   Business: --paper ist hell (cream). Tech: --fg ist hell (off-white). */
+.dark-section .platform-detail { color: rgba(255, 253, 247, 0.78); }
+.dark-section .platform-detail strong { color: var(--paper); }
+html[data-view="macher"] .dark-section .platform-detail { color: rgba(232, 239, 233, 0.85); }
+html[data-view="macher"] .dark-section .platform-detail strong { color: var(--fg); }
+
 .timber {
   aspect-ratio: 1 / 1;
   position: relative;
@@ -2107,10 +2127,19 @@ footer .fright { display: flex; gap: 1.5rem; }
     margin: 0 0.4rem;
   }
 
-  /* Sackgassen table — horizontal scroll */
+  /* Sackgassen table — horizontal scroll, frozen first column */
   .sg-table { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
-  .sg-row { grid-template-columns: 6.5rem repeat(4, 10rem); min-width: 46.5rem; }
+  .sg-row { grid-template-columns: 9rem repeat(4, 11rem); min-width: 53rem; }
   .sg-head .sg-label, .sg-head .sg-col, .sg-label, .sg-col { padding: 0.9rem 0.9rem; font-size: 0.8rem; }
+  .sg-row .sg-label {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    box-shadow: 1px 0 0 var(--line), 6px 0 10px rgba(0, 0, 0, 0.12);
+  }
+  .sg-row.sg-head .sg-label {
+    background: var(--fg);
+  }
 
   /* AI flow — stack vertical, arrows rotate */
   .ai-flow {
@@ -2186,117 +2215,489 @@ footer .fright { display: flex; gap: 1.5rem; }
 }
 
 /* ═══════════════════════════════════════════════
-   PERSONA SELECTOR + INSERTS
+   VIEW TOGGLE + DUAL-VIEW SWAP
    ═══════════════════════════════════════════════ */
 
-/* No-JS cloak: strip and inserts hidden until init-script runs */
-.persona-strip { display: none; }
-[data-persona-show] { display: none; }
+/* Show only the active view; hide the other. Never override the natural display
+   value of the visible element — preserves grid/flex/block from base styles. */
+html:not([data-view="macher"]) [data-view-only="macher"] { display: none !important; }
+html[data-view="macher"] [data-view-only="business"] { display: none !important; }
 
-/* Once html[data-persona] is set by init-script, reveal strip */
-html[data-persona] .persona-strip { display: flex; }
-
-/* Reveal inserts matching active persona */
-html[data-persona="techie"] [data-persona-show="techie"],
-html[data-persona="business"] [data-persona-show="business"] {
-  display: revert;
-}
-
-/* Strip: thin band between hero and first content section */
-.persona-strip {
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1rem 3vw;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-.persona-strip-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.persona-pills {
-  display: flex;
-  gap: 0.4rem;
-}
-.persona-pill {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.45rem 0.95rem;
-  border: 1px solid var(--line-2);
+/* Nav-Icon-Toggle: single button right of contact-cta, like a darkmode toggle */
+.nav-view-icon {
   background: transparent;
-  color: var(--muted);
+  border: 1px solid var(--line-2);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0 0.4rem 0 0.6rem;
+  display: inline-grid;
+  place-items: center;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  color: var(--muted);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
-.persona-pill:hover {
+.nav-view-icon svg { width: 18px; height: 18px; display: block; }
+.nav-view-icon:hover {
+  color: var(--accent);
   border-color: var(--accent);
-  color: var(--fg);
 }
-.persona-pill.active {
+html[data-view="macher"] .nav-view-icon {
+  border-color: rgba(94, 234, 212, 0.3);
+  color: var(--accent);
+}
+html[data-view="macher"] .nav-view-icon:hover {
+  background: rgba(94, 234, 212, 0.08);
+}
+
+/* Hero view-hint: text-link above the image card, contextual per view */
+.hero-view-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.9rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed var(--line);
+}
+.hvh-prompt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.view-text-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.15s;
+}
+.view-text-link:hover { color: var(--fg); }
+.view-text-link .vtl-arrow {
+  font-size: 0.85rem;
+  transition: transform 0.2s;
+  text-decoration: none;
+}
+.view-text-link:hover .vtl-arrow { transform: translateX(3px); }
+html[data-view="macher"] .hero-view-hint { border-bottom-color: rgba(94, 234, 212, 0.2); }
+
+/* Switch-link: btn-style with arrow, used in CTA bottom */
+.view-switch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.view-switch-link:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+.view-switch-link .vsl-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+.view-switch-link:hover .vsl-arrow {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .nav-view-icon { width: 32px; height: 32px; }
+  .nav-view-icon svg { width: 16px; height: 16px; }
+}
+
+/* Pillar stack-sub (Macher view): teal mono badge instead of regular tag */
+.pillar-stack {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+html[data-view="macher"] .pillar-stack {
+  color: var(--accent) !important;
+}
+
+/* Use-case macher stack tag */
+.uc-stack-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--line-2);
+  padding: 0.4rem 0.75rem;
+  margin: 0.6rem 0 1rem;
+  display: inline-block;
+  background: var(--bg-2);
+}
+
+/* ═══════════════════════════════════════════════
+   MACHER THEME — dark, teal, mono-dominant
+   ═══════════════════════════════════════════════ */
+html[data-view="macher"] {
+  --bg: #1a1f2b;
+  --bg-2: #222837;
+  --fg: #e8efe9;
+  --fg-2: #ffffff;
+  --muted: #8b96a7;
+  --muted-2: #5d6878;
+  --line: #2d3546;
+  --line-2: #3d4558;
+  --accent: #5eead4;
+  --accent-ink: #5eead4;
+  --accent-wash: rgba(94, 234, 212, 0.08);
+  --sun: #5eead4;
+  --terracotta: #d97a4e;
+  --ink: #0a0e16;
+  --paper: #1f2532;
+  --warn: #d97a4e;
+  --grid-color: rgba(94, 234, 212, 0.06);
+  --grid-major: rgba(94, 234, 212, 0.09);
+  --grid-minor: rgba(94, 234, 212, 0.035);
+}
+
+/* Smooth transitions on the bulk of surfaces */
+html[data-view="macher"],
+html[data-view="business"] {
+  --view-transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+html[data-view] body,
+html[data-view] nav.top,
+html[data-view] section.block,
+html[data-view] .hero-bullets,
+html[data-view] .hero-bullet,
+html[data-view] .hr-card,
+html[data-view] .price-card,
+html[data-view] .problem-cell,
+html[data-view] .ai-step,
+html[data-view] .ai-point,
+html[data-view] .uc-tab,
+html[data-view] .pillar,
+html[data-view] .btn,
+html[data-view] .view-toggle,
+html[data-view] .view-pills,
+html[data-view] .view-pill,
+html[data-view] .marquee {
+  transition: var(--view-transition);
+}
+
+/* Headlines: drop Fraunces in favor of mono. Body stays Sans for legibility. */
+html[data-view="macher"] h1.hero-head,
+html[data-view="macher"] .block-title,
+html[data-view="macher"] .price-card h3,
+html[data-view="macher"] .cta h2,
+html[data-view="macher"] .hero-bullet strong,
+html[data-view="macher"] .pillar-name,
+html[data-view="macher"] .ai-controlled h3,
+html[data-view="macher"] .deploy-cell h4,
+html[data-view="macher"] .uc-stage h3,
+html[data-view="macher"] .ai-point h4,
+html[data-view="macher"] .problem-cell h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* em: stay teal but no italic in mono context */
+html[data-view="macher"] h1.hero-head em,
+html[data-view="macher"] .block-title em,
+html[data-view="macher"] .cta h2 em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Hero strikethrough: keep the warn/red strike visible on dark */
+html[data-view="macher"] h1.hero-head .strike { color: var(--muted-2); }
+html[data-view="macher"] h1.hero-head .strike::after { background: var(--warn); }
+
+/* Buttons: solid accent on dark, drop the warm shadow */
+html[data-view="macher"] .btn {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--paper);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
 }
-.persona-strip-hint {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  color: var(--muted-2);
-  margin-left: auto;
+html[data-view="macher"] .btn:hover {
+  box-shadow: 5px 5px 0 var(--accent), 5px 5px 0 1px var(--accent);
+}
+html[data-view="macher"] .btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--line-2);
+}
+html[data-view="macher"] .nav-cta {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink) !important;
+}
+html[data-view="macher"] .nav-cta:hover {
+  background: var(--fg);
+  border-color: var(--fg);
+  color: var(--ink) !important;
 }
 
-/* Insert blocks: contextual aside, mono label, accent left-border */
-.persona-insert {
-  border-left: 2px solid var(--accent);
-  padding: 1rem 1.2rem;
-  margin: 1.4rem 0;
-  background: color-mix(in oklab, var(--accent) 6%, var(--paper));
+/* Hero card glow: replace warm sun shadow with teal */
+html[data-view="macher"] .hr-card {
+  box-shadow: 8px 8px 0 var(--accent), 8px 8px 0 1px var(--ink);
+  background: var(--paper);
+}
+
+/* Hero strikes-out: brighter for contrast on dark */
+html[data-view="macher"] h1.hero-head .strike-punct { color: var(--muted-2); }
+html[data-view="macher"] h1.hero-head .fw-punct { color: var(--accent); }
+
+/* Hero bullets on dark */
+html[data-view="macher"] .hero-bullets {
+  background: var(--paper);
+  border-color: var(--line-2);
+}
+
+/* Selection */
+html[data-view="macher"] ::selection { background: var(--accent); color: var(--ink); }
+
+/* Eyebrow stays teal in macher (already accent) — strip the dark-section override since macher is uniformly dark */
+
+/* ─── Tech-Mode Background-Taktung ─────────────────
+   Hero: deep · 01 medium · 02 deep · 03 medium · 03b deep · 04 medium ·
+   05 deep · 06 medium · 07 deep · 08 deep · 09 console-hangar
+   "deep"   = var(--ink) + teal grid overlay
+   "medium" = var(--bg) + body grid (transparent section, body shows through) */
+
+/* Reusable deep-grid pattern for tech sections that take "deep" slot */
+html[data-view="macher"] section.hero,
+html[data-view="macher"] section#kipp,
+html[data-view="macher"] section#katalog,
+html[data-view="macher"] section#deploy,
+html[data-view="macher"] section#pricing {
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(94, 234, 212, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.035) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: 0 0;
   position: relative;
 }
-.persona-insert > strong {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+
+/* Sackgassen (#03) und Cases (#06 .uc-solid) haben eigenes solid bg.
+   In Tech: transparent damit Body-Grid (medium) durchscheint. */
+html[data-view="macher"] .sackgassen,
+html[data-view="macher"] .uc-solid { background: transparent; }
+
+/* Dark-section (Pillars #02) grid: re-tint white to teal in tech */
+html[data-view="macher"] .dark-section::before {
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(94, 234, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.03) 1px, transparent 1px);
+}
+
+/* Marquee continues the deep charcoal — bang from hero into Problem */
+html[data-view="macher"] .marquee {
+  background: var(--ink);
+  border-color: rgba(94, 234, 212, 0.12);
+  color: var(--fg);
+}
+html[data-view="macher"] .marquee-track { color: var(--fg); }
+
+/* Dark-section overrides: in macher view, --paper is dark (used as card bg
+   elsewhere). The dark-section base styles use var(--paper) as text color
+   expecting it to be light (business default). Re-point to var(--fg) here. */
+html[data-view="macher"] .dark-section .block-title,
+html[data-view="macher"] .dark-section .pillar-name {
+  color: var(--fg);
+}
+html[data-view="macher"] .dark-section .pillar.active .pillar-name { color: var(--accent); }
+html[data-view="macher"] .dark-section .block-lede { color: var(--muted); }
+html[data-view="macher"] .dark-section .block-lede strong { color: var(--fg); }
+
+/* Problem cells on dark */
+html[data-view="macher"] .problem-cell {
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+/* Pricing cards on dark */
+html[data-view="macher"] .price-card {
+  background: var(--paper);
+  border-color: var(--line-2);
+}
+
+/* Platform card (last-child) hebt sich ab — Teal-Akzent statt nur "auch dunkel" */
+html[data-view="macher"] .price-card:last-child {
+  background: linear-gradient(180deg, rgba(94, 234, 212, 0.06) 0%, var(--paper) 100%);
+  position: relative;
+}
+html[data-view="macher"] .price-card:last-child::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+html[data-view="macher"] .price-card:last-child .price-tier { color: var(--accent); }
+html[data-view="macher"] .price-card:last-child h3 { color: var(--fg); }
+html[data-view="macher"] .price-card:last-child .price-num { color: var(--accent); }
+html[data-view="macher"] .price-card:last-child .price-list li::before { color: var(--accent); }
+
+/* AI step boxes */
+html[data-view="macher"] .ai-step {
+  background: var(--paper);
+  border-color: var(--line-2);
+}
+
+/* Use-case + sackgassen tables: ensure contrast */
+html[data-view="macher"] .sg-row,
+html[data-view="macher"] .fit-cell,
+html[data-view="macher"] .fit-category,
+html[data-view="macher"] .fit-head {
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+/* Zoo catalog rows */
+html[data-view="macher"] .zoo-catalog,
+html[data-view="macher"] .kc-row,
+html[data-view="macher"] .kc-head {
+  background: var(--paper);
+  border-color: var(--line);
+}
+
+/* Code-style decorations: mono blocks visible as terminal */
+html[data-view="macher"] .block-index {
   color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-.persona-insert > p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--fg-2);
+  opacity: 0.7;
 }
 
-/* Dark-section override (Pillars block, controlled-ai on why-page) */
-.dark-section .persona-insert,
-.controlled-ai .persona-insert {
-  background: rgba(94, 234, 212, 0.07);
-  border-left-color: #5eead4;
+/* Toggle band on dark */
+html[data-view="macher"] .view-toggle {
+  background: var(--bg-2);
+  border-color: var(--line);
 }
-.dark-section .persona-insert > strong,
-.controlled-ai .persona-insert > strong {
-  color: #5eead4;
+html[data-view="macher"] .view-pills {
+  background: var(--bg);
+  border-color: var(--line-2);
 }
-.dark-section .persona-insert > p,
-.controlled-ai .persona-insert > p {
-  color: rgba(244, 237, 224, 0.85);
+html[data-view="macher"] .view-pill[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--ink);
 }
 
-@media (max-width: 700px) {
-  .persona-strip { gap: 0.7rem; padding: 0.8rem 4vw; }
-  .persona-strip-hint { display: none; }
-  .persona-pill { font-size: 0.6rem; padding: 0.4rem 0.7rem; letter-spacing: 0.1em; }
+/* ─── CTA in Tech: Console-Hangar mit Eck-Klammern ─── */
+/* Solid deep ink (continuity with Hero), teal millimeter grid,
+   radial spotlight glow, framed inner-box mit Architektur-Klammern. */
+html[data-view="macher"] .cta {
+  background: var(--ink);
+  color: var(--fg);
+  position: relative;
 }
+html[data-view="macher"] .cta::before {
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(94, 234, 212, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.035) 1px, transparent 1px);
+}
+html[data-view="macher"] .cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 35% 45%, rgba(94, 234, 212, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+html[data-view="macher"] .cta-inner {
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  padding: 3.5rem 3rem;
+  background: rgba(94, 234, 212, 0.025);
+  position: relative;
+  z-index: 2;
+}
+/* Architektur-Klammern: 4 corner accents */
+html[data-view="macher"] .cta-inner::before,
+html[data-view="macher"] .cta-inner::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--accent);
+  border-style: solid;
+  border-width: 0;
+}
+html[data-view="macher"] .cta-inner::before {
+  top: -2px; left: -2px;
+  border-top-width: 3px;
+  border-left-width: 3px;
+}
+html[data-view="macher"] .cta-inner::after {
+  bottom: -2px; right: -2px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+html[data-view="macher"] .cta .eyebrow { color: var(--accent); }
+html[data-view="macher"] .cta .eyebrow::before { background: var(--accent); }
+html[data-view="macher"] .cta h2 { color: var(--fg); }
+html[data-view="macher"] .cta h2 em { color: var(--accent); }
+html[data-view="macher"] .cta p { color: rgba(232, 239, 233, 0.78); }
+html[data-view="macher"] .cta .btn {
+  background: var(--accent);
+  color: var(--ink);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+html[data-view="macher"] .cta .btn:hover {
+  box-shadow: 5px 5px 0 var(--ink);
+}
+html[data-view="macher"] .cta .btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 rgba(94, 234, 212, 0.18);
+}
+html[data-view="macher"] .cta .btn.ghost:hover {
+  background: rgba(94, 234, 212, 0.08);
+}
+
+/* CTA bottom: contextual switch back, scrolls to top */
+.cta-view-switch {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px dashed var(--line-2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.cta-view-switch-prompt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+html[data-view="macher"] .cta-view-switch { border-top-color: rgba(94, 234, 212, 0.25); }
+html[data-view="macher"] .cta-view-switch-prompt { color: rgba(232, 239, 233, 0.6); }
 
 /* ═══════════════════════════════════════════════
    KIPP-PUNKTE TABLE (#kipp)

@@ -301,6 +301,11 @@
       el('span', { class: 'uc-branch' }, uc.branch),
       el('h3', null, uc.title),
     ]);
+    const stackTag = (FW.macherStackTags || {})[key];
+    if (stackTag) {
+      const stackBadge = el('div', { class: 'uc-stack-tag', 'data-view-only': 'macher' }, stackTag);
+      copy.appendChild(stackBadge);
+    }
     uc.body.forEach(parts => copy.appendChild(renderPara(parts)));
     const dl = el('dl', { class: 'uc-meta' });
     uc.meta.forEach(m => {
@@ -458,4 +463,31 @@
   }, { rootMargin: '-80px 0px -60% 0px', threshold: 0.01 });
 
   sections.forEach(s => io.observe(s));
+})();
+
+(function () {
+  const root = document.documentElement;
+  const switches = document.querySelectorAll('[data-set-view]');
+  if (!switches.length) return;
+  function sync() {
+    const v = root.dataset.view || 'business';
+    switches.forEach(btn => {
+      if (!btn.classList.contains('view-pill')) return;
+      const match = btn.dataset.setView === v;
+      btn.classList.toggle('active', match);
+      btn.setAttribute('aria-pressed', String(match));
+    });
+  }
+  switches.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = btn.dataset.setView;
+      try { localStorage.setItem('fw-view', v); } catch (e) {}
+      root.dataset.view = v;
+      sync();
+      if (btn.hasAttribute('data-scroll-top')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+  sync();
 })();
