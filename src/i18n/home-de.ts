@@ -22,6 +22,13 @@ const t = {
     prev: 'Vorheriges',
     next: 'Nächstes',
   },
+  persona: {
+    label: 'Perspektive',
+    techie: 'Macher',
+    fachlich: 'Fachlich',
+    business: 'Entscheider',
+    hint: 'optional · klick blendet zusatztexte ein',
+  },
   hero: {
     eyebrow: 'Maßgeschneiderte Software auf solidem Rohbau für den Mittelstand',
     meta: '',
@@ -96,6 +103,40 @@ const t = {
       { label: 'Anwender-Selbstbau', lowcode: 'Fachanwender klickt, bis es bricht', vibe: 'Coding-Tool nötig, kein Fundament', dl: 'Nicht vorgesehen', fw: 'Dialog mit Fachwerk, Rohbau trägt' },
     ],
   },
+  kipp: {
+    eyebrow: '03b — Kipp-Punkte',
+    index: '// gute tools, andere aufgabe',
+    title: `Die Frage ist nicht: welches Tool ist besser? Sondern: <em>ab wann kippt es?</em>`,
+    lede: `Wenn ein einfacher Flow reicht, nimm ein einfaches Tool. <strong>Fachwerk muss nicht gewinnen, wenn ein Standard reicht</strong> — Fachwerk muss klar sein, wenn Integration, Auditierbarkeit, Datenschutz und Betrieb den Prozess bestimmen.`,
+    heads: ['Heute naheliegend', 'Gut, wenn …', 'Kippt Richtung Fachwerk, wenn …'],
+    rows: [
+      {
+        category: 'Click-Automation / iPaaS',
+        good: 'du ein paar Systeme per Standard-Connector verbindest und ein Fachbereich den Flow sauber selbst pflegen kann.',
+        tip: 'Versionen, Rollbacks, Fehlerdiagnose, Berechtigungen und produktiver Betrieb wichtiger werden als das schnelle Zusammenklicken.',
+      },
+      {
+        category: 'AI-Agenten',
+        good: 'die Aufgabe ad hoc, niedrig riskant und eher Recherche, Text oder Assistenz ist.',
+        tip: 'AI nicht alles sehen darf, erst deterministisch gefiltert werden muss und jeder AI-Schritt Eingaben, Ausgaben und Modellstand braucht.',
+      },
+      {
+        category: 'RPA',
+        good: 'ein Altsystem nur über die Oberfläche bedienbar ist und der Prozess im Kern Bildschirmarbeit bleibt.',
+        tip: 'Fachobjekte, Historie, betroffene Kunden, Wiederholung und Ursachenanalyse relevant werden.',
+      },
+      {
+        category: 'Dashboard / BI',
+        good: 'du nur sehen willst, was passiert ist, und die Aktion danach in anderen Systemen liegt.',
+        tip: 'Menschen aus der Oberfläche heraus handeln müssen und diese Handlung direkt in den Prozess zurückschreibt.',
+      },
+      {
+        category: 'Enterprise-Plattformen',
+        good: 'du Konzern-IT, Integrations-Team, Governance-Apparat und Budget für ein Plattformprogramm hast.',
+        tip: 'du europäische Mittelstandsrealität hast: heterogene Systeme, knappe IT, Datenschutzdruck, aber keinen Konzernapparat.',
+      },
+    ],
+  },
   ai: {
     eyebrow: '04 — AI + Code',
     index: '// code wo es zählt, ai wo sie hilft',
@@ -118,6 +159,12 @@ const t = {
       { num: '02', title: 'AI arbeitet mit.', body: 'In jedem Flow sind AI-Schritte und klassische Integrationen frei koppelbar. Pro Schritt entscheidest du: deterministisch oder intelligent. Du wählst — nicht das Tool.' },
       { num: '03', title: 'AI bleibt auditierbar.', body: 'Jeder AI-Schritt hat definierte Ein- und Ausgaben, Logs, Modell-Versionen, Ergebnis-Historie. Kein Blackbox-Zauber. Governance auf demselben Niveau wie Code.' },
     ],
+    controlled: {
+      eyebrow: '// kontrollierte AI',
+      title: `Die AI sieht nicht alles. Sie sieht, <em>was der Flow freigibt.</em>`,
+      lede: `Erst klassifiziert, filtert und routet Code. Dann bekommt AI genau den Kontext, der für diesen Pfad erlaubt und nötig ist. Kein freier Agent im Postfach. Keine Blackbox am heißen Pfad.`,
+      path: ['Postfach', 'Regel-Filter', 'erlaubter Typ', 'AI-Schritt', 'Prozesspfad', 'Run-Journal'],
+    },
   },
   zoo: {
     eyebrow: '05 — In 3 Jahren: Katalog oder Zoo?',
@@ -165,7 +212,8 @@ const t = {
     eyebrow: '06 — Vier Szenarien',
     index: '// flow + actionable UI',
     title: `Was Fachwerk konkret baut. <em>Custom pro Kunde.</em>`,
-    lede: `Vier fiktive Szenarien — <strong>keine Referenzkunden</strong>, sondern Illustrationen, damit du dir vorstellen kannst, wie Fachwerk in deiner Firma aussieht. Jedes Szenario: ein Flow plus eine Oberfläche, die <strong>arbeitet statt anzuzeigen</strong>. Keine Standard-Dashboards. Kein Power-BI-Zoo.`,
+    lede: `Vier fiktive Szenarien mit fiktiven Stimmen aus dem Segment — <strong>keine Referenzkunden, keine echten Zitate</strong>, sondern Illustrationen, damit du dir vorstellen kannst, wie Fachwerk in deiner Firma aussieht. Jedes Szenario: ein Flow plus eine Oberfläche, die <strong>arbeitet statt anzuzeigen</strong>. Keine Standard-Dashboards. Kein Power-BI-Zoo.`,
+    voiceTag: 'fiktive Stimme',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-Commerce · NordWare' },
       { uc: 'stahlberg', num: '02', label: 'Fertigung · StahlbergWerke' },
@@ -182,6 +230,11 @@ const t = {
           ['Die Oberfläche ist ein Retouren-Cockpit, kein Dashboard. Jeder Eintrag hat eine Aktion: zurück ins Lager, erstatten, eskalieren, Listing anpassen. ', { strong: 'Kein Klick durch fünf Systeme.' }],
         ],
         meta: [['Flow', 'Schwelle → Aktion'], ['Systeme', 'Shop · Meta · ERP · DMS'], ['Rolle', 'Ops-Team · Einkauf'], ['Wirkung', '~14 h / Woche gespart']],
+        voice: {
+          quote: 'Bei uns hängt das Werbebudget am Tropf der Retouren-Quote. Wenn eine SKU mit 18 % Retoure noch eine Woche Meta-Ads bekommt, brennt das Geld weg — und ich erfahre es Tage später.',
+          role: 'Performance-Marketing-Lead',
+          segment: 'mittelständischer E-Commerce',
+        },
         mock: 'nord',
       },
       stahlberg: {
@@ -192,6 +245,11 @@ const t = {
           ['Am Band steht ein Tablet mit klaren Aktionen: ', { strong: 'Charge freigeben · Wartung verschieben · QS eskalieren.' }, ' Kein Papier, keine Excel-Liste am Schichtende.'],
         ],
         meta: [['Flow', 'Sensor → Sperre → Kontext'], ['Systeme', 'SPS · SAP · QS-System'], ['Rolle', 'Schichtleiter · QS'], ['Deploy', 'On-Premise · Air-Gap']],
+        voice: {
+          quote: 'Letzten Monat hatten wir eine Charge, die zwei Tage nach Auslieferung als out-of-spec aufflog. Ohne Sperre direkt aus den SPS-Daten wäre das ein Schadensfall geworden.',
+          role: 'Schichtleiter',
+          segment: 'mittelständische Stahlverarbeitung, on-prem ERP',
+        },
         mock: 'stahl',
       },
       gruenfeld: {
@@ -202,6 +260,11 @@ const t = {
           ['Das Freigabe-Board liefert ', { strong: 'GoBD-konforme Ein-Klick-Aktionen' }, ': freigeben, nachfordern, eskalieren. Jede Aktion auditierbar, mit vollem Revisionspfad.'],
         ],
         meta: [['Flow', '3-Wege-Match'], ['Systeme', 'DATEV · SAP · DMS'], ['Rolle', 'Buchhaltung · Einkauf'], ['Compliance', 'GoBD-konform']],
+        voice: {
+          quote: 'GoBD heißt: jeder Schritt nachvollziehbar, jeder Beleg revisionssicher. Wenn AI eine Rechnung freigibt, brauche ich pro Run: Modell-Version, Eingangsdaten, Entscheidung — sonst hält das im nächsten DSFA nicht.',
+          role: 'Leiterin Buchhaltung',
+          segment: 'Mittelstand-Industrie, DATEV + SAP',
+        },
         mock: 'gruen',
       },
       dachstein: {
@@ -212,6 +275,11 @@ const t = {
           ['Ein Cockpit für Handwerker-Beauftragung, Mieter-Kommunikation und Versicherungsfälle. ', { strong: 'Telefon, E-Mail, WhatsApp' }, ' zentral gebündelt, dem richtigen Objekt zugeordnet.'],
         ],
         meta: [['Flow', 'Multi-Source → Abgleich'], ['Systeme', 'Wodis · iX-Haus · Versorger'], ['Rolle', 'Objektmanager · Verwaltung'], ['Channel', 'Mail · Tel · WhatsApp']],
+        voice: {
+          quote: 'Ich verwalte 30 Objekte. Anfragen kommen auf Telefon, Mail, WhatsApp und Mieter-Portal. Was ich brauche, ist ein Cockpit pro Objekt — nicht vier Tools.',
+          role: 'Objektmanagerin',
+          segment: 'mittelständische Hausverwaltung, ~3.000 WE',
+        },
         mock: 'dach',
       },
     },

@@ -18,6 +18,7 @@ import daten1Full from '../assets/hero/daten-1-full.jpg';
 import daten2Thumb from '../assets/hero/daten-2.jpg';
 import daten2Full from '../assets/hero/daten-2-full.jpg';
 import '../styles/home.css';
+import PersonaSelector from './PersonaSelector.astro';
 
 const rawSlides = {
   flows: { thumb: flowsThumb, full: flowsFull },
@@ -48,6 +49,7 @@ const allLocales: Array<'de' | 'en' | 'es'> = ['de', 'en', 'es'];
 const fwRuntime = {
   useCases: t.cases.useCases,
   mock: t.cases.mock,
+  voiceTag: t.cases.voiceTag,
 };
 
 // Mobile carousel: mini-timber SVG (no clipPath, same geometry as desktop)
@@ -104,6 +106,10 @@ window.TWEAKS = {
   "showGrid": true,
   "useCase": "nordware"
 };
+</script>
+<script is:inline>
+try { document.documentElement.dataset.persona = localStorage.getItem('fw-persona') || 'fachlich'; }
+catch (e) { document.documentElement.dataset.persona = 'fachlich'; }
 </script>
 </head>
 <body>
@@ -234,6 +240,14 @@ window.TWEAKS = {
     ))}
   </div>
 </div>
+
+<PersonaSelector
+  label={t.persona.label}
+  techie={t.persona.techie}
+  fachlich={t.persona.fachlich}
+  business={t.persona.business}
+  hint={t.persona.hint}
+/>
 
 <section class="block" id="problem">
   <div class="block-head">
@@ -383,6 +397,30 @@ window.TWEAKS = {
   </div>
 </section>
 
+<section class="block" id="kipp">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.kipp.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.kipp.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.kipp.title}></h2>
+      <p class="block-lede" set:html={t.kipp.lede}></p>
+    </div>
+  </div>
+
+  <div class="fit-table">
+    {t.kipp.heads.map(h => <div class="fit-head">{h}</div>)}
+    {t.kipp.rows.map(r => (
+      <>
+        <div class="fit-category">{r.category}</div>
+        <div class="fit-cell">{r.good}</div>
+        <div class="fit-cell">{r.tip}</div>
+      </>
+    ))}
+  </div>
+</section>
+
 <section class="block ai-section" id="ai">
   <div class="block-head">
     <div>
@@ -424,6 +462,15 @@ window.TWEAKS = {
           <p>{p.body}</p>
         </div>
       ))}
+    </div>
+  </div>
+
+  <div class="ai-controlled">
+    <span class="eyebrow">{t.ai.controlled.eyebrow}</span>
+    <h3 set:html={t.ai.controlled.title}></h3>
+    <p class="ai-controlled-lede" set:html={t.ai.controlled.lede}></p>
+    <div class="ai-path">
+      {t.ai.controlled.path.map(p => <span>{p}</span>)}
     </div>
   </div>
 </section>

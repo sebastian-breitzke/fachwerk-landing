@@ -310,6 +310,17 @@
       ]));
     });
     copy.appendChild(dl);
+    if (uc.voice) {
+      const voice = el('blockquote', { class: 'uc-voice' }, [
+        el('span', { class: 'uc-voice-tag' }, FW.voiceTag || 'fiktive Stimme'),
+        el('p', null, uc.voice.quote),
+        el('footer', null, [
+          el('span', { class: 'uc-voice-role' }, uc.voice.role),
+          ' · ' + uc.voice.segment,
+        ]),
+      ]);
+      copy.appendChild(voice);
+    }
     slide.appendChild(copy);
     const mockFn = MOCKS[uc.mock];
     if (mockFn) slide.appendChild(el('div', null, mockFn()));

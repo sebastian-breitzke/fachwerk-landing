@@ -1724,6 +1724,16 @@ section.block {
 }
 .deploy-cell .tag-row { margin-top: 1.2rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
+.why-bridge {
+  background: color-mix(in oklab, var(--sun) 10%, var(--bg));
+}
+.why-bridge .block-head {
+  margin-bottom: 0;
+}
+.why-bridge .btn {
+  margin-top: 1.8rem;
+}
+
 .price-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -2173,4 +2183,316 @@ footer .fright { display: flex; gap: 1.5rem; }
   .hero { padding-top: 5.5rem; }
   .uc-tab { font-size: 0.62rem; padding: 0.7rem 0.7rem; }
   .uc-tab .num { margin-right: 0.3rem; }
+}
+
+/* ═══════════════════════════════════════════════
+   PERSONA SELECTOR + INSERTS
+   ═══════════════════════════════════════════════ */
+
+/* No-JS cloak: strip and inserts hidden until init-script runs */
+.persona-strip { display: none; }
+[data-persona-show] { display: none; }
+
+/* Once html[data-persona] is set by init-script, reveal strip */
+html[data-persona] .persona-strip { display: flex; }
+
+/* Reveal inserts matching active persona */
+html[data-persona="techie"] [data-persona-show="techie"],
+html[data-persona="business"] [data-persona-show="business"] {
+  display: revert;
+}
+
+/* Strip: thin band between hero and first content section */
+.persona-strip {
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 3vw;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.persona-strip-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.persona-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+.persona-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--line-2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.persona-pill:hover {
+  border-color: var(--accent);
+  color: var(--fg);
+}
+.persona-pill.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--paper);
+}
+.persona-strip-hint {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--muted-2);
+  margin-left: auto;
+}
+
+/* Insert blocks: contextual aside, mono label, accent left-border */
+.persona-insert {
+  border-left: 2px solid var(--accent);
+  padding: 1rem 1.2rem;
+  margin: 1.4rem 0;
+  background: color-mix(in oklab, var(--accent) 6%, var(--paper));
+  position: relative;
+}
+.persona-insert > strong {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.persona-insert > p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+/* Dark-section override (Pillars block, controlled-ai on why-page) */
+.dark-section .persona-insert,
+.controlled-ai .persona-insert {
+  background: rgba(94, 234, 212, 0.07);
+  border-left-color: #5eead4;
+}
+.dark-section .persona-insert > strong,
+.controlled-ai .persona-insert > strong {
+  color: #5eead4;
+}
+.dark-section .persona-insert > p,
+.controlled-ai .persona-insert > p {
+  color: rgba(244, 237, 224, 0.85);
+}
+
+@media (max-width: 700px) {
+  .persona-strip { gap: 0.7rem; padding: 0.8rem 4vw; }
+  .persona-strip-hint { display: none; }
+  .persona-pill { font-size: 0.6rem; padding: 0.4rem 0.7rem; letter-spacing: 0.1em; }
+}
+
+/* ═══════════════════════════════════════════════
+   KIPP-PUNKTE TABLE (#kipp)
+   ═══════════════════════════════════════════════ */
+.fit-table {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr 1.3fr;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--sun), 8px 8px 0 1px var(--fg);
+}
+.fit-head,
+.fit-category,
+.fit-cell {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.fit-head {
+  padding: 0.9rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg-2);
+}
+.fit-category {
+  padding: 1.25rem 1.1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--fg);
+}
+.fit-cell {
+  padding: 1.25rem 1.1rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+.fit-cell:nth-child(3n) {
+  color: var(--fg-2);
+  background: color-mix(in oklab, var(--accent) 5%, var(--paper));
+}
+@media (max-width: 1100px) {
+  .fit-table { grid-template-columns: 1fr; }
+  .fit-head { display: none; }
+  .fit-category {
+    background: var(--bg-2);
+    color: var(--accent);
+  }
+  .fit-cell:nth-child(3n) {
+    background: var(--paper);
+  }
+  .fit-cell::before {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    margin-bottom: 0.55rem;
+  }
+  .fit-category + .fit-cell::before { content: 'Gut, wenn'; }
+  .fit-category + .fit-cell + .fit-cell::before { content: 'Kippt Richtung Fachwerk, wenn'; }
+}
+
+/* ═══════════════════════════════════════════════
+   CONTROLLED AI — sub-block within #ai
+   ═══════════════════════════════════════════════ */
+.ai-controlled {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.ai-controlled .eyebrow {
+  margin-bottom: 1rem;
+}
+.ai-controlled h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  margin: 0.6rem 0 1rem;
+  color: var(--fg);
+  max-width: 38rem;
+}
+.ai-controlled h3 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.ai-controlled-lede {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 50rem;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+}
+.ai-path {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+}
+.ai-path > span {
+  min-height: 5.5rem;
+  padding: 1rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  position: relative;
+}
+.ai-path > span:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  z-index: 2;
+  background: var(--bg);
+  padding: 0 0.15rem;
+  line-height: 1;
+}
+.ai-path > span:nth-child(4) {
+  background: color-mix(in oklab, var(--accent) 14%, var(--paper));
+  color: var(--accent-ink);
+}
+@media (max-width: 900px) {
+  .ai-path { grid-template-columns: 1fr; }
+  .ai-path > span:not(:last-child)::after {
+    right: auto;
+    bottom: -0.65rem;
+    left: 50%;
+    top: auto;
+    transform: translate(-50%, 0) rotate(90deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   USE CASE — fictional voice
+   ═══════════════════════════════════════════════ */
+.uc-voice {
+  margin-top: 1.8rem;
+  padding: 1.4rem 1.6rem 1.2rem;
+  background: var(--paper);
+  border-left: 3px solid var(--accent);
+  position: relative;
+  box-shadow: 4px 4px 0 var(--line);
+  max-width: 38rem;
+}
+.uc-voice-tag {
+  position: absolute;
+  top: -0.7rem;
+  left: 1.1rem;
+  background: var(--paper);
+  border: 1px solid var(--line-2);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.2rem 0.55rem;
+}
+.uc-voice p {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--fg);
+  font-style: italic;
+  margin: 0 0 0.8rem;
+}
+.uc-voice p::before { content: '\201E'; }
+.uc-voice p::after { content: '\201C'; }
+.uc-voice footer {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-style: normal;
+}
+.uc-voice .uc-voice-role {
+  color: var(--fg);
+  font-weight: 600;
 }

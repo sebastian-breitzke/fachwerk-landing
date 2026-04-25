@@ -21,6 +21,13 @@ const t: HomeT = {
     prev: 'Anterior',
     next: 'Siguiente',
   },
+  persona: {
+    label: 'Perspectiva',
+    techie: 'Constructor',
+    fachlich: 'Experto',
+    business: 'Decisor',
+    hint: 'opcional · clic muestra notas adicionales',
+  },
   hero: {
     eyebrow: 'Software a medida sobre una estructura sólida para la mediana empresa',
     meta: '',
@@ -95,6 +102,40 @@ const t: HomeT = {
       { label: 'Autoservicio del usuario', lowcode: 'El usuario clica hasta que rompe', vibe: 'Necesita herramienta de código, sin base', dl: 'No previsto', fw: 'Diálogo con Fachwerk, la estructura aguanta' },
     ],
   },
+  kipp: {
+    eyebrow: '03b — Puntos de inflexión',
+    index: '// buenas herramientas, otra tarea',
+    title: `La pregunta no es: ¿qué herramienta es mejor? Sino: <em>¿cuándo se vuelca?</em>`,
+    lede: `Cuando basta un flujo simple, usa una herramienta simple. <strong>Fachwerk no tiene que ganar cuando un estándar es suficiente</strong> — Fachwerk debe ser claro cuando integración, auditabilidad, protección de datos y operación marcan el proceso.`,
+    heads: ['Lo obvio hoy', 'Bueno cuando …', 'Se inclina hacia Fachwerk cuando …'],
+    rows: [
+      {
+        category: 'Automatización por clic / iPaaS',
+        good: 'conectas algunos sistemas con conectores estándar y un área puede mantener el flujo por sí misma.',
+        tip: 'versiones, rollbacks, diagnóstico de errores, permisos y operación productiva pesan más que el ensamblado rápido.',
+      },
+      {
+        category: 'Agentes de IA',
+        good: 'la tarea es puntual, de bajo riesgo, y más bien investigación, texto o asistencia.',
+        tip: 'la IA no debe verlo todo, debe filtrarse primero de forma determinista y cada paso de IA necesita entradas, salidas y versión de modelo.',
+      },
+      {
+        category: 'RPA',
+        good: 'un sistema antiguo solo es operable por la interfaz y el proceso es esencialmente trabajo de pantalla.',
+        tip: 'importan los objetos de negocio, el histórico, los clientes afectados, la repetición y el análisis de causa raíz.',
+      },
+      {
+        category: 'Cuadro de mandos / BI',
+        good: 'solo quieres ver lo que pasó y la acción vive en otros sistemas.',
+        tip: 'las personas deben actuar desde la interfaz y esa acción se escribe directamente de vuelta al proceso.',
+      },
+      {
+        category: 'Plataformas enterprise',
+        good: 'tienes IT corporativa, equipo de integración, aparato de gobernanza y presupuesto para un programa de plataforma.',
+        tip: 'tienes la realidad mediana europea: sistemas heterogéneos, IT escasa, presión de protección de datos, pero sin aparato corporativo.',
+      },
+    ],
+  },
   ai: {
     eyebrow: '04 — AI + código',
     index: '// lo mejor de ambos mundos',
@@ -117,6 +158,12 @@ const t: HomeT = {
       { num: '02', title: 'La AI colabora.', body: 'En cada flujo, pasos AI e integraciones clásicas se combinan libremente. Por paso decides: determinista o inteligente. Lo mejor de ambos mundos.' },
       { num: '03', title: 'La AI queda auditable.', body: 'Cada paso AI tiene entradas y salidas definidas, logs, versiones de modelo, historia de resultados. Sin magia blackbox. Gobernanza al mismo nivel que el código.' },
     ],
+    controlled: {
+      eyebrow: '// IA controlada',
+      title: `La IA no lo ve todo. Ve <em>lo que el flujo permite.</em>`,
+      lede: `Primero el código clasifica, filtra y enruta. Luego la IA recibe exactamente el contexto permitido y necesario para ese camino. Sin agente libre en la bandeja. Sin caja negra en el camino caliente.`,
+      path: ['Bandeja', 'Filtro de reglas', 'Tipo permitido', 'Paso de IA', 'Camino del proceso', 'Diario de ejecuciones'],
+    },
   },
   zoo: {
     eyebrow: '05 — En 3 años: ¿catálogo o zoo?',
@@ -164,7 +211,8 @@ const t: HomeT = {
     eyebrow: '06 — Cuatro escenarios',
     index: '// flujo + UI accionable',
     title: `Qué construye Fachwerk en concreto. <em>A medida por cliente.</em>`,
-    lede: `Cuatro escenarios ficticios — <strong>no son clientes de referencia</strong>, sino ilustraciones para que veas cómo se vería Fachwerk en tu empresa. Cada escenario: un flujo más una interfaz que <strong>trabaja en lugar de mostrar</strong>. Sin dashboards estándar. Sin zoo de Power BI.`,
+    lede: `Cuatro escenarios ficticios con voces ficticias del segmento — <strong>no son clientes de referencia, ni citas reales</strong>, sino ilustraciones para que veas cómo se vería Fachwerk en tu empresa. Cada escenario: un flujo más una interfaz que <strong>trabaja en lugar de mostrar</strong>. Sin dashboards estándar. Sin zoo de Power BI.`,
+    voiceTag: 'voz ficticia',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-commerce · NordWare' },
       { uc: 'stahlberg', num: '02', label: 'Fabricación · StahlbergWerke' },
@@ -181,6 +229,11 @@ const t: HomeT = {
           ['La interfaz es un cockpit de devoluciones, no un dashboard. Cada entrada tiene una acción: devolver a stock, reembolsar, escalar, ajustar listing. ', { strong: 'Sin clicar por cinco sistemas.' }],
         ],
         meta: [['Flujo', 'Umbral → acción'], ['Sistemas', 'Shop · Meta · ERP · DMS'], ['Rol', 'Ops · Compras'], ['Impacto', '~14 h / semana ahorradas']],
+        voice: {
+          quote: 'Nuestro presupuesto de publicidad depende de la tasa de devoluciones. Si una SKU con 18 % de devoluciones recibe otra semana de Meta Ads, ese dinero se quema — y me entero días después.',
+          role: 'Lead de marketing de performance',
+          segment: 'e-commerce mediano',
+        },
         mock: 'nord',
       },
       stahlberg: {
@@ -191,6 +244,11 @@ const t: HomeT = {
           ['En la línea hay una tablet con acciones claras: ', { strong: 'liberar lote · posponer mantenimiento · escalar a QA.' }, ' Sin papel, sin lista Excel al final del turno.'],
         ],
         meta: [['Flujo', 'Sensor → bloqueo → contexto'], ['Sistemas', 'PLC · SAP · sistema QA'], ['Rol', 'Jefe de turno · QA'], ['Deploy', 'On-premise · air-gap']],
+        voice: {
+          quote: 'El mes pasado tuvimos un lote marcado fuera de especificación dos días después de la entrega. Sin bloqueo directo desde los datos del PLC eso se habría convertido en un siniestro.',
+          role: 'Jefe de turno',
+          segment: 'procesado de acero mediano, ERP on-prem',
+        },
         mock: 'stahl',
       },
       gruenfeld: {
@@ -201,6 +259,11 @@ const t: HomeT = {
           ['El tablero de aprobación ofrece ', { strong: 'acciones GoBD de un solo clic' }, ': aprobar, reclamar, escalar. Cada acción auditable, con pista de revisión completa.'],
         ],
         meta: [['Flujo', '3-way match'], ['Sistemas', 'DATEV · SAP · DMS'], ['Rol', 'Contabilidad · Compras'], ['Compliance', 'GoBD-compliant']],
+        voice: {
+          quote: 'GoBD significa: cada paso trazable, cada justificante a prueba de auditoría. Cuando la IA aprueba una factura, necesito por ejecución: versión del modelo, datos de entrada, decisión — si no, no aguanta la próxima auditoría de protección de datos.',
+          role: 'Jefa de contabilidad',
+          segment: 'industria mediana, DATEV + SAP',
+        },
         mock: 'gruen',
       },
       dachstein: {
@@ -211,6 +274,11 @@ const t: HomeT = {
           ['Un cockpit para encargos a gremios, comunicación con inquilinos y casos de seguro. ', { strong: 'Teléfono, email, WhatsApp' }, ' agrupados, asignados al inmueble correcto.'],
         ],
         meta: [['Flujo', 'Multi-fuente → conciliación'], ['Sistemas', 'Wodis · iX-Haus · suministros'], ['Rol', 'Gestor · Administración'], ['Canal', 'Mail · Tel · WhatsApp']],
+        voice: {
+          quote: 'Gestiono 30 inmuebles. Las solicitudes llegan por teléfono, correo, WhatsApp y portal de inquilinos. Lo que necesito es un cockpit por inmueble — no cuatro herramientas.',
+          role: 'Gestora de inmuebles',
+          segment: 'administración de fincas mediana, ~3.000 unidades',
+        },
         mock: 'dach',
       },
     },

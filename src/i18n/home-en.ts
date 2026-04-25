@@ -21,6 +21,13 @@ const t: HomeT = {
     prev: 'Previous',
     next: 'Next',
   },
+  persona: {
+    label: 'Perspective',
+    techie: 'Builder',
+    fachlich: 'Specialist',
+    business: 'Decision-maker',
+    hint: 'optional · click reveals extra notes',
+  },
   hero: {
     eyebrow: 'Custom software on a solid shell for the mid-market',
     meta: '',
@@ -95,6 +102,40 @@ const t: HomeT = {
       { label: 'User self-build', lowcode: 'Business user clicks until it breaks', vibe: 'Needs coding tool, no foundation', dl: 'Not on the menu', fw: 'Dialog with Fachwerk, shell holds' },
     ],
   },
+  kipp: {
+    eyebrow: '03b — Tipping points',
+    index: '// good tools, different job',
+    title: `The question isn't: which tool is better? It's: <em>when does it tip?</em>`,
+    lede: `When a simple flow is enough, take a simple tool. <strong>Fachwerk doesn't have to win when a standard fits</strong> — Fachwerk has to be the obvious choice when integration, auditability, data protection and operations drive the process.`,
+    heads: ["Today's easy reach", 'Good when …', 'Tips toward Fachwerk when …'],
+    rows: [
+      {
+        category: 'Click-Automation / iPaaS',
+        good: 'you connect a few systems via standard connectors and a business unit can maintain the flow itself.',
+        tip: 'versions, rollbacks, error diagnosis, permissions and production operations matter more than the quick click-together.',
+      },
+      {
+        category: 'AI agents',
+        good: 'the task is ad-hoc, low-risk, and more research, text or assistance.',
+        tip: 'AI must not see everything, must be deterministically filtered first, and every AI step needs inputs, outputs and model state.',
+      },
+      {
+        category: 'RPA',
+        good: 'a legacy system is only operable through the UI and the process stays screen-based.',
+        tip: 'business objects, history, affected customers, repeatability and root-cause analysis matter.',
+      },
+      {
+        category: 'Dashboard / BI',
+        good: 'you only want to see what happened and the action lives in other systems.',
+        tip: 'people must act from within the UI and that action writes back into the process.',
+      },
+      {
+        category: 'Enterprise platforms',
+        good: 'you have corporate IT, an integration team, governance apparatus and platform-program budget.',
+        tip: 'you have European mid-market reality: heterogeneous systems, scarce IT, data-protection pressure, but no corporate machinery.',
+      },
+    ],
+  },
   ai: {
     eyebrow: '04 — AI + Code',
     index: '// the best of both worlds',
@@ -117,6 +158,12 @@ const t: HomeT = {
       { num: '02', title: 'AI works alongside.', body: 'In every flow, AI steps and classical integrations are freely composable. Per step you decide: deterministic or intelligent. The best of both worlds.' },
       { num: '03', title: 'AI stays auditable.', body: 'Every AI step has defined inputs and outputs, logs, model versions, result history. No blackbox magic. Governance on the same level as code.' },
     ],
+    controlled: {
+      eyebrow: '// controlled AI',
+      title: `AI doesn't see everything. It sees <em>what the flow allows.</em>`,
+      lede: `Code classifies, filters and routes first. Then AI gets exactly the context permitted and needed for that path. No free agent in the inbox. No black box on the hot path.`,
+      path: ['Inbox', 'Rule filter', 'Allowed type', 'AI step', 'Process path', 'Run journal'],
+    },
   },
   zoo: {
     eyebrow: '05 — In 3 years: catalog or zoo?',
@@ -164,7 +211,8 @@ const t: HomeT = {
     eyebrow: '06 — Four scenarios',
     index: '// flow + actionable UI',
     title: `What Fachwerk actually builds. <em>Custom per customer.</em>`,
-    lede: `Four fictional scenarios — <strong>not customer references</strong>, but illustrations so you can picture what Fachwerk would look like in your company. Every scenario: a flow plus a UI that <strong>works instead of just displaying</strong>. No standard dashboards. No Power BI zoo.`,
+    lede: `Four fictional scenarios with fictional voices from the segment — <strong>no customer references, no real quotes</strong>, but illustrations so you can picture what Fachwerk would look like in your company. Every scenario: a flow plus a UI that <strong>works instead of just displaying</strong>. No standard dashboards. No Power BI zoo.`,
+    voiceTag: 'fictional voice',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-commerce · NordWare' },
       { uc: 'stahlberg', num: '02', label: 'Manufacturing · StahlbergWerke' },
@@ -181,6 +229,11 @@ const t: HomeT = {
           ['The UI is a returns cockpit, not a dashboard. Every entry has an action: back to inventory, refund, escalate, adjust listing. ', { strong: 'No clicking through five systems.' }],
         ],
         meta: [['Flow', 'Threshold → action'], ['Systems', 'Shop · Meta · ERP · DMS'], ['Role', 'Ops team · Purchasing'], ['Impact', '~14 h / week saved']],
+        voice: {
+          quote: 'Our ad budget hangs on the returns rate. If a SKU with 18 % returns gets another week of Meta ads, that money burns — and I find out days later.',
+          role: 'Performance Marketing Lead',
+          segment: 'mid-market e-commerce',
+        },
         mock: 'nord',
       },
       stahlberg: {
@@ -191,6 +244,11 @@ const t: HomeT = {
           ['At the line there is a tablet with clear actions: ', { strong: 'release batch · postpone maintenance · escalate to QA.' }, ' No paper, no Excel list at shift end.'],
         ],
         meta: [['Flow', 'Sensor → lock → context'], ['Systems', 'PLC · SAP · QA system'], ['Role', 'Shift lead · QA'], ['Deploy', 'On-premise · air-gap']],
+        voice: {
+          quote: 'Last month we had a batch flagged out-of-spec two days after delivery. Without a hold straight from the PLC data, that would have become a damage case.',
+          role: 'Shift supervisor',
+          segment: 'mid-market steel processing, on-prem ERP',
+        },
         mock: 'stahl',
       },
       gruenfeld: {
@@ -201,6 +259,11 @@ const t: HomeT = {
           ['The approval board delivers ', { strong: 'GoBD-compliant one-click actions' }, ': approve, request more info, escalate. Every action auditable, with a full revision trail.'],
         ],
         meta: [['Flow', '3-way match'], ['Systems', 'DATEV · SAP · DMS'], ['Role', 'Accounting · Purchasing'], ['Compliance', 'GoBD-compliant']],
+        voice: {
+          quote: "GoBD means: every step traceable, every record audit-proof. When AI clears an invoice, I need per run: model version, input data, decision — otherwise it won't hold up at the next data-protection audit.",
+          role: 'Head of accounting',
+          segment: 'mid-market industry, DATEV + SAP',
+        },
         mock: 'gruen',
       },
       dachstein: {
@@ -211,6 +274,11 @@ const t: HomeT = {
           ['A cockpit for contractor dispatch, tenant communication and insurance cases. ', { strong: 'Phone, email, WhatsApp' }, ' bundled centrally, assigned to the right property.'],
         ],
         meta: [['Flow', 'Multi-source → reconcile'], ['Systems', 'Wodis · iX-Haus · utilities'], ['Role', 'Property manager · Administration'], ['Channel', 'Mail · Phone · WhatsApp']],
+        voice: {
+          quote: 'I manage 30 properties. Requests come via phone, email, WhatsApp and tenant portal. What I need is one cockpit per property — not four tools.',
+          role: 'Property manager',
+          segment: 'mid-market property management, ~3,000 units',
+        },
         mock: 'dach',
       },
     },
