@@ -488,8 +488,6 @@ const t: HomeT = {
         desc: 'Extensions, strategy, escalation, code reviews. Day rate €4,000. Setup sprint and reviews are inclusive — anything beyond is bookable separately.',
       },
     ],
-    note: `<strong>Tier choice is structural, not revenue-based.</strong> Multi-tenant, hybrid and multiple business units are Strategic — regardless of company size. Conversely: a focused Standard scope can also fit at €200 M revenue.`,
-    limit: `Above €200 M revenue with grown corporate IT: the enterprise stack is usually a better fit than Fachwerk.`,
   },
   cta: {
     eyebrow: '12 — Sounds interesting?',

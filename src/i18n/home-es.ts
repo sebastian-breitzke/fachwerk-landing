@@ -488,8 +488,6 @@ const t: HomeT = {
         desc: 'Extensiones, estrategia, escalación, code reviews. Tarifa diaria 4.000€. Setup-Sprint y reviews están incluidos — todo lo demás se reserva por separado.',
       },
     ],
-    note: `<strong>La elección de tier es estructural, no por facturación.</strong> Multi-tenant, híbrido y varias unidades de negocio son Strategic — independiente del tamaño de tu empresa. Al revés: un Standard enfocado puede encajar también a 200 M € de facturación.`,
-    limit: 'Por encima de 200 M € de facturación con IT corporativo crecido: normalmente el stack enterprise encaja mejor que Fachwerk.',
   },
   cta: {
     eyebrow: '12 — ¿Interesante?',

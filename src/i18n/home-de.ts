@@ -489,8 +489,6 @@ const t = {
         desc: 'Erweiterungen, Strategie, Eskalation, Code-Reviews. Tagessatz 4.000€. Im Setup-Sprint und in Reviews enthalten — alles darüber separat buchbar.',
       },
     ],
-    note: `<strong>Tier-Wahl ist Strukturfrage, nicht Umsatz.</strong> Multi-Mandant, Hybrid und mehrere Geschäftsbereiche sind Strategic — egal wie groß deine Firma ist. Umgekehrt: ein fokussierter Standard-Scope kann auch bei 200 Mio Umsatz reichen.`,
-    limit: 'Über 200 Mio Umsatz mit gewachsener Konzern-IT: da sind klassische Enterprise-Plattformen meist die bessere Wahl als Fachwerk.',
   },
   cta: {
     eyebrow: '12 — Klingt interessant?',
