@@ -1601,7 +1601,8 @@ html[data-view="macher"] .pov-architect-name {
 }
 .zoo-good .zoo-list li::before { color: var(--accent); }
 
-.uc-solid {
+.uc-solid,
+.cream-section {
   background: var(--paper);
   position: relative;
   padding-top: 6rem;
@@ -1609,7 +1610,8 @@ html[data-view="macher"] .pov-architect-name {
   border-top: 1px solid var(--line-2);
   border-bottom: 1px solid var(--line-2);
 }
-.uc-solid::before {
+.uc-solid::before,
+.cream-section::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1620,7 +1622,8 @@ html[data-view="macher"] .pov-architect-name {
   opacity: 0;
   pointer-events: none;
 }
-.uc-solid > * { position: relative; z-index: 1; }
+.uc-solid > *,
+.cream-section > * { position: relative; z-index: 1; }
 
 .uc-nav {
   display: flex;
@@ -2837,7 +2840,8 @@ html[data-view="macher"] section#pricing {
 /* Sackgassen (#03) und Cases (#06 .uc-solid) haben eigenes solid bg.
    In Tech: transparent damit Body-Grid (medium) durchscheint. */
 html[data-view="macher"] .sackgassen,
-html[data-view="macher"] .uc-solid { background: transparent; }
+html[data-view="macher"] .uc-solid,
+html[data-view="macher"] .cream-section { background: transparent; }
 
 /* Dark-section (Pillars #02) grid: re-tint white to teal in tech */
 html[data-view="macher"] .dark-section::before {
