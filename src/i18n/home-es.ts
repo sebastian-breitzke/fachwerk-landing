@@ -97,7 +97,7 @@ const t: HomeT = {
     ],
   },
   kipp: {
-    eyebrow: '06 — Puntos de inflexión',
+    eyebrow: '08 — Puntos de inflexión',
     index: '// buenas herramientas, otra tarea',
     title: `La pregunta no es: ¿qué herramienta es mejor? Sino: <em>¿cuándo se vuelca?</em>`,
     lede: `Cuando basta un flujo simple, usa una herramienta simple. <strong>Fachwerk no tiene que ganar cuando un estándar es suficiente</strong> — Fachwerk debe ser claro cuando integración, auditabilidad, protección de datos y operación marcan el proceso.`,
@@ -369,7 +369,7 @@ const t: HomeT = {
     },
   },
   ki: {
-    eyebrow: '08 — AI sobre raíles',
+    eyebrow: '06 — AI sobre raíles',
     index: '// determinismo donde se pueda, ai donde haga falta',
     title: `AI sobre raíles. <em>Code donde se pueda.</em>`,
     lede: `No dejes que la AI tenga acceso completo a tu buzón. La aplicamos <strong>de forma puntual</strong> — el code filtra, categoriza, enruta. Solo donde la AI aporta valor (entender textos, reconocer patrones, clasificar), entra en juego. Donde el code basta, corre code.`,

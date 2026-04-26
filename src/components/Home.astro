@@ -375,7 +375,7 @@ window.TWEAKS = {
 
 </section>
 
-<section class="block diagnose-section" id="diagnose">
+<section class="block diagnose-section cream-section" id="diagnose">
   <div class="block-head">
     <div>
       <span class="eyebrow">{t.diagnose.eyebrow}</span>
@@ -400,7 +400,7 @@ window.TWEAKS = {
   <p class="diag-closing" set:html={t.diagnose.closing}></p>
 </section>
 
-<section class="block ai-section cream-section" id="how">
+<section class="block ai-section" id="how">
   <div class="block-head">
     <div>
       <span class="eyebrow">{t.ai.eyebrow}</span>
@@ -434,57 +434,6 @@ window.TWEAKS = {
         <p>{p.body}</p>
       </div>
     ))}
-  </div>
-</section>
-
-<section class="block" id="kipp">
-  <div class="block-head">
-    <div>
-      <span class="eyebrow">{t.kipp.eyebrow}</span>
-      <div class="block-index" style="margin-top:1rem">{t.kipp.index}</div>
-    </div>
-    <div>
-      <h2 class="block-title" set:html={t.kipp.title}></h2>
-      <p class="block-lede" set:html={t.kipp.lede}></p>
-    </div>
-  </div>
-
-  <div class="fit-table">
-    {t.kipp.heads.map(h => <div class="fit-head">{h}</div>)}
-    {t.kipp.rows.map(r => (
-      <>
-        <div class="fit-category">{r.category}</div>
-        <div class="fit-cell">{r.good}</div>
-        <div class="fit-cell">{r.tip}</div>
-      </>
-    ))}
-  </div>
-</section>
-
-<section class="block dark-section" id="cases">
-  <div class="block-head">
-    <div>
-      <span class="eyebrow">{t.cases.eyebrow}</span>
-      <div class="block-index" style="margin-top:1rem">{t.cases.index}</div>
-    </div>
-    <div>
-      <h2 class="block-title" set:html={t.cases.title}></h2>
-      <p class="block-lede" set:html={t.cases.lede}></p>
-    </div>
-  </div>
-
-  <div class="branch-strip">
-    {t.cases.tabs.map((tab) => {
-      const ucKey = tab.uc as keyof typeof t.cases.useCases;
-      const uc = t.cases.useCases[ucKey];
-      return (
-        <div class="branch-card">
-          <span class="branch-num">{tab.num}</span>
-          <h3 class="branch-name">{tab.label}</h3>
-          <p class="branch-task">{uc.title}</p>
-        </div>
-      );
-    })}
   </div>
 </section>
 
@@ -532,7 +481,58 @@ window.TWEAKS = {
   </div>
 </section>
 
-<section class="block pov-section" id="pov">
+<section class="block dark-section" id="cases">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.cases.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.cases.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.cases.title}></h2>
+      <p class="block-lede" set:html={t.cases.lede}></p>
+    </div>
+  </div>
+
+  <div class="branch-strip">
+    {t.cases.tabs.map((tab) => {
+      const ucKey = tab.uc as keyof typeof t.cases.useCases;
+      const uc = t.cases.useCases[ucKey];
+      return (
+        <div class="branch-card">
+          <span class="branch-num">{tab.num}</span>
+          <h3 class="branch-name">{tab.label}</h3>
+          <p class="branch-task">{uc.title}</p>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<section class="block" id="kipp">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.kipp.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.kipp.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.kipp.title}></h2>
+      <p class="block-lede" set:html={t.kipp.lede}></p>
+    </div>
+  </div>
+
+  <div class="fit-table">
+    {t.kipp.heads.map(h => <div class="fit-head">{h}</div>)}
+    {t.kipp.rows.map(r => (
+      <>
+        <div class="fit-category">{r.category}</div>
+        <div class="fit-cell">{r.good}</div>
+        <div class="fit-cell">{r.tip}</div>
+      </>
+    ))}
+  </div>
+</section>
+
+<section class="block pov-section cream-section" id="pov">
   <div class="block-head">
     <div>
       <span class="eyebrow">{t.pov.eyebrow}</span>
@@ -568,7 +568,7 @@ window.TWEAKS = {
   </div>
 </section>
 
-<section class="block cream-section" id="deploy">
+<section class="block" id="deploy">
   <div class="block-head">
     <div>
       <span class="eyebrow">{t.deploy.eyebrow}</span>
@@ -616,7 +616,7 @@ window.TWEAKS = {
   </div>
 </section>
 
-<section class="block" id="pricing">
+<section class="block cream-section" id="pricing">
   <div class="block-head">
     <div>
       <span class="eyebrow">{t.pricing.eyebrow}</span>

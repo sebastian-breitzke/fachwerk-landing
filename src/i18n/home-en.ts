@@ -97,7 +97,7 @@ const t: HomeT = {
     ],
   },
   kipp: {
-    eyebrow: '06 — Tipping points',
+    eyebrow: '08 — Tipping points',
     index: '// good tools, different job',
     title: `The question isn't: which tool is better? It's: <em>when does it tip?</em>`,
     lede: `When a simple flow is enough, take a simple tool. <strong>Fachwerk doesn't have to win when a standard fits</strong> — Fachwerk has to be the obvious choice when integration, auditability, data protection and operations drive the process.`,
@@ -369,7 +369,7 @@ const t: HomeT = {
     },
   },
   ki: {
-    eyebrow: '08 — AI on rails',
+    eyebrow: '06 — AI on rails',
     index: '// determinism where possible, ai where needed',
     title: `AI on rails. <em>Code where it can.</em>`,
     lede: `Don't let AI loose on your inbox. We use it <strong>targeted</strong> — code filters, classifies, routes. AI only kicks in where it adds value (understanding text, recognising patterns, classifying). Where code is enough, code runs.`,

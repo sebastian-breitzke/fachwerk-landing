@@ -98,7 +98,7 @@ const t = {
     ],
   },
   kipp: {
-    eyebrow: '06 — Kipp-Punkte',
+    eyebrow: '08 — Kipp-Punkte',
     index: '// gute tools, andere aufgabe',
     title: `Die Frage ist nicht: welches Tool ist besser? Sondern: <em>ab wann kippt es?</em>`,
     lede: `Wenn ein einfacher Flow reicht, nimm ein einfaches Tool. <strong>Fachwerk muss nicht gewinnen, wenn ein Standard reicht</strong> — Fachwerk muss klar sein, wenn Integration, Auditierbarkeit, Datenschutz und Betrieb den Prozess bestimmen.`,
@@ -370,7 +370,7 @@ const t = {
     },
   },
   ki: {
-    eyebrow: '08 — KI auf Schienen',
+    eyebrow: '06 — KI auf Schienen',
     index: '// determinismus wo möglich, ki wo nötig',
     title: `KI auf Schienen. <em>Code wo es geht.</em>`,
     lede: `Lass die KI nicht voll auf dein Postfach. Wir setzen sie <strong>gezielt</strong> ein — Code filtert, kategorisiert, routet. Nur wo KI Mehrwert bringt (Texte verstehen, Muster erkennen, Klassifizieren), kommt sie zum Einsatz. Dort wo Code reicht, läuft Code.`,
