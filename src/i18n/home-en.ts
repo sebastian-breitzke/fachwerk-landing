@@ -405,10 +405,10 @@ const t: HomeT = {
       title: `What if I'm gone?`,
       lede: `Fair question. Continuity is built in, not promised:`,
       points: [
-        'Code lives in your repo. Day one. No vendor lock.',
-        'Standard stack (Elixir, Postgres). No magic DSL — any senior backend dev can take over.',
+        'All the code Fachwerk writes for you is yours. Contractually guaranteed.',
+        'Standard stack: TypeScript, Elixir, Postgres. No invented language — any senior dev can take over.',
         'Workshop diagnostics carry your team further. The system explains itself, even without me.',
-        'Existing landscape? Inventory, wrap-or-rebuild, step-by-step migration. We onboard the grown estate too.',
+        'Existing landscape? Inventory, then step by step: what to replace, what to keep, what to migrate. We onboard the grown estate too.',
       ],
     },
   },
@@ -438,7 +438,7 @@ const t: HomeT = {
     eyebrow: '11 — Pricing',
     index: '// four building blocks, transparent',
     title: `Platform and my time you pay to me. <em>Resources I pass through 1:1.</em>`,
-    lede: `Four building blocks, each separately decidable. No seat license, no volume markup, no hidden margin on cloud bills. <strong>Tier choice is a structural question, not a revenue heuristic.</strong>`,
+    lede: `<strong>Platform and my time you pay to me. Cloud costs pass through 1:1, plus 10 % admin.</strong> No hidden margins, no volume trap, no seat license.`,
     tiers: [
       {
         tier: '§ Quick-Setup',

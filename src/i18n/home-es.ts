@@ -405,10 +405,10 @@ const t: HomeT = {
       title: `¿Y si yo no estoy?`,
       lede: `Pregunta justa. La continuidad está integrada, no prometida:`,
       points: [
-        'El code vive en tu repo. Día uno. Sin lock-in del proveedor.',
-        'Stack estándar (Elixir, Postgres). Sin DSL mágico — cualquier senior backend dev puede continuar.',
+        'Todo el code que Fachwerk escribe para ti es tuyo. Garantizado por contrato.',
+        'Stack estándar: TypeScript, Elixir, Postgres. Sin lenguaje inventado — cualquier senior dev puede continuar.',
         'El diagnóstico del taller lleva a tu equipo más lejos. El sistema se explica solo, incluso sin mí.',
-        '¿Paisaje existente? Inventario, wrap-or-rebuild, migración paso a paso. También onboardeamos lo crecido.',
+        '¿Paisaje existente? Inventario, después paso a paso: qué reemplazar, qué integrar, qué migrar. También onboardeamos lo crecido.',
       ],
     },
   },
@@ -438,7 +438,7 @@ const t: HomeT = {
     eyebrow: '11 — Pricing',
     index: '// cuatro bloques, transparente',
     title: `Plataforma y mi tiempo me los pagas a mí. <em>Los recursos los paso 1:1.</em>`,
-    lede: `Cuatro bloques, cada uno decidible por separado. Sin licencia por usuario, sin recargos por volumen, sin margen oculto sobre las facturas de cloud. <strong>La elección de tier es una pregunta estructural, no una heurística de facturación.</strong>`,
+    lede: `<strong>Plataforma y mi tiempo me los pagas a mí. Los costes de cloud van 1:1, más 10 % de administración.</strong> Sin márgenes ocultos, sin trampa de volumen, sin licencia por usuario.`,
     tiers: [
       {
         tier: '§ Quick-Setup',

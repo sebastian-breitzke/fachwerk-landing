@@ -406,10 +406,10 @@ const t = {
       title: `Was wenn ich weg bin?`,
       lede: `Eine faire Frage. Continuity ist eingebaut, nicht versprochen:`,
       points: [
-        'Code lebt in deinem Repo. Tag 1. Kein Vendor-Lock.',
-        'Standard-Stack (Elixir, Postgres). Kein magisches DSL — jeder Senior-Backend-Dev kann übernehmen.',
+        'Aller Code, den Fachwerk für dich schreibt, gehört dir. Vertraglich zugesichert.',
+        'Standard-Stack: TypeScript, Elixir, Postgres. Keine erfundene Sprache — jeder Senior-Dev kann übernehmen.',
         'Werkstatt-Diagnose-Modus trägt dein Team weiter. Das System erklärt sich selbst, auch ohne mich.',
-        'Bestehende Landschaft? Inventur, Wrap-or-Rebuild, schrittweise Migration. Wir onboarden auch das Gewachsene.',
+        'Bestehende Landschaft? Inventur, dann Schritt für Schritt: was ablösen, was einbinden, was migrieren. Wir onboarden auch das Gewachsene.',
       ],
     },
   },
@@ -439,7 +439,7 @@ const t = {
     eyebrow: '11 — Pricing',
     index: '// vier bausteine, transparent',
     title: `Plattform und meine Zeit zahlst du an mich. <em>Ressourcen reiche ich 1:1 durch.</em>`,
-    lede: `Vier Bausteine, einzeln entscheidbar. Keine Seat-Lizenz, keine Volumen-Aufschläge, kein versteckter Markup auf Cloud-Bills. <strong>Tier-Wahl ist Strukturfrage, nicht Umsatz-Heuristik.</strong>`,
+    lede: `<strong>Plattform und meine Zeit zahlst du an mich. Cloud-Kosten gehen 1:1 durch, plus 10 % für die Verwaltung.</strong> Keine versteckten Margen, keine Volumen-Falle, keine Seat-Lizenz.`,
     tiers: [
       {
         tier: '§ Quick-Setup',
