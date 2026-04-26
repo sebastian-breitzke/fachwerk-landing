@@ -1325,7 +1325,63 @@ section.block {
   margin-top: 3.5rem;
 }
 
-/* Standard-vs-Realität Tabelle in Kapitel 04 */
+/* Diagnose-Section in Kap. 04: 3 Q+A Karten */
+.diag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--sun), 8px 8px 0 1px var(--fg);
+  margin-bottom: 2.4rem;
+}
+.diag-card {
+  padding: 1.8rem 1.6rem;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+.diag-card:last-child { border-right: none; }
+.diag-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.diag-q {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--fg);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.8rem;
+}
+.diag-a {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.diag-a strong { color: var(--fg); }
+.diag-closing {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fg);
+  max-width: 60rem;
+}
+.diag-closing strong { font-weight: 600; }
+@media (max-width: 900px) {
+  .diag-grid { grid-template-columns: 1fr; }
+  .diag-card { border-right: none; border-bottom: 1px solid var(--line); }
+  .diag-card:last-child { border-bottom: none; }
+}
+
+/* Standard-vs-Realität Tabelle in Kapitel 05 */
 .compare-table-wrap { margin-top: 1rem; }
 .compare-table-eyebrow {
   display: block;

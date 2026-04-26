@@ -44,7 +44,7 @@ const t = {
       { title: 'KI + Code koppelbar', desc: 'Pro Schritt entscheidbar' },
       { title: 'Katalog statt Zoo', desc: 'Übersicht. Governance. Kontrolle.' },
     ],
-    scroll: 'scroll ↓ [01/09]',
+    scroll: 'scroll ↓ [01/12]',
   },
   marquee: {
     pillars: ['Werkstatt', 'Katalog', 'Betrieb', 'Speicher', 'Wissen'],
@@ -98,7 +98,7 @@ const t = {
     ],
   },
   kipp: {
-    eyebrow: '05 — Kipp-Punkte',
+    eyebrow: '06 — Kipp-Punkte',
     index: '// gute tools, andere aufgabe',
     title: `Die Frage ist nicht: welches Tool ist besser? Sondern: <em>ab wann kippt es?</em>`,
     lede: `Wenn ein einfacher Flow reicht, nimm ein einfaches Tool. <strong>Fachwerk muss nicht gewinnen, wenn ein Standard reicht</strong> — Fachwerk muss klar sein, wenn Integration, Auditierbarkeit, Datenschutz und Betrieb den Prozess bestimmen.`,
@@ -115,7 +115,7 @@ const t = {
         tip: 'KI nicht alles sehen darf, erst deterministisch gefiltert werden muss und jeder KI-Schritt Eingaben, Ausgaben und Modellstand braucht.',
       },
       {
-        category: 'RPA',
+        category: 'Klick-Bots im Altsystem',
         good: 'ein Altsystem nur über die Oberfläche bedienbar ist und der Prozess im Kern Bildschirmarbeit bleibt.',
         tip: 'Fachobjekte, Historie, betroffene Kunden, Wiederholung und Ursachenanalyse relevant werden.',
       },
@@ -131,8 +131,32 @@ const t = {
       },
     ],
   },
+  diagnose: {
+    eyebrow: '04 — Selbst-erklärend, selbst-debuggend',
+    index: '// werkstatt-diagnose · code · flow-log · speicher',
+    title: `Frag dein System. <em>Es kennt sich selbst.</em>`,
+    lede: `Die Werkstatt sieht alles, was Fachwerk weiß: jede Code-Zeile im Katalog, jeden Run im Betrieb, jede historisierte Zahl im Speicher. Du fragst — Fachwerk antwortet mit <strong>Code, Log und Datenhistorie zusammen</strong>. Findest du einen Fehler, legst du ein Werkstatt-Projekt an und fixt ihn selbst.`,
+    examples: [
+      {
+        tag: '// onboarding · neuer mitarbeiter',
+        q: 'Wie ordnen wir Retouren zu?',
+        a: 'Fachwerk findet den Mapping-Flow im Katalog, erklärt die Regel (EAN → Bestellung über Mandanten-Lookup), zeigt die Edge-Cases (ohne EAN: Email-Heuristik) und linkt auf den Code. Drei Sätze statt Wiki-Marathon.',
+      },
+      {
+        tag: '// schicht · maschinen-event',
+        q: 'Was passiert, wenn meine Maschine Störsignal X sendet?',
+        a: 'Trace durch den Flow: SPS-Event → Schwellwert-Check → Charge sperren → Schichtleiter eskalieren. Mit Code-Verweis pro Schritt und den letzten 5 Beispiel-Runs aus dem Betrieb.',
+      },
+      {
+        tag: '// anomalie · buchhaltung',
+        q: 'Warum sind bei manchen Aufträgen Brutto und Netto negativ?',
+        a: 'Fachwerk korreliert Code + Run-Log + historisierten Speicher. Findet: ab 12.04. flippt der Storno-Flow die Vorzeichen — eine SAP-Feldnamen-Änderung ist nicht mitgewandert. Werkstatt-Projekt anlegen, Mapping fixen, deployen.',
+      },
+    ],
+    closing: `Effekt: dein Team kann Fachwerk <strong>selbst fragen, selbst nachvollziehen, selbst fixen</strong>. Wann und wie oft sie wollen. Ich helfe dir loszufliegen — danach rennst du mit deinen Leuten allein weiter.`,
+  },
   ai: {
-    eyebrow: '04 — Wie Fachwerk baut',
+    eyebrow: '05 — Wie Fachwerk baut',
     index: '// es gibt keine standard-schnittstelle',
     title: `Es gibt keine Standard-Schnittstelle. <em>Jede Integration ist Custom.</em>`,
     lede: `Eine "Standard-SAP-Schnittstelle"? In 20 Jahren nie gesehen. Eine "Shopify-Anbindung"? Technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.<br><br><strong>Fachwerks Hebel: KI schreibt jede Integration custom für dich.</strong> One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect) — die KI kennt sie aus den Trainingsdaten. Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS) — die KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code wo Senior-Devs nur noch JSON sprechen.<br><br><strong>Fachwerks Fokus: Business-Anwender in die Lage versetzen, sich selbst zu helfen.</strong> Eigene Auswertungen, eigene Flows, eigene Oberflächen — nicht mehr auf eine Auswertung warten, nicht mehr mit Reports leben, die auf fünf Felder hardcoded sind, nicht mehr für jede kleine Schnittstellenänderung erst Projekt, Kostenvoranschlag, Budget und Umsetzungszeit organisieren. Aber alles geordnet im Katalog: mit Owner, Versionen, Audit-Trail. Du zahlst nicht für Adapter, du zahlst für die Plattform und die Statik darunter.`,
@@ -214,10 +238,10 @@ const t = {
     },
   },
   cases: {
-    eyebrow: '06 — Branchen-Beispiele',
+    eyebrow: '07 — Branchen-Beispiele',
     index: '// vier branchen, eine plattform',
-    title: `Vier Branchen. <em>Jede konkret.</em> Fachwerk spielt überall.`,
-    lede: `Beispielhafte Aufgaben aus vier Branchen — keine Referenzkunden, sondern Illustrationen, was Fachwerk in deiner Welt baut. Vom E-Commerce bis zur Stahlverarbeitung, vom Steuerberater bis zur Hausverwaltung. <strong>Wenn deine Branche nicht dabei ist: kein Problem.</strong> Die Plattform ist gleich, deine Schnittstelle wird custom geschrieben.`,
+    title: `Vier Schnitte, <em>tausend wären möglich.</em>`,
+    lede: `Fachwerk hat keine Branchen-Pakete. Plattform ist gleich, deine Schnittstellen werden custom geschrieben. Hier vier Beispiele aus dem Mittelstand — keine Referenzkunden, sondern Illustrationen. <strong>Wenn deine Branche nicht dabei ist, ist das genau der Punkt:</strong> Fachwerk passt sich an, nicht umgekehrt.`,
     voiceTag: 'fiktive Stimme',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-Commerce · NordWare' },
@@ -346,7 +370,7 @@ const t = {
     },
   },
   ki: {
-    eyebrow: '07 — KI auf Schienen',
+    eyebrow: '08 — KI auf Schienen',
     index: '// determinismus wo möglich, ki wo nötig',
     title: `KI auf Schienen. <em>Code wo es geht.</em>`,
     lede: `Lass die KI nicht voll auf dein Postfach. Wir setzen sie <strong>gezielt</strong> ein — Code filtert, kategorisiert, routet. Nur wo KI Mehrwert bringt (Texte verstehen, Muster erkennen, Klassifizieren), kommt sie zum Einsatz. Dort wo Code reicht, läuft Code.`,
@@ -359,7 +383,7 @@ const t = {
     closing: `<strong>Code heilt nicht alles.</strong> Mit Fachwerk bettest du KI ein, wo sie Sinn macht — nicht wo sie alles dürfen muss. Beispiel: der Eingangsrechnung-Flow oben — 5 Schritte, 2× KI, 3× Code.`,
   },
   pov: {
-    eyebrow: '08 — Proof of Value',
+    eyebrow: '09 — Proof of Value',
     index: '// in 2 wochen weißt du es',
     title: `In 2 Wochen weißt du, <em>ob es trägt.</em>`,
     lede: `Wir bauen einen konkreten Flow live in deiner Umgebung. Mit echten Daten. Wenn er kippt, bezahlst du nichts. Wenn er trägt, sind die PoV-Kosten auf die Launch-Fee anrechenbar.`,
@@ -380,7 +404,7 @@ const t = {
     },
   },
   deploy: {
-    eyebrow: '09 — Läuft, wo du es brauchst',
+    eyebrow: '10 — Läuft, wo du es brauchst',
     index: '// cloud · on-premise · hybrid',
     title: `Hinter der Firewall, in der Lagerhalle, neben der SPS — <em>oder im Cloud-Standard.</em>`,
     cells: [
@@ -402,7 +426,7 @@ const t = {
     ],
   },
   pricing: {
-    eyebrow: '10 — Pricing',
+    eyebrow: '11 — Pricing',
     index: '// kein pricing-theater',
     title: `Zwei Tiers. <em>Plus ein Türöffner für Macher.</em>`,
     lede: `Keine Seat-Lizenz. Keine Volumen-Falle. Tier-Wahl ist eine technische Frage, keine Umsatz-Heuristik. <strong>Ein bezahlter Proof-of-Value</strong> ist auf die Setup-Fee voll anrechenbar.`,
@@ -448,7 +472,7 @@ const t = {
     limit: 'Über 200 Mio Umsatz: da ist der Konzern-Stack meist die bessere Wahl als Fachwerk.',
   },
   cta: {
-    eyebrow: '11 — Klingt interessant?',
+    eyebrow: '12 — Klingt interessant?',
     title: `Dann lass uns über dein <em>teuerstes 1000-Prozesse-Problem</em> reden.`,
     body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem teuersten Engpass — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
     emailLabel: 'E-Mail an Sebastian',

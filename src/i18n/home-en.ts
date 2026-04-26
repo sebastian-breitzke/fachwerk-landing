@@ -43,7 +43,7 @@ const t: HomeT = {
       { title: 'AI + code composable', desc: 'Decide per step' },
       { title: 'Catalog, not zoo', desc: 'Overview. Governance. Control.' },
     ],
-    scroll: 'scroll ↓ [01/09]',
+    scroll: 'scroll ↓ [01/12]',
   },
   marquee: {
     pillars: ['Workshop', 'Catalog', 'Operations', 'Storage', 'Knowledge'],
@@ -97,7 +97,7 @@ const t: HomeT = {
     ],
   },
   kipp: {
-    eyebrow: '05 — Tipping points',
+    eyebrow: '06 — Tipping points',
     index: '// good tools, different job',
     title: `The question isn't: which tool is better? It's: <em>when does it tip?</em>`,
     lede: `When a simple flow is enough, take a simple tool. <strong>Fachwerk doesn't have to win when a standard fits</strong> — Fachwerk has to be the obvious choice when integration, auditability, data protection and operations drive the process.`,
@@ -114,7 +114,7 @@ const t: HomeT = {
         tip: 'AI must not see everything, must be deterministically filtered first, and every AI step needs inputs, outputs and model state.',
       },
       {
-        category: 'RPA',
+        category: 'Click-bots in legacy systems',
         good: 'a legacy system is only operable through the UI and the process stays screen-based.',
         tip: 'business objects, history, affected customers, repeatability and root-cause analysis matter.',
       },
@@ -130,8 +130,32 @@ const t: HomeT = {
       },
     ],
   },
+  diagnose: {
+    eyebrow: '04 — Self-explaining, self-debugging',
+    index: '// workshop diagnostics · code · flow log · storage',
+    title: `Ask your system. <em>It knows itself.</em>`,
+    lede: `The workshop sees everything Fachwerk knows: every line of code in the catalog, every run in operations, every historized number in storage. You ask — Fachwerk answers with <strong>code, log and data history together</strong>. Find a bug? Spin up a workshop project and fix it yourself.`,
+    examples: [
+      {
+        tag: '// onboarding · new team member',
+        q: 'How do we map returns?',
+        a: 'Fachwerk finds the mapping flow in the catalog, explains the rule (EAN → order via tenant lookup), shows the edge cases (no EAN: email heuristic) and links the code. Three sentences instead of a wiki marathon.',
+      },
+      {
+        tag: '// shift · machine event',
+        q: 'What happens when my machine sends fault signal X?',
+        a: 'Trace through the flow: PLC event → threshold check → batch lock → escalate to shift lead. With code reference per step and the last 5 sample runs from operations.',
+      },
+      {
+        tag: '// anomaly · accounting',
+        q: 'Why are gross and net negative on some orders?',
+        a: 'Fachwerk correlates code + run log + historized storage. Finds: from 12 April the cancellation flow flips signs — a SAP field-name change did not propagate. Open a workshop project, fix the mapping, deploy.',
+      },
+    ],
+    closing: `Effect: your team can <strong>ask Fachwerk themselves, trace it themselves, fix it themselves</strong>. Whenever and as often as they want. I help you take off — then you run with your people on your own.`,
+  },
   ai: {
-    eyebrow: '04 — How Fachwerk builds',
+    eyebrow: '05 — How Fachwerk builds',
     index: '// there is no standard interface',
     title: `There is no standard interface. <em>Every integration is custom.</em>`,
     lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON.<br><br><strong>Fachwerk's focus: enable business users to help themselves.</strong> Own reports, own flows, own UIs — no more waiting for an analysis, no more living with reports hard-coded against five fields, no more organising a project, quote, budget and timeline for every small interface change. But all ordered in the catalog: with owner, versions, audit trail. You don't pay for adapters, you pay for the platform and the structure beneath.`,
@@ -213,10 +237,10 @@ const t: HomeT = {
     },
   },
   cases: {
-    eyebrow: '06 — Industry examples',
+    eyebrow: '07 — Industry examples',
     index: '// four industries, one platform',
-    title: `Four industries. <em>Each concrete.</em> Fachwerk plays everywhere.`,
-    lede: `Example tasks from four industries — no reference customers, just illustrations of what Fachwerk builds in your world. From e-commerce to steel manufacturing, from tax advisor to property management. <strong>If your industry isn't listed: no problem.</strong> The platform is the same, your integration gets custom-written.`,
+    title: `Four cuts, <em>a thousand would fit.</em>`,
+    lede: `Fachwerk has no industry packages. The platform is the same, your integrations get custom-written. Four examples from the mid-market — no reference customers, just illustrations. <strong>If your industry isn't listed, that's exactly the point:</strong> Fachwerk adapts to you, not the other way around.`,
     voiceTag: 'fictional voice',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-commerce · NordWare' },
@@ -345,7 +369,7 @@ const t: HomeT = {
     },
   },
   ki: {
-    eyebrow: '07 — AI on rails',
+    eyebrow: '08 — AI on rails',
     index: '// determinism where possible, ai where needed',
     title: `AI on rails. <em>Code where it can.</em>`,
     lede: `Don't let AI loose on your inbox. We use it <strong>targeted</strong> — code filters, classifies, routes. AI only kicks in where it adds value (understanding text, recognising patterns, classifying). Where code is enough, code runs.`,
@@ -358,7 +382,7 @@ const t: HomeT = {
     closing: `<strong>Code doesn't fix everything.</strong> With Fachwerk you embed AI where it makes sense — not where it has to be allowed everything. Example: the incoming invoice flow above — 5 steps, 2× AI, 3× code.`,
   },
   pov: {
-    eyebrow: '08 — Proof of Value',
+    eyebrow: '09 — Proof of Value',
     index: '// in 2 weeks you know',
     title: `In 2 weeks you know <em>if it holds.</em>`,
     lede: `We build a concrete flow live in your environment. With real data. If it tips, you pay nothing. If it holds, the PoV cost is creditable against the launch fee.`,
@@ -379,7 +403,7 @@ const t: HomeT = {
     },
   },
   deploy: {
-    eyebrow: '09 — Runs where you need it',
+    eyebrow: '10 — Runs where you need it',
     index: '// cloud · on-premise · hybrid',
     title: `Behind the firewall, in the warehouse, next to the PLC — <em>or in the cloud standard.</em>`,
     cells: [
@@ -401,7 +425,7 @@ const t: HomeT = {
     ],
   },
   pricing: {
-    eyebrow: '10 — Pricing',
+    eyebrow: '11 — Pricing',
     index: '// no pricing theater',
     title: `Two tiers. <em>Plus a door for makers.</em>`,
     lede: `No seat license. No volume trap. Tier choice is a technical question, not a revenue heuristic. <strong>A paid proof-of-value</strong> is fully creditable against the setup fee.`,
@@ -447,7 +471,7 @@ const t: HomeT = {
     limit: `Above €200 M revenue: the enterprise stack is usually a better fit than Fachwerk.`,
   },
   cta: {
-    eyebrow: '11 — Sounds interesting?',
+    eyebrow: '12 — Sounds interesting?',
     title: `Then let's talk about your <em>most expensive 1000-processes problem.</em>`,
     body: `First conversation directly with the architect. No sales chain, no RFP theater, no demo tour. A hypothesis about your pain — and a proposal for what a 6-week proof-of-value looks like.`,
     emailLabel: 'Email Sebastian',

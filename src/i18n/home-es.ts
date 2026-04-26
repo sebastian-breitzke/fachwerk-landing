@@ -43,7 +43,7 @@ const t: HomeT = {
       { title: 'AI + código combinables', desc: 'Decide paso a paso' },
       { title: 'Catálogo, no zoo', desc: 'Visión. Gobernanza. Control.' },
     ],
-    scroll: 'scroll ↓ [01/09]',
+    scroll: 'scroll ↓ [01/12]',
   },
   marquee: {
     pillars: ['Taller', 'Catálogo', 'Operación', 'Almacén', 'Conocimiento'],
@@ -97,7 +97,7 @@ const t: HomeT = {
     ],
   },
   kipp: {
-    eyebrow: '05 — Puntos de inflexión',
+    eyebrow: '06 — Puntos de inflexión',
     index: '// buenas herramientas, otra tarea',
     title: `La pregunta no es: ¿qué herramienta es mejor? Sino: <em>¿cuándo se vuelca?</em>`,
     lede: `Cuando basta un flujo simple, usa una herramienta simple. <strong>Fachwerk no tiene que ganar cuando un estándar es suficiente</strong> — Fachwerk debe ser claro cuando integración, auditabilidad, protección de datos y operación marcan el proceso.`,
@@ -114,7 +114,7 @@ const t: HomeT = {
         tip: 'la IA no debe verlo todo, debe filtrarse primero de forma determinista y cada paso de IA necesita entradas, salidas y versión de modelo.',
       },
       {
-        category: 'RPA',
+        category: 'Bots de clic en sistemas heredados',
         good: 'un sistema antiguo solo es operable por la interfaz y el proceso es esencialmente trabajo de pantalla.',
         tip: 'importan los objetos de negocio, el histórico, los clientes afectados, la repetición y el análisis de causa raíz.',
       },
@@ -130,8 +130,32 @@ const t: HomeT = {
       },
     ],
   },
+  diagnose: {
+    eyebrow: '04 — Auto-explicativo, auto-depurable',
+    index: '// diagnóstico de taller · code · log de flujo · almacén',
+    title: `Pregunta a tu sistema. <em>Se conoce a sí mismo.</em>`,
+    lede: `El taller ve todo lo que Fachwerk sabe: cada línea de code en el catálogo, cada run en operación, cada número historizado en almacén. Tú preguntas — Fachwerk responde con <strong>code, log e historial de datos juntos</strong>. ¿Encuentras un fallo? Abres un proyecto de taller y lo arreglas tú.`,
+    examples: [
+      {
+        tag: '// onboarding · nuevo miembro',
+        q: '¿Cómo asignamos las devoluciones?',
+        a: 'Fachwerk encuentra el flujo de mapping en el catálogo, explica la regla (EAN → pedido vía lookup de tenant), muestra los edge cases (sin EAN: heurística por email) y enlaza al code. Tres frases en lugar de un maratón de wiki.',
+      },
+      {
+        tag: '// turno · evento de máquina',
+        q: '¿Qué pasa cuando mi máquina envía la señal de fallo X?',
+        a: 'Trace por el flujo: evento PLC → comprobación de umbral → bloquear lote → escalar al jefe de turno. Con referencia al code por paso y los últimos 5 runs de ejemplo de operación.',
+      },
+      {
+        tag: '// anomalía · contabilidad',
+        q: '¿Por qué bruto y neto son negativos en algunos pedidos?',
+        a: 'Fachwerk correlaciona code + run log + almacén historizado. Encuentra: desde el 12 abril el flujo de cancelación invierte signos — un cambio de nombre de campo en SAP no se propagó. Abrir proyecto de taller, arreglar el mapping, deploy.',
+      },
+    ],
+    closing: `Efecto: tu equipo puede <strong>preguntar a Fachwerk, rastrear y arreglar por sí mismo</strong>. Cuando quiera y las veces que quiera. Yo te ayudo a despegar — después corres con tu gente solo.`,
+  },
   ai: {
-    eyebrow: '04 — Cómo construye Fachwerk',
+    eyebrow: '05 — Cómo construye Fachwerk',
     index: '// no existe la interfaz estándar',
     title: `No existe la interfaz estándar. <em>Cada integración es Custom.</em>`,
     lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON.<br><br><strong>El enfoque de Fachwerk: empoderar a los business users para que se ayuden a sí mismos.</strong> Reports propios, flujos propios, UIs propias — sin esperar un análisis, sin vivir con reports hard-coded sobre cinco campos, sin tener que organizar un proyecto, presupuesto y plazo cada vez que una pequeña interfaz cambia. Pero todo ordenado en el catálogo: con owner, versiones, audit trail. No pagas por adaptadores, pagas por la plataforma y la estructura debajo.`,
@@ -213,10 +237,10 @@ const t: HomeT = {
     },
   },
   cases: {
-    eyebrow: '06 — Ejemplos de sectores',
+    eyebrow: '07 — Ejemplos de sectores',
     index: '// cuatro sectores, una plataforma',
-    title: `Cuatro sectores. <em>Cada uno concreto.</em> Fachwerk juega en todos.`,
-    lede: `Tareas ejemplo de cuatro sectores — sin clientes de referencia, solo ilustraciones de lo que Fachwerk construye en tu mundo. Desde e-commerce hasta procesamiento de acero, desde asesor fiscal hasta administración de fincas. <strong>Si tu sector no está listado: no problem.</strong> La plataforma es la misma, tu adaptador se escribe nuevo.`,
+    title: `Cuatro cortes, <em>encajarían mil.</em>`,
+    lede: `Fachwerk no tiene paquetes por sector. La plataforma es la misma, tus interfaces se escriben a medida. Cuatro ejemplos de la mediana empresa — sin clientes de referencia, solo ilustraciones. <strong>Si tu sector no está listado, ese es exactamente el punto:</strong> Fachwerk se adapta a ti, no al revés.`,
     voiceTag: 'voz ficticia',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-commerce · NordWare' },
@@ -345,7 +369,7 @@ const t: HomeT = {
     },
   },
   ki: {
-    eyebrow: '07 — AI sobre raíles',
+    eyebrow: '08 — AI sobre raíles',
     index: '// determinismo donde se pueda, ai donde haga falta',
     title: `AI sobre raíles. <em>Code donde se pueda.</em>`,
     lede: `No dejes que la AI tenga acceso completo a tu buzón. La aplicamos <strong>de forma puntual</strong> — el code filtra, categoriza, enruta. Solo donde la AI aporta valor (entender textos, reconocer patrones, clasificar), entra en juego. Donde el code basta, corre code.`,
@@ -358,7 +382,7 @@ const t: HomeT = {
     closing: `<strong>El code no lo cura todo.</strong> Con Fachwerk integras la AI donde tiene sentido — no donde tenga que poder hacerlo todo. Ejemplo: el flow de factura entrante de arriba — 5 pasos, 2× AI, 3× code.`,
   },
   pov: {
-    eyebrow: '08 — Proof of Value',
+    eyebrow: '09 — Proof of Value',
     index: '// en 2 semanas lo sabes',
     title: `En 2 semanas sabes <em>si sostiene.</em>`,
     lede: `Construimos un flujo concreto en vivo en tu entorno. Con datos reales. Si no funciona, no pagas nada. Si funciona, los costes del PoV son acreditables contra la launch fee.`,
@@ -379,7 +403,7 @@ const t: HomeT = {
     },
   },
   deploy: {
-    eyebrow: '09 — Corre donde lo necesitas',
+    eyebrow: '10 — Corre donde lo necesitas',
     index: '// cloud · on-premise · híbrido',
     title: `Tras el firewall, en la nave, junto al PLC — <em>o en el estándar cloud.</em>`,
     cells: [
@@ -401,7 +425,7 @@ const t: HomeT = {
     ],
   },
   pricing: {
-    eyebrow: '10 — Pricing',
+    eyebrow: '11 — Pricing',
     index: '// sin teatro de precios',
     title: `Dos tiers. <em>Y una puerta para los hacedores.</em>`,
     lede: `Sin licencia por usuario. Sin trampa de volumen. La elección de tier es una pregunta técnica, no una heurística de facturación. <strong>Un Proof-of-Value pagado</strong> es imputable íntegro sobre el Setup-Fee.`,
@@ -447,7 +471,7 @@ const t: HomeT = {
     limit: 'Por encima de 200 M € de facturación: normalmente el stack de grupo encaja mejor que Fachwerk.',
   },
   cta: {
-    eyebrow: '11 — ¿Interesante?',
+    eyebrow: '12 — ¿Interesante?',
     title: `Entonces hablemos de tu <em>problema de 1000 procesos más caro.</em>`,
     body: `Primera conversación directamente con el arquitecto. Sin cadena comercial, sin teatro de RFP, sin tour de demos. Una hipótesis sobre tu dolor — y una propuesta de cómo podría ser un Proof-of-Value de 6 semanas.`,
     emailLabel: 'Escribir a Sebastian',

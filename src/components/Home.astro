@@ -375,6 +375,31 @@ window.TWEAKS = {
 
 </section>
 
+<section class="block diagnose-section" id="diagnose">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.diagnose.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.diagnose.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.diagnose.title}></h2>
+      <p class="block-lede" set:html={t.diagnose.lede}></p>
+    </div>
+  </div>
+
+  <div class="diag-grid">
+    {t.diagnose.examples.map(ex => (
+      <div class="diag-card">
+        <span class="diag-tag">{ex.tag}</span>
+        <p class="diag-q">{ex.q}</p>
+        <p class="diag-a">{ex.a}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="diag-closing" set:html={t.diagnose.closing}></p>
+</section>
+
 <section class="block ai-section cream-section" id="how">
   <div class="block-head">
     <div>
