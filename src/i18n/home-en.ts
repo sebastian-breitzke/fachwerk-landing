@@ -401,6 +401,16 @@ const t: HomeT = {
       linkedin: 'linkedin.com/in/sebastian-breitzke',
       linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
+    continuity: {
+      title: `What if I'm gone?`,
+      lede: `Fair question. Continuity is built in, not promised:`,
+      points: [
+        'Code lives in your repo. Day one. No vendor lock.',
+        'Standard stack (Elixir, Postgres). No magic DSL — any senior backend dev can take over.',
+        'Workshop diagnostics carry your team further. The system explains itself, even without me.',
+        'Existing landscape? Inventory, wrap-or-rebuild, step-by-step migration. We onboard the grown estate too.',
+      ],
+    },
   },
   deploy: {
     eyebrow: '10 — Runs where you need it',

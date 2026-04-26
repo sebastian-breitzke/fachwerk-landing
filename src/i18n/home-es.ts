@@ -401,6 +401,16 @@ const t: HomeT = {
       linkedin: 'linkedin.com/in/sebastian-breitzke',
       linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
+    continuity: {
+      title: `¿Y si yo no estoy?`,
+      lede: `Pregunta justa. La continuidad está integrada, no prometida:`,
+      points: [
+        'El code vive en tu repo. Día uno. Sin lock-in del proveedor.',
+        'Stack estándar (Elixir, Postgres). Sin DSL mágico — cualquier senior backend dev puede continuar.',
+        'El diagnóstico del taller lleva a tu equipo más lejos. El sistema se explica solo, incluso sin mí.',
+        '¿Paisaje existente? Inventario, wrap-or-rebuild, migración paso a paso. También onboardeamos lo crecido.',
+      ],
+    },
   },
   deploy: {
     eyebrow: '10 — Corre donde lo necesitas',

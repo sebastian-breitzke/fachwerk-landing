@@ -952,6 +952,57 @@ section.block {
 }
 .pov-architect-contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
+/* Continuity-Block — Antwort auf 'was wenn Sebastian weg ist?' */
+.pov-continuity {
+  margin-top: 3rem;
+  padding: 2rem 2.2rem;
+  border: 1px solid var(--line-2);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in oklab, var(--accent) 3%, var(--paper));
+  max-width: 64rem;
+}
+.pov-continuity-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+  color: var(--fg);
+}
+.pov-continuity-lede {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+}
+.pov-continuity-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.pov-continuity-points li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--fg);
+}
+.pov-continuity-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  .pov-continuity { padding: 1.6rem 1.4rem; }
+  .pov-continuity-title { font-size: 1.25rem; }
+}
+
 @media (max-width: 1100px) {
   .pov-timeline { grid-template-columns: 1fr 1fr; }
   .pov-step:nth-child(2n) { border-right: none; }

@@ -402,6 +402,16 @@ const t = {
       linkedin: 'linkedin.com/in/sebastian-breitzke',
       linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
+    continuity: {
+      title: `Was wenn ich weg bin?`,
+      lede: `Eine faire Frage. Continuity ist eingebaut, nicht versprochen:`,
+      points: [
+        'Code lebt in deinem Repo. Tag 1. Kein Vendor-Lock.',
+        'Standard-Stack (Elixir, Postgres). Kein magisches DSL — jeder Senior-Backend-Dev kann übernehmen.',
+        'Werkstatt-Diagnose-Modus trägt dein Team weiter. Das System erklärt sich selbst, auch ohne mich.',
+        'Bestehende Landschaft? Inventur, Wrap-or-Rebuild, schrittweise Migration. Wir onboarden auch das Gewachsene.',
+      ],
+    },
   },
   deploy: {
     eyebrow: '10 — Läuft, wo du es brauchst',

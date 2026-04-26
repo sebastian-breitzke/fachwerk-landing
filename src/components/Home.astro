@@ -566,6 +566,14 @@ window.TWEAKS = {
       </div>
     </div>
   </div>
+
+  <div class="pov-continuity">
+    <h3 class="pov-continuity-title" set:html={t.pov.continuity.title}></h3>
+    <p class="pov-continuity-lede">{t.pov.continuity.lede}</p>
+    <ul class="pov-continuity-points">
+      {t.pov.continuity.points.map(p => <li>{p}</li>)}
+    </ul>
+  </div>
 </section>
 
 <section class="block" id="deploy">
