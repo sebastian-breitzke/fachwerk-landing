@@ -9,12 +9,12 @@ const t = {
   nav: {
     problem: 'Problem',
     platform: 'Plattform',
-    deadends: 'Sackgassen',
-    ai: 'KI &amp; Code',
-    catalog: 'Katalog',
-    examples: 'Beispiele',
+    deadends: 'Falle',
+    ai: 'Wie',
+    catalog: 'Kipp',
+    examples: 'Branchen',
     pricing: 'Preise',
-    contact: 'Kontakt',
+    contact: 'PoV',
   },
   a11y: {
     fullscreen: 'Vollbild',
@@ -36,10 +36,10 @@ const t = {
     ctaSwitchToBusiness: 'Zur Business-Ansicht wechseln',
   },
   hero: {
-    eyebrow: 'Maßgeschneiderte Software auf solidem Rohbau für den Mittelstand',
+    eyebrow: 'KI baut deinen Custom-Code. Fachwerk liefert den Rohbau, der trägt.',
     meta: '',
     headline: `<span class="strike">Vibe Coding</span><span class="strike-punct">:</span> schnell.<br><span class="strike">Low-Code</span><span class="strike-punct">:</span> eng.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>baut. wartet. trägt.`,
-    sub: `<strong>Fachwerk</strong> baut und wartet deine <strong>maßgeschneiderte Software</strong>. Im Dialog mit den Machern in deiner Firma — nicht im Warten auf die IT. In drei Jahren hast du einen wartbaren <strong>Katalog</strong>, keinen <strong>Zoo</strong> aus 50 halbtoten Apps auf Lisas Laptop.`,
+    sub: `<strong>Fachwerk</strong> ist die Plattform, auf der KI für dich Custom-Software schreibt — vom Standard-Connector zu Shopify bis zum 30-Jahre-alten Modbus-Stack auf deiner SPS. Du bekommst <strong>einen wartbaren Katalog</strong> in deinem Repo, keinen Zoo aus 50 halbtoten Apps auf Lisas Laptop.`,
     ctaPrimary: 'Proof-of-Value starten',
     ctaSecondary: 'Beispiele ansehen',
     slides: [
@@ -78,7 +78,7 @@ const t = {
     ],
   },
   platform: {
-    eyebrow: '02 — Die Plattform',
+    eyebrow: '03 — Die Plattform',
     index: '// fünf Säulen, eine Instanz',
     title: `Fachwerk ist ein <em>Tragwerk</em>. Nicht eine Liste von Tools.`,
     lede: `Plattform statt Tool-Stack. Eine Instanz, ein Dialog-Kontext, alles versioniert.`,
@@ -111,7 +111,7 @@ const t = {
     ],
   },
   kipp: {
-    eyebrow: '03b — Kipp-Punkte',
+    eyebrow: '04 — Kipp-Punkte',
     index: '// gute tools, andere aufgabe',
     title: `Die Frage ist nicht: welches Tool ist besser? Sondern: <em>ab wann kippt es?</em>`,
     lede: `Wenn ein einfacher Flow reicht, nimm ein einfaches Tool. <strong>Fachwerk muss nicht gewinnen, wenn ein Standard reicht</strong> — Fachwerk muss klar sein, wenn Integration, Auditierbarkeit, Datenschutz und Betrieb den Prozess bestimmen.`,
@@ -145,10 +145,10 @@ const t = {
     ],
   },
   ai: {
-    eyebrow: '04 — KI + Code',
-    index: '// code als Standard, KI wo sie hilft',
-    title: `KI wo sie hilft. <em>Code</em> wo es zählt.`,
-    lede: `Fachwerk setzt KI nicht als Zaubertrick über das ganze System, sondern <strong>gezielt pro Schritt</strong>. In jedem Ablauf kannst du KI-Schritte und klassische Integrationen frei koppeln: Klassifizieren per LLM, Buchen per SAP-Call, Prüfen per Regel, Mailen per Template. Determinismus wo nötig, Intelligenz wo sie Mehrwert bringt.`,
+    eyebrow: '04 — Wie Fachwerk baut',
+    index: '// ki schreibt den code, fachwerk gibt ihm statik',
+    title: `KI schreibt deine Integrationen. <em>Auf beiden Enden des Spektrums.</em>`,
+    lede: `<strong>Standard-APIs</strong> wie Shopify, GraphQL, SAP-RFC, DATEV-Connect: KI kennt sie aus den Trainingsdaten, schreibt One-Shot. <strong>Obskures</strong> wie Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS: KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code, wo Senior-Devs nur noch JSON sprechen. Du bekommst beides — auf einer Plattform, in deinem Repo, mit Audit-Trail by default.`,
     flowTitle: 'Flow · Eingangsrechnung prüfen',
     steps: [
       { type: 'code', name: 'Mail empfangen', meta: 'IMAP · deterministisch' },
@@ -174,10 +174,10 @@ const t = {
     },
   },
   zoo: {
-    eyebrow: '05 — In 3 Jahren: Katalog oder Zoo?',
-    index: '// nachhaltigkeit statt insel-apps',
-    title: `Kein Zoo aus Insel-Apps. <em>Ein Katalog</em> mit Fundament.`,
-    lede: `Vibe-Coding-Tools sind schnell — und produzieren einen Wildwuchs aus halbfertigen Apps auf privaten Laptops, mit Keys in Screenshots und ohne Wartungsplan. Fachwerk gibt dir stattdessen einen <strong>zentralen Katalog</strong>: alles, was gebaut wird, läuft auf derselben Plattform, nach denselben Regeln, mit gemeinsamer Datenbasis.`,
+    eyebrow: '02 — Die neue Falle',
+    index: '// ai-coding ist da, aber...',
+    title: `Jetzt schreibt KI deinen Code. <em>Aber wo läuft das in drei Jahren?</em>`,
+    lede: `Lovable, Bolt, v0, ChatGPT — Business-User schreiben sich ihre Tools selbst. Schnell. Praktisch. Und in 6 Monaten hast du <strong>Lisas Excel-Makro v3.7</strong>, Kais GPT-Workflow auf Privat-Laptop, einen API-Key in einem Pastebin und keinen Plan, was eigentlich noch läuft. AI-Coding ohne Statik = Insel-Zoo mit Glitzer.`,
     bad: {
       h: 'Ohne Rohbau — der Zoo',
       apps: [
@@ -216,10 +216,10 @@ const t = {
     },
   },
   cases: {
-    eyebrow: '06 — Vier Szenarien',
-    index: '// flow + actionable UI',
-    title: `Was Fachwerk konkret baut. <em>Custom pro Kunde.</em>`,
-    lede: `Vier fiktive Szenarien mit fiktiven Stimmen aus dem Segment — <strong>keine Referenzkunden, keine echten Zitate</strong>, sondern Illustrationen, damit du dir vorstellen kannst, wie Fachwerk in deiner Firma aussieht. Jedes Szenario: ein Flow plus eine Oberfläche, die <strong>arbeitet statt anzuzeigen</strong>. Keine Standard-Dashboards. Kein Power-BI-Zoo.`,
+    eyebrow: '06 — Branchen-Beispiele',
+    index: '// vier branchen, eine plattform',
+    title: `Vier Branchen. <em>Jede konkret.</em> Fachwerk spielt überall.`,
+    lede: `Beispielhafte Aufgaben aus vier Branchen — keine Referenzkunden, sondern Illustrationen, was Fachwerk in deiner Welt baut. Vom E-Commerce bis zur Stahlverarbeitung, vom Steuerberater bis zur Hausverwaltung. <strong>Wenn deine Branche nicht dabei ist: kein Problem.</strong> Die Plattform ist gleich, dein Adapter wird neu geschrieben.`,
     voiceTag: 'fiktive Stimme',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-Commerce · NordWare' },
@@ -264,11 +264,11 @@ const t = {
         title: '3-Wege-Match für den Rechnungseingang.',
         body: [
           ['Fachwerk matcht Rechnung gegen Bestellung und Lieferschein in DATEV oder SAP. Übereinstimmung = ', { em: 'direkte Freigabe' }, '. Abweichung = Klärungsfall mit vollem Kontext, Lieferantenhistorie, Empfehlung.'],
-          ['Das Freigabe-Board liefert ', { strong: 'GoBD-konforme Ein-Klick-Aktionen' }, ': freigeben, nachfordern, eskalieren. Jede Aktion auditierbar, mit vollem Revisionspfad.'],
+          ['Das Freigabe-Board liefert ', { strong: 'auditierbare Ein-Klick-Aktionen' }, ': freigeben, nachfordern, eskalieren. Jede Aktion mit vollem Revisionspfad.'],
         ],
-        meta: [['Flow', '3-Wege-Match'], ['Systeme', 'DATEV · SAP · DMS'], ['Rolle', 'Buchhaltung · Einkauf'], ['Compliance', 'GoBD-konform']],
+        meta: [['Flow', '3-Wege-Match'], ['Systeme', 'DATEV · SAP · DMS'], ['Rolle', 'Buchhaltung · Einkauf'], ['Audit', 'Vollständiger Revisionspfad']],
         voice: {
-          quote: 'GoBD heißt: jeder Schritt nachvollziehbar, jeder Beleg revisionssicher. Wenn KI eine Rechnung freigibt, brauche ich pro Run: Modell-Version, Eingangsdaten, Entscheidung — sonst hält das im nächsten DSFA nicht.',
+          quote: 'Wenn KI eine Rechnung freigibt, brauche ich pro Run: Modell-Version, Eingangsdaten, Entscheidung — alles nachvollziehbar, jeder Beleg revisionssicher.',
           role: 'Leiterin Buchhaltung',
           segment: 'Mittelstand-Industrie, DATEV + SAP',
         },
@@ -347,8 +347,27 @@ const t = {
       },
     },
   },
+  pov: {
+    eyebrow: '07 — Proof of Value',
+    index: '// in 2 wochen weißt du es',
+    title: `In 2 Wochen weißt du, <em>ob es trägt.</em>`,
+    lede: `Wir bauen einen konkreten Flow live in deiner Umgebung. Mit echten Daten. Wenn er kippt, bezahlst du nichts. Wenn er trägt, sind die PoV-Kosten auf die Launch-Fee anrechenbar.`,
+    steps: [
+      { day: 'Tag 1', title: 'Discovery', desc: '60 min Architektur-Talk: dein teuerster Prozess, dein Stack, dein Bottleneck.' },
+      { day: 'Tag 2–3', title: 'Architektur-Skizze', desc: 'Wo passt KI rein, wo bleibt deterministischer Code, welche Adapter brauchen wir.' },
+      { day: 'Tag 4–12', title: 'Build-Sprint', desc: 'Ein konkreter Flow läuft live in deiner Test-Umgebung. Code in deinem Repo.' },
+      { day: 'Tag 13–14', title: 'Live-Test', desc: 'Mit echten Daten in deiner Produktiv-Umgebung. Du siehst, ob es trägt.' },
+      { day: 'Tag 15', title: 'Entscheidung', desc: 'Weiter oder nicht. PoV-Kosten voll anrechenbar auf Launch-Fee.' },
+    ],
+    architect: {
+      label: '// Der Architekt',
+      name: 'Sebastian Breitzke',
+      bio: '20 Jahre Custom-Software für Mittelstand & Konzern. V-LOG 6.0 (€7M ARR), 1.000+ Customer-Migrationen, Zolllösung nach drei gescheiterten Vorgängern, €1,7M Heine-Deal. Senior Director R&D bei ecovium. Seit 2025 schreiben KI-Agenten meinen Code — ich architekturiere, reviewe, hafte.',
+      contact: 'Direkter Draht. Keine Sales-Kette.',
+    },
+  },
   deploy: {
-    eyebrow: '07 — Läuft, wo du es brauchst',
+    eyebrow: '08 — Läuft, wo du es brauchst',
     index: '// cloud · on-premise · hybrid',
     title: `Hinter der Firewall, in der Lagerhalle, neben der SPS — <em>oder im Cloud-Standard.</em>`,
     cells: [
@@ -370,7 +389,7 @@ const t = {
     ],
   },
   pricing: {
-    eyebrow: '08 — Drei Tiers, ehrlich',
+    eyebrow: '09 — Drei Tiers, ehrlich',
     index: '// starter · core · platform',
     title: `Kein Pricing-Theater. <em>Keine Seat-Lizenz.</em> Drei klare Tiers.`,
     lede: `Drei Tiers — nach <strong>Scope</strong> und Betriebsanforderung, nicht nach harten Umsatz-Grenzen. <strong>Ein bezahlter Proof-of-Value</strong> ist in allen Tiers auf die Launch-Fee voll anrechenbar.`,
@@ -420,7 +439,7 @@ const t = {
     limit: 'Über 200 Mio Umsatz: Da ist der Konzern-Stack meist die bessere Wahl als Fachwerk.',
   },
   cta: {
-    eyebrow: '09 — Klingt interessant?',
+    eyebrow: '10 — Klingt interessant?',
     title: `Dann lass uns über dein <em>teuerstes 1000-Prozesse-Problem</em> reden.`,
     body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem teuersten Engpass — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
     emailLabel: 'E-Mail an Sebastian',
@@ -492,7 +511,7 @@ const t = {
       title: `AI als <em>Tool-Call</em>. Code als Backbone.`,
       lede: `Jeder Flow ist Code in deinem Repo. <strong>Jeder Run ein Event-Log. Jede AI-Antwort replayable.</strong> LLMs sind in Fachwerk Funktionen mit JSON-Schema In/Out, Modell-Version pinned. Pydantic-style validation vor jedem Side-Effect. Kein freier Agent im Postfach. Kein Prompt im heißen Pfad.`,
       points: [
-        { num: '01', title: 'Audit-Trail by default.', body: 'Modell-ID, Prompt-Hash, Temperatur, Output, Token-Counts. Persistent. Replay mit identischem Input gegen neue Modell-Version. Auditierbar gegen GoBD und EU-AI-Act, ohne dass du dafür extra etwas tun musst.' },
+        { num: '01', title: 'Audit-Trail by default.', body: 'Modell-ID, Prompt-Hash, Temperatur, Output, Token-Counts. Persistent. Replay mit identischem Input gegen neue Modell-Version. Auditierbar gegen interne Revision und externe Prüfer, ohne dass du dafür extra etwas tun musst.' },
         { num: '02', title: 'Gen-Time vs Run-Time.', body: 'AI baut Code im Werkstatt-Dialog (Gen-Time). Zur Laufzeit (Run-Time) läuft kompilierter Elixir-Code mit OTP-Supervision. Keine Prompts im heißen Pfad. Kein Prompt-Injection-Risk im Produktivflow.' },
         { num: '03', title: 'Tool-Calls mit Schema.', body: 'AI-Schritte sind getypte Funktionen: JSON-Schema In, JSON-Schema Out. OpenAI-API, Anthropic-API, lokale Modelle (Ollama, vLLM) — alles über dasselbe Interface. Wechsel = Config-Zeile.' },
       ],

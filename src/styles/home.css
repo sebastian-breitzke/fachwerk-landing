@@ -747,6 +747,183 @@ section.block {
   align-items: center;
 }
 
+/* ═══════════════════════════════════════════════
+   BRANCHEN-STREIFEN (#cases)
+   ═══════════════════════════════════════════════ */
+.branch-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--sun), 8px 8px 0 1px var(--fg);
+}
+.branch-card {
+  padding: 2rem 1.6rem;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.branch-card:last-child { border-right: none; }
+.branch-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.branch-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.3;
+}
+.branch-task {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0.4rem 0 1rem;
+  flex: 1;
+}
+.branch-stack {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.8rem;
+  margin-top: auto;
+  word-spacing: 0.1em;
+  line-height: 1.5;
+}
+html[data-view="macher"] .branch-card { border-right-color: var(--line); }
+
+@media (max-width: 1100px) {
+  .branch-strip { grid-template-columns: 1fr 1fr; }
+  .branch-card:nth-child(2n) { border-right: none; }
+  .branch-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 600px) {
+  .branch-strip { grid-template-columns: 1fr; }
+  .branch-card { border-right: none; border-bottom: 1px solid var(--line); }
+  .branch-card:last-child { border-bottom: none; }
+}
+
+/* ═══════════════════════════════════════════════
+   POV TIMELINE + ARCHITEKT (#pov)
+   ═══════════════════════════════════════════════ */
+.pov-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--accent), 8px 8px 0 1px var(--fg);
+}
+.pov-step {
+  padding: 1.6rem 1.2rem;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.pov-step:last-child { border-right: none; }
+.pov-day {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.pov-step-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  display: block;
+}
+.pov-step-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+  display: block;
+}
+
+.pov-architect {
+  margin-top: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px dashed var(--line-2);
+}
+.pov-architect-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.pov-architect-card {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.pov-architect-name {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+}
+.pov-architect-bio {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.pov-architect-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.92rem;
+  border-left: 2px solid var(--accent);
+  padding-left: 1.2rem;
+}
+.pov-architect-contact-label {
+  font-size: 0.7rem;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.pov-architect-contact a {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.pov-architect-contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+@media (max-width: 1100px) {
+  .pov-timeline { grid-template-columns: 1fr 1fr; }
+  .pov-step:nth-child(2n) { border-right: none; }
+  .pov-step:nth-child(-n+4) { border-bottom: 1px solid var(--line); }
+  .pov-architect-card { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 700px) {
+  .pov-timeline { grid-template-columns: 1fr; }
+  .pov-step { border-right: none; border-bottom: 1px solid var(--line); }
+  .pov-step:last-child { border-bottom: none; }
+  .pov-architect-name { font-size: 1.6rem; }
+}
+
 /* OTP-Spotlight: tech-only kompakte Erklärbox unter dem Timber.
    Sitzt nur in Macher-View, .dark-section context (Pillars). */
 .platform-otp-spotlight {

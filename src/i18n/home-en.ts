@@ -8,12 +8,12 @@ const t: HomeT = {
   nav: {
     problem: 'Problem',
     platform: 'Platform',
-    deadends: 'Dead ends',
-    ai: 'AI &amp; Code',
-    catalog: 'Catalog',
-    examples: 'Examples',
+    deadends: 'Trap',
+    ai: 'How',
+    catalog: 'Tipping',
+    examples: 'Industries',
     pricing: 'Pricing',
-    contact: 'Contact',
+    contact: 'PoV',
   },
   a11y: {
     fullscreen: 'Fullscreen',
@@ -35,10 +35,10 @@ const t: HomeT = {
     ctaSwitchToBusiness: 'Switch to business view',
   },
   hero: {
-    eyebrow: 'Custom software on a solid shell for the mid-market',
+    eyebrow: 'AI builds your custom code. Fachwerk delivers the frame that holds.',
     meta: '',
     headline: `<span class="strike">Vibe coding</span><span class="strike-punct">:</span> fast.<br><span class="strike">Low-code</span><span class="strike-punct">:</span> narrow.<br><em>Fachwerk</em><span class="fw-punct">:</span><br>builds. maintains. holds.`,
-    sub: `<strong>Fachwerk</strong> builds and maintains your <strong>custom software</strong>. In dialog with the makers in your company — not waiting on IT. In three years you have a maintainable <strong>catalog</strong>, not a <strong>zoo</strong> of 50 half-dead apps on Lisa's laptop.`,
+    sub: `<strong>Fachwerk</strong> is the platform where AI writes custom software for you — from a standard Shopify connector down to the 30-year-old Modbus stack on your PLC. You get <strong>one maintainable catalog</strong> in your repo, not a zoo of 50 half-dead apps on Lisa's laptop.`,
     ctaPrimary: 'Start a Proof-of-Value',
     ctaSecondary: 'See examples',
     slides: [
@@ -77,7 +77,7 @@ const t: HomeT = {
     ],
   },
   platform: {
-    eyebrow: '02 — The platform',
+    eyebrow: '03 — The platform',
     index: '// five pillars, one instance',
     title: `Fachwerk is a <em>frame</em>. Not a list of tools.`,
     lede: `A platform, not a tool stack. One instance, one dialog context, all versioned.`,
@@ -110,7 +110,7 @@ const t: HomeT = {
     ],
   },
   kipp: {
-    eyebrow: '03b — Tipping points',
+    eyebrow: '05 — Tipping points',
     index: '// good tools, different job',
     title: `The question isn't: which tool is better? It's: <em>when does it tip?</em>`,
     lede: `When a simple flow is enough, take a simple tool. <strong>Fachwerk doesn't have to win when a standard fits</strong> — Fachwerk has to be the obvious choice when integration, auditability, data protection and operations drive the process.`,
@@ -144,10 +144,10 @@ const t: HomeT = {
     ],
   },
   ai: {
-    eyebrow: '04 — AI + Code',
-    index: '// the best of both worlds',
-    title: `AI where it helps. <em>Code</em> where it counts.`,
-    lede: `Fachwerk does not apply AI as a magic layer over the whole system, but <strong>targeted, step by step</strong>. In every flow you can freely couple AI steps and classical integrations: classify via LLM, post via SAP call, check via rule, email via template. Determinism where needed, intelligence where it adds value.`,
+    eyebrow: '04 — How Fachwerk builds',
+    index: '// ai writes the code, fachwerk gives it structure',
+    title: `AI writes your integrations. <em>On both ends of the spectrum.</em>`,
+    lede: `<strong>Standard APIs</strong> like Shopify, GraphQL, SAP RFC, DATEV-Connect: AI knows them from training data, writes one-shot. <strong>Obscure stuff</strong> like Modbus over a 30-year-old TCP stack on your PLC: AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON. You get both — on one platform, in your repo, with audit trail by default.`,
     flowTitle: 'Flow · Check incoming invoice',
     steps: [
       { type: 'code', name: 'Receive mail', meta: 'IMAP · deterministic' },
@@ -173,10 +173,10 @@ const t: HomeT = {
     },
   },
   zoo: {
-    eyebrow: '05 — In 3 years: catalog or zoo?',
-    index: '// sustainability instead of island apps',
-    title: `No zoo of island apps. <em>A catalog</em> with a foundation.`,
-    lede: `Vibe-coding tools are fast — and they produce sprawl: half-finished apps on private laptops, keys in screenshots, no maintenance plan. Fachwerk gives you a <strong>central catalog</strong> instead: everything built runs on the same platform, under the same rules, with shared data.`,
+    eyebrow: '02 — The new trap',
+    index: '// ai-coding is here, but...',
+    title: `Now AI writes your code. <em>But where does it run in three years?</em>`,
+    lede: `Lovable, Bolt, v0, ChatGPT — business users write their own tools. Fast. Practical. And in 6 months you have <strong>Lisa's Excel macro v3.7</strong>, Kai's GPT workflow on a private laptop, an API key in a pastebin, and no idea what's still running. AI coding without structure = island zoo with glitter.`,
     bad: {
       h: 'Without a shell — the zoo',
       apps: [
@@ -215,10 +215,10 @@ const t: HomeT = {
     },
   },
   cases: {
-    eyebrow: '06 — Four scenarios',
-    index: '// flow + actionable UI',
-    title: `What Fachwerk actually builds. <em>Custom per customer.</em>`,
-    lede: `Four fictional scenarios with fictional voices from the segment — <strong>no customer references, no real quotes</strong>, but illustrations so you can picture what Fachwerk would look like in your company. Every scenario: a flow plus a UI that <strong>works instead of just displaying</strong>. No standard dashboards. No Power BI zoo.`,
+    eyebrow: '06 — Industry examples',
+    index: '// four industries, one platform',
+    title: `Four industries. <em>Each concrete.</em> Fachwerk plays everywhere.`,
+    lede: `Example tasks from four industries — no reference customers, just illustrations of what Fachwerk builds in your world. From e-commerce to steel manufacturing, from tax advisor to property management. <strong>If your industry isn't listed: no problem.</strong> The platform is the same, your adapter gets newly written.`,
     voiceTag: 'fictional voice',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-commerce · NordWare' },
@@ -263,11 +263,11 @@ const t: HomeT = {
         title: '3-way match for incoming invoices.',
         body: [
           ['Fachwerk matches invoice against purchase order and delivery note in DATEV or SAP. Match = ', { em: 'direct approval' }, '. Deviation = clarification case with full context, supplier history, recommendation.'],
-          ['The approval board delivers ', { strong: 'GoBD-compliant one-click actions' }, ': approve, request more info, escalate. Every action auditable, with a full revision trail.'],
+          ['The approval board delivers ', { strong: 'auditable one-click actions' }, ': approve, request more info, escalate. Every action with a full revision trail.'],
         ],
-        meta: [['Flow', '3-way match'], ['Systems', 'DATEV · SAP · DMS'], ['Role', 'Accounting · Purchasing'], ['Compliance', 'GoBD-compliant']],
+        meta: [['Flow', '3-way match'], ['Systems', 'DATEV · SAP · DMS'], ['Role', 'Accounting · Purchasing'], ['Audit', 'Full revision trail']],
         voice: {
-          quote: "GoBD means: every step traceable, every record audit-proof. When AI clears an invoice, I need per run: model version, input data, decision — otherwise it won't hold up at the next data-protection audit.",
+          quote: "When AI clears an invoice, I need per run: model version, input data, decision — every step traceable, every record audit-proof.",
           role: 'Head of accounting',
           segment: 'mid-market industry, DATEV + SAP',
         },
@@ -346,8 +346,27 @@ const t: HomeT = {
       },
     },
   },
+  pov: {
+    eyebrow: '07 — Proof of Value',
+    index: '// in 2 weeks you know',
+    title: `In 2 weeks you know <em>if it holds.</em>`,
+    lede: `We build a concrete flow live in your environment. With real data. If it tips, you pay nothing. If it holds, the PoV cost is creditable against the launch fee.`,
+    steps: [
+      { day: 'Day 1', title: 'Discovery', desc: '60 min architecture talk: your most expensive process, your stack, your bottleneck.' },
+      { day: 'Day 2–3', title: 'Architecture sketch', desc: 'Where AI fits, where deterministic code stays, which adapters we need.' },
+      { day: 'Day 4–12', title: 'Build sprint', desc: 'A concrete flow runs live in your test environment. Code in your repo.' },
+      { day: 'Day 13–14', title: 'Live test', desc: 'With real data in your production environment. You see if it holds.' },
+      { day: 'Day 15', title: 'Decision', desc: 'Continue or not. PoV cost fully creditable against the launch fee.' },
+    ],
+    architect: {
+      label: '// The architect',
+      name: 'Sebastian Breitzke',
+      bio: '20 years of custom software for mid-market and enterprise. V-LOG 6.0 (€7M ARR), 1,000+ customer migrations, customs solution after three failed predecessors, €1.7M Heine deal. Senior Director R&D at ecovium. Since 2025 AI agents write my code — I architect, review, take responsibility.',
+      contact: 'Direct line. No sales chain.',
+    },
+  },
   deploy: {
-    eyebrow: '07 — Runs where you need it',
+    eyebrow: '08 — Runs where you need it',
     index: '// cloud · on-premise · hybrid',
     title: `Behind the firewall, in the warehouse, next to the PLC — <em>or in the cloud standard.</em>`,
     cells: [
@@ -369,7 +388,7 @@ const t: HomeT = {
     ],
   },
   pricing: {
-    eyebrow: '08 — Three tiers, honest',
+    eyebrow: '09 — Three tiers, honest',
     index: '// starter · core · platform',
     title: `No pricing theater. <em>No seat license.</em> Three clear tiers.`,
     lede: `Three tiers — by <strong>scope</strong> and operational need, not by hard revenue thresholds. <strong>A paid proof-of-value</strong> is fully creditable against the launch fee in every tier.`,
@@ -419,7 +438,7 @@ const t: HomeT = {
     limit: `Above €200 M revenue: the enterprise stack is usually a better fit than Fachwerk.`,
   },
   cta: {
-    eyebrow: '09 — Sounds interesting?',
+    eyebrow: '10 — Sounds interesting?',
     title: `Then let's talk about your <em>most expensive 1000-processes problem.</em>`,
     body: `First conversation directly with the architect. No sales chain, no RFP theater, no demo tour. A hypothesis about your pain — and a proposal for what a 6-week proof-of-value looks like.`,
     emailLabel: 'Email Sebastian',
@@ -491,7 +510,7 @@ const t: HomeT = {
       title: `AI as a <em>tool call</em>. Code as backbone.`,
       lede: `Every flow is code in your repo. <strong>Every run an event log. Every AI response replayable.</strong> LLMs in Fachwerk are functions with JSON-schema in/out, model version pinned. Pydantic-style validation before any side effect. No free agent in the inbox. No prompt in the hot path.`,
       points: [
-        { num: '01', title: 'Audit trail by default.', body: 'Model ID, prompt hash, temperature, output, token counts. Persistent. Replay with identical input against a new model version. Auditable against GoBD and EU AI Act, no extra work needed.' },
+        { num: '01', title: 'Audit trail by default.', body: 'Model ID, prompt hash, temperature, output, token counts. Persistent. Replay with identical input against a new model version. Auditable against internal review and external auditors, no extra work needed.' },
         { num: '02', title: 'Gen-time vs run-time.', body: 'AI builds code in the workshop dialog (gen-time). At runtime, compiled Elixir with OTP supervision runs. No prompts in the hot path. No prompt-injection risk in the production flow.' },
         { num: '03', title: 'Tool calls with schema.', body: 'AI steps are typed functions: JSON-schema in, JSON-schema out. OpenAI API, Anthropic API, local models (Ollama, vLLM) — all behind the same interface. Switch = config line.' },
       ],

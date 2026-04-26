@@ -139,13 +139,13 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
   <span class="nav-section" id="nav-section" aria-live="polite"></span>
   <div class="nav-links">
     <a href="#problem">{t.nav.problem}</a>
+    <a href="#falle">{t.nav.deadends}</a>
     <a href="#pillars">{t.nav.platform}</a>
-    <a href="#sackgassen">{t.nav.deadends}</a>
-    <a href="#ai" set:html={t.nav.ai}></a>
-    <a href="#katalog">{t.nav.catalog}</a>
+    <a href="#how" set:html={t.nav.ai}></a>
+    <a href="#kipp">{t.nav.catalog}</a>
     <a href="#cases">{t.nav.examples}</a>
     <a href="#pricing">{t.nav.pricing}</a>
-    <a href="#kontakt" class="nav-cta">{t.nav.contact}</a>
+    <a href="#pov" class="nav-cta">{t.nav.contact}</a>
     <button
       class="nav-view-icon"
       type="button"
@@ -336,6 +336,38 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
   </div>
 </section>
 
+<section class="block zoo-section" id="falle">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.zoo.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.zoo.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.zoo.title}></h2>
+      <p class="block-lede" set:html={t.zoo.lede}></p>
+    </div>
+  </div>
+
+  <div class="zoo-single">
+    <div class="zoo-side zoo-bad">
+      <div class="zoo-canvas">
+        {t.zoo.bad.apps.map((app, i) => (
+          <div class={`zoo-app za-${i + 1}`}>
+            {app.label}
+            {app.tag && <span class="ztag">{app.tag}</span>}
+          </div>
+        ))}
+        {t.zoo.bad.warns.map((w, i) => (
+          <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
+        ))}
+      </div>
+      <ul class="zoo-list">
+        {t.zoo.bad.list.map(li => <li>{li}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="block dark-section" id="pillars">
   <div class="block-head">
     <div>
@@ -436,55 +468,38 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
   <div class="platform-otp-spotlight" data-view-only="macher" set:html={m.platform.detail}></div>
 </section>
 
-<section class="block sackgassen" id="sackgassen">
+<section class="block ai-section" id="how">
   <div class="block-head">
     <div>
-      <span class="eyebrow">{t.deadends.eyebrow}</span>
-      <div class="block-index" style="margin-top:1rem">{t.deadends.index}</div>
+      <span class="eyebrow">{t.ai.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.ai.index}</div>
     </div>
     <div>
-      <h2 class="block-title" data-view-only="business" set:html={t.deadends.title}></h2>
-      <h2 class="block-title" data-view-only="macher" set:html={m.deadends.title}></h2>
-      <p class="block-lede" data-view-only="business" set:html={t.deadends.lede}></p>
-      <p class="block-lede" data-view-only="macher" set:html={m.deadends.lede}></p>
+      <h2 class="block-title" set:html={t.ai.title}></h2>
+      <p class="block-lede" set:html={t.ai.lede}></p>
     </div>
   </div>
 
-  <div class="sg-table" data-view-only="business">
-    <div class="sg-row sg-head">
-      <div class="sg-label">{t.deadends.dimension}</div>
-      <div class="sg-col sg-lowcode">{t.deadends.cols.lowcode}</div>
-      <div class="sg-col sg-vibe">{t.deadends.cols.vibe}</div>
-      <div class="sg-col sg-dl">{t.deadends.cols.dl}</div>
-      <div class="sg-col sg-fw">{t.deadends.cols.fw}</div>
-    </div>
-    {t.deadends.rows.map(r => (
-      <div class="sg-row">
-        <div class="sg-label">{r.label}</div>
-        <div class="sg-col sg-lowcode">{r.lowcode}</div>
-        <div class="sg-col sg-vibe">{r.vibe}</div>
-        <div class="sg-col sg-dl">{r.dl}</div>
-        <div class="sg-col sg-fw" set:html={r.fw}></div>
+  <div class="ai-grid">
+    <div class="ai-diagram">
+      <div class="ai-chrome">{t.ai.flowTitle}</div>
+      <div class="ai-flow">
+        {t.ai.steps.map((s, i) => (
+          <>
+            <div class={`ai-step s-${s.type}`}>
+              <div class="s-type">{s.type === 'ai' ? 'AI' : 'Code'}</div>
+              <div class="s-name">{s.name}</div>
+              <div class="s-meta">{s.meta}</div>
+            </div>
+            {i < t.ai.steps.length - 1 && <div class="ai-arrow"></div>}
+          </>
+        ))}
       </div>
-    ))}
-  </div>
-  <div class="sg-table" data-view-only="macher">
-    <div class="sg-row sg-head">
-      <div class="sg-label">{t.deadends.dimension}</div>
-      <div class="sg-col sg-lowcode">{t.deadends.cols.lowcode}</div>
-      <div class="sg-col sg-vibe">{t.deadends.cols.vibe}</div>
-      <div class="sg-col sg-dl">{t.deadends.cols.dl}</div>
-      <div class="sg-col sg-fw">{t.deadends.cols.fw}</div>
-    </div>
-    {m.deadends.rows.map(r => (
-      <div class="sg-row">
-        <div class="sg-label">{r.label}</div>
-        <div class="sg-col sg-lowcode">{r.lowcode}</div>
-        <div class="sg-col sg-vibe">{r.vibe}</div>
-        <div class="sg-col sg-dl">{r.dl}</div>
-        <div class="sg-col sg-fw" set:html={r.fw}></div>
+      <div class="ai-legend">
+        <span class="ai-legend-item"><span class="dot dot-code"></span> {t.ai.legend.code}</span>
+        <span class="ai-legend-item"><span class="dot dot-ai"></span> {t.ai.legend.ai}</span>
       </div>
-    ))}
+    </div>
   </div>
 </section>
 
@@ -512,127 +527,6 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
   </div>
 </section>
 
-<section class="block ai-section" id="ai">
-  <div class="block-head">
-    <div>
-      <span class="eyebrow" data-view-only="business">{t.ai.eyebrow}</span>
-      <span class="eyebrow" data-view-only="macher">{m.ai.eyebrow}</span>
-      <div class="block-index" style="margin-top:1rem">{t.ai.index}</div>
-    </div>
-    <div>
-      <h2 class="block-title" data-view-only="business" set:html={t.ai.title}></h2>
-      <h2 class="block-title" data-view-only="macher" set:html={m.ai.title}></h2>
-      <p class="block-lede" data-view-only="business" set:html={t.ai.lede}></p>
-      <p class="block-lede" data-view-only="macher" set:html={m.ai.lede}></p>
-    </div>
-  </div>
-
-  <div class="ai-grid">
-    <div class="ai-diagram">
-      <div class="ai-chrome">{t.ai.flowTitle}</div>
-      <div class="ai-flow">
-        {t.ai.steps.map((s, i) => (
-          <>
-            <div class={`ai-step s-${s.type}`}>
-              <div class="s-type">{s.type === 'ai' ? 'AI' : 'Code'}</div>
-              <div class="s-name">{s.name}</div>
-              <div class="s-meta">{s.meta}</div>
-            </div>
-            {i < t.ai.steps.length - 1 && <div class="ai-arrow"></div>}
-          </>
-        ))}
-      </div>
-      <div class="ai-legend">
-        <span class="ai-legend-item"><span class="dot dot-code"></span> {t.ai.legend.code}</span>
-        <span class="ai-legend-item"><span class="dot dot-ai"></span> {t.ai.legend.ai}</span>
-      </div>
-    </div>
-
-    <div class="ai-points" data-view-only="business">
-      {t.ai.points.map(p => (
-        <div class="ai-point">
-          <span class="ai-num">{p.num}</span>
-          <h4>{p.title}</h4>
-          <p>{p.body}</p>
-        </div>
-      ))}
-    </div>
-    <div class="ai-points" data-view-only="macher">
-      {m.ai.points.map(p => (
-        <div class="ai-point">
-          <span class="ai-num">{p.num}</span>
-          <h4>{p.title}</h4>
-          <p>{p.body}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <div class="ai-controlled">
-    <span class="eyebrow">{t.ai.controlled.eyebrow}</span>
-    <h3 set:html={t.ai.controlled.title}></h3>
-    <p class="ai-controlled-lede" set:html={t.ai.controlled.lede}></p>
-    <div class="ai-path">
-      {t.ai.controlled.path.map(p => <span>{p}</span>)}
-    </div>
-  </div>
-</section>
-
-<section class="block zoo-section" id="katalog">
-  <div class="block-head">
-    <div>
-      <span class="eyebrow">{t.zoo.eyebrow}</span>
-      <div class="block-index" style="margin-top:1rem">{t.zoo.index}</div>
-    </div>
-    <div>
-      <h2 class="block-title" data-view-only="business" set:html={t.zoo.title}></h2>
-      <h2 class="block-title" data-view-only="macher" set:html={m.zoo.title}></h2>
-      <p class="block-lede" data-view-only="business" set:html={t.zoo.lede}></p>
-      <p class="block-lede" data-view-only="macher" set:html={m.zoo.lede}></p>
-    </div>
-  </div>
-
-  <div class="zoo-compare">
-    <div class="zoo-side zoo-bad">
-      <h4>{t.zoo.bad.h}</h4>
-      <div class="zoo-canvas">
-        {t.zoo.bad.apps.map((app, i) => (
-          <div class={`zoo-app za-${i + 1}`}>
-            {app.label}
-            {app.tag && <span class="ztag">{app.tag}</span>}
-          </div>
-        ))}
-        {t.zoo.bad.warns.map((w, i) => (
-          <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
-        ))}
-      </div>
-      <ul class="zoo-list">
-        {t.zoo.bad.list.map(li => <li>{li}</li>)}
-      </ul>
-    </div>
-
-    <div class="zoo-side zoo-good">
-      <h4>{t.zoo.good.h}</h4>
-      <div class="zoo-catalog">
-        <div class="kc-head">
-          {t.zoo.good.head.map(h => <span>{h}</span>)}
-        </div>
-        {t.zoo.good.rows.map(r => (
-          <div class="kc-row">
-            <span>{r.name}</span>
-            <span>{r.owner}</span>
-            <span>{r.ver}</span>
-            <span class={r.kind === 'warn' ? 'kc-warn' : 'kc-ok'}>{r.health}</span>
-          </div>
-        ))}
-      </div>
-      <ul class="zoo-list">
-        {t.zoo.good.list.map(li => <li>{li}</li>)}
-      </ul>
-    </div>
-  </div>
-</section>
-
 <section class="block uc-solid" id="cases">
   <div class="block-head">
     <div>
@@ -646,16 +540,57 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     </div>
   </div>
 
-  <div class="uc-nav" id="uc-nav">
-    {t.cases.tabs.map((tab, i) => (
-      <button class={`uc-tab${i === 0 ? ' active' : ''}`} data-uc={tab.uc}>
-        <span class="num">{tab.num}</span> {tab.label}
-      </button>
-    ))}
+  <div class="branch-strip">
+    {t.cases.tabs.map((tab) => {
+      const ucKey = tab.uc as keyof typeof t.cases.useCases;
+      const uc = t.cases.useCases[ucKey];
+      const stack = m.cases.stackTags[ucKey];
+      return (
+        <div class="branch-card">
+          <span class="branch-num">{tab.num}</span>
+          <h3 class="branch-name">{tab.label}</h3>
+          <p class="branch-task">{uc.title}</p>
+          <span class="branch-stack">{stack}</span>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<section class="block pov-section" id="pov">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.pov.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.pov.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.pov.title}></h2>
+      <p class="block-lede" set:html={t.pov.lede}></p>
+    </div>
   </div>
 
-  <div class="uc-stage" id="uc-stage"></div>
-  <div class="uc-dots" id="uc-dots"></div>
+  <ol class="pov-timeline">
+    {t.pov.steps.map(step => (
+      <li class="pov-step">
+        <span class="pov-day">{step.day}</span>
+        <span class="pov-step-title">{step.title}</span>
+        <span class="pov-step-desc">{step.desc}</span>
+      </li>
+    ))}
+  </ol>
+
+  <div class="pov-architect">
+    <span class="pov-architect-label">{t.pov.architect.label}</span>
+    <div class="pov-architect-card">
+      <div class="pov-architect-name">{t.pov.architect.name}</div>
+      <p class="pov-architect-bio">{t.pov.architect.bio}</p>
+      <div class="pov-architect-contact">
+        <span class="pov-architect-contact-label">{t.pov.architect.contact}</span>
+        <a href="mailto:sebastian@s16e.de">sebastian@s16e.de</a>
+        <a href="tel:+491724290654">+49 172 4290654</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="block" id="deploy">
