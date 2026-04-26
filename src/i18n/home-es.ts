@@ -10,7 +10,7 @@ const t: HomeT = {
     platform: 'Plataforma',
     deadends: 'Trampa',
     ai: 'Cómo',
-    catalog: 'Inflexión',
+    catalog: 'Por qué',
     examples: 'Sectores',
     pricing: 'Precios',
     contact: 'PoV',
@@ -147,7 +147,7 @@ const t: HomeT = {
     eyebrow: '04 — Cómo construye Fachwerk',
     index: '// no existe la interfaz estándar',
     title: `No existe la interfaz estándar. <em>Cada integración es Custom.</em>`,
-    lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON.<br><br><strong>Mi enfoque: empoderar a los business users para que se ayuden a sí mismos.</strong> Reports propios, flujos propios, UIs propias — sin esperar un análisis, sin vivir con reports hard-coded sobre cinco campos. Pero todo ordenado en el catálogo: con owner, versiones, audit trail. No pagas por adaptadores, pagas por la plataforma y la estructura debajo.`,
+    lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON.<br><br><strong>El enfoque de Fachwerk: empoderar a los business users para que se ayuden a sí mismos.</strong> Reports propios, flujos propios, UIs propias — sin esperar un análisis, sin vivir con reports hard-coded sobre cinco campos, sin tener que organizar un proyecto, presupuesto y plazo cada vez que una pequeña interfaz cambia. Pero todo ordenado en el catálogo: con owner, versiones, audit trail. No pagas por adaptadores, pagas por la plataforma y la estructura debajo.`,
     flowTitle: 'Flujo · Verificar factura entrante',
     steps: [
       { type: 'code', name: 'Recibir mail', meta: 'IMAP · determinista' },
@@ -346,8 +346,21 @@ const t: HomeT = {
       },
     },
   },
+  ki: {
+    eyebrow: '07 — AI sobre raíles',
+    index: '// determinismo donde se pueda, ai donde haga falta',
+    title: `AI sobre raíles. <em>Code donde se pueda.</em>`,
+    lede: `No dejes que la AI tenga acceso completo a tu buzón. La aplicamos <strong>de forma puntual</strong> — el code filtra, categoriza, enruta. Solo donde la AI aporta valor (entender textos, reconocer patrones, clasificar), entra en juego. Donde el code basta, corre code.`,
+    points: [
+      { label: 'Más rápido', body: 'El code corre en milisegundos. La AI en segundos o minutos. En el flujo cada latencia cuenta.' },
+      { label: 'Más seguro', body: 'Los datos sensibles se quedan en tu flujo. Nada va a un LLM que no tenga que ir a un LLM.' },
+      { label: 'Más barato', body: 'El code corre en local, no cuesta por llamada. Las llamadas a AI se reducen a donde aportan valor.' },
+      { label: 'Más fiable', body: 'El code es determinista — mismo input, mismo output. La AI no. Replay solo funciona con anclajes en code.' },
+    ],
+    closing: `<strong>El code no lo cura todo.</strong> Con Fachwerk integras la AI donde tiene sentido — no donde tenga que poder hacerlo todo. Ejemplo: el flow de factura entrante de arriba — 5 pasos, 2× AI, 3× code.`,
+  },
   pov: {
-    eyebrow: '07 — Proof of Value',
+    eyebrow: '08 — Proof of Value',
     index: '// en 2 semanas lo sabes',
     title: `En 2 semanas sabes <em>si sostiene.</em>`,
     lede: `Construimos un flujo concreto en vivo en tu entorno. Con datos reales. Si no funciona, no pagas nada. Si funciona, los costes del PoV son acreditables contra la launch fee.`,
@@ -368,7 +381,7 @@ const t: HomeT = {
     },
   },
   deploy: {
-    eyebrow: '08 — Corre donde lo necesitas',
+    eyebrow: '09 — Corre donde lo necesitas',
     index: '// cloud · on-premise · híbrido',
     title: `Tras el firewall, en la nave, junto al PLC — <em>o en el estándar cloud.</em>`,
     cells: [
@@ -390,7 +403,7 @@ const t: HomeT = {
     ],
   },
   pricing: {
-    eyebrow: '09 — Pricing',
+    eyebrow: '10 — Pricing',
     index: '// sin teatro de precios',
     title: `Dos tiers. <em>Y una puerta para los hacedores.</em>`,
     lede: `Sin licencia por usuario. Sin trampa de volumen. La elección de tier es una pregunta técnica, no una heurística de facturación. <strong>Un Proof-of-Value pagado</strong> es imputable íntegro sobre el Setup-Fee.`,
@@ -436,7 +449,7 @@ const t: HomeT = {
     limit: 'Por encima de 200 M € de facturación: normalmente el stack de grupo encaja mejor que Fachwerk.',
   },
   cta: {
-    eyebrow: '10 — ¿Interesante?',
+    eyebrow: '11 — ¿Interesante?',
     title: `Entonces hablemos de tu <em>problema de 1000 procesos más caro.</em>`,
     body: `Primera conversación directamente con el arquitecto. Sin cadena comercial, sin teatro de RFP, sin tour de demos. Una hipótesis sobre tu dolor — y una propuesta de cómo podría ser un Proof-of-Value de 6 semanas.`,
     emailLabel: 'Escribir a Sebastian',

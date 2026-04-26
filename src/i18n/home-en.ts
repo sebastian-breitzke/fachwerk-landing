@@ -10,7 +10,7 @@ const t: HomeT = {
     platform: 'Platform',
     deadends: 'Trap',
     ai: 'How',
-    catalog: 'Tipping',
+    catalog: 'Why',
     examples: 'Industries',
     pricing: 'Pricing',
     contact: 'PoV',
@@ -147,7 +147,7 @@ const t: HomeT = {
     eyebrow: '04 — How Fachwerk builds',
     index: '// there is no standard interface',
     title: `There is no standard interface. <em>Every integration is custom.</em>`,
-    lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON.<br><br><strong>My focus: enable business users to help themselves.</strong> Own reports, own flows, own UIs — no more waiting for an analysis, no more living with reports hard-coded against five fields. But all ordered in the catalog: with owner, versions, audit trail. You don't pay for adapters, you pay for the platform and the structure beneath.`,
+    lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON.<br><br><strong>Fachwerk's focus: enable business users to help themselves.</strong> Own reports, own flows, own UIs — no more waiting for an analysis, no more living with reports hard-coded against five fields, no more organising a project, quote, budget and timeline for every small interface change. But all ordered in the catalog: with owner, versions, audit trail. You don't pay for adapters, you pay for the platform and the structure beneath.`,
     flowTitle: 'Flow · Check incoming invoice',
     steps: [
       { type: 'code', name: 'Receive mail', meta: 'IMAP · deterministic' },
@@ -346,8 +346,21 @@ const t: HomeT = {
       },
     },
   },
+  ki: {
+    eyebrow: '07 — AI on rails',
+    index: '// determinism where possible, ai where needed',
+    title: `AI on rails. <em>Code where it can.</em>`,
+    lede: `Don't let AI loose on your inbox. We use it <strong>targeted</strong> — code filters, classifies, routes. AI only kicks in where it adds value (understanding text, recognising patterns, classifying). Where code is enough, code runs.`,
+    points: [
+      { label: 'Faster', body: 'Code runs in milliseconds. AI in seconds to minutes. Every latency counts in the flow.' },
+      { label: 'Safer', body: 'Sensitive data stays in your flow. Nothing goes to an LLM that doesn\'t need to.' },
+      { label: 'Cheaper', body: 'Code runs locally, costs nothing per call. AI calls reduced to where they add value.' },
+      { label: 'More reliable', body: 'Code is deterministic — same input, same output. AI isn\'t. Replay only works with code anchors.' },
+    ],
+    closing: `<strong>Code doesn't fix everything.</strong> With Fachwerk you embed AI where it makes sense — not where it has to be allowed everything. Example: the incoming invoice flow above — 5 steps, 2× AI, 3× code.`,
+  },
   pov: {
-    eyebrow: '07 — Proof of Value',
+    eyebrow: '08 — Proof of Value',
     index: '// in 2 weeks you know',
     title: `In 2 weeks you know <em>if it holds.</em>`,
     lede: `We build a concrete flow live in your environment. With real data. If it tips, you pay nothing. If it holds, the PoV cost is creditable against the launch fee.`,
@@ -368,7 +381,7 @@ const t: HomeT = {
     },
   },
   deploy: {
-    eyebrow: '08 — Runs where you need it',
+    eyebrow: '09 — Runs where you need it',
     index: '// cloud · on-premise · hybrid',
     title: `Behind the firewall, in the warehouse, next to the PLC — <em>or in the cloud standard.</em>`,
     cells: [
@@ -390,7 +403,7 @@ const t: HomeT = {
     ],
   },
   pricing: {
-    eyebrow: '09 — Pricing',
+    eyebrow: '10 — Pricing',
     index: '// no pricing theater',
     title: `Two tiers. <em>Plus a door for makers.</em>`,
     lede: `No seat license. No volume trap. Tier choice is a technical question, not a revenue heuristic. <strong>A paid proof-of-value</strong> is fully creditable against the setup fee.`,
@@ -436,7 +449,7 @@ const t: HomeT = {
     limit: `Above €200 M revenue: the enterprise stack is usually a better fit than Fachwerk.`,
   },
   cta: {
-    eyebrow: '10 — Sounds interesting?',
+    eyebrow: '11 — Sounds interesting?',
     title: `Then let's talk about your <em>most expensive 1000-processes problem.</em>`,
     body: `First conversation directly with the architect. No sales chain, no RFP theater, no demo tour. A hypothesis about your pain — and a proposal for what a 6-week proof-of-value looks like.`,
     emailLabel: 'Email Sebastian',

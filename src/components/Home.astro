@@ -472,27 +472,6 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     </div>
   </div>
 
-  <div class="ai-grid">
-    <div class="ai-diagram">
-      <div class="ai-chrome">{t.ai.flowTitle}</div>
-      <div class="ai-flow">
-        {t.ai.steps.map((s, i) => (
-          <>
-            <div class={`ai-step s-${s.type}`}>
-              <div class="s-type">{s.type === 'ai' ? 'AI' : 'Code'}</div>
-              <div class="s-name">{s.name}</div>
-              <div class="s-meta">{s.meta}</div>
-            </div>
-            {i < t.ai.steps.length - 1 && <div class="ai-arrow"></div>}
-          </>
-        ))}
-      </div>
-      <div class="ai-legend">
-        <span class="ai-legend-item"><span class="dot dot-code"></span> {t.ai.legend.code}</span>
-        <span class="ai-legend-item"><span class="dot dot-ai"></span> {t.ai.legend.ai}</span>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="block" id="kipp">
@@ -546,6 +525,50 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
         </div>
       );
     })}
+  </div>
+</section>
+
+<section class="block ki-section" id="ki">
+  <div class="block-head">
+    <div>
+      <span class="eyebrow">{t.ki.eyebrow}</span>
+      <div class="block-index" style="margin-top:1rem">{t.ki.index}</div>
+    </div>
+    <div>
+      <h2 class="block-title" set:html={t.ki.title}></h2>
+      <p class="block-lede" set:html={t.ki.lede}></p>
+    </div>
+  </div>
+
+  <ul class="ki-points">
+    {t.ki.points.map(point => (
+      <li class="ki-point">
+        <span class="ki-point-label">{point.label}</span>
+        <p class="ki-point-body">{point.body}</p>
+      </li>
+    ))}
+  </ul>
+
+  <div class="ai-grid">
+    <div class="ai-diagram">
+      <div class="ai-chrome">{t.ai.flowTitle}</div>
+      <div class="ai-flow">
+        {t.ai.steps.map((s, i) => (
+          <>
+            <div class={`ai-step s-${s.type}`}>
+              <div class="s-type">{s.type === 'ai' ? 'AI' : 'Code'}</div>
+              <div class="s-name">{s.name}</div>
+              <div class="s-meta">{s.meta}</div>
+            </div>
+            {i < t.ai.steps.length - 1 && <div class="ai-arrow"></div>}
+          </>
+        ))}
+      </div>
+      <div class="ai-legend">
+        <span class="ai-legend-item"><span class="dot dot-code"></span> {t.ai.legend.code}</span>
+        <span class="ai-legend-item"><span class="dot dot-ai"></span> {t.ai.legend.ai}</span>
+      </div>
+    </div>
   </div>
 </section>
 

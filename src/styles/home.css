@@ -813,6 +813,54 @@ html[data-view="macher"] .branch-card { border-right-color: var(--line); }
 }
 
 /* ═══════════════════════════════════════════════
+   KI AUF SCHIENEN (#ki)
+   ═══════════════════════════════════════════════ */
+.ki-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--accent), 8px 8px 0 1px var(--fg);
+}
+.ki-point {
+  padding: 1.6rem 1.4rem;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.ki-point:last-child { border-right: none; }
+.ki-point-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ki-point-body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.ki-points + .ai-grid { margin-top: 2.4rem; }
+@media (max-width: 900px) {
+  .ki-points { grid-template-columns: repeat(2, 1fr); }
+  .ki-point:nth-child(2n) { border-right: none; }
+  .ki-point:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 540px) {
+  .ki-points { grid-template-columns: 1fr; }
+  .ki-point { border-right: none; border-bottom: 1px solid var(--line); }
+  .ki-point:last-child { border-bottom: none; }
+}
+
+/* ═══════════════════════════════════════════════
    POV TIMELINE + ARCHITEKT (#pov)
    ═══════════════════════════════════════════════ */
 .pov-timeline {

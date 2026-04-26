@@ -11,7 +11,7 @@ const t = {
     platform: 'Plattform',
     deadends: 'Falle',
     ai: 'Wie',
-    catalog: 'Kipp',
+    catalog: 'Warum',
     examples: 'Branchen',
     pricing: 'Preise',
     contact: 'PoV',
@@ -111,7 +111,7 @@ const t = {
     ],
   },
   kipp: {
-    eyebrow: '04 — Kipp-Punkte',
+    eyebrow: '05 — Kipp-Punkte',
     index: '// gute tools, andere aufgabe',
     title: `Die Frage ist nicht: welches Tool ist besser? Sondern: <em>ab wann kippt es?</em>`,
     lede: `Wenn ein einfacher Flow reicht, nimm ein einfaches Tool. <strong>Fachwerk muss nicht gewinnen, wenn ein Standard reicht</strong> — Fachwerk muss klar sein, wenn Integration, Auditierbarkeit, Datenschutz und Betrieb den Prozess bestimmen.`,
@@ -148,7 +148,7 @@ const t = {
     eyebrow: '04 — Wie Fachwerk baut',
     index: '// es gibt keine standard-schnittstelle',
     title: `Es gibt keine Standard-Schnittstelle. <em>Jede Integration ist Custom.</em>`,
-    lede: `Eine "Standard-SAP-Schnittstelle"? In 20 Jahren nie gesehen. Eine "Shopify-Anbindung"? Technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.<br><br><strong>Fachwerks Hebel: KI schreibt jede Integration custom für dich.</strong> One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect) — die KI kennt sie aus den Trainingsdaten. Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS) — die KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code wo Senior-Devs nur noch JSON sprechen.<br><br><strong>Mein Fokus: Business-Anwender in die Lage versetzen, sich selbst zu helfen.</strong> Eigene Auswertungen, eigene Flows, eigene Oberflächen — nicht mehr auf eine Auswertung warten, nicht mehr mit Reports leben, die auf fünf Felder hardcoded sind. Aber alles geordnet im Katalog: mit Owner, Versionen, Audit-Trail. Du zahlst nicht für Adapter, du zahlst für die Plattform und die Statik darunter.`,
+    lede: `Eine "Standard-SAP-Schnittstelle"? In 20 Jahren nie gesehen. Eine "Shopify-Anbindung"? Technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.<br><br><strong>Fachwerks Hebel: KI schreibt jede Integration custom für dich.</strong> One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect) — die KI kennt sie aus den Trainingsdaten. Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS) — die KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code wo Senior-Devs nur noch JSON sprechen.<br><br><strong>Fachwerks Fokus: Business-Anwender in die Lage versetzen, sich selbst zu helfen.</strong> Eigene Auswertungen, eigene Flows, eigene Oberflächen — nicht mehr auf eine Auswertung warten, nicht mehr mit Reports leben, die auf fünf Felder hardcoded sind, nicht mehr für jede kleine Schnittstellenänderung erst Projekt, Kostenvoranschlag, Budget und Umsetzungszeit organisieren. Aber alles geordnet im Katalog: mit Owner, Versionen, Audit-Trail. Du zahlst nicht für Adapter, du zahlst für die Plattform und die Statik darunter.`,
     flowTitle: 'Flow · Eingangsrechnung prüfen',
     steps: [
       { type: 'code', name: 'Mail empfangen', meta: 'IMAP · deterministisch' },
@@ -347,8 +347,21 @@ const t = {
       },
     },
   },
+  ki: {
+    eyebrow: '07 — KI auf Schienen',
+    index: '// determinismus wo möglich, ki wo nötig',
+    title: `KI auf Schienen. <em>Code wo es geht.</em>`,
+    lede: `Lass die KI nicht voll auf dein Postfach. Wir setzen sie <strong>gezielt</strong> ein — Code filtert, kategorisiert, routet. Nur wo KI Mehrwert bringt (Texte verstehen, Muster erkennen, Klassifizieren), kommt sie zum Einsatz. Dort wo Code reicht, läuft Code.`,
+    points: [
+      { label: 'Schneller', body: 'Code läuft in Millisekunden. KI in Sekunden bis Minuten. Im Flow zählt jede Latenz.' },
+      { label: 'Sicherer', body: 'Datenschutzrelevante Daten bleiben in deinem Flow. Nichts geht an ein LLM, was nicht an ein LLM gehen muss.' },
+      { label: 'Günstiger', body: 'Code läuft lokal, kostet nichts pro Aufruf. KI-Calls werden auf Stellen reduziert, wo sie Wert bringen.' },
+      { label: 'Zuverlässiger', body: 'Code ist deterministisch — gleicher Input, gleicher Output. KI nicht. Replay funktioniert nur mit Code-Ankern.' },
+    ],
+    closing: `<strong>Code heilt nicht alles.</strong> Mit Fachwerk bettest du KI ein, wo sie Sinn macht — nicht wo sie alles dürfen muss. Beispiel: der Eingangsrechnung-Flow oben — 5 Schritte, 2× KI, 3× Code.`,
+  },
   pov: {
-    eyebrow: '07 — Proof of Value',
+    eyebrow: '08 — Proof of Value',
     index: '// in 2 wochen weißt du es',
     title: `In 2 Wochen weißt du, <em>ob es trägt.</em>`,
     lede: `Wir bauen einen konkreten Flow live in deiner Umgebung. Mit echten Daten. Wenn er kippt, bezahlst du nichts. Wenn er trägt, sind die PoV-Kosten auf die Launch-Fee anrechenbar.`,
@@ -369,7 +382,7 @@ const t = {
     },
   },
   deploy: {
-    eyebrow: '08 — Läuft, wo du es brauchst',
+    eyebrow: '09 — Läuft, wo du es brauchst',
     index: '// cloud · on-premise · hybrid',
     title: `Hinter der Firewall, in der Lagerhalle, neben der SPS — <em>oder im Cloud-Standard.</em>`,
     cells: [
@@ -391,7 +404,7 @@ const t = {
     ],
   },
   pricing: {
-    eyebrow: '09 — Pricing',
+    eyebrow: '10 — Pricing',
     index: '// kein pricing-theater',
     title: `Zwei Tiers. <em>Plus ein Türöffner für Macher.</em>`,
     lede: `Keine Seat-Lizenz. Keine Volumen-Falle. Tier-Wahl ist eine technische Frage, keine Umsatz-Heuristik. <strong>Ein bezahlter Proof-of-Value</strong> ist auf die Setup-Fee voll anrechenbar.`,
@@ -437,7 +450,7 @@ const t = {
     limit: 'Über 200 Mio Umsatz: da ist der Konzern-Stack meist die bessere Wahl als Fachwerk.',
   },
   cta: {
-    eyebrow: '10 — Klingt interessant?',
+    eyebrow: '11 — Klingt interessant?',
     title: `Dann lass uns über dein <em>teuerstes 1000-Prozesse-Problem</em> reden.`,
     body: `Erstgespräch direkt mit dem Architekten. Keine Sales-Kette, kein RFP-Theater, keine Demo-Tour. Eine Hypothese zu deinem teuersten Engpass — und ein Vorschlag, wie ein 6-Wochen-Proof-of-Value aussieht.`,
     emailLabel: 'E-Mail an Sebastian',
