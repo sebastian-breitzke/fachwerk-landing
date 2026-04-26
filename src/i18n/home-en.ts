@@ -473,7 +473,7 @@ const t: HomeT = {
       {
         tier: '§ Strategic',
         h3: 'Structural depth. More units, hybrid.',
-        desc: 'Multi-tenant · multi-site · hybrid (cloud + on-prem) · multiple business units · compliance support possible.',
+        desc: 'Multi-tenant · multi-site · hybrid (cloud + on-prem) · multiple business units.',
         num: '60–150k',
         unit: '€ Setup',
         sub: '+ 8–15k / month license',

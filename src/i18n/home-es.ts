@@ -473,7 +473,7 @@ const t: HomeT = {
       {
         tier: '§ Strategic',
         h3: 'Profundidad estructural. Más unidades, híbrido.',
-        desc: 'Multi-tenant · multi-sede · híbrido (cloud + on-prem) · varias unidades de negocio · acompañamiento de compliance posible.',
+        desc: 'Multi-tenant · multi-sede · híbrido (cloud + on-prem) · varias unidades de negocio.',
         num: '60–150k',
         unit: '€ Setup',
         sub: '+ 8–15k / mes licencia',

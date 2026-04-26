@@ -474,7 +474,7 @@ const t = {
       {
         tier: '§ Strategic',
         h3: 'Strukturelle Tiefe. Mehr Bereiche, Hybrid.',
-        desc: 'Multi-Mandant · Multi-Standort · Hybrid (Cloud + On-Prem) · mehrere Geschäftsbereiche · Compliance-Begleitung möglich.',
+        desc: 'Multi-Mandant · Multi-Standort · Hybrid (Cloud + On-Prem) · mehrere Geschäftsbereiche.',
         num: '60–150k',
         unit: '€ Setup',
         sub: '+ 8–15k / Monat Lizenz',
