@@ -2350,7 +2350,8 @@ section.block > * {
   border-bottom: 1px solid var(--line);
   margin-bottom: 1.5rem;
 }
-.price-card:last-child .price-sub { border-bottom-color: #2a2f3a; }
+.price-card:last-child .price-sub { color: #c8ccd3; border-bottom-color: #2a2f3a; }
+.price-card:last-child .price-num .unit { color: #c8ccd3; }
 .price-list { list-style: none; display: flex; flex-direction: column; }
 .price-list li {
   font-size: 0.9rem;
