@@ -1939,11 +1939,86 @@ html[data-view="macher"] .branch-card { border-right-color: var(--line); }
 
 .price-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0;
   border: 1px solid var(--line-2);
   background: var(--paper);
   box-shadow: 10px 10px 0 var(--sun), 10px 10px 0 1px var(--fg);
+}
+
+/* Quick-Setup-Block: Türöffner für Owner-Operator unter den 2 Tiers */
+.quick-setup {
+  margin-top: 3.5rem;
+  padding: 2.2rem 2.4rem;
+  border: 1px dashed var(--line-2);
+  border-left: 3px solid var(--accent);
+  background: color-mix(in oklab, var(--accent) 3%, var(--paper));
+  max-width: 64rem;
+}
+.quick-setup-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.quick-setup-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+.quick-setup-title em { color: var(--accent); font-style: italic; }
+.quick-setup-body {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0 0 1.4rem;
+  max-width: 52rem;
+}
+.quick-setup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+}
+.quick-setup-meta-line {
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.quick-setup-link {
+  color: var(--fg);
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.quick-setup-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Tech-View: Quick-Setup mit teal accent statt sun-tint */
+html[data-view="macher"] .quick-setup {
+  background: rgba(94, 234, 212, 0.04);
+  border-color: rgba(94, 234, 212, 0.25);
+}
+html[data-view="macher"] .quick-setup-link {
+  color: var(--fg);
+  border-bottom-color: rgba(94, 234, 212, 0.3);
+}
+html[data-view="macher"] .quick-setup-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .quick-setup { padding: 1.6rem 1.4rem; }
+  .quick-setup-title { font-size: 1.3rem; }
 }
 .price-card {
   padding: 2.5rem 2.2rem;
@@ -2760,20 +2835,7 @@ html[data-view="macher"] .price-card {
   position: relative;
 }
 
-/* Core: subtiler Übergang — leicht teal-getönter Top + Background-Hint */
-html[data-view="macher"] .price-card:nth-child(2) {
-  background: linear-gradient(180deg, rgba(94, 234, 212, 0.025) 0%, var(--paper) 50%);
-}
-html[data-view="macher"] .price-card:nth-child(2)::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: rgba(94, 234, 212, 0.45);
-}
-html[data-view="macher"] .price-card:nth-child(2) .price-tier { color: var(--accent); }
-
-/* Platform: voll Teal-Glow, 4px Top-Bar mit Glow, inset Ring, satter Tint */
+/* Platform (last-child = nth-child(2) im 2-Tier-Modell): voll Teal-Glow */
 html[data-view="macher"] .price-card:last-child {
   background: linear-gradient(180deg, rgba(94, 234, 212, 0.10) 0%, rgba(94, 234, 212, 0.04) 50%, var(--paper) 100%);
   box-shadow:

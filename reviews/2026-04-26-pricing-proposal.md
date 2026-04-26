@@ -1,3 +1,88 @@
+# Pricing-Vorschlag (Round 3 — final, deployed) — Fachwerk Tiers
+
+> **Status nach Sebastian-Feedback (2026-04-26):** Round 2 verworfen, Round 3 deployed. Kernkorrekturen:
+> - **Adapter-Liste komplett raus** — "es gibt keine Standard-Schnittstelle, jede Integration ist Custom"
+> - **3 Tiers → 2 Tiers** (Core + Platform). Starter raus, dafür **Quick-Setup-Block** als Türöffner für Owner-Operator
+> - **Multi-Tenancy als technische Trennung** zwischen Core (ohne) und Platform (mit)
+> - **Umsatzangaben raus** (widersprachen "Scope entscheidet")
+> - **"Mensch im Loop"** als Wertversprechen ergänzt (Hero-Sub)
+>
+> Diese Round 3 ist live auf fachwerk.tech (Commit `tbd`). Round 2-Inhalt bleibt unten als Doku, mit Korrekturen-Hinweisen.
+
+---
+
+# Round 3 — Was final deployed wurde
+
+## Adapter-Story (statt Adapter-Liste)
+
+**Wichtigste Erkenntnis:** Keine Liste "Top-15 inkludiert / Custom extra". Stattdessen ehrlicher Klartext:
+
+> **Es gibt keine Standard-Schnittstelle.** Eine "Standard-SAP-Schnittstelle" hat in 20 Jahren niemand gesehen. Eine "Shopify-Anbindung" technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.
+>
+> **Fachwerks Hebel:** KI schreibt jede Integration custom für dich. One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect). Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack). Du zahlst nicht für Adapter — du zahlst für die Plattform und die Zeit, die wir reinstecken.
+
+Eingebaut in die "Wie Fachwerk baut"-Section (#how) als Lede.
+
+## Tier-Struktur final (2 Tiers + Quick-Setup)
+
+### **Quick-Setup** *(kein Tier — Buchung)*
+- 2-5 Tage Sebastian buchen
+- Single-User-Instanz auf Cloud-by-Fachwerk
+- Tagessatz × Tage einmalig + Hosting
+- Direkter Draht: sebastian@s16e.de · +49 172 4290654
+- Auf Webseite als Block unter den 2 Tier-Karten — wertschätzend formuliert ("Owner-Operator, kleines Team, viel Hands-on?"), nicht "kleiner Macher"
+
+### **Core** — Operative Plattform mit festem Team
+- 15-40k € Setup + 3-8k €/Mo = 51-136k €/Jahr
+- Cloud-gehostet (StackIT EU oder eigener Hoster)
+- **Keine Multi-Tenancy** (eine Instanz, ein Team)
+- Setup-Sprint mit Sebastian (Bootstrap durch Architekten — Aufsetzen ist immer Projekt)
+- KI-generated Custom-Integrationen für deine Welt
+- Quartals-Review · 4h-Response in Werkstatt-Zeiten
+- Code in deinem Repo · keine Vendor-DSL
+
+### **Platform** — Strategische Partnerschaft
+- 80-150k € Setup + 15-35k €/Mo = 260-570k €/Jahr
+- **Multi-Tenancy ja** — mehrere Teams · Mandanten · Country-Shops
+- On-Prem · Hybrid · Air-Gap-fähig (SPS, Modbus, OPC UA)
+- Sebastian als Architekt im Loop — strategische Begleitung
+- 4-6 Advisory-Days/Jahr inklusive
+- Quellcode-Escrow optional · 5J-Vertrag = 15 % Discount
+
+## Differenzierung Core vs Platform: Multi-Tenancy
+
+**Klarer technischer Schalter, keine Umsatz-Heuristik:**
+- Brauchst du Multi-Tenant (Teams/Mandanten/Country-Shops)? → Platform
+- Brauchst du On-Prem oder Hybrid? → Platform
+- Brauchst du regulierte Compliance + Advisory? → Platform
+- Festes Team, Cloud-Standard, dauerhafter Betrieb? → Core
+- Single-Macher, fokussierter Scope? → Quick-Setup
+
+## Was raus ist (gegen Round 2)
+
+- ❌ Starter-Tier
+- ❌ Adapter-Bibliothek-Liste ("Top-15 inkl.")
+- ❌ Umsatzangaben in Tier-Subs
+- ❌ "Mengen-Trigger Anzahl Automationen"
+- ❌ Volumen-Staffel ("ab 11 Automationen +30 %")
+- ❌ Bilanzierungs-Tabelle Aktivum/Aufwand-Anteile pro Tier
+- ❌ Multi-Year-Discount detailliert kommuniziert
+- ❌ Exit-Playbook detailliert auf Pricing-Seite
+
+> **Begründung:** Das war alles Marketing-Mechanik. Sebastians Argument: "Wir müssen aufpassen, dass wir hier nicht so Bullshit-Bingo reinschmeißen, den jeder schreibt, sondern wirklich darauf gehen, was wir hier eigentlich bauen, produzieren und was ist der Wert von Fachwerk."
+
+## Was im Wertversprechen explizit ist (neu im Hero-Sub)
+
+> "Plus mich als Architekt: ich ordne deine Prozesse mit dir, du führst sie weiter — kein SaaS-Abo, sondern Plattform plus Mensch im Loop."
+
+Sebastian als Teil der Value Proposition explizit, nicht als Bio im PoV-Block.
+
+---
+
+# Round 2 (verworfen — als Doku)
+
+> Was folgt war der erste Vorschlag. Sebastian hat ihn überarbeitet. **Diese Sektion ist Historie, nicht Status.**
+
 # Pricing-Vorschlag (Round 2) — Fachwerk Tiers
 
 **Datum:** 2026-04-26

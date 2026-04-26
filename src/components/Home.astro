@@ -693,7 +693,6 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
 
   <div class="price-grid">
     {[
-      { ...t.pricing.starter, mSub: m.pricing.starterSub },
       { ...t.pricing.core, mSub: m.pricing.coreSub },
       { ...t.pricing.platform, mSub: m.pricing.platformSub },
     ].map(pk => (
@@ -709,6 +708,17 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
         </ul>
       </div>
     ))}
+  </div>
+
+  <div class="quick-setup">
+    <span class="quick-setup-eyebrow">{t.pricing.quickSetupEyebrow}</span>
+    <h3 class="quick-setup-title" set:html={t.pricing.quickSetupTitle}></h3>
+    <p class="quick-setup-body">{t.pricing.quickSetupBody}</p>
+    <div class="quick-setup-meta">
+      <span class="quick-setup-meta-line">{t.pricing.quickSetupMeta}</span>
+      <a class="quick-setup-link" href={t.pricing.quickSetupCtaHref}>{t.pricing.quickSetupCtaLabel}</a>
+      <a class="quick-setup-link" href={t.pricing.quickSetupPhoneHref}>{t.pricing.quickSetupPhone}</a>
+    </div>
   </div>
 
   <div class="price-note">
