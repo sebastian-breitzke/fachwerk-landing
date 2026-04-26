@@ -147,7 +147,7 @@ const t: HomeT = {
     eyebrow: '04 — How Fachwerk builds',
     index: '// there is no standard interface',
     title: `There is no standard interface. <em>Every integration is custom.</em>`,
-    lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON. You don't pay for adapters. You pay for the platform and the time we put in to make your code fit your case.`,
+    lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON.<br><br><strong>My focus: enable business users to help themselves.</strong> Own reports, own flows, own UIs — no more waiting for the BI person, no more living with reports hard-coded against five fields. But all ordered in the catalog: with owner, versions, audit trail. You don't pay for adapters, you pay for the platform and the structure beneath.`,
     flowTitle: 'Flow · Check incoming invoice',
     steps: [
       { type: 'code', name: 'Receive mail', meta: 'IMAP · deterministic' },
@@ -175,8 +175,8 @@ const t: HomeT = {
   zoo: {
     eyebrow: '02 — The new trap',
     index: '// ai-coding is here, but...',
-    title: `Now AI writes your code. <em>But where does it run in three years?</em>`,
-    lede: `Lovable, Bolt, v0, ChatGPT — business users write their own tools. Fast. Practical. And in 6 months you have <strong>Lisa's Excel macro v3.7</strong>, Kai's GPT workflow on a private laptop, an API key in a pastebin, and no idea what's still running. AI coding without structure = island zoo with glitter.`,
+    title: `Finally you build for yourself. <em>But where does it run in three years?</em>`,
+    lede: `Finally you don't have to wait for the BI person, or live with reports hard-coded against five fields. <strong>You describe what you need, AI builds it</strong> — Lovable, Bolt, v0, ChatGPT show how. Fast. Practical. But in 6 months you have <strong>Lisa's Excel macro v3.7</strong>, Kai's GPT workflow on a private laptop, an API key in a pastebin, and no idea what's still running. AI coding without structure = island zoo with glitter.`,
     bad: {
       h: 'Without a shell — the zoo',
       apps: [

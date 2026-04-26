@@ -147,7 +147,7 @@ const t: HomeT = {
     eyebrow: '04 — Cómo construye Fachwerk',
     index: '// no existe la interfaz estándar',
     title: `No existe la interfaz estándar. <em>Cada integración es Custom.</em>`,
-    lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON. No pagas por adaptadores. Pagas por la plataforma y por el tiempo que invertimos para que tu code encaje en tu caso.`,
+    lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON.<br><br><strong>Mi enfoque: empoderar a los business users para que se ayuden a sí mismos.</strong> Reports propios, flujos propios, UIs propias — sin esperar a la persona de BI, sin vivir con reports hard-coded sobre cinco campos. Pero todo ordenado en el catálogo: con owner, versiones, audit trail. No pagas por adaptadores, pagas por la plataforma y la estructura debajo.`,
     flowTitle: 'Flujo · Verificar factura entrante',
     steps: [
       { type: 'code', name: 'Recibir mail', meta: 'IMAP · determinista' },
@@ -174,9 +174,9 @@ const t: HomeT = {
   },
   zoo: {
     eyebrow: '02 — La nueva trampa',
-    index: '// sostenibilidad, no apps isla',
-    title: `Ningún zoo de apps isla. <em>Un catálogo</em> con fundamento.`,
-    lede: `Las herramientas de vibe-coding son rápidas — y producen maleza: apps a medio hacer en portátiles personales, claves en capturas de pantalla, sin plan de mantenimiento. Fachwerk te da en su lugar un <strong>catálogo central</strong>: todo lo que se construye corre en la misma plataforma, con las mismas reglas, con datos compartidos.`,
+    index: '// ai-coding está aquí, pero...',
+    title: `Por fin lo construyes tú mismo. <em>¿Pero dónde corre en tres años?</em>`,
+    lede: `Por fin no tienes que esperar a la persona de BI, ni vivir con reports hard-coded sobre cinco campos. <strong>Describes lo que necesitas, la IA lo construye</strong> — Lovable, Bolt, v0, ChatGPT lo muestran. Rápido. Práctico. Pero en 6 meses tienes <strong>el macro Excel de Lisa v3.7</strong>, el workflow GPT de Kai en su portátil privado, una API key en un pastebin, y ni idea de qué sigue corriendo. AI-coding sin estructura = zoo de islas con purpurina.`,
     bad: {
       h: 'Sin estructura — el zoo',
       apps: [
