@@ -118,8 +118,8 @@ nav.top {
   align-items: center;
   justify-content: space-between;
   background: var(--paper);
-  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  will-change: transform;
 }
 
 [data-theme="dark"] nav.top {
