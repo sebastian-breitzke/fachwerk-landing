@@ -22,19 +22,6 @@ const t = {
     prev: 'Vorheriges',
     next: 'Nächstes',
   },
-  view: {
-    label: 'Ansicht',
-    business: 'Business',
-    macher: 'Technik',
-    hint: 'wechsel die Perspektive',
-    ctaPrompt: '// neugierig auf die andere Perspektive?',
-    heroPromptToTech: '// neugierig auf die technische Perspektive?',
-    heroPromptToBusiness: '// neugierig auf die geschäftliche Perspektive?',
-    navSwitchToTech: 'Zur technischen Ansicht',
-    navSwitchToBusiness: 'Zur Business-Ansicht',
-    ctaSwitchToTech: 'Zur technischen Ansicht wechseln',
-    ctaSwitchToBusiness: 'Zur Business-Ansicht wechseln',
-  },
   hero: {
     eyebrow: 'KI baut deinen Custom-Code. Fachwerk liefert den Rohbau, der trägt.',
     meta: '',
@@ -149,7 +136,7 @@ const t = {
     index: '// es gibt keine standard-schnittstelle',
     title: `Es gibt keine Standard-Schnittstelle. <em>Jede Integration ist Custom.</em>`,
     lede: `Eine "Standard-SAP-Schnittstelle"? In 20 Jahren nie gesehen. Eine "Shopify-Anbindung"? Technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.<br><br><strong>Fachwerks Hebel: KI schreibt jede Integration custom für dich.</strong> One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect) — die KI kennt sie aus den Trainingsdaten. Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS) — die KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code wo Senior-Devs nur noch JSON sprechen.<br><br><strong>Fachwerks Fokus: Business-Anwender in die Lage versetzen, sich selbst zu helfen.</strong> Eigene Auswertungen, eigene Flows, eigene Oberflächen — nicht mehr auf eine Auswertung warten, nicht mehr mit Reports leben, die auf fünf Felder hardcoded sind, nicht mehr für jede kleine Schnittstellenänderung erst Projekt, Kostenvoranschlag, Budget und Umsetzungszeit organisieren. Aber alles geordnet im Katalog: mit Owner, Versionen, Audit-Trail. Du zahlst nicht für Adapter, du zahlst für die Plattform und die Statik darunter.`,
-    adapterTable: {
+    compareTable: {
       eyebrow: '// jede zeile ist code, der bei dir custom geschrieben wird',
       heads: ['System', 'Was die Doku verspricht', 'Was du wirklich brauchst'],
       rows: [
@@ -230,7 +217,7 @@ const t = {
     eyebrow: '06 — Branchen-Beispiele',
     index: '// vier branchen, eine plattform',
     title: `Vier Branchen. <em>Jede konkret.</em> Fachwerk spielt überall.`,
-    lede: `Beispielhafte Aufgaben aus vier Branchen — keine Referenzkunden, sondern Illustrationen, was Fachwerk in deiner Welt baut. Vom E-Commerce bis zur Stahlverarbeitung, vom Steuerberater bis zur Hausverwaltung. <strong>Wenn deine Branche nicht dabei ist: kein Problem.</strong> Die Plattform ist gleich, dein Adapter wird neu geschrieben.`,
+    lede: `Beispielhafte Aufgaben aus vier Branchen — keine Referenzkunden, sondern Illustrationen, was Fachwerk in deiner Welt baut. Vom E-Commerce bis zur Stahlverarbeitung, vom Steuerberater bis zur Hausverwaltung. <strong>Wenn deine Branche nicht dabei ist: kein Problem.</strong> Die Plattform ist gleich, deine Schnittstelle wird custom geschrieben.`,
     voiceTag: 'fiktive Stimme',
     tabs: [
       { uc: 'nordware', num: '01', label: 'E-Commerce · NordWare' },
@@ -378,7 +365,7 @@ const t = {
     lede: `Wir bauen einen konkreten Flow live in deiner Umgebung. Mit echten Daten. Wenn er kippt, bezahlst du nichts. Wenn er trägt, sind die PoV-Kosten auf die Launch-Fee anrechenbar.`,
     steps: [
       { day: 'Tag 1', title: 'Discovery', desc: '60 min Architektur-Talk: dein teuerster Prozess, dein Stack, dein Bottleneck.' },
-      { day: 'Tag 2–3', title: 'Architektur-Skizze', desc: 'Wo passt KI rein, wo bleibt deterministischer Code, welche Adapter brauchen wir.' },
+      { day: 'Tag 2–3', title: 'Architektur-Skizze', desc: 'Wo passt KI rein, wo bleibt deterministischer Code, welche Integrationen brauchen wir.' },
       { day: 'Tag 4–12', title: 'Build-Sprint', desc: 'Ein konkreter Flow läuft live in deiner Test-Umgebung. Code in deinem Repo.' },
       { day: 'Tag 13–14', title: 'Live-Test', desc: 'Mit echten Daten in deiner Produktiv-Umgebung. Du siehst, ob es trägt.' },
       { day: 'Tag 15', title: 'Entscheidung', desc: 'Weiter oder nicht. PoV-Kosten voll anrechenbar auf Launch-Fee.' },
@@ -474,102 +461,6 @@ const t = {
     datenschutz: 'Datenschutz',
     impressumHref: '/de/impressum/',
     datenschutzHref: '/de/datenschutz/',
-  },
-  macher: {
-    hero: {
-      eyebrow: 'Vibe Coding ist die neue Shadow-IT · Fachwerk ist der Rahmen',
-      headline: `<span class="strike">SaaS-Lock-in</span><span class="strike-punct">.</span><br><span class="strike">No-Code-Limit</span><span class="strike-punct">.</span><br><em>Fachwerk</em><span class="fw-punct">:</span><br>der Rahmen, in dem AI-Code überlebt.`,
-      sub: `Deine Business-User werden vibe-coden — mit oder ohne dich. Bei Lovable, Bolt, v0, ChatGPT. Mit API-Keys in Slack-DMs und Skripten auf Privat-Laptops. <strong>Fachwerk ist die Runtime, in der das auch in 3 Jahren noch läuft</strong>: Elixir/Phoenix auf Postgres, jeder Flow in deinem Repo, jeder Run replay-fähig, jede AI-Antwort mit Modell-Version geloggt.`,
-      ctaPrimary: 'Architektur-Session buchen',
-      bullets: [
-        { title: 'Elixir/OTP · Postgres', desc: 'Backend mit Crash-Isolation pro Flow' },
-        { title: 'React 19 · TanStack · Vite', desc: 'Type-safe SPAs, dein Repo, deine CI' },
-        { title: 'Audit-Trail by default', desc: 'Jeder Run = Event-Log, replay-fähig' },
-      ],
-    },
-    problem: {
-      title: `Vibe Coding ist die neue <em>Shadow-IT</em>.`,
-      lede: `Stack Overflow Survey 2025: Security ist die größte Schwäche von AI-Code. Veracode 2025: <strong>45 % von AI-generated code hat Security-Lücken</strong>. Du hast 12 SaaS-Tools, vier Vibe-Code-Skripte auf privaten Laptops, API-Keys in Slack-DMs. Niemand weiß, was läuft. Niemand kann es übernehmen. <strong>Fachwerk ist nicht gegen Vibe Coding — es ist die Statik darunter.</strong>`,
-      cells: [
-        { num: '// 01', warn: 'Vendor-Lock-in', title: 'Migration ist Rebuild.', body: 'Der Low-Code-Vendor besitzt deine Logik. Migration heißt: nochmal von vorn. Der API-Layer ist proprietär, die Daten kommen nur als CSV raus.' },
-        { num: '// 02', warn: 'Fehlende Kontrolle', title: 'Du siehst nicht, was läuft.', body: 'Welcher Flow hat zuletzt produziert? Welche Modell-Version war im Einsatz? Wo liegen die Logs? Im SaaS-Dashboard, wenn überhaupt — nicht in deinem Stack.' },
-        { num: '// 03', warn: 'Shadow-IT', title: 'Apps auf Privat-Laptops.', body: 'Lisa hat ein Python-Skript. Kai hat einen GPT-Workflow. Niemand weiß wo, niemand hat die Credentials, niemand reviewt Code. Wartung = Lottery.' },
-        { num: '// 04', warn: 'Key-Chaos', title: 'API-Keys überall.', body: 'OpenAI-Key in einem Pastebin. SAP-Credentials in einem Excel. Stripe-Secret im Browser-LocalStorage. Kein Vault, keine Rotation, kein Audit.' },
-        { num: '// 05', warn: 'Keine Tests', title: 'No-Code testet nichts.', body: 'Click-Flows haben keine Unit-Tests, keine CI, kein Branching. Änderung = Klick im Live-Mandanten. Rollback = Glück.' },
-        { num: '// 06', warn: 'Keine Beobachtbarkeit', title: 'Stack ohne Telemetrie.', body: 'Wenn der Flow um 3 Uhr nachts kippt, gibt es keinen Trace, kein Span, kein Histogram. Du erfährst es vom Kunden, nicht vom Monitoring.' },
-      ],
-    },
-    platform: {
-      detail: `<p><strong>OTP</strong> ist Erlangs battle-tested Runtime-Modell: stürzt ein Flow ab, startet ihn der Supervisor neu — ohne den Rest des Systems anzufassen. Telco-Standard seit 30 Jahren, deshalb läuft auch dein 3-Uhr-nachts-Run noch um 3:01.</p>`,
-      pillarSubs: {
-        werkstatt: 'Codegen → Elixir-Module + React-Routes',
-        katalog: 'Git-backed · CI-gated · Health-Probes',
-        betrieb: 'OTP Supervisor · Oban · Event Log',
-        speicher: 'Postgres · Event Sourcing · pgvector',
-        wissen: 'Embeddings · Strukturierte Refs · Replay-Index',
-      },
-      pillarBodies: {
-        werkstatt: 'Aus Dialog werden zwei Schichten: <strong>Elixir-Module</strong> für Flows und Backend, <strong>React 19 + TanStack Router/Query + Tailwind</strong> für UIs — gebaut mit Vite, type-safe, in deinem Repo. Jeder Output ist ein PR, läuft durch CI, landet versioniert im Katalog.',
-        katalog: 'Jeder Flow, jede Route, jeder KI-Step ist ein Git-Commit mit Owner, Health-Probes und Release-History. Repo-driven, CI-gated, deployment-aware — kein Vendor-Dashboard, sondern dein eigener Stack.',
-        betrieb: 'Jeder Flow ist ein <strong>OTP-Process</strong> unter Supervision: Crashes werden isoliert, jede Ausführung ist ein Event-Log-Eintrag in Postgres. Oban für Background-Jobs, OpenTelemetry für Traces.',
-        speicher: '<strong>Postgres mit Event-Sourcing</strong>: jeder Side-Effect ist ein Append, kein Update. Replay aus dem Event-Log baut den State neu auf. Materialized Views für Reads — keine N+1, keine Rätsel.',
-        wissen: '<strong>pgvector</strong> für Embeddings, strukturierte Refs auf Run-Logs. AI-Antworten sind keyed by content-hash + model-version — Replay deterministisch, Index inkrementell.',
-      },
-    },
-    deadends: {
-      title: `Drei Wege, <em>die nicht tragen.</em>`,
-      lede: `Vier Optionen, dieselben 6 Dimensionen — nur diesmal mit Tech-Brille. Stack-Ownership, Versionierung, Audit-Trail, Observability, Tests, Migrations-Kosten. <strong>Was dich nachts wachhält</strong>, nicht was den CFO überzeugt.`,
-      rows: [
-        { label: 'Stack-Ownership', lowcode: 'Vendor-Runtime', vibe: 'Skripte auf Privat-Laptops', dl: 'Ihr Code, deine Rechnung', fw: 'Dein Repo · Elixir/Postgres' },
-        { label: 'Versionierung', lowcode: 'Vendor-Versions', vibe: 'None — Datei-Datum', dl: 'Git, bei ihnen', fw: 'Git, deine CI, deine Branches' },
-        { label: 'Audit-Trail', lowcode: 'Dashboard, wenn überhaupt', vibe: 'print() im besten Fall', dl: 'Vertrags-abhängig', fw: 'Event-Log pro Run, replay-fähig' },
-        { label: 'Observability', lowcode: 'Vendor-Metriken', vibe: 'localhost:8080 wenn überhaupt', dl: 'Ihr Stack', fw: 'OpenTelemetry · deine Dashboards' },
-        { label: 'Tests / CI', lowcode: 'None — Klick im Live-Mandanten', vibe: 'Zero', dl: 'Ja, aber zugesperrt', fw: 'Standard ExUnit · deine CI' },
-        { label: 'Migration-Kosten', lowcode: 'Rebuild from scratch', vibe: 'Rebuild from chat history', dl: 'Retainer oder Rebuild', fw: 'Es <em>ist</em> der Rebuild — Code gehört dir' },
-      ],
-    },
-    ai: {
-      eyebrow: '04 — // audit-trail by default',
-      title: `AI als <em>Tool-Call</em>. Code als Backbone.`,
-      lede: `Jeder Flow ist Code in deinem Repo. <strong>Jeder Run ein Event-Log. Jede AI-Antwort replayable.</strong> LLMs sind in Fachwerk Funktionen mit JSON-Schema In/Out, Modell-Version pinned. Pydantic-style validation vor jedem Side-Effect. Kein freier Agent im Postfach. Kein Prompt im heißen Pfad.`,
-      points: [
-        { num: '01', title: 'Audit-Trail by default.', body: 'Modell-ID, Prompt-Hash, Temperatur, Output, Token-Counts. Persistent. Replay mit identischem Input gegen neue Modell-Version. Auditierbar gegen interne Revision und externe Prüfer, ohne dass du dafür extra etwas tun musst.' },
-        { num: '02', title: 'Gen-Time vs Run-Time.', body: 'AI baut Code im Werkstatt-Dialog (Gen-Time). Zur Laufzeit (Run-Time) läuft kompilierter Elixir-Code mit OTP-Supervision. Keine Prompts im heißen Pfad. Kein Prompt-Injection-Risk im Produktivflow.' },
-        { num: '03', title: 'Tool-Calls mit Schema.', body: 'AI-Schritte sind getypte Funktionen: JSON-Schema In, JSON-Schema Out. OpenAI-API, Anthropic-API, lokale Modelle (Ollama, vLLM) — alles über dasselbe Interface. Wechsel = Config-Zeile.' },
-      ],
-    },
-    zoo: {
-      title: `Vom <em>Vibe-Code-Zoo</em> zum versionierten Katalog.`,
-      lede: `Nicht "Low-Code vs Custom-Code", sondern "Skripte auf Privat-Laptops vs Git-Repo mit CI". Fachwerk gibt deinem Vibe-Coding-Output eine Heimat: <strong>Owner, Branch, PR, CI-Run, Health-Probe</strong>. Wie richtiger Code, weil es richtiger Code ist.`,
-    },
-    cases: {
-      lede: `Vier Szenarien — gleiche 4, aber Tech-Stack im Vordergrund. <strong>Modbus/TCP, SAP-RFC, REST/GraphQL, IMAP, Webhooks</strong> — jeweils mit konkreten Adapter-Modulen, nicht als "Connector". Code im Repo, Tests in CI, Logs in OpenTelemetry.`,
-      stackTags: {
-        nordware: 'Shopify GraphQL · Meta Marketing API · ERP-REST · pgvector',
-        stahlberg: 'Modbus/TCP · OPC UA · SAP-RFC · OTP isolation per line',
-        gruenfeld: 'DATEV-Connect · SAP-RFC · DMS · React 19 + TanStack · audit log',
-        dachstein: 'Wodis-API · iX-Haus REST · Versorger-XML · IMAP · WhatsApp Business',
-      },
-    },
-    deploy: {
-      title: `Docker · Caddy · Postgres. <em>Hinter deiner Firewall</em> oder bei uns.`,
-      cells: [
-        { title: 'Cloud-Standard', body: `Single-tenant Container auf <strong>StackIT</strong> oder deinem Hoster. Postgres-DB pro Kunde. Caddy für TLS und Routing. Logs nach OpenTelemetry-Endpoint deiner Wahl.`, tags: ['StackIT', 'Postgres', 'Caddy', 'OTel'] },
-        { title: 'On-Premise', body: `Bare-Metal oder Hypervisor. Docker-Compose oder K8s-Helm-Chart. Direkter Zugriff auf SPS, Modbus/TCP, lokale DBs. Air-Gap-fähig — kein egress notwendig.`, tags: ['Docker', 'K8s', 'Air-Gap', 'Modbus'] },
-        { title: 'Hybrid', body: `Werkstatt + Katalog in unserer Cloud (Codegen, Reviews, AI-Calls). Betrieb in deiner Umgebung. Verbindung über mTLS-Tunnel, Audit-Logs in beiden Welten.`, tags: ['mTLS', 'Split-Plane', 'Single-Source'] },
-      ],
-    },
-    pricing: {
-      title: `Setup, Stack, dein Repo. <em>Keine Seat-Lizenz.</em>`,
-      lede: `Zwei Tiers — Multi-Tenancy ist die technische Trennung. <strong>Ein Setup-Sprint</strong> ist anrechenbar. Code lebt in deinem Repo (oder unserem, mit dir als Org-Member). Postgres-Schema gehört dir.`,
-      coreSub: '+ 3–8k / Monat · Setup + 51–136k pro Jahr',
-      platformSub: '+ 15–35k / Monat · Setup + 260–570k pro Jahr',
-    },
-    cta: {
-      title: `Zeig mir deinen <em>schmerzhaftesten Integrationspfad.</em>`,
-      body: `Architektur-Session direkt mit dem Architekten. Wir gehen deinen Stack durch, identifizieren die teuerste Integration, und skizzieren einen 6-Wochen-Sprint. Repo-Setup, Adapter-Liste, Run-Plan.`,
-      emailLabel: 'Architektur-Session',
-    },
   },
 };
 

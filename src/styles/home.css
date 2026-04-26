@@ -788,21 +788,7 @@ section.block {
   margin: 0.4rem 0 1rem;
   flex: 1;
 }
-.branch-stack {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-  border-top: 1px dashed var(--line);
-  padding-top: 0.8rem;
-  margin-top: auto;
-  word-spacing: 0.1em;
-  line-height: 1.5;
-}
-html[data-view="macher"] .branch-card { border-right-color: var(--line); }
-
-/* Branch-Karten in dark-section: Karten sind cream/paper, also Text dark.
-   --fg flippt automatisch in macher (dann sind Karten dunkel, Text hell). */
+/* Branch-Karten in dark-section: Karten sind cream/paper, also Text dark. */
 .dark-section .branch-name { color: var(--fg); }
 
 @media (max-width: 1100px) {
@@ -921,11 +907,6 @@ html[data-view="macher"] .branch-card { border-right-color: var(--line); }
   color: var(--fg);
   margin: 0 0 2rem;
   text-wrap: balance;
-}
-html[data-view="macher"] .pov-architect-name {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  letter-spacing: -0.005em;
 }
 .pov-architect-card {
   display: grid;
@@ -1345,8 +1326,8 @@ html[data-view="macher"] .pov-architect-name {
 }
 
 /* Standard-vs-Realität Tabelle in Kapitel 04 */
-.adapter-table-wrap { margin-top: 1rem; }
-.adapter-table-eyebrow {
+.compare-table-wrap { margin-top: 1rem; }
+.compare-table-eyebrow {
   display: block;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.72rem;
@@ -1354,14 +1335,14 @@ html[data-view="macher"] .pov-architect-name {
   color: var(--accent);
   margin-bottom: 0.8rem;
 }
-.adapter-table {
+.compare-table {
   display: grid;
   grid-template-columns: minmax(8rem, 0.8fr) minmax(12rem, 1fr) minmax(20rem, 1.6fr);
   border: 1px solid var(--line-2);
   background: var(--paper);
   box-shadow: 8px 8px 0 var(--sun), 8px 8px 0 1px var(--fg);
 }
-.adapter-head {
+.compare-head {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
   letter-spacing: 0.12em;
@@ -1371,15 +1352,15 @@ html[data-view="macher"] .pov-architect-name {
   background: color-mix(in oklab, var(--fg) 4%, var(--paper));
   border-bottom: 1px solid var(--line-2);
 }
-.adapter-head:not(:last-child) { border-right: 1px solid var(--line); }
-.adapter-sys, .adapter-promise, .adapter-need {
+.compare-head:not(:last-child) { border-right: 1px solid var(--line); }
+.compare-sys, .compare-promise, .compare-need {
   padding: 1.1rem 1.2rem;
   border-bottom: 1px solid var(--line);
   font-size: 0.95rem;
   line-height: 1.5;
 }
-.adapter-table > *:nth-last-child(-n+3) { border-bottom: none; }
-.adapter-sys {
+.compare-table > *:nth-last-child(-n+3) { border-bottom: none; }
+.compare-sys {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
   font-weight: 600;
@@ -1387,27 +1368,27 @@ html[data-view="macher"] .pov-architect-name {
   border-right: 1px solid var(--line);
   letter-spacing: 0.04em;
 }
-.adapter-promise {
+.compare-promise {
   color: var(--muted);
   font-style: italic;
   border-right: 1px solid var(--line);
 }
-.adapter-need {
+.compare-need {
   color: var(--fg);
 }
 @media (max-width: 900px) {
-  .adapter-table { grid-template-columns: 1fr; }
-  .adapter-head { display: none; }
-  .adapter-head:first-child { display: block; }
-  .adapter-sys, .adapter-promise, .adapter-need {
+  .compare-table { grid-template-columns: 1fr; }
+  .compare-head { display: none; }
+  .compare-head:first-child { display: block; }
+  .compare-sys, .compare-promise, .compare-need {
     border-right: none;
     padding: 0.9rem 1.2rem;
   }
-  .adapter-sys {
+  .compare-sys {
     background: color-mix(in oklab, var(--accent) 6%, var(--paper));
     border-bottom: 1px solid var(--line);
   }
-  .adapter-promise { padding-bottom: 0.4rem; }
+  .compare-promise { padding-bottom: 0.4rem; }
 }
 
 .ai-diagram {
@@ -2138,21 +2119,6 @@ html[data-view="macher"] .pov-architect-name {
   border-bottom-color: var(--accent);
 }
 
-/* Tech-View: Quick-Setup als dritte Karte mit teal-shadow */
-html[data-view="macher"] .quick-setup {
-  background: var(--paper);
-  border-color: var(--line-2);
-  box-shadow: 10px 10px 0 var(--accent), 10px 10px 0 1px var(--ink);
-}
-html[data-view="macher"] .quick-setup-link {
-  color: var(--fg);
-  border-bottom-color: rgba(94, 234, 212, 0.3);
-}
-html[data-view="macher"] .quick-setup-link:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
 @media (max-width: 900px) {
   .quick-setup { padding: 1.6rem 1.4rem; }
   .quick-setup-title { font-size: 1.3rem; }
@@ -2632,487 +2598,6 @@ footer .fright { display: flex; gap: 1.5rem; }
   .uc-tab { font-size: 0.62rem; padding: 0.7rem 0.7rem; }
   .uc-tab .num { margin-right: 0.3rem; }
 }
-
-/* ═══════════════════════════════════════════════
-   VIEW TOGGLE + DUAL-VIEW SWAP
-   ═══════════════════════════════════════════════ */
-
-/* Show only the active view; hide the other. Never override the natural display
-   value of the visible element — preserves grid/flex/block from base styles. */
-html:not([data-view="macher"]) [data-view-only="macher"] { display: none !important; }
-html[data-view="macher"] [data-view-only="business"] { display: none !important; }
-
-/* Nav-Icon-Toggle: single button right of contact-cta, like a darkmode toggle */
-.nav-view-icon {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 0.4rem 0 0.6rem;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  color: var(--muted);
-  transition: color 0.15s;
-}
-.nav-view-icon svg { width: 20px; height: 20px; display: block; }
-.nav-view-icon:hover { color: var(--accent); }
-html[data-view="macher"] .nav-view-icon { color: var(--accent); }
-html[data-view="macher"] .nav-view-icon:hover { color: var(--fg); }
-
-/* Hero view-hint: text-link above the image card, contextual per view */
-.hero-view-hint {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem 0.9rem;
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px dashed var(--line);
-}
-.hvh-prompt {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-.view-text-link {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  transition: color 0.15s;
-}
-.view-text-link:hover { color: var(--fg); }
-.view-text-link .vtl-arrow {
-  font-size: 0.85rem;
-  transition: transform 0.2s;
-  text-decoration: none;
-}
-.view-text-link:hover .vtl-arrow { transform: translateX(3px); }
-html[data-view="macher"] .hero-view-hint { border-bottom-color: rgba(94, 234, 212, 0.2); }
-
-/* Switch-link: btn-style with arrow, used in CTA bottom */
-.view-switch-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: transparent;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  padding: 0.7rem 1.1rem;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-.view-switch-link:hover {
-  background: var(--accent);
-  color: var(--ink);
-}
-.view-switch-link .vsl-arrow {
-  font-size: 0.9rem;
-  transition: transform 0.2s;
-}
-.view-switch-link:hover .vsl-arrow {
-  transform: translateY(-2px);
-}
-
-@media (max-width: 900px) {
-  .nav-view-icon svg { width: 18px; height: 18px; }
-}
-
-/* Pillar stack-sub (Macher view): teal mono badge instead of regular tag */
-.pillar-stack {
-  color: var(--accent) !important;
-  font-weight: 600;
-}
-html[data-view="macher"] .pillar-stack {
-  color: var(--accent) !important;
-}
-
-/* Use-case macher stack tag */
-.uc-stack-tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  border: 1px solid var(--line-2);
-  padding: 0.4rem 0.75rem;
-  margin: 0.6rem 0 1rem;
-  display: inline-block;
-  background: var(--bg-2);
-}
-
-/* ═══════════════════════════════════════════════
-   MACHER THEME — dark, teal, mono-dominant
-   ═══════════════════════════════════════════════ */
-html[data-view="macher"] {
-  --bg: #1a1f2b;
-  --bg-2: #222837;
-  --fg: #e8efe9;
-  --fg-2: #ffffff;
-  --muted: #8b96a7;
-  --muted-2: #5d6878;
-  --line: #2d3546;
-  --line-2: #3d4558;
-  --accent: #5eead4;
-  --accent-ink: #5eead4;
-  --accent-wash: rgba(94, 234, 212, 0.08);
-  --sun: #5eead4;
-  --terracotta: #d97a4e;
-  --ink: #0a0e16;
-  --paper: #1f2532;
-  --warn: #d97a4e;
-  --grid-color: rgba(94, 234, 212, 0.06);
-  --grid-major: rgba(94, 234, 212, 0.09);
-  --grid-minor: rgba(94, 234, 212, 0.035);
-}
-
-/* Smooth transitions on the bulk of surfaces */
-html[data-view="macher"],
-html[data-view="business"] {
-  --view-transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
-}
-html[data-view] body,
-html[data-view] nav.top,
-html[data-view] section.block,
-html[data-view] .hero-bullets,
-html[data-view] .hero-bullet,
-html[data-view] .hr-card,
-html[data-view] .price-card,
-html[data-view] .problem-cell,
-html[data-view] .ai-step,
-html[data-view] .ai-point,
-html[data-view] .uc-tab,
-html[data-view] .pillar,
-html[data-view] .btn,
-html[data-view] .view-toggle,
-html[data-view] .view-pills,
-html[data-view] .view-pill,
-html[data-view] .marquee {
-  transition: var(--view-transition);
-}
-
-/* Headlines: drop Fraunces in favor of mono. Body stays Sans for legibility. */
-html[data-view="macher"] h1.hero-head,
-html[data-view="macher"] .block-title,
-html[data-view="macher"] .price-card h3,
-html[data-view="macher"] .cta h2,
-html[data-view="macher"] .hero-bullet strong,
-html[data-view="macher"] .pillar-name,
-html[data-view="macher"] .ai-controlled h3,
-html[data-view="macher"] .deploy-cell h4,
-html[data-view="macher"] .uc-stage h3,
-html[data-view="macher"] .ai-point h4,
-html[data-view="macher"] .problem-cell h4 {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-  letter-spacing: -0.005em;
-}
-
-/* em: stay teal but no italic in mono context */
-html[data-view="macher"] h1.hero-head em,
-html[data-view="macher"] .block-title em,
-html[data-view="macher"] .cta h2 em {
-  font-style: normal;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-/* Hero strikethrough: keep the warn/red strike visible on dark */
-html[data-view="macher"] h1.hero-head .strike { color: var(--muted-2); }
-html[data-view="macher"] h1.hero-head .strike::after { background: var(--warn); }
-
-/* Buttons: solid accent on dark, drop the warm shadow */
-html[data-view="macher"] .btn {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-}
-html[data-view="macher"] .btn:hover {
-  box-shadow: 5px 5px 0 var(--accent), 5px 5px 0 1px var(--accent);
-}
-html[data-view="macher"] .btn.ghost {
-  background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 3px 3px 0 var(--line-2);
-}
-html[data-view="macher"] .nav-cta {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--ink) !important;
-}
-html[data-view="macher"] .nav-cta:hover {
-  background: var(--fg);
-  border-color: var(--fg);
-  color: var(--ink) !important;
-}
-
-/* Hero card glow: replace warm sun shadow with teal */
-html[data-view="macher"] .hr-card {
-  box-shadow: 8px 8px 0 var(--accent), 8px 8px 0 1px var(--ink);
-  background: var(--paper);
-}
-
-/* Hero strikes-out: brighter for contrast on dark */
-html[data-view="macher"] h1.hero-head .strike-punct { color: var(--muted-2); }
-html[data-view="macher"] h1.hero-head .fw-punct { color: var(--accent); }
-
-/* Hero bullets on dark */
-html[data-view="macher"] .hero-bullets {
-  background: var(--paper);
-  border-color: var(--line-2);
-}
-
-/* Selection */
-html[data-view="macher"] ::selection { background: var(--accent); color: var(--ink); }
-
-/* Eyebrow stays teal in macher (already accent) — strip the dark-section override since macher is uniformly dark */
-
-/* ─── Tech-Mode Background-Taktung ─────────────────
-   Spiegel der Business-Rotation A·C·B·C·A·B·C·A·C·A·B, in Dark adaptiert:
-   A (default body)   = --bg + body grid (medium)
-   B (.dark-section)  = --ink + teal grid (deep)
-   C (.cream-section) = --bg-2 solid panel, kein grid (panel) */
-
-/* Hero stays deep regardless */
-html[data-view="macher"] section.hero {
-  background-color: var(--ink);
-  background-image:
-    linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(94, 234, 212, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.035) 1px, transparent 1px);
-  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-  background-position: 0 0;
-  position: relative;
-}
-
-/* C: cream-section in macher = solid panel, kein grid, etwas heller als body */
-html[data-view="macher"] .cream-section {
-  background: var(--bg-2);
-}
-html[data-view="macher"] .cream-section::before { display: none; }
-
-/* Legacy alias — sackgassen ist altes content-feld */
-html[data-view="macher"] .sackgassen { background: transparent; }
-
-/* Dark-section (Pillars #02) grid: re-tint white to teal in tech */
-html[data-view="macher"] .dark-section::before {
-  background-image:
-    linear-gradient(rgba(94, 234, 212, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.07) 1px, transparent 1px),
-    linear-gradient(rgba(94, 234, 212, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.03) 1px, transparent 1px);
-}
-
-/* Marquee continues the deep charcoal — bang from hero into Problem */
-html[data-view="macher"] .marquee {
-  background: var(--ink);
-  border-color: rgba(94, 234, 212, 0.12);
-  color: var(--fg);
-}
-html[data-view="macher"] .marquee-track { color: var(--fg); }
-
-/* Dark-section overrides: in macher view, --paper is dark (used as card bg
-   elsewhere). The dark-section base styles use var(--paper) as text color
-   expecting it to be light (business default). Re-point to var(--fg) here. */
-html[data-view="macher"] .dark-section .block-title,
-html[data-view="macher"] .dark-section .pillar-name {
-  color: var(--fg);
-}
-html[data-view="macher"] .dark-section .pillar.active .pillar-name { color: var(--accent); }
-html[data-view="macher"] .dark-section .block-lede { color: var(--muted); }
-html[data-view="macher"] .dark-section .block-lede strong { color: var(--fg); }
-
-/* Problem cells on dark */
-html[data-view="macher"] .problem-cell {
-  background: var(--paper);
-  border-color: var(--line);
-}
-
-/* Pricing in Tech: Drei-Stufigkeit (Starter neutral → Core mit-Akzent → Platform krass)
-   ohne hellen Flashbang — alles dunkel, eskalierende teal-Intensität. */
-
-/* Starter: neutralster, dunkelster Tier */
-html[data-view="macher"] .price-card {
-  background: var(--paper);
-  border-color: var(--line-2);
-  position: relative;
-}
-
-/* Platform (last-child = nth-child(2) im 2-Tier-Modell): voll Teal-Glow */
-html[data-view="macher"] .price-card:last-child {
-  background: linear-gradient(180deg, rgba(94, 234, 212, 0.10) 0%, rgba(94, 234, 212, 0.04) 50%, var(--paper) 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(94, 234, 212, 0.2),
-    inset 0 0 24px rgba(94, 234, 212, 0.06);
-}
-html[data-view="macher"] .price-card:last-child::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(94, 234, 212, 0.6), 0 0 4px rgba(94, 234, 212, 0.9);
-}
-html[data-view="macher"] .price-card:last-child .price-tier { color: var(--accent); font-weight: 700; }
-html[data-view="macher"] .price-card:last-child h3 { color: var(--fg); }
-html[data-view="macher"] .price-card:last-child .price-num { color: var(--accent); }
-html[data-view="macher"] .price-card:last-child .price-list li::before { color: var(--accent); }
-
-/* AI step boxes */
-html[data-view="macher"] .ai-step {
-  background: var(--paper);
-  border-color: var(--line-2);
-}
-
-/* Use-case + sackgassen tables: ensure contrast */
-html[data-view="macher"] .sg-row,
-html[data-view="macher"] .fit-cell,
-html[data-view="macher"] .fit-category,
-html[data-view="macher"] .fit-head {
-  background: var(--paper);
-  border-color: var(--line);
-}
-
-/* Zoo catalog rows */
-html[data-view="macher"] .zoo-catalog,
-html[data-view="macher"] .kc-row,
-html[data-view="macher"] .kc-head {
-  background: var(--paper);
-  border-color: var(--line);
-}
-
-/* Code-style decorations: mono blocks visible as terminal */
-html[data-view="macher"] .block-index {
-  color: var(--accent);
-  opacity: 0.7;
-}
-
-/* Toggle band on dark */
-html[data-view="macher"] .view-toggle {
-  background: var(--bg-2);
-  border-color: var(--line);
-}
-html[data-view="macher"] .view-pills {
-  background: var(--bg);
-  border-color: var(--line-2);
-}
-html[data-view="macher"] .view-pill[aria-pressed="true"] {
-  background: var(--accent);
-  color: var(--ink);
-}
-
-/* ─── CTA in Tech: Console-Hangar mit Eck-Klammern ─── */
-/* Solid deep ink (continuity with Hero), teal millimeter grid,
-   radial spotlight glow, framed inner-box mit Architektur-Klammern. */
-html[data-view="macher"] .cta {
-  background: var(--ink);
-  color: var(--fg);
-  position: relative;
-}
-html[data-view="macher"] .cta::before {
-  background-image:
-    linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(94, 234, 212, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.035) 1px, transparent 1px);
-}
-html[data-view="macher"] .cta::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 35% 45%, rgba(94, 234, 212, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-html[data-view="macher"] .cta-inner {
-  border: 1px solid rgba(94, 234, 212, 0.4);
-  padding: 3.5rem 3rem;
-  background: rgba(94, 234, 212, 0.025);
-  position: relative;
-  z-index: 2;
-}
-/* Architektur-Klammern: 4 corner accents */
-html[data-view="macher"] .cta-inner::before,
-html[data-view="macher"] .cta-inner::after {
-  content: '';
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border-color: var(--accent);
-  border-style: solid;
-  border-width: 0;
-}
-html[data-view="macher"] .cta-inner::before {
-  top: -2px; left: -2px;
-  border-top-width: 3px;
-  border-left-width: 3px;
-}
-html[data-view="macher"] .cta-inner::after {
-  bottom: -2px; right: -2px;
-  border-bottom-width: 3px;
-  border-right-width: 3px;
-}
-html[data-view="macher"] .cta .eyebrow { color: var(--accent); }
-html[data-view="macher"] .cta .eyebrow::before { background: var(--accent); }
-html[data-view="macher"] .cta h2 { color: var(--fg); }
-html[data-view="macher"] .cta h2 em { color: var(--accent); }
-html[data-view="macher"] .cta p { color: rgba(232, 239, 233, 0.78); }
-html[data-view="macher"] .cta .btn {
-  background: var(--accent);
-  color: var(--ink);
-  border-color: var(--accent);
-  box-shadow: 3px 3px 0 var(--ink);
-}
-html[data-view="macher"] .cta .btn:hover {
-  box-shadow: 5px 5px 0 var(--ink);
-}
-html[data-view="macher"] .cta .btn.ghost {
-  background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 3px 3px 0 rgba(94, 234, 212, 0.18);
-}
-html[data-view="macher"] .cta .btn.ghost:hover {
-  background: rgba(94, 234, 212, 0.08);
-}
-
-/* CTA bottom: contextual switch back, scrolls to top */
-.cta-view-switch {
-  margin-top: 3rem;
-  padding-top: 2.5rem;
-  border-top: 1px dashed var(--line-2);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.9rem;
-}
-.cta-view-switch-prompt {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-}
-html[data-view="macher"] .cta-view-switch { border-top-color: rgba(94, 234, 212, 0.25); }
-html[data-view="macher"] .cta-view-switch-prompt { color: rgba(232, 239, 233, 0.6); }
 
 /* ═══════════════════════════════════════════════
    KIPP-PUNKTE TABLE (#kipp)
