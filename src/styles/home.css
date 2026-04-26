@@ -789,7 +789,15 @@ section.block {
   flex: 1;
 }
 /* Branch-Karten in dark-section: Karten sind cream/paper, also Text dark. */
-.dark-section .branch-name { color: var(--fg); }
+/* Branch-Karten in dark-section: dunkle Karten auf dark, hellen Text */
+.dark-section .branch-strip {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 8px 8px 0 oklch(78% 0.1 170), 8px 8px 0 1px var(--ink);
+}
+.dark-section .branch-card { border-right-color: rgba(255, 255, 255, 0.08); }
+.dark-section .branch-name { color: var(--paper); }
+.dark-section .branch-task { color: #b0b6c0; }
 
 @media (max-width: 1100px) {
   .branch-strip { grid-template-columns: 1fr 1fr; }
