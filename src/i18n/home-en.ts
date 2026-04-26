@@ -148,6 +148,17 @@ const t: HomeT = {
     index: '// there is no standard interface',
     title: `There is no standard interface. <em>Every integration is custom.</em>`,
     lede: `A "standard SAP interface"? Never seen one in 20 years. A "Shopify connector"? Technically yes — but what you actually need (mapping return codes, applying tenant context, your listing logic) is always custom. This is exactly where low-code fails in the mid-market. This is exactly where you have consultants spending years configuring.<br><br><strong>Fachwerk's leverage: AI writes every integration custom for you.</strong> One-shot for standard APIs (Shopify, GraphQL, SAP RFC, DATEV-Connect) — AI knows them from training data. Deep for obscure things (Modbus over a 30-year-old TCP stack on your PLC) — AI reads the docs, knows the low-level traps, writes production-ready code where senior devs only speak JSON.<br><br><strong>Fachwerk's focus: enable business users to help themselves.</strong> Own reports, own flows, own UIs — no more waiting for an analysis, no more living with reports hard-coded against five fields, no more organising a project, quote, budget and timeline for every small interface change. But all ordered in the catalog: with owner, versions, audit trail. You don't pay for adapters, you pay for the platform and the structure beneath.`,
+    adapterTable: {
+      eyebrow: '// every row is code that gets custom-written for you',
+      heads: ['System', 'What the docs promise', 'What you actually need'],
+      rows: [
+        { sys: 'Shopify', promise: '"Standard order sync"', need: 'Map return codes · tenant context · custom listing logic' },
+        { sys: 'SAP', promise: '"Standard IDocs"', need: 'Custom fields · workflow status · posting lookup · tenant split' },
+        { sys: 'DATEV', promise: '"DATEV-Connect"', need: 'Tenant hierarchy · doc-type routing · interface log' },
+        { sys: 'PLC / Modbus', promise: '"Standard Modbus/TCP"', need: '30-year register map · machine specifics · safety locks' },
+        { sys: 'WMS / ERP', promise: '"Standard API"', need: 'Actual vs target · posting types · internal tenants · 6-digit stock' },
+      ],
+    },
     flowTitle: 'Flow · Check incoming invoice',
     steps: [
       { type: 'code', name: 'Receive mail', meta: 'IMAP · deterministic' },

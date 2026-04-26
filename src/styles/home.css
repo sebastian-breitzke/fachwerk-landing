@@ -801,6 +801,10 @@ section.block {
 }
 html[data-view="macher"] .branch-card { border-right-color: var(--line); }
 
+/* Branch-Karten in dark-section: Karten sind cream/paper, also Text dark.
+   --fg flippt automatisch in macher (dann sind Karten dunkel, Text hell). */
+.dark-section .branch-name { color: var(--fg); }
+
 @media (max-width: 1100px) {
   .branch-strip { grid-template-columns: 1fr 1fr; }
   .branch-card:nth-child(2n) { border-right: none; }
@@ -1337,6 +1341,73 @@ html[data-view="macher"] .pov-architect-name {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+/* Standard-vs-Realität Tabelle in Kapitel 04 */
+.adapter-table-wrap { margin-top: 1rem; }
+.adapter-table-eyebrow {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.adapter-table {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(12rem, 1fr) minmax(20rem, 1.6fr);
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 var(--sun), 8px 8px 0 1px var(--fg);
+}
+.adapter-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  padding: 1rem 1.2rem;
+  background: color-mix(in oklab, var(--fg) 4%, var(--paper));
+  border-bottom: 1px solid var(--line-2);
+}
+.adapter-head:not(:last-child) { border-right: 1px solid var(--line); }
+.adapter-sys, .adapter-promise, .adapter-need {
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.adapter-table > *:nth-last-child(-n+3) { border-bottom: none; }
+.adapter-sys {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg);
+  border-right: 1px solid var(--line);
+  letter-spacing: 0.04em;
+}
+.adapter-promise {
+  color: var(--muted);
+  font-style: italic;
+  border-right: 1px solid var(--line);
+}
+.adapter-need {
+  color: var(--fg);
+}
+@media (max-width: 900px) {
+  .adapter-table { grid-template-columns: 1fr; }
+  .adapter-head { display: none; }
+  .adapter-head:first-child { display: block; }
+  .adapter-sys, .adapter-promise, .adapter-need {
+    border-right: none;
+    padding: 0.9rem 1.2rem;
+  }
+  .adapter-sys {
+    background: color-mix(in oklab, var(--accent) 6%, var(--paper));
+    border-bottom: 1px solid var(--line);
+  }
+  .adapter-promise { padding-bottom: 0.4rem; }
 }
 
 .ai-diagram {

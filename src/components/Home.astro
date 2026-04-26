@@ -469,6 +469,29 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     </div>
   </div>
 
+  <div class="adapter-table-wrap">
+    <span class="adapter-table-eyebrow">{t.ai.adapterTable.eyebrow}</span>
+    <div class="adapter-table">
+      {t.ai.adapterTable.heads.map(h => <div class="adapter-head">{h}</div>)}
+      {t.ai.adapterTable.rows.map(r => (
+        <>
+          <div class="adapter-sys">{r.sys}</div>
+          <div class="adapter-promise">{r.promise}</div>
+          <div class="adapter-need">{r.need}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <div class="ai-points">
+    {t.ai.points.map(p => (
+      <div class="ai-point">
+        <span class="ai-num">{p.num}</span>
+        <h4>{p.title}</h4>
+        <p>{p.body}</p>
+      </div>
+    ))}
+  </div>
 </section>
 
 <section class="block" id="kipp">

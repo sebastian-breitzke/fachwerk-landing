@@ -148,6 +148,17 @@ const t: HomeT = {
     index: '// no existe la interfaz estándar',
     title: `No existe la interfaz estándar. <em>Cada integración es Custom.</em>`,
     lede: `¿Una "interfaz SAP estándar"? Nunca vi una en 20 años. ¿Un "connector de Shopify"? Técnicamente sí — pero lo que realmente necesitas (mapear códigos de devolución, aplicar contexto de mandante, tu lógica de listing) siempre es custom. Aquí es exactamente donde el low-code falla en la mediana empresa. Aquí es donde tienes consultores configurando durante años.<br><br><strong>El leverage de Fachwerk: la AI escribe cada integración custom para ti.</strong> One-shot para APIs estándar (Shopify, GraphQL, SAP RFC, DATEV-Connect) — la AI las conoce de los datos de entrenamiento. Profundo en lo oscuro (Modbus sobre un TCP-Stack de hace 30 años en tu PLC) — la AI lee los docs, conoce los low-level traps, escribe code de producción donde los senior devs ya solo hablan JSON.<br><br><strong>El enfoque de Fachwerk: empoderar a los business users para que se ayuden a sí mismos.</strong> Reports propios, flujos propios, UIs propias — sin esperar un análisis, sin vivir con reports hard-coded sobre cinco campos, sin tener que organizar un proyecto, presupuesto y plazo cada vez que una pequeña interfaz cambia. Pero todo ordenado en el catálogo: con owner, versiones, audit trail. No pagas por adaptadores, pagas por la plataforma y la estructura debajo.`,
+    adapterTable: {
+      eyebrow: '// cada fila es code que se escribe a medida para ti',
+      heads: ['Sistema', 'Lo que la doc promete', 'Lo que realmente necesitas'],
+      rows: [
+        { sys: 'Shopify', promise: '"Sync estándar de pedidos"', need: 'Mapear códigos de retorno · contexto multi-tenant · lógica de listing propia' },
+        { sys: 'SAP', promise: '"IDocs estándar"', need: 'Campos custom · estado de workflow · lookup de asientos · split de tenants' },
+        { sys: 'DATEV', promise: '"DATEV-Connect"', need: 'Jerarquía de tenants · routing por tipo de doc · log de interfaz' },
+        { sys: 'PLC / Modbus', promise: '"Modbus/TCP estándar"', need: 'Mapa de registros 30 años · casos de máquina · bloqueos de seguridad' },
+        { sys: 'WMS / ERP', promise: '"API estándar"', need: 'Real vs objetivo · tipos de asiento · tenants internos · stock 6 dígitos' },
+      ],
+    },
     flowTitle: 'Flujo · Verificar factura entrante',
     steps: [
       { type: 'code', name: 'Recibir mail', meta: 'IMAP · determinista' },

@@ -149,6 +149,17 @@ const t = {
     index: '// es gibt keine standard-schnittstelle',
     title: `Es gibt keine Standard-Schnittstelle. <em>Jede Integration ist Custom.</em>`,
     lede: `Eine "Standard-SAP-Schnittstelle"? In 20 Jahren nie gesehen. Eine "Shopify-Anbindung"? Technisch ja — aber was du tatsächlich brauchst (Retouren-Codes mappen, Mandanten-Kontext einrechnen, deine Listing-Logik) ist immer Custom. Genau hier scheitert Low-Code im Mittelstand. Genau hier hast du Consultants, die jahrelang konfigurieren.<br><br><strong>Fachwerks Hebel: KI schreibt jede Integration custom für dich.</strong> One-Shot bei Standard-APIs (Shopify, GraphQL, SAP-RFC, DATEV-Connect) — die KI kennt sie aus den Trainingsdaten. Deep bei Obskurem (Modbus über 30-Jahre-alten TCP-Stack auf deiner SPS) — die KI liest die Doku, kennt die Low-Level-Traps, schreibt produktionsreifen Code wo Senior-Devs nur noch JSON sprechen.<br><br><strong>Fachwerks Fokus: Business-Anwender in die Lage versetzen, sich selbst zu helfen.</strong> Eigene Auswertungen, eigene Flows, eigene Oberflächen — nicht mehr auf eine Auswertung warten, nicht mehr mit Reports leben, die auf fünf Felder hardcoded sind, nicht mehr für jede kleine Schnittstellenänderung erst Projekt, Kostenvoranschlag, Budget und Umsetzungszeit organisieren. Aber alles geordnet im Katalog: mit Owner, Versionen, Audit-Trail. Du zahlst nicht für Adapter, du zahlst für die Plattform und die Statik darunter.`,
+    adapterTable: {
+      eyebrow: '// jede zeile ist code, der bei dir custom geschrieben wird',
+      heads: ['System', 'Was die Doku verspricht', 'Was du wirklich brauchst'],
+      rows: [
+        { sys: 'Shopify', promise: '"Standard-Bestell-Sync"', need: 'Retouren-Codes mappen · Mandanten-Kontext · eigene Listing-Logik' },
+        { sys: 'SAP', promise: '"Standard-IDocs"', need: 'Custom-Felder · Workflow-Status · Buchungs-Lookup · Mandantentrennung' },
+        { sys: 'DATEV', promise: '"DATEV-Connect"', need: 'Mandantenhierarchie · Belegtyp-Routing · Schnittstellen-Log' },
+        { sys: 'SPS / Modbus', promise: '"Standard-Modbus-TCP"', need: '30-Jahre-Register-Map · Maschinen-Spezialfälle · Sicherheitssperren' },
+        { sys: 'WMS / ERP', promise: '"Standard-API"', need: 'Ist vs Soll · Buchungsarten · interne Mandanten · 6-stellige Bestände' },
+      ],
+    },
     flowTitle: 'Flow · Eingangsrechnung prüfen',
     steps: [
       { type: 'code', name: 'Mail empfangen', meta: 'IMAP · deterministisch' },
