@@ -2574,29 +2574,19 @@ html[data-view="macher"] [data-view-only="business"] { display: none !important;
 /* Nav-Icon-Toggle: single button right of contact-cta, like a darkmode toggle */
 .nav-view-icon {
   background: transparent;
-  border: 1px solid var(--line-2);
-  width: 36px;
-  height: 36px;
+  border: none;
   padding: 0;
   margin: 0 0.4rem 0 0.6rem;
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   color: var(--muted);
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  transition: color 0.15s;
 }
-.nav-view-icon svg { width: 18px; height: 18px; display: block; }
-.nav-view-icon:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-html[data-view="macher"] .nav-view-icon {
-  border-color: rgba(94, 234, 212, 0.3);
-  color: var(--accent);
-}
-html[data-view="macher"] .nav-view-icon:hover {
-  background: rgba(94, 234, 212, 0.08);
-}
+.nav-view-icon svg { width: 20px; height: 20px; display: block; }
+.nav-view-icon:hover { color: var(--accent); }
+html[data-view="macher"] .nav-view-icon { color: var(--accent); }
+html[data-view="macher"] .nav-view-icon:hover { color: var(--fg); }
 
 /* Hero view-hint: text-link above the image card, contextual per view */
 .hero-view-hint {
@@ -2671,8 +2661,7 @@ html[data-view="macher"] .hero-view-hint { border-bottom-color: rgba(94, 234, 21
 }
 
 @media (max-width: 900px) {
-  .nav-view-icon { width: 32px; height: 32px; }
-  .nav-view-icon svg { width: 16px; height: 16px; }
+  .nav-view-icon svg { width: 18px; height: 18px; }
 }
 
 /* Pillar stack-sub (Macher view): teal mono badge instead of regular tag */

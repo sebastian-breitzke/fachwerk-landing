@@ -14,7 +14,7 @@ const t = {
     catalog: 'Warum',
     examples: 'Branchen',
     pricing: 'Preise',
-    contact: 'PoV',
+    contact: 'Kontakt',
   },
   a11y: {
     fullscreen: 'Vollbild',

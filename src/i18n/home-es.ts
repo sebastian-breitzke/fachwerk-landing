@@ -13,7 +13,7 @@ const t: HomeT = {
     catalog: 'Por qué',
     examples: 'Sectores',
     pricing: 'Precios',
-    contact: 'PoV',
+    contact: 'Contacto',
   },
   a11y: {
     fullscreen: 'Pantalla completa',
