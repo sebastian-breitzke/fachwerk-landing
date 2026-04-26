@@ -105,7 +105,7 @@ const t = {
     heads: ['Heute naheliegend', 'Gut, wenn …', 'Kippt Richtung Fachwerk, wenn …'],
     rows: [
       {
-        category: 'Click-Automation / iPaaS',
+        category: 'Workflow-Tools (Zapier/Make/n8n)',
         good: 'du ein paar Systeme per Standard-Connector verbindest und ein Fachbereich den Flow sauber selbst pflegen kann.',
         tip: 'Versionen, Rollbacks, Fehlerdiagnose, Berechtigungen und produktiver Betrieb wichtiger werden als das schnelle Zusammenklicken.',
       },
@@ -115,7 +115,7 @@ const t = {
         tip: 'KI nicht alles sehen darf, erst deterministisch gefiltert werden muss und jeder KI-Schritt Eingaben, Ausgaben und Modellstand braucht.',
       },
       {
-        category: 'Klick-Bots im Altsystem',
+        category: 'GUI-Bots (RPA)',
         good: 'ein Altsystem nur über die Oberfläche bedienbar ist und der Prozess im Kern Bildschirmarbeit bleibt.',
         tip: 'Fachobjekte, Historie, betroffene Kunden, Wiederholung und Ursachenanalyse relevant werden.',
       },

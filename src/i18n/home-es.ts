@@ -104,7 +104,7 @@ const t: HomeT = {
     heads: ['Lo obvio hoy', 'Bueno cuando …', 'Se inclina hacia Fachwerk cuando …'],
     rows: [
       {
-        category: 'Automatización por clic / iPaaS',
+        category: 'Herramientas de workflow (Zapier/Make/n8n)',
         good: 'conectas algunos sistemas con conectores estándar y un área puede mantener el flujo por sí misma.',
         tip: 'versiones, rollbacks, diagnóstico de errores, permisos y operación productiva pesan más que el ensamblado rápido.',
       },
@@ -114,7 +114,7 @@ const t: HomeT = {
         tip: 'la IA no debe verlo todo, debe filtrarse primero de forma determinista y cada paso de IA necesita entradas, salidas y versión de modelo.',
       },
       {
-        category: 'Bots de clic en sistemas heredados',
+        category: 'Bots GUI (RPA)',
         good: 'un sistema antiguo solo es operable por la interfaz y el proceso es esencialmente trabajo de pantalla.',
         tip: 'importan los objetos de negocio, el histórico, los clientes afectados, la repetición y el análisis de causa raíz.',
       },

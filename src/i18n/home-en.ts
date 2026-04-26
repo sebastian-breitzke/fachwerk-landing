@@ -104,7 +104,7 @@ const t: HomeT = {
     heads: ["Today's easy reach", 'Good when …', 'Tips toward Fachwerk when …'],
     rows: [
       {
-        category: 'Click-Automation / iPaaS',
+        category: 'Workflow tools (Zapier/Make/n8n)',
         good: 'you connect a few systems via standard connectors and a business unit can maintain the flow itself.',
         tip: 'versions, rollbacks, error diagnosis, permissions and production operations matter more than the quick click-together.',
       },
@@ -114,7 +114,7 @@ const t: HomeT = {
         tip: 'AI must not see everything, must be deterministically filtered first, and every AI step needs inputs, outputs and model state.',
       },
       {
-        category: 'Click-bots in legacy systems',
+        category: 'GUI bots (RPA)',
         good: 'a legacy system is only operable through the UI and the process stays screen-based.',
         tip: 'business objects, history, affected customers, repeatability and root-cause analysis matter.',
       },
