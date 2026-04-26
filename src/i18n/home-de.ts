@@ -360,10 +360,12 @@ const t = {
       { day: 'Tag 15', title: 'Entscheidung', desc: 'Weiter oder nicht. PoV-Kosten voll anrechenbar auf Launch-Fee.' },
     ],
     architect: {
-      label: '// Der Architekt',
+      label: '',
       name: 'Sebastian Breitzke',
-      bio: '20 Jahre Custom-Software für Mittelstand & Konzern. V-LOG 6.0 (€7M ARR), 1.000+ Customer-Migrationen, Zolllösung nach drei gescheiterten Vorgängern, €1,7M Heine-Deal. Senior Director R&D bei ecovium. Seit 2025 schreiben KI-Agenten meinen Code — ich architekturiere, reviewe, hafte.',
+      bio: '20 Jahre Custom-Software für Mittelstand & Konzern. <strong>V-LOG 6.0</strong> — die führende Multi-Carrier-Shipping-Software in Deutschland, 1.000+ Kunden, ATLAS-Zollsoftware-Migration (Import, Export, Transit), Großprojekte mit bekannten deutschen Konzernen. <strong>Senior Director R&amp;D bei ecovium.</strong> Vorreiter bei KI-basierter Architektur und Softwareentwicklung im Mittelstand.',
       contact: 'Direkter Draht. Keine Sales-Kette.',
+      linkedin: 'linkedin.com/in/sebastian-breitzke',
+      linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
   },
   deploy: {

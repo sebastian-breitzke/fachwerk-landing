@@ -359,10 +359,12 @@ const t: HomeT = {
       { day: 'Día 15', title: 'Decisión', desc: 'Seguir o no. Costes del PoV totalmente acreditables contra la launch fee.' },
     ],
     architect: {
-      label: '// El arquitecto',
+      label: '',
       name: 'Sebastian Breitzke',
-      bio: '20 años de software a medida para mediana y gran empresa. V-LOG 6.0 (€7M ARR), 1.000+ migraciones de clientes, solución de aduanas tras tres intentos fallidos, contrato Heine de €1,7M. Senior Director R&D en ecovium. Desde 2025 los agentes AI escriben mi code — yo arquitecturo, reviso, asumo la responsabilidad.',
+      bio: '20 años de software a medida para mediana y gran empresa. <strong>V-LOG 6.0</strong> — el software líder de multi-carrier shipping en Alemania, 1.000+ clientes, migración de software aduanero ATLAS (import, export, tránsito), grandes proyectos con corporaciones alemanas reconocidas. <strong>Senior Director R&amp;D en ecovium.</strong> Pionero en arquitectura y desarrollo de software basado en AI para la mediana empresa.',
       contact: 'Línea directa. Sin cadena comercial.',
+      linkedin: 'linkedin.com/in/sebastian-breitzke',
+      linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
   },
   deploy: {

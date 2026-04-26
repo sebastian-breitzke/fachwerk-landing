@@ -856,30 +856,30 @@ html[data-view="macher"] .branch-card { border-right-color: var(--line); }
 }
 
 .pov-architect {
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding-top: 2.5rem;
   border-top: 1px dashed var(--line-2);
 }
-.pov-architect-label {
+.pov-architect-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0 0 2rem;
+  text-wrap: balance;
+}
+html[data-view="macher"] .pov-architect-name {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  color: var(--accent);
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.005em;
 }
 .pov-architect-card {
-  margin-top: 1.2rem;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 3rem;
   align-items: start;
-}
-.pov-architect-name {
-  font-family: 'Fraunces', serif;
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  line-height: 1.1;
 }
 .pov-architect-bio {
   font-size: 1rem;

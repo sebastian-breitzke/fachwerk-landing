@@ -580,14 +580,14 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
   </ol>
 
   <div class="pov-architect">
-    <span class="pov-architect-label">{t.pov.architect.label}</span>
+    <h3 class="pov-architect-name">{t.pov.architect.name}</h3>
     <div class="pov-architect-card">
-      <div class="pov-architect-name">{t.pov.architect.name}</div>
-      <p class="pov-architect-bio">{t.pov.architect.bio}</p>
+      <p class="pov-architect-bio" set:html={t.pov.architect.bio}></p>
       <div class="pov-architect-contact">
         <span class="pov-architect-contact-label">{t.pov.architect.contact}</span>
         <a href="mailto:sebastian@s16e.de">sebastian@s16e.de</a>
         <a href="tel:+491724290654">+49 172 4290654</a>
+        <a href={t.pov.architect.linkedinHref} target="_blank" rel="noopener">{t.pov.architect.linkedin}</a>
       </div>
     </div>
   </div>

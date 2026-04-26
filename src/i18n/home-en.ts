@@ -359,10 +359,12 @@ const t: HomeT = {
       { day: 'Day 15', title: 'Decision', desc: 'Continue or not. PoV cost fully creditable against the launch fee.' },
     ],
     architect: {
-      label: '// The architect',
+      label: '',
       name: 'Sebastian Breitzke',
-      bio: '20 years of custom software for mid-market and enterprise. V-LOG 6.0 (€7M ARR), 1,000+ customer migrations, customs solution after three failed predecessors, €1.7M Heine deal. Senior Director R&D at ecovium. Since 2025 AI agents write my code — I architect, review, take responsibility.',
+      bio: '20 years of custom software for mid-market and enterprise. <strong>V-LOG 6.0</strong> — the leading multi-carrier shipping software in Germany, 1,000+ customers, ATLAS customs software migration (import, export, transit), large-scale projects with major German corporations. <strong>Senior Director R&amp;D at ecovium.</strong> Pioneer in AI-driven architecture and software development for the mid-market.',
       contact: 'Direct line. No sales chain.',
+      linkedin: 'linkedin.com/in/sebastian-breitzke',
+      linkedinHref: 'https://www.linkedin.com/in/sebastian-breitzke/',
     },
   },
   deploy: {
