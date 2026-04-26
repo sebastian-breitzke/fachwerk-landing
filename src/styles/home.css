@@ -2000,14 +2000,25 @@ html[data-view="macher"] .pov-architect-name {
   box-shadow: 10px 10px 0 var(--sun), 10px 10px 0 1px var(--fg);
 }
 
-/* Quick-Setup-Block: Türöffner für Owner-Operator unter den 2 Tiers */
+/* Quick-Setup-Block: dritte Karte unter den 2 Tiers, gleiche Bildsprache */
 .quick-setup {
-  margin-top: 3.5rem;
-  padding: 2.2rem 2.4rem;
-  border: 1px dashed var(--line-2);
-  border-left: 3px solid var(--accent);
-  background: color-mix(in oklab, var(--accent) 3%, var(--paper));
-  max-width: 64rem;
+  margin-top: 2.5rem;
+  padding: 2.5rem 2.4rem;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  box-shadow: 10px 10px 0 var(--sun), 10px 10px 0 1px var(--fg);
+  position: relative;
+}
+.quick-setup::before {
+  content: '§ Quick-Setup';
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
 }
 .quick-setup-eyebrow {
   font-family: 'IBM Plex Mono', monospace;
@@ -2056,10 +2067,11 @@ html[data-view="macher"] .pov-architect-name {
   border-bottom-color: var(--accent);
 }
 
-/* Tech-View: Quick-Setup mit teal accent statt sun-tint */
+/* Tech-View: Quick-Setup als dritte Karte mit teal-shadow */
 html[data-view="macher"] .quick-setup {
-  background: rgba(94, 234, 212, 0.04);
-  border-color: rgba(94, 234, 212, 0.25);
+  background: var(--paper);
+  border-color: var(--line-2);
+  box-shadow: 10px 10px 0 var(--accent), 10px 10px 0 1px var(--ink);
 }
 html[data-view="macher"] .quick-setup-link {
   color: var(--fg);
@@ -2815,17 +2827,13 @@ html[data-view="macher"] ::selection { background: var(--accent); color: var(--i
 /* Eyebrow stays teal in macher (already accent) — strip the dark-section override since macher is uniformly dark */
 
 /* ─── Tech-Mode Background-Taktung ─────────────────
-   Hero: deep · 01 medium · 02 deep · 03 medium · 03b deep · 04 medium ·
-   05 deep · 06 medium · 07 deep · 08 deep · 09 console-hangar
-   "deep"   = var(--ink) + teal grid overlay
-   "medium" = var(--bg) + body grid (transparent section, body shows through) */
+   Spiegel der Business-Rotation A·C·B·C·A·B·C·A·C·A·B, in Dark adaptiert:
+   A (default body)   = --bg + body grid (medium)
+   B (.dark-section)  = --ink + teal grid (deep)
+   C (.cream-section) = --bg-2 solid panel, kein grid (panel) */
 
-/* Reusable deep-grid pattern for tech sections that take "deep" slot */
-html[data-view="macher"] section.hero,
-html[data-view="macher"] section#kipp,
-html[data-view="macher"] section#katalog,
-html[data-view="macher"] section#deploy,
-html[data-view="macher"] section#pricing {
+/* Hero stays deep regardless */
+html[data-view="macher"] section.hero {
   background-color: var(--ink);
   background-image:
     linear-gradient(rgba(94, 234, 212, 0.08) 1px, transparent 1px),
@@ -2837,11 +2845,14 @@ html[data-view="macher"] section#pricing {
   position: relative;
 }
 
-/* Sackgassen (#03) und Cases (#06 .uc-solid) haben eigenes solid bg.
-   In Tech: transparent damit Body-Grid (medium) durchscheint. */
-html[data-view="macher"] .sackgassen,
-html[data-view="macher"] .uc-solid,
-html[data-view="macher"] .cream-section { background: transparent; }
+/* C: cream-section in macher = solid panel, kein grid, etwas heller als body */
+html[data-view="macher"] .cream-section {
+  background: var(--bg-2);
+}
+html[data-view="macher"] .cream-section::before { display: none; }
+
+/* Legacy alias — sackgassen ist altes content-feld */
+html[data-view="macher"] .sackgassen { background: transparent; }
 
 /* Dark-section (Pillars #02) grid: re-tint white to teal in tech */
 html[data-view="macher"] .dark-section::before {
