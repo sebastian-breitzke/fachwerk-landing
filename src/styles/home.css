@@ -1452,28 +1452,14 @@ html[data-view="macher"] .pov-architect-name {
 .zoo-bad h4 { color: var(--terracotta); }
 .zoo-good h4 { color: var(--accent); }
 
-/* Zoo-Split: Chaos-Canvas links + Lede-Text rechts (2-Spalten) */
-.zoo-split {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 3rem;
-  align-items: center;
-}
-.zoo-lede {
-  margin: 0;
-}
-
+/* Chaos-Canvas: kompakt unter dem block-head, left-aligned */
 .zoo-canvas {
   position: relative;
   background: color-mix(in oklab, var(--terracotta) 5%, var(--paper));
   border: 1px dashed var(--terracotta);
-  height: 380px;
+  height: 280px;
+  max-width: 48rem;
   overflow: hidden;
-}
-
-@media (max-width: 1100px) {
-  .zoo-split { grid-template-columns: 1fr; gap: 2rem; }
-  .zoo-canvas { height: 300px; }
 }
 .zoo-app {
   position: absolute;
