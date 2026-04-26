@@ -2115,6 +2115,56 @@ section.block {
   background: var(--paper);
   box-shadow: 10px 10px 0 var(--sun), 10px 10px 0 1px var(--fg);
 }
+.price-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Add-Ons unter den Tier-Karten */
+.price-addons {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+}
+.price-addon {
+  padding: 2rem 2.2rem;
+  border-right: 1px solid var(--line);
+}
+.price-addon:last-child { border-right: none; }
+.price-addon .price-tier {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.price-addon h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+  color: var(--fg);
+}
+.price-addon .price-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.price-limit {
+  margin: 0.8rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted-2);
+}
+@media (max-width: 900px) {
+  .price-grid-3,
+  .price-addons { grid-template-columns: 1fr; }
+  .price-addon { border-right: none; border-bottom: 1px solid var(--line); }
+  .price-addon:last-child { border-bottom: none; }
+}
 
 /* Quick-Setup-Block: dritte Karte unter den 2 Tiers, gleiche Bildsprache */
 .quick-setup {

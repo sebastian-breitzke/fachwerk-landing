@@ -628,8 +628,8 @@ window.TWEAKS = {
     </div>
   </div>
 
-  <div class="price-grid">
-    {[t.pricing.core, t.pricing.platform].map(pk => (
+  <div class="price-grid price-grid-3">
+    {t.pricing.tiers.map(pk => (
       <div class="price-card">
         <span class="price-tier">{pk.tier}</span>
         <h3>{pk.h3}</h3>
@@ -643,19 +643,19 @@ window.TWEAKS = {
     ))}
   </div>
 
-  <div class="quick-setup">
-    <span class="quick-setup-eyebrow">{t.pricing.quickSetupEyebrow}</span>
-    <h3 class="quick-setup-title" set:html={t.pricing.quickSetupTitle}></h3>
-    <p class="quick-setup-body">{t.pricing.quickSetupBody}</p>
-    <div class="quick-setup-meta">
-      <span class="quick-setup-meta-line">{t.pricing.quickSetupMeta}</span>
-      <a class="quick-setup-link" href={t.pricing.quickSetupCtaHref}>{t.pricing.quickSetupCtaLabel}</a>
-      <a class="quick-setup-link" href={t.pricing.quickSetupPhoneHref}>{t.pricing.quickSetupPhone}</a>
-    </div>
+  <div class="price-addons">
+    {t.pricing.addons.map(addon => (
+      <div class="price-addon">
+        <span class="price-tier">{addon.tier}</span>
+        <h3>{addon.h3}</h3>
+        <p class="price-desc">{addon.desc}</p>
+      </div>
+    ))}
   </div>
 
   <div class="price-note">
     <p set:html={t.pricing.note}></p>
+    <p class="price-limit">{t.pricing.limit}</p>
   </div>
 </section>
 
