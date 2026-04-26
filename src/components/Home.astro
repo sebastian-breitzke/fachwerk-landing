@@ -344,27 +344,22 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     </div>
     <div>
       <h2 class="block-title" set:html={t.zoo.title}></h2>
-      <p class="block-lede" set:html={t.zoo.lede}></p>
     </div>
   </div>
 
-  <div class="zoo-single">
-    <div class="zoo-side zoo-bad">
-      <div class="zoo-canvas">
-        {t.zoo.bad.apps.map((app, i) => (
-          <div class={`zoo-app za-${i + 1}`}>
-            {app.label}
-            {app.tag && <span class="ztag">{app.tag}</span>}
-          </div>
-        ))}
-        {t.zoo.bad.warns.map((w, i) => (
-          <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
-        ))}
-      </div>
-      <ul class="zoo-list">
-        {t.zoo.bad.list.map(li => <li>{li}</li>)}
-      </ul>
+  <div class="zoo-split">
+    <div class="zoo-canvas">
+      {t.zoo.bad.apps.map((app, i) => (
+        <div class={`zoo-app za-${i + 1}`}>
+          {app.label}
+          {app.tag && <span class="ztag">{app.tag}</span>}
+        </div>
+      ))}
+      {t.zoo.bad.warns.map((w, i) => (
+        <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
+      ))}
     </div>
+    <p class="zoo-lede block-lede" set:html={t.zoo.lede}></p>
   </div>
 </section>
 
