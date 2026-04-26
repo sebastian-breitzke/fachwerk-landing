@@ -133,7 +133,7 @@ const t = {
   },
   diagnose: {
     eyebrow: '04 — Selbst-erklärend, selbst-debuggend',
-    index: '// werkstatt-diagnose · code · flow-log · speicher',
+    index: '// das system erklärt sich selbst',
     title: `Frag dein System. <em>Es kennt sich selbst.</em>`,
     lede: `Die Werkstatt sieht alles, was Fachwerk weiß: jede Code-Zeile im Katalog, jeden Run im Betrieb, jede historisierte Zahl im Speicher. Du fragst — Fachwerk antwortet mit <strong>Code, Log und Datenhistorie zusammen</strong>. Findest du einen Fehler, legst du ein Werkstatt-Projekt an und fixt ihn selbst.`,
     examples: [

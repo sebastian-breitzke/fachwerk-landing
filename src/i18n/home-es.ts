@@ -132,7 +132,7 @@ const t: HomeT = {
   },
   diagnose: {
     eyebrow: '04 — Auto-explicativo, auto-depurable',
-    index: '// diagnóstico de taller · code · log de flujo · almacén',
+    index: '// el sistema se explica solo',
     title: `Pregunta a tu sistema. <em>Se conoce a sí mismo.</em>`,
     lede: `El taller ve todo lo que Fachwerk sabe: cada línea de code en el catálogo, cada run en operación, cada número historizado en almacén. Tú preguntas — Fachwerk responde con <strong>code, log e historial de datos juntos</strong>. ¿Encuentras un fallo? Abres un proyecto de taller y lo arreglas tú.`,
     examples: [

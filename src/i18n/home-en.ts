@@ -132,7 +132,7 @@ const t: HomeT = {
   },
   diagnose: {
     eyebrow: '04 — Self-explaining, self-debugging',
-    index: '// workshop diagnostics · code · flow log · storage',
+    index: '// the system explains itself',
     title: `Ask your system. <em>It knows itself.</em>`,
     lede: `The workshop sees everything Fachwerk knows: every line of code in the catalog, every run in operations, every historized number in storage. You ask — Fachwerk answers with <strong>code, log and data history together</strong>. Find a bug? Spin up a workshop project and fix it yourself.`,
     examples: [
