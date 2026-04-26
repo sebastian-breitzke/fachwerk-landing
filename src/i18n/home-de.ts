@@ -176,7 +176,7 @@ const t = {
   zoo: {
     eyebrow: '02 — Die neue Falle',
     index: '// ai-coding ist da, aber...',
-    title: `Endlich schreibst du dir selbst. <em>Aber wo läuft das in drei Jahren?</em>`,
+    title: `Endlich hilfst du dir selbst. <em>Aber wo läuft das in drei Jahren?</em>`,
     lede: `Endlich musst du nicht mehr auf den BI-Menschen warten oder mit Auswertungen leben, die auf fünf Felder hardcoded sind. <strong>Du beschreibst, was du brauchst, KI baut es</strong> — Lovable, Bolt, v0, ChatGPT machen's vor. Schnell. Praktisch. Aber in 6 Monaten hast du <strong>Lisas Excel-Makro v3.7</strong>, Kais GPT-Workflow auf Privat-Laptop, einen API-Key in einem Pastebin und keinen Plan, was eigentlich noch läuft. KI-Coding ohne Statik = Insel-Zoo mit Glitzer.`,
     bad: {
       h: 'Ohne Rohbau — der Zoo',

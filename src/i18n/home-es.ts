@@ -175,7 +175,7 @@ const t: HomeT = {
   zoo: {
     eyebrow: '02 — La nueva trampa',
     index: '// ai-coding está aquí, pero...',
-    title: `Por fin lo construyes tú mismo. <em>¿Pero dónde corre en tres años?</em>`,
+    title: `Por fin te ayudas a ti mismo. <em>¿Pero dónde corre en tres años?</em>`,
     lede: `Por fin no tienes que esperar a la persona de BI, ni vivir con reports hard-coded sobre cinco campos. <strong>Describes lo que necesitas, la IA lo construye</strong> — Lovable, Bolt, v0, ChatGPT lo muestran. Rápido. Práctico. Pero en 6 meses tienes <strong>el macro Excel de Lisa v3.7</strong>, el workflow GPT de Kai en su portátil privado, una API key en un pastebin, y ni idea de qué sigue corriendo. AI-coding sin estructura = zoo de islas con purpurina.`,
     bad: {
       h: 'Sin estructura — el zoo',
