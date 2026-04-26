@@ -1452,15 +1452,17 @@ html[data-view="macher"] .pov-architect-name {
 .zoo-bad h4 { color: var(--terracotta); }
 .zoo-good h4 { color: var(--accent); }
 
-/* Chaos-Canvas: kompakt unter dem block-head, left-aligned */
+/* Chaos-Canvas: in der rechten block-head-Spalte unter Title/Lede,
+   gleiches Left-Alignment wie der Text. */
 .zoo-canvas {
   position: relative;
   background: color-mix(in oklab, var(--terracotta) 5%, var(--paper));
   border: 1px dashed var(--terracotta);
   height: 280px;
-  max-width: 48rem;
+  margin-top: 2rem;
   overflow: hidden;
 }
+.zoo-section .block-head { margin-bottom: 0; }
 .zoo-app {
   position: absolute;
   background: var(--paper);

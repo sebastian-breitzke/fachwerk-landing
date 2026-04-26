@@ -337,7 +337,7 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
 </section>
 
 <section class="block zoo-section" id="falle">
-  <div class="block-head">
+  <div class="block-head zoo-head">
     <div>
       <span class="eyebrow">{t.zoo.eyebrow}</span>
       <div class="block-index" style="margin-top:1rem">{t.zoo.index}</div>
@@ -345,19 +345,18 @@ catch (e) { document.documentElement.dataset.view = 'business'; }
     <div>
       <h2 class="block-title" set:html={t.zoo.title}></h2>
       <p class="block-lede" set:html={t.zoo.lede}></p>
-    </div>
-  </div>
-
-  <div class="zoo-canvas">
-    {t.zoo.bad.apps.map((app, i) => (
-      <div class={`zoo-app za-${i + 1}`}>
-        {app.label}
-        {app.tag && <span class="ztag">{app.tag}</span>}
+      <div class="zoo-canvas">
+        {t.zoo.bad.apps.map((app, i) => (
+          <div class={`zoo-app za-${i + 1}`}>
+            {app.label}
+            {app.tag && <span class="ztag">{app.tag}</span>}
+          </div>
+        ))}
+        {t.zoo.bad.warns.map((w, i) => (
+          <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
+        ))}
       </div>
-    ))}
-    {t.zoo.bad.warns.map((w, i) => (
-      <div class={i === 0 ? 'zoo-warn' : 'zoo-warn zoo-warn-2'}>{w}</div>
-    ))}
+    </div>
   </div>
 </section>
 
