@@ -438,7 +438,7 @@ const t: HomeT = {
     eyebrow: '11 — Pricing',
     index: '// four building blocks, transparent',
     title: `Platform and my time you pay to me. <em>Resources I pass through 1:1.</em>`,
-    lede: `<strong>Platform and my time you pay to me. Cloud costs pass through 1:1, plus 10 % admin.</strong> No hidden margins, no volume trap, no seat license.`,
+    lede: `Setup sprint, platform license, architect day — three lines, billed separately. <strong>Cloud bills come through as receipts</strong>, you see to the cent what you pay to whom.`,
     tiers: [
       {
         tier: '§ Quick-Setup',

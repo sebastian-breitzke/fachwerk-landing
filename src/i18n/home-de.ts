@@ -439,7 +439,7 @@ const t = {
     eyebrow: '11 — Pricing',
     index: '// vier bausteine, transparent',
     title: `Plattform und meine Zeit zahlst du an mich. <em>Ressourcen reiche ich 1:1 durch.</em>`,
-    lede: `<strong>Plattform und meine Zeit zahlst du an mich. Cloud-Kosten gehen 1:1 durch, plus 10 % für die Verwaltung.</strong> Keine versteckten Margen, keine Volumen-Falle, keine Seat-Lizenz.`,
+    lede: `Setup-Sprint, Plattform-Lizenz, Architektur-Tag — drei Linien, getrennt abgerechnet. <strong>Cloud-Bills bekommst du 1:1 als Beleg</strong>, du siehst auf den Cent was du wofür zahlst.`,
     tiers: [
       {
         tier: '§ Quick-Setup',

@@ -438,7 +438,7 @@ const t: HomeT = {
     eyebrow: '11 — Pricing',
     index: '// cuatro bloques, transparente',
     title: `Plataforma y mi tiempo me los pagas a mí. <em>Los recursos los paso 1:1.</em>`,
-    lede: `<strong>Plataforma y mi tiempo me los pagas a mí. Los costes de cloud van 1:1, más 10 % de administración.</strong> Sin márgenes ocultos, sin trampa de volumen, sin licencia por usuario.`,
+    lede: `Setup-Sprint, licencia de plataforma, día de arquitecto — tres líneas, facturadas por separado. <strong>Las facturas de cloud llegan 1:1 como justificante</strong>, ves al céntimo qué pagas a quién.`,
     tiers: [
       {
         tier: '§ Quick-Setup',
