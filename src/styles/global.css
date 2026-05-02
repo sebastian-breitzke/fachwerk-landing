@@ -19,13 +19,13 @@
 :root {
   --bg: #f4f5f7;
   --fg: #1a2030;
-  --primary: #2a9080;
+  --primary: #257f70;
   --muted: #e8eaee;
   --muted-text: #5a6270;
   --border: #dfe2e6;
-  --success: #4a7c59;
+  --success: #4a7c25;
   --error: #a65241;
-  --warning: #b8860b;
+  --warning: #8f6500;
   --info: #4a6fa5;
   --dark-bg: #1e2430;
   --teal: #5eead4;
