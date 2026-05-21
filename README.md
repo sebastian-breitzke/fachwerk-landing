@@ -5,21 +5,24 @@ Landing page for [Fachwerk](https://fachwerk.tech) — the platform for bespoke 
 ## Structure
 
 ```
-index.html          German landing page (default)
-en/index.html       English landing page
-impressum.html      Legal notice (German law)
-datenschutz.html    Privacy policy (DSGVO)
-favicon.svg         SVG favicon (Fachwerk logo)
-fonts/              Self-hosted IBM Plex Sans (300/400/500/600)
+src/pages/          Astro routes
+src/components/     Shared Astro components
+src/i18n/           Landing page copy per locale
+src/styles/         Global and page-specific styles
+src/assets/         Source images processed by Astro
+public/             Static assets copied as-is
 ```
 
 ## Hosting
 
-Static site on **Cloudflare Pages**.
+Static Astro build on **Cloudflare Pages**.
 
 ```bash
-# Deploy
-wrangler pages deploy . --project-name=fachwerk-landing
+# Build
+npm run build
+
+# Deploy dist/
+wrangler pages deploy dist --project-name=fachwerk-landing
 ```
 
 ## Fonts
