@@ -7,7 +7,7 @@ import AgentDiagram from './AgentDiagram.astro';
 import WorkFlowDiagram from './WorkFlowDiagram.astro';
 const contact = 'mailto:hello@fachwerk.tech?subject=Erstgespr%C3%A4ch%20zu%20Fachwerk%20GPE';
 ---
-<Base title="Fachwerk GPE – Dein Geschäft im KI-Zeitalter." description="Fachwerk GPE ist eine General Purpose Business Engine: Sie verbindet eure Geschäftsdaten, Systeme und Aktionen, damit Menschen und KI-Agenten gemeinsam damit arbeiten können.">
+<Base title="Fachwerk GPE – Dein Geschäft im KI-Zeitalter." description="Maßgeschneiderte Business-Software, die auch ohne KI funktioniert. Agenten übernehmen Arbeit. Im Leitstand behältst du den Überblick und entscheidest, wie weit sie gehen.">
   <main class="landing">
     <section class="hero ink-section" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
@@ -15,9 +15,9 @@ const contact = 'mailto:hello@fachwerk.tech?subject=Erstgespr%C3%A4ch%20zu%20Fac
         <h1 id="hero-title" aria-describedby="hero-definition"><span class="accent">FACHWERK GPE</span><span class="hero-claim">Dein Geschäft.<br />Im KI-Zeitalter.</span></h1>
         <div class="hero-body">
           <div class="hero-copy">
-            <p class="hero-lead" id="hero-definition">Die General Purpose Business Engine für euren Betrieb.</p>
-            <p>Eine Softwarebasis, die eure Geschäftsdaten, Systeme und Aktionen verbindet. Menschen und KI-Agenten arbeiten mit denselben Werkzeugen – jeweils mit ihren zugewiesenen Rechten.</p>
-            <p class="hero-support">Feste Abläufe als Scripts. Abwägungen mit intelligenten Agenten. Ihr beginnt mit einem Ablauf und erweitert auf das ganze Geschäft.</p>
+            <p class="hero-lead" id="hero-definition">Maßgeschneiderte Business-Software.<br />Verlässlich, auch ohne KI.</p>
+            <p>Lass Agenten Arbeit übernehmen und behalte im Leitstand den Überblick über Aufgaben, Ergebnisse und Entscheidungen.</p>
+            <p class="hero-support">Fachwerk GPE: die General Purpose Business Engine für euren Betrieb.</p>
             <div class="hero-contact">
               <div class="actions"><a class="button button-light" href="#kontakt">Lass uns sprechen <span aria-hidden="true">↗</span></a><a class="button button-on-ink" href="#system">Fachwerk GPE kennenlernen <span aria-hidden="true">↓</span></a></div>
               <p>Mit Sebastian Breitzke, dem Entwickler von Fachwerk GPE.</p>
@@ -29,14 +29,37 @@ const contact = 'mailto:hello@fachwerk.tech?subject=Erstgespr%C3%A4ch%20zu%20Fac
     </section>
 
     <section class="section wrap" id="system" aria-labelledby="system-title">
-      <header class="editorial-heading"><p class="eyebrow">01 · Deine Systemlandschaft</p><h2 id="system-title">Behalte, was passt.<br />Baue, was fehlt.</h2><p>Fachwerk GPE verbindet eure gewachsenen Systeme und gibt den Abläufen einen Platz, die heute nirgends richtig hineinpassen.</p></header>
+      <header class="editorial-heading"><p class="eyebrow">01 · Für dein Geschäft gebaut</p><h2 id="system-title">Dein Betrieb braucht Software,<br />die zu ihm passt.</h2><p>Fachwerk GPE verbindet eure bestehenden Systeme mit eigenen Anwendungen. Geschäftskerne liefern die fachlichen Grundlagen und Kennzahlen. Darauf bauen wir eure Abläufe und Arbeitsplätze – voll nutzbar, auch ohne KI.</p></header>
+      <div class="editorial-columns foundation-intro" id="geschaeftskerne">
+        <article><h3>Fachliche Grundlagen mitbringen.</h3><p>Commerce, Versand, Ware oder Zoll: Geschäftskerne liefern wiederkehrende Berechnungen, Regeln und Aktionen. Ihr baut die Grundlagen eines CRM- oder Versandsystems nicht neu.</p></article>
+        <article><h3>Eure Arbeitsweise abbilden.</h3><p>Vom Packplatz bis zur Kundenanfrage: Eure Arbeitsplätze bringen die benötigten Daten und Aktionen zusammen. Feste Abläufe können als Scripts laufen. Agenten ergänzt ihr dort, wo sie euch helfen.</p></article>
+      </div>
+      <h3 class="landscape-heading">Behalte, was passt. Baue, was fehlt.</h3>
       <SystemLandscape />
       <p class="section-note">Verbinden, ergänzen oder schrittweise ablösen: Dein Geschäft bestimmt, wo wir anfangen. Eine Rückschreibung in ein Quellsystem braucht die passende Rückintegration.</p>
+      <details class="section-details" id="daten">
+        <summary>Die gemeinsame Datengrundlage dahinter</summary>
+        <figure class="business-foundation" aria-labelledby="foundation-caption">
+          <p class="foundation-label">Zum Beispiel: ein Auftrag</p>
+          <div class="foundation-order">
+            <strong class="foundation-anchor">Auftrag</strong>
+            <dl class="foundation-facts">
+              <div><dt>Kunde</dt><dd>Wer bestellt und zu welchen Konditionen.</dd></div>
+              <div><dt>Ware</dt><dd>Was gebraucht wird und woher es kommt.</dd></div>
+              <div><dt>Lieferung</dt><dd>Was verschickt wurde und noch fehlt.</dd></div>
+              <div><dt>Rechnung &amp; Zahlung</dt><dd>Was berechnet und bereits bezahlt ist.</dd></div>
+            </dl>
+          </div>
+          <figcaption id="foundation-caption">Ein Zusammenhang – auch über mehrere Systeme hinweg.</figcaption>
+        </figure>
+        <p class="shared-data">Der Datenraum nimmt Daten aus euren Systemen auf und verbindet sie über das Skelettmodell: Kunden mit Aufträgen, Produkte mit Lieferanten, Sendungen mit Rechnungen. Quellen und Kontext bleiben erhalten; eigene Felder und Fachobjekte ergänzen das Modell für euren Betrieb.</p>
+        <p class="shared-data">Euer Geschäft muss dafür nicht erst perfekt aufgeräumt sein. Fachwerk GPE arbeitet mit den vorhandenen Daten. Was fehlt, können Integrationen, intelligente Aktionen und euer Team ergänzen. Ein einzelner Ablauf reicht für den Anfang; auch Systeme, die ihr vorerst nicht anbindet, dürfen ihren Platz behalten.</p>
+      </details>
     </section>
 
     <section class="section ink-section intelligence-section intelligence-dark" id="eigene-ki" aria-labelledby="ai-title">
       <div class="wrap">
-        <header class="editorial-heading"><p class="eyebrow">02 · Dein Concierge und euer Agententeam</p><h2 id="ai-title">Dein Concierge.<br />Immer an deiner Seite.</h2><p>Für das, was du gerade brauchst: Dein Concierge kennt den Zusammenhang und erledigt Aufgaben quer durch Fachwerk GPE – mit deinen Rechten.</p></header>
+        <header class="editorial-heading"><p class="eyebrow">02 · Agenten übernehmen echte Arbeit</p><h2 id="ai-title">Routine abgeben.<br />Auch komplexe Aufgaben.</h2><p>Ob Rechnungen prüfen oder Lieferabweichungen klären: Fachagenten arbeiten mit passenden Rechten in klaren Mandaten. Darin legt ihr Aufgaben und Vorgehen fest. Dein Concierge ist dein persönlicher Zugang – er arbeitet mit deinen Rechten und hilft dir, die Arbeit zu steuern.</p></header>
         <div class="concierge-intro">
           <div class="concierge-person"><img src="/images/agent-concierge-256.webp" srcset="/images/agent-concierge-128.webp 128w, /images/agent-concierge-256.webp 256w, /images/agent-concierge-418.webp 418w" sizes="(max-width: 760px) 120px, 180px" alt="Dein Concierge" width="240" height="240" loading="lazy" decoding="async" /><p>Dein persönlicher Zugang<br />zu Daten und Aktionen in Fachwerk GPE.</p></div>
           <div class="concierge-requests"><p class="eyebrow">Zum Beispiel</p><ul><li>„Lege diese 50 Kunden aus Excel im CRM an.“</li><li>„Gleiche die PDF-Rechnung aus dieser E-Mail mit den Daten in Fachwerk GPE ab.“</li><li>„Nimm fünf neue Kollegen ins Team auf und vergib die passenden Rechte.“</li></ul></div>
@@ -49,7 +72,7 @@ const contact = 'mailto:hello@fachwerk.tech?subject=Erstgespr%C3%A4ch%20zu%20Fac
             <details class="section-details">
               <summary>So funktioniert der Agent-Zugriff</summary>
               <div class="disclosure-content">
-                <p>Feste Abläufe laufen als Scripts, Aufgaben mit Abwägungen übernehmen intelligente Agenten. Verbinde deinen eigenen Agenten über MCP oder CLI. Er kann seinen bestehenden KI-Zugang nutzen.</p>
+                <p>Feste Abläufe können als Scripts laufen. Intelligente Agenten übernehmen Routine ebenso wie Aufgaben, die Recherche und Abwägung brauchen. Verbinde deinen eigenen Agenten über MCP oder CLI. Er kann seinen bestehenden KI-Zugang nutzen.</p>
                 <p class="private-source">Zum Beispiel dein privates Postfach: Dein externer Agent kann dort eine E-Mail lesen und daraus einen Auftrag in Fachwerk GPE anlegen. Das Postfach bleibt außerhalb von Fachwerk GPE und wird nicht mit dem Team geteilt. Die für die Aktion übergebenen Auftragsdaten kommen in Fachwerk GPE an.</p>
               </div>
             </details>
@@ -66,52 +89,28 @@ const contact = 'mailto:hello@fachwerk.tech?subject=Erstgespr%C3%A4ch%20zu%20Fac
             </details>
           </article>
         </section>
-        <section class="agent-knowledge" aria-labelledby="knowledge-title">
-          <h3 id="knowledge-title" class="knowledge-heading">Wissen und Erfahrungswerte.</h3>
-          <p>Euer Wissen und die Erfahrungen aus erledigten Aufträgen helfen Concierge und Agententeam bei der nächsten Aufgabe.</p>
-          <details class="section-details">
-            <summary>Wissen und Erfahrungswerte nutzen</summary>
-            <div class="knowledge-columns">
-              <article><h4>Euer Wissen einbringen.</h4><p>Ladet Dokumente hoch, fügt Inhalte ein oder hinterlegt Informationen über euren Betrieb. KI bereitet sie auf, damit Concierge und Agententeam damit arbeiten können.</p></article>
-              <article><h4>Erfahrung weitergeben.</h4><p>Agenten sammeln bei ihrer Arbeit Erkenntnisse: Was hat einen Fall gelöst? Was hat sich bewährt? Diese Erfahrungswerte helfen dem Team beim nächsten Auftrag.</p></article>
-            </div>
-          </details>
-        </section>
       </div>
     </section>
 
     <section class="section ink-section intelligence-dark" id="arbeit" aria-labelledby="work-title">
       <div class="wrap">
-        <header class="editorial-heading"><p class="eyebrow">03 · Arbeit erledigen. Kontrolle behalten.</p><h2 id="work-title">Mehr erledigt.<br /><span class="intelligence-text">Aufmerksamkeit für das Wesentliche.</span></h2><p>Deine Aufmerksamkeit ist kostbar. KI ordnet Arbeit ein und bereitet sie vor; Regeln und KI erledigen und dokumentieren Routine. Du siehst, was passiert ist und wo dein Urteil gebraucht wird.</p></header>
+        <header class="editorial-heading" id="leitstand"><p class="eyebrow">03 · Dein Leitstand</p><h2 id="work-title">Sehen, was läuft.<br /><span class="intelligence-text">Entscheiden, was weitergeht.</span></h2><p>Im Leitstand siehst du, woran Agenten arbeiten, welche Ergebnisse vorliegen und wo deine Aufmerksamkeit gebraucht wird. Du nimmst viele Ergebnisse zügig ab, prüfst einen Fall genauer oder gibst eine konkrete Korrektur mit.</p></header>
         <WorkFlowDiagram />
-        <div class="editorial-columns"><article><h3>Sehen, was erledigt ist.</h3><p>Fachwerk GPE zeigt erledigte Routine und dokumentierte Entscheidungen. Du sichtest und bestätigst sie zügig. Abwägungen werden hervorgehoben, damit du dort genauer prüfst, wo dein Urteil gebraucht wird.</p></article><article><h3>Übernehmen, wo dein Urteil zählt.</h3><p>Eskalationen kommen mit Kontext und Optionen an deinen Arbeitsplatz. Für die Kundenanfrage, den Packplatz oder den fachlichen Ausnahmefall bauen wir die passende Ansicht – mit den benötigten Daten und den Aktionen, für die du berechtigt bist.</p></article></div>
+        <div class="editorial-columns leitstand-modes">
+          <article><h3>Abhaken</h3><p>Ergebnisse und Begründungen sichten, passende Empfehlungen gemeinsam annehmen. So nimmst du viele Ergebnisse zügig ab.</p></article>
+          <article><h3>Entscheiden</h3><p>Eine offene Frage beantworten oder eine konkrete Korrektur mitgeben. Der Agent arbeitet mit deiner Entscheidung weiter.</p></article>
+          <article><h3>Eskaliert</h3><p>Einen schwierigen Fall selbst übernehmen. Kontext und bisherige Ergebnisse sind da; für die Bearbeitung nutzt du den passenden Arbeitsplatz.</p></article>
+        </div>
       </div>
     </section>
 
-    <section class="section section-paper" id="geschaeftskerne" aria-labelledby="cores-title">
+    <section class="section section-paper" id="vertrauen" aria-labelledby="trust-title">
       <div class="wrap">
-        <header class="editorial-heading"><p class="eyebrow">04 · Das ganze Geschäft im Zusammenhang</p><h2 id="cores-title">Ein Unternehmen ist mehr<br />als seine einzelnen Systeme.</h2><p>Vom Einkauf bis zur Zahlung: Fachwerk GPE hält euer Geschäft im Zusammenhang – auch wenn die Daten in verschiedenen Systemen liegen.</p></header>
-        <figure class="business-foundation" aria-labelledby="foundation-caption">
-          <p class="foundation-label">Zum Beispiel: ein Auftrag</p>
-          <div class="foundation-order">
-            <strong class="foundation-anchor">Auftrag</strong>
-            <dl class="foundation-facts">
-              <div><dt>Kunde</dt><dd>Wer bestellt und zu welchen Konditionen.</dd></div>
-              <div><dt>Ware</dt><dd>Was gebraucht wird und woher es kommt.</dd></div>
-              <div><dt>Lieferung</dt><dd>Was verschickt wurde und noch fehlt.</dd></div>
-              <div><dt>Rechnung &amp; Zahlung</dt><dd>Was berechnet und bereits bezahlt ist.</dd></div>
-            </dl>
-          </div>
-          <figcaption id="foundation-caption">Ein Zusammenhang – auch über mehrere Systeme hinweg.</figcaption>
-        </figure>
-        <details class="section-details" id="daten">
-          <summary>Datenraum und Geschäftskerne verstehen</summary>
-          <div class="editorial-columns foundation-explanation">
-            <article><h3>Der Datenraum hält alles zusammen.</h3><p>Er nimmt Daten aus euren Systemen auf und verbindet sie über das Skelettmodell: Kunden mit Aufträgen, Produkte mit Lieferanten, Sendungen mit Rechnungen. Quellen und Kontext bleiben erhalten; eigene Felder und Fachobjekte ergänzen das Modell für euren Betrieb.</p></article>
-            <article><h3>Geschäftskerne bringen Fachlogik mit.</h3><p>Commerce, Versand, Ware oder Zoll: Geschäftskerne liefern wiederkehrende Berechnungen, Regeln und Aktionen. Ihr baut die Grundlagen eines CRM- oder Versandsystems nicht neu. Darauf entstehen die Abläufe und Arbeitsplätze, die euer Unternehmen braucht.</p></article>
-          </div>
-          <p class="shared-data">Euer Geschäft muss dafür nicht erst perfekt aufgeräumt sein. Fachwerk GPE arbeitet mit den vorhandenen Daten. Was fehlt, können Integrationen, intelligente Aktionen und euer Team ergänzen. Ein einzelner Ablauf reicht für den Anfang; auch Systeme, die ihr vorerst nicht anbindet, dürfen ihren Platz behalten.</p>
-        </details>
+        <header class="editorial-heading"><p class="eyebrow">04 · Du bestimmst, wie weit</p><h2 id="trust-title">Automatisierung wächst<br />mit deinem Vertrauen.</h2><p>Neue Mandate beginnen ohne automatische Abnahme. Bewährt sich die Arbeit, kannst du sie für ein Mandat einschalten. Andere Mandate begleitest du weiter – unabhängig davon, ob die Aufgabe einfach oder komplex ist.</p></header>
+        <div class="editorial-columns">
+          <article><h3>Aus einem Fall eine bessere Vorgabe machen.</h3><p>Die korrigierte Rechnung zeigt, was beim nächsten Mal anders laufen soll. Gemeinsam mit deinem Concierge präzisierst du das Mandat und pflegst passende Wissensbeiträge. Angenommene Erfahrungswerte bleiben an das jeweilige Mandat gebunden.</p></article>
+          <article><h3>Euer Wissen bewusst einbringen.</h3><p>Dokumente, betriebliche Regeln und geprüfte Erfahrungen helfen bei den nächsten Aufgaben. Ihr entscheidet, was übernommen wird. So verbessert ihr die Arbeitsweise gezielt.</p></article>
+        </div>
       </div>
     </section>
 

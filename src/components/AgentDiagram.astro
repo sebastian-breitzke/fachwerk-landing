@@ -7,14 +7,14 @@ const agents = [
 ];
 ---
 <figure class="agent-team" aria-labelledby="agent-team-title">
-  <figcaption id="agent-team-title" class="team-heading"><div><h3>Euer Team für die tägliche Arbeit.</h3><p>Während du mit deinem Concierge arbeitest, übernehmen spezialisierte Agenten wiederkehrende Aufträge im Hintergrund.</p></div><span>So könnte euer Agententeam aussehen.</span></figcaption>
+  <figcaption id="agent-team-title" class="team-heading"><div><h3>Euer Team für die tägliche Arbeit.</h3><p>Spezialisierte Agenten erledigen Aufträge im Hintergrund – von wiederkehrenden Aufgaben bis zur Klärung fachlicher Ausnahmen.</p></div><span>So könnte euer Agententeam aussehen.</span></figcaption>
   <div class="team-roster">
     {agents.map(agent => <article class="team-member" aria-labelledby={`agent-${agent.name}`}>
       <header><img class="agent-avatar" src={agent.portrait} srcset={`${agent.portrait.replace('-256.webp', '-128.webp')} 128w, ${agent.portrait} 256w, ${agent.portrait.replace('-256.webp', '-418.webp')} 418w`} sizes="76px" alt="" width="76" height="76" loading="lazy" decoding="async" /><div><h3 id={`agent-${agent.name}`}>{agent.name}</h3><p>{agent.role}</p></div></header>
       <ul>{agent.orders.map(order => <li>{order}</li>)}</ul>
     </article>)}
   </div>
-  <p class="team-principle">Eure Systeme bleiben an ihrem Platz – in der Cloud oder On-Premises. Ihr bestimmt Aufträge, Rechte und Freigaben.</p>
+  <p class="team-principle">Ihr bestimmt Mandate, Rechte und Grenzen. Im Leitstand behaltet ihr Arbeit und Ergebnisse im Blick.</p>
 </figure>
 
 <style>
