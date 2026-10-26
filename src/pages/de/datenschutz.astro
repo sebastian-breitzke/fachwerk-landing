@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 ---
-<Base title="Fachwerk — Datenschutz" currentPage="">
+<Base title="Fachwerk — Datenschutz">
 
 <main>
   <h1>Datenschutzerklärung</h1>
@@ -36,7 +36,7 @@ import Base from '../../layouts/Base.astro';
   <p>Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzerklärung</a></p>
 
   <h2>3. Schriftarten</h2>
-  <p>Diese Website verwendet die Schriftart IBM Plex Sans. Die Schriftdateien sind lokal auf diesem Server gehostet. Es findet keine Verbindung zu externen Servern (wie Google Fonts) statt.</p>
+  <p>Diese Website verwendet die Schriftarten Geist Sans und Geist Mono. Die Schriftdateien sind lokal auf diesem Server gehostet. Es findet keine Verbindung zu externen Servern (wie Google Fonts) statt.</p>
 
   <h2>4. Kontaktaufnahme</h2>
   <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
@@ -60,7 +60,7 @@ import Base from '../../layouts/Base.astro';
   <p>Diese Website enthält Links zu externen Plattformen. Beim Klick auf diese Links werden Sie auf externe Server weitergeleitet. Wir haben keinen Einfluss auf die Datenverarbeitung durch diese Drittanbieter.</p>
 
   <h2>8. Änderungen</h2>
-  <p>Diese Datenschutzerklärung kann bei Bedarf angepasst werden. Stand: April 2026.</p>
+  <p>Diese Datenschutzerklärung kann bei Bedarf angepasst werden. Stand: Oktober 2026.</p>
 </main>
 
 <style>
@@ -73,7 +73,7 @@ import Base from '../../layouts/Base.astro';
   h1 {
     font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: clamp(1.125rem, 4.2vw, 1.8rem);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 0.5rem;

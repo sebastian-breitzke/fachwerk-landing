@@ -1,0 +1,104 @@
+<figure class="engine" data-engine>
+  <svg class="engine-assembly" viewBox="0 0 600 462" role="img" aria-labelledby="engine-title" aria-describedby="engine-description">
+    <title id="engine-title">Ein Geschäftssystem mit eurer eigenen Form</title>
+    <desc id="engine-description">Finance, Shipping und Customs fügen sich mit individuell gebauter Software zu einer gemeinsamen Lösung zusammen. Eine gemeinsame Verbindung mit dem Plus hält die Teile zusammen.</desc>
+
+    <g class="engine-piece engine-finance">
+      <path class="engine-surface" d="M40 48H210V208H40Z" />
+      <text class="engine-pack-label" x="62" y="84">GESCHÄFTSKERN</text>
+      <text class="engine-pack-name" x="62" y="171">Finance</text>
+    </g>
+    <g class="engine-piece engine-shipping">
+      <path class="engine-surface" d="M230 20H480V128H230Z" />
+      <text class="engine-pack-label" x="252" y="56">GESCHÄFTSKERN</text>
+      <text class="engine-pack-name" x="252" y="99">Shipping</text>
+    </g>
+    <g class="engine-piece engine-customs">
+      <path class="engine-surface" d="M320 148H570V274H320Z" />
+      <text class="engine-pack-label" x="342" y="184">GESCHÄFTSKERN</text>
+      <text class="engine-pack-name" x="342" y="243">Customs</text>
+    </g>
+    <g class="engine-piece engine-custom">
+      <path class="engine-surface" d="M40 228H230V148H300V294H570V434H40Z" />
+      <text class="engine-custom-label" x="64" y="310">
+        <tspan x="64">Für euren</tspan>
+        <tspan x="64" dy="49">Betrieb</tspan>
+        <tspan x="64" dy="49">gebaut.</tspan>
+      </text>
+      <path class="engine-fit" d="M502 320H540V408H452" />
+    </g>
+
+    <path class="engine-spine" d="M24 218H220V138H310V284H586" pathLength="1" />
+    <g class="engine-joint">
+      <path class="engine-diamond" d="M220 187 251 218 220 249 189 218Z" />
+      <path class="engine-plus" d="M220 205V231M207 218H233" />
+    </g>
+  </svg>
+  <figcaption class="engine-caption"><span>Dein Fachwerk GPE.</span><span>Eine gemeinsame Engine.</span></figcaption>
+</figure>
+
+<script>
+  const engine = document.querySelector<HTMLElement>('[data-engine]');
+  if (engine && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    engine.dataset.motion = 'waiting';
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        engine.dataset.motion = 'assembled';
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+    observer.observe(engine);
+  }
+</script>
+
+<style>
+  .engine { min-width: 0; width: 100%; }
+  .engine-assembly { width: 100%; height: auto; overflow: visible; }
+  .engine-piece { transform-box: fill-box; transform-origin: center; }
+  .engine-finance { --shift-x: -18px; --shift-y: -14px; --delay: 0ms; }
+  .engine-shipping { --shift-x: 14px; --shift-y: -20px; --delay: 90ms; }
+  .engine-customs { --shift-x: 22px; --shift-y: 2px; --delay: 180ms; }
+  .engine-custom { --shift-x: -8px; --shift-y: 20px; --delay: 270ms; }
+  .engine-surface { fill: var(--bg); }
+  .engine-shipping .engine-surface { fill: #e9e4d8; }
+  .engine-customs .engine-surface { fill: #f3e4ea; }
+  .engine-custom .engine-surface { fill: var(--accent-on-ink); }
+  .engine-pack-label { fill: var(--muted-text); font: 12px var(--font-mono); letter-spacing: .1em; }
+  .engine-pack-name { fill: var(--fg); font: 400 32px var(--font-sans); letter-spacing: -.035em; }
+  .engine-custom-label { fill: var(--fg); font: 500 44px var(--font-sans); letter-spacing: -.045em; }
+  .engine-fit { fill: none; stroke: var(--fg); stroke-width: 2px; opacity: .35; }
+  .engine-spine { fill: none; stroke: var(--accent-on-ink); stroke-width: 5px; }
+  .engine-diamond { fill: var(--fg); stroke: var(--accent-on-ink); stroke-width: 5px; }
+  .engine-plus { fill: none; stroke: var(--accent-on-ink); stroke-width: 5px; }
+  .engine-caption { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin-inline: 6.667% 5%; }
+  .engine-caption > span:first-child { color: var(--bg); font-size: 26px; letter-spacing: -.035em; }
+  .engine-caption > span:last-child { color: #bfc0c2; font: 11px/1.6 var(--font-mono); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .engine[data-motion='waiting'] .engine-piece { transform: translate(var(--shift-x), var(--shift-y)); }
+    .engine[data-motion='waiting'] .engine-spine,
+    .engine[data-motion='waiting'] .engine-joint,
+    .engine[data-motion='waiting'] .engine-caption { opacity: 0; }
+    .engine[data-motion='assembled'] .engine-piece { animation: assemble 1.15s cubic-bezier(.22, 1, .36, 1) var(--delay) both; }
+    .engine[data-motion='assembled'] .engine-spine { animation: connect .65s ease .9s both; }
+    .engine[data-motion='assembled'] .engine-joint,
+    .engine[data-motion='assembled'] .engine-caption { animation: reveal .4s ease 1.35s both; }
+  }
+  @keyframes assemble {
+    from { transform: translate(var(--shift-x), var(--shift-y)); }
+    to { transform: translate(0, 0); }
+  }
+  @keyframes connect {
+    from { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; }
+    to { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+  @media (max-width: 760px) {
+    .engine { max-width: 560px; justify-self: center; }
+    .engine-pack-label { display: none; }
+    .engine-caption > span:first-child { font-size: 23px; }
+  }
+  @media (max-width: 380px) {
+    .engine-caption { gap: 4px; }
+  }
+</style>

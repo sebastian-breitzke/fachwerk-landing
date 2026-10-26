@@ -1,0 +1,21 @@
+---
+const steps = [
+  { day: 1, time: '08:42', source: 'ERP', title: 'Auftrag erfasst', quantity: 12 },
+  { day: 1, time: '10:15', source: 'Versand', title: 'Export DE → GB', quantity: 12 },
+  { day: 3, time: '14:20', source: 'Carrier', title: 'Zugestellt', quantity: 12 },
+  { day: 8, time: '09:10', source: 'Kundenportal', title: 'Retoure angemeldet', quantity: 2, returned: true },
+  { day: 10, time: '11:35', source: 'Zollsystem', title: 'Reimport GB → DE', quantity: 2, returned: true },
+  { day: 10, time: '14:05', source: 'WMS', title: 'Rücknahme erfasst', quantity: 2, returned: true },
+  { day: 11, time: '08:30', source: 'ERP', title: 'Gutschrift erstellt', quantity: 2 },
+];
+---
+
+<figure class="order-trace">
+  <figcaption class="panel-heading"><span>Vom Auftrag bis zur Retoure</span><span>Beispiel · 12 Stück bestellt, 2 retourniert</span></figcaption>
+  <ol class="trace-steps" role="list">
+    {steps.map(step => <li class:list={{ 'trace-return': step.returned }}>
+      <div class="trace-time"><span>Tag {step.day}</span><time datetime={step.time}>{step.time}</time></div>
+      <div class="trace-event"><strong>{step.title}</strong><div class="trace-meta"><span class="trace-source"><span class="sr-only">Quelle: </span>{step.source}</span><span class="trace-quantity"><span class="sr-only">Betroffene Menge: </span>{step.quantity} Stück</span></div></div>
+    </li>)}
+  </ol>
+</figure>

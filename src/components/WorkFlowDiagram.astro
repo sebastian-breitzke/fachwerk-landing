@@ -1,0 +1,195 @@
+---
+const routes = [
+  { name: 'Routinefälle', count: 70, detail: 'Feste Regeln bestimmen den nächsten Schritt.', outcome: 'Erledigt', support: 'Automatisch · nachvollziehbar', kind: 'done' },
+  { name: 'Entscheidungen', count: 20, detail: 'Festgelegte Kriterien bestimmen das Ergebnis.', outcome: 'Mensch sichtet', support: 'Ergebnis mit Gründen', kind: 'review' },
+  { name: 'Abwägungen', count: 7, detail: 'Kontext, Gründe und Recherche helfen bei der Beurteilung.', outcome: 'Mensch prüft', support: 'Kontext · Gründe · Recherche', kind: 'weigh' },
+  { name: 'Eskalationen', count: 3, detail: 'Ein Mensch übernimmt am passenden Arbeitsplatz.', outcome: 'Mensch bearbeitet', support: 'Du übernimmst · Kontext & Optionen', kind: 'human' },
+];
+const tasks = routes.flatMap((route, routeIndex) => Array.from({ length: route.count }, (_, slot) => ({ routeIndex, slot, position: (slot + .5) / route.count })))
+  .sort((a, b) => a.position - b.position);
+---
+<figure class="work-flow" data-work-flow aria-labelledby="work-flow-title" aria-describedby="work-flow-description">
+  <span id="work-flow-description" class="sr-only">Illustrative Verteilung von 100 Anfragen: 70 Routinefälle werden automatisch erledigt und dokumentiert. Ein Mensch sichtet 20 Entscheidungen, prüft 7 Abwägungen und bearbeitet 3 Eskalationen mit Kontext und Optionen. Jeder ankommende Punkt füllt ein Quadrat seiner Kategorie. Nach allen 100 Anfragen beginnt das Beispiel erneut. Die Verteilung hängt vom Ablauf ab; die Behandlung eines Vorgangs erteilt keine Ausführungsrechte.</span>
+  <div class="flow-source">
+    <svg viewBox="0 0 128 76" aria-hidden="true"><path class="object" d="M14 8h42v52H14ZM42 16h42v52H42ZM70 8h42v52H70Z" /><path d="M22 21h23M22 30h16M50 30h23M50 40h16M78 21h23M78 30h16" /></svg>
+    <div><strong id="work-flow-title">Beispiel: 100 Anfragen</strong><span class="sr-only">Aus eurem Geschäft</span></div>
+  </div>
+  <div class="inlet" aria-hidden="true"></div>
+  <div class="flow-scene">
+    <div class="branch-spine" aria-hidden="true"></div>
+    <div class="distribution" aria-hidden="true">{tasks.map(task => <i class="moving-task" data-route={task.routeIndex} data-slot={task.slot}></i>)}</div>
+    <div class="machine-heading">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path class="diamond" d="m24 3 21 21-21 21L3 24Z" /><path class="plus" d="M24 15v18M15 24h18" /></svg>
+      <strong>Regeln & KI</strong>
+    </div>
+    {routes.map(route => <div class="work-route">
+      <div class="route-label"><strong><b>{route.count}</b> {route.name}</strong><span class="sr-only">{route.detail}</span></div>
+      <div class="task-group" aria-hidden="true"><div class="task-marks">{Array.from({ length: route.count }, () => <i class="task-mark"></i>)}</div></div>
+      <div class:list={['route-result', route.kind]}>
+        {route.kind === 'done' ?
+          <svg viewBox="0 0 80 72" aria-hidden="true"><path class="object" d="M20 8h32l12 12v44H20Z" /><path d="M52 8v12h12M29 29h22M29 37h15" /><path class="emphasis" d="m29 49 8 8 16-18" /></svg> : route.kind === 'review' ?
+          <svg viewBox="0 0 80 72" aria-hidden="true"><path class="object" d="M17 8h37l12 12v42H17Z" /><path d="M54 8v12h12M26 29h29M26 37h22M26 45h16" /><path class="diamond" d="m57 44 12 12-12 12-12-12Z" /><path class="emphasis" d="M52 56h10M57 51v10" /></svg> : route.kind === 'weigh' ?
+          <svg viewBox="0 0 80 72" aria-hidden="true"><path d="M40 12v47M22 64h36M16 24l48-6M20 24 9 45h22ZM60 19 49 40h22Z" /><path class="emphasis" d="M9 45c3 9 19 9 22 0M49 40c3 9 19 9 22 0" /><path class="diamond" d="m40 6 6 6-6 6-6-6Z" /></svg> :
+          <svg viewBox="0 0 80 72" aria-hidden="true"><path class="object" d="M31 9h42v31H31Z" /><path d="M52 40v10M43 50h18M35 57h40M71 57v11" /><circle class="object" cx="17" cy="31" r="8" /><path d="M6 65V52c0-13 21-13 21 0v13M27 53h12V42M5 68h26" /><path class="emphasis" d="M41 19h22M41 27h15" /></svg>}
+        <div><strong>{route.outcome}</strong><span class="sr-only">{route.support}</span></div>
+      </div>
+    </div>)}
+  </div>
+  <figcaption>Die Verteilung hängt von eurem Ablauf ab.</figcaption>
+</figure>
+
+<script>
+  const workFlow = document.querySelector<HTMLElement>('[data-work-flow]');
+  if (workFlow) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const distribution = workFlow.querySelector<HTMLElement>('.distribution')!;
+    const rows = [...workFlow.querySelectorAll<HTMLElement>('.work-route')];
+    const inputs = [...distribution.querySelectorAll<HTMLElement>('.moving-task')].map((point, index) => ({
+      point,
+      row: rows[Number(point.dataset.route)],
+      square: rows[Number(point.dataset.route)].querySelectorAll<HTMLElement>('.task-mark')[Number(point.dataset.slot)],
+      start: 800 + index * 250,
+      filled: false,
+      x: 0,
+      y: 0,
+      branchY: 0,
+    }));
+    const travel = 2400;
+    const cycle = inputs.at(-1)!.start + travel + 2400;
+    let elapsed = 0;
+    let previous = 0;
+    let frame = 0;
+    let visible = false;
+
+    const measure = () => {
+      const origin = distribution.getBoundingClientRect();
+      inputs.forEach(input => {
+        const target = input.square.getBoundingClientRect();
+        const row = input.row.getBoundingClientRect();
+        input.x = target.left - origin.left + target.width / 2;
+        input.y = target.top - origin.top + target.height / 2;
+        input.branchY = row.bottom - origin.top - 8;
+      });
+    };
+    const reset = () => {
+      elapsed = 0;
+      inputs.forEach(input => {
+        input.filled = false;
+        input.square.classList.remove('filled');
+        input.point.style.opacity = '0';
+      });
+    };
+    const tick = (now: number) => {
+      elapsed += previous ? now - previous : 0;
+      previous = now;
+      if (elapsed >= cycle) reset();
+      inputs.forEach(input => {
+        const progress = (elapsed - input.start) / travel;
+        if (progress < 0 || input.filled) return;
+        if (progress >= 1) {
+          input.filled = true;
+          input.square.classList.add('filled');
+          input.point.style.opacity = '0';
+          return;
+        }
+        let x = 13;
+        let y = 0;
+        if (progress < .55) {
+          y = input.branchY * progress / .55;
+        } else if (progress < .9) {
+          y = input.branchY;
+          x += (input.x - x) * (progress - .55) / .35;
+        } else {
+          x = input.x;
+          y = input.branchY + (input.y - input.branchY) * (progress - .9) / .1;
+        }
+        input.point.style.opacity = '1';
+        input.point.style.transform = `translate(${x - 3}px, ${y - 3}px) rotate(45deg)`;
+      });
+      frame = requestAnimationFrame(tick);
+    };
+    const updateMotion = () => {
+      cancelAnimationFrame(frame);
+      previous = 0;
+      workFlow.dataset.motion = reducedMotion.matches ? 'static' : 'animated';
+      if (reducedMotion.matches) {
+        inputs.forEach(input => { input.point.style.opacity = '0'; });
+      } else if (visible && !document.hidden) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+    measure();
+    reset();
+    new ResizeObserver(measure).observe(workFlow);
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      updateMotion();
+    }, { threshold: 0.15 });
+    observer.observe(workFlow);
+    reducedMotion.addEventListener('change', updateMotion);
+    document.addEventListener('visibilitychange', updateMotion);
+    updateMotion();
+  }
+</script>
+
+<style>
+  .work-flow { --result-width: 244px; --route-height: 66px; width: min(100%, 660px); margin-block: 24px 32px; }
+  svg { fill: none; stroke: var(--intelligence-line); stroke-width: 1.5; stroke-linejoin: miter; }
+  .object { fill: var(--fg); }
+  .diamond { fill: var(--intelligence-soft); stroke: var(--intelligence); }
+  .plus { stroke: var(--intelligence); stroke-width: 2; }
+  .emphasis { stroke: var(--intelligence); stroke-width: 2.2; }
+  .flow-source { display: flex; align-items: center; gap: 16px; width: 100%; }
+  .flow-source svg { width: 64px; height: 40px; flex-shrink: 0; }
+  .flow-source div { display: grid; gap: 5px; }
+  .flow-source strong { font-size: 20px; font-weight: 500; }
+  .flow-source span { color: var(--bg-muted); font: 12px/1.5 var(--font-mono); }
+  .inlet { position: relative; width: 100%; height: 16px; }
+  .inlet::before { content: ''; position: absolute; left: 13px; height: 100%; border-left: 1.5px solid var(--intelligence-line); }
+  .flow-scene { position: relative; }
+  .branch-spine { position: absolute; top: 30px; left: 13px; bottom: 8px; border-left: 1.5px solid var(--intelligence-line); }
+  .distribution { position: absolute; top: -16px; left: 0; bottom: 0; width: 100%; overflow: hidden; pointer-events: none; z-index: 2; }
+  .machine-heading { position: relative; display: flex; align-items: center; gap: 12px; height: 44px; padding-block: 8px; }
+  .machine-heading svg { width: 26px; height: 26px; }
+  .machine-heading strong { color: var(--intelligence); font-size: 16px; font-weight: 500; }
+  .machine-heading span { color: var(--bg-muted); font: 11px/1.5 var(--font-mono); }
+  .work-route { position: relative; display: grid; grid-template-columns: 184px minmax(0, 1fr) var(--result-width); align-items: center; height: var(--route-height); }
+  .route-label { padding: 6px 8px 6px 32px; display: grid; }
+  .route-label strong { position: relative; z-index: 3; background: var(--fg); }
+  .route-label::before { content: ''; position: absolute; top: 50%; left: 13px; width: 12px; border-top: 1.5px solid var(--intelligence-line); }
+  .route-label strong { font-size: 15px; font-weight: 400; }
+  .route-label b { color: var(--intelligence); font: 22px/1 var(--font-mono); }
+  .route-label span { color: var(--bg-muted); font-size: 12px; line-height: 1.5; }
+  .task-group { position: relative; display: flex; justify-content: flex-end; padding: 6px 8px; }
+  .task-marks { position: relative; display: grid; grid-template-columns: repeat(10, 4px); gap: 2px; padding: 5px; background: var(--fg); }
+  .task-mark { width: 4px; height: 4px; border: 1px solid var(--intelligence-line); background: var(--intelligence); }
+  [data-motion='animated'] .task-mark { background: transparent; }
+  [data-motion='animated'] .task-mark.filled { background: var(--intelligence); border-color: var(--intelligence); }
+  .route-result { display: flex; align-items: center; gap: 12px; padding-left: 12px; }
+  .route-result svg { width: 52px; height: 48px; flex-shrink: 0; }
+  .route-result div { display: grid; gap: 7px; }
+  .route-result strong { font-size: 15px; font-weight: 500; line-height: 1.4; }
+  .route-result span { color: var(--bg-muted); font: 11px/1.5 var(--font-mono); }
+  .route-result svg { stroke: var(--intelligence-line); }
+  figcaption { margin-top: 8px; color: var(--intelligence-line); font: 12px/1.6 var(--font-mono); }
+  .moving-task { position: absolute; left: 0; top: 0; width: 6px; height: 6px; background: var(--intelligence); border: 1px solid var(--fg); opacity: 0; }
+  @media (max-width: 1050px) and (min-width: 701px) {
+    .work-route { grid-template-columns: 170px minmax(0, 1fr) var(--result-width); }
+    .route-label { padding-left: 32px; }
+    .task-group { padding-right: 8px; }
+  }
+  @media (max-width: 700px) {
+    .work-flow { --route-height: 100px; }
+    .flow-source { gap: 12px; }
+    .flow-source svg { width: 56px; }
+    .flow-source strong { font-size: 16px; }
+    .work-route { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: 44px 56px; }
+    .route-label { padding: 0 6px 0 32px; grid-column: 1; grid-row: 1; }
+    .route-label strong { font-size: 13px; line-height: 1.5; }
+    .route-label b { font-size: 20px; }
+    .task-group { grid-column: 1; grid-row: 2; justify-content: flex-start; padding: 0 0 0 27px; align-self: start; }
+    .route-result { grid-column: 2; grid-row: 1 / 3; padding-left: 8px; gap: 7px; }
+    .route-result svg { width: 38px; height: 40px; }
+    .route-result strong { font-size: 13px; }
+  }
+</style>

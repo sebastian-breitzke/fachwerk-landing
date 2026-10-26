@@ -1,0 +1,54 @@
+---
+const agents = [
+  { name: 'Ruth', portrait: '/images/agent-ruth-256.webp', role: 'Customer Success', orders: ['Supportanfragen klären', 'Angebote vorbereiten', 'Kunden über Lieferungen informieren'] },
+  { name: 'Mei', portrait: '/images/agent-mei-256.webp', role: 'IT & Integrationen', orders: ['Verbindungen zu ERP und Lager prüfen', 'Fehlgeschlagene Übertragungen klären'] },
+  { name: 'Harald', portrait: '/images/agent-harald-256.webp', role: 'Operations', orders: ['Bestände und Bedarf prüfen', 'Lieferabweichungen klären', 'Nachschub vorbereiten'] },
+  { name: 'Leo', portrait: '/images/agent-leo-256.webp', role: 'Office & Onboarding', orders: ['Neue Kollegen aufnehmen', 'Zugänge vorbereiten', 'Onboarding begleiten'] },
+];
+---
+<figure class="agent-team" aria-labelledby="agent-team-title">
+  <figcaption id="agent-team-title" class="team-heading"><div><h3>Euer Team für die tägliche Arbeit.</h3><p>Während du mit deinem Concierge arbeitest, übernehmen spezialisierte Agenten wiederkehrende Aufträge im Hintergrund.</p></div><span>So könnte euer Agententeam aussehen.</span></figcaption>
+  <div class="team-roster">
+    {agents.map(agent => <article class="team-member" aria-labelledby={`agent-${agent.name}`}>
+      <header><img class="agent-avatar" src={agent.portrait} srcset={`${agent.portrait.replace('-256.webp', '-128.webp')} 128w, ${agent.portrait} 256w, ${agent.portrait.replace('-256.webp', '-418.webp')} 418w`} sizes="76px" alt="" width="76" height="76" loading="lazy" decoding="async" /><div><h3 id={`agent-${agent.name}`}>{agent.name}</h3><p>{agent.role}</p></div></header>
+      <ul>{agent.orders.map(order => <li>{order}</li>)}</ul>
+    </article>)}
+  </div>
+  <p class="team-principle">Eure Systeme bleiben an ihrem Platz – in der Cloud oder On-Premises. Ihr bestimmt Aufträge, Rechte und Freigaben.</p>
+</figure>
+
+<style>
+  .agent-team { margin-top: 64px; border-top: 1px solid var(--intelligence-line); }
+  .team-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; padding-block: 32px; }
+  .team-heading h3 { font-size: 30px; font-weight: 400; letter-spacing: -.025em; line-height: 1.2; }
+  .team-heading p { max-width: 680px; margin-top: 12px; color: var(--bg-muted); }
+  .team-heading > span { align-self: end; color: var(--intelligence); font: 11px/1.6 var(--font-mono); }
+  .team-roster { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .team-member { min-width: 0; padding: 24px 20px; }
+  .team-member:first-child { padding-left: 0; }
+  .team-member + .team-member { border-left: 1px solid var(--intelligence-line); }
+  .team-member header { display: grid; gap: 16px; margin-bottom: 24px; }
+  .agent-avatar { width: 76px; height: 76px; object-fit: cover; }
+  .team-member h3 { font-size: 28px; font-weight: 500; letter-spacing: -.025em; line-height: 1.2; }
+  .team-member header p { font-size: 13px; color: var(--bg-muted); margin-top: 4px; }
+  .team-member ul { list-style: none; display: grid; gap: 10px; align-content: start; font-size: 14px; line-height: 1.5; }
+  .team-member li { position: relative; padding-left: 12px; }
+  .team-member li::before { content: ''; position: absolute; top: .75em; left: 0; width: 4px; height: 4px; border: 1px solid var(--intelligence-line); background: var(--intelligence); transform: translateY(-50%); }
+  .team-principle { margin-top: 24px; font-size: 14px; color: var(--bg-muted); }
+  @media (max-width: 960px) {
+    .team-roster { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; }
+    .team-member { padding: 24px; }
+    .team-member:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .team-member + .team-member:nth-child(odd) { border-left: 0; }
+    .team-member header { display: flex; align-items: center; }
+  }
+  @media (max-width: 760px) {
+    .agent-team { margin-top: 48px; }
+    .team-heading h3 { font-size: 27px; }
+  }
+  @media (max-width: 520px) {
+    .team-roster { grid-template-columns: 1fr; gap: 36px; }
+    .team-member { padding: 0; }
+    .team-member + .team-member { border-left: 0; }
+  }
+</style>

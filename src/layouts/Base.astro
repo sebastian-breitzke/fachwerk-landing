@@ -3,53 +3,30 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
-interface Props {
-  title: string;
-  currentPage?: string;
-}
-
-const { title, currentPage = '' } = Astro.props;
-const locale = Astro.url.pathname.startsWith('/en') ? 'en' : 'de';
+interface Props { title: string; description?: string; }
+const { title, description = 'Fachwerk GPE ist eine General Purpose Business Engine. Dein Geschäft, zugänglich für deine KI: verbundene Systeme, individuelle Software und eine gemeinsame Grundlage für dein Team und seine Agents.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
-
 <!DOCTYPE html>
-<html lang={locale}>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>{title}</title>
-</head>
-<body>
-  <Nav currentPage={currentPage} locale={locale} />
-  <div class="content">
-    <slot />
-  </div>
-  <Footer />
-  <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Mobile menu
-    const hamburger = document.querySelector('.nav-hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    function closeMobileMenu() {
-      mobileMenu?.classList.remove('open');
-      hamburger?.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    hamburger?.addEventListener('click', () => {
-      const isOpen = mobileMenu?.classList.toggle('open');
-      hamburger.classList.toggle('active');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-    // Make closeMobileMenu available globally
-    window.closeMobileMenu = closeMobileMenu;
-  </script>
-</body>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f6f0" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="de_DE" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt</a>
+    <Nav />
+    <div id="inhalt" tabindex="-1"><slot /></div>
+    <Footer />
+  </body>
 </html>

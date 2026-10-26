@@ -1,0 +1,184 @@
+---
+const systems = [
+  { name: 'ERP', meta: 'Hybrid', state: 'retain', hatch: 44 },
+  { name: 'CRM', meta: 'Cloud', state: 'replace', hatch: 26 },
+  { name: 'WMS', meta: 'On-Premises', state: 'retain', hatch: 38 },
+  { name: 'Multichannel', meta: 'Shopify · Amazon · Otto · Kaufland · eigener Shop', state: 'retain', hatch: 30 },
+  { name: 'Versand', meta: 'SaaS', state: 'replace', hatch: 22 },
+  { name: 'BI', meta: 'Auswertung', state: 'remove', hatch: 18 },
+];
+const manual = ['CSV-Export', 'Abtippen', 'E-Mail mit Anhang', 'Excel-Liste', 'Telefon', 'Copy & Paste'];
+const specials = [
+  { name: 'Packplatz' },
+  { name: 'Produktdesigner' },
+  { name: 'Sonderkonditionen' },
+  { name: 'Freigaben' },
+  { name: 'Projektkalkulation' },
+  { name: 'Kundenportal' },
+];
+---
+<div class="landscape" data-landscape data-view="today">
+  <div class="panel-heading">
+    <span>Eine gewachsene Systemlandschaft · ein Beispiel</span>
+    <div class="landscape-toggle" role="group" aria-label="Systemlandschaft vergleichen" hidden>
+      <button type="button" data-view-button="today" aria-pressed="true" aria-controls="landscape-content">Heute</button>
+      <button type="button" data-view-button="with" aria-pressed="false" aria-controls="landscape-content">Mit Fachwerk GPE</button>
+    </div>
+  </div>
+  <div class="landscape-content" id="landscape-content">
+    <div class="landscape-row">
+      <h3 class="eyebrow landscape-label">Geschäftssysteme</h3>
+      <ul class="system-grid">
+        {systems.map(system => <li class={`system-card system-${system.state}`}>
+          <div class="system-summary" data-today><strong>{system.name}</strong><span>{system.meta}</span></div>
+          <div data-with hidden>
+            {system.state === 'retain' ? <><strong>{system.name}</strong><span>{system.meta}</span></> : system.state === 'replace' ? <><strong>{system.name}</strong><span class="system-replacement">Ersetzt durch den Fachwerk GPE-Geschäftskern {system.name}.</span></> : <><strong><s>BI</s></strong><span>Antworten und Auswertungen direkt aus Fachwerk GPE.</span></>}
+          </div>
+          <div class="system-custom" data-today style={`--custom-height: ${system.hatch}px`}><span>Anpassungen</span></div>
+        </li>)}
+      </ul>
+    </div>
+    <div class="landscape-row">
+      <h3 class="eyebrow landscape-label">Dazwischen</h3>
+      <div class="manual-work" data-today><ul>{manual.map(name => <li><span>von Hand</span>{name}</li>)}</ul></div>
+      <div class="gefuege-bridge" data-with hidden>
+        <div class="bridge-wires" aria-hidden="true">{systems.map(() => <span />)}</div>
+        <div class="bridge-label"><strong>Gemeinsame Geschäftsdaten</strong><span>Ein Datenraum für Systeme und eigene Anwendungen</span></div>
+        <div class="landscape-intelligence">
+          <div><strong>Intelligente Arbeit</strong><span>Regeln · Heuristiken · KI</span></div>
+          <p>Routine erledigen. Entscheidungen vorbereiten. Kontrolle behalten.</p>
+        </div>
+        <div class="bridge-wires" aria-hidden="true">{specials.map(() => <span />)}</div>
+      </div>
+    </div>
+    <div class="landscape-row">
+      <h3 class="eyebrow landscape-label"><span data-today>Was fehlt</span><span data-with hidden>Euer Betrieb</span></h3>
+      <ul class="special-grid">{specials.map(special => <li><span>{special.name}</span></li>)}</ul>
+    </div>
+  </div>
+  <p class="landscape-caption" aria-live="polite" aria-atomic="true">Ein Beispiel: gewachsene Systeme, Handarbeit dazwischen, Sonderfälle ohne Zuhause. Welche Kanäle und Systeme ihr verbindet, hängt von euren Integrationen ab.</p>
+</div>
+
+<script>
+  const landscape = document.querySelector<HTMLElement>('[data-landscape]');
+  if (landscape) {
+    const controls = landscape.querySelector<HTMLElement>('.landscape-toggle')!;
+    const buttons = controls.querySelectorAll<HTMLButtonElement>('[data-view-button]');
+    const today = landscape.querySelectorAll<HTMLElement>('[data-today]');
+    const connected = landscape.querySelectorAll<HTMLElement>('[data-with]');
+    const caption = landscape.querySelector<HTMLElement>('.landscape-caption')!;
+    controls.hidden = false;
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const withGefuege = button.dataset.viewButton === 'with';
+        landscape.dataset.view = withGefuege ? 'with' : 'today';
+        for (const element of today) element.hidden = withGefuege;
+        for (const element of connected) element.hidden = !withGefuege;
+        for (const control of buttons) control.setAttribute('aria-pressed', String(control === button));
+        caption.textContent = withGefuege
+          ? 'In diesem Beispiel bleiben ERP, WMS und Multichannel verbunden. Die Fachwerk GPE-Geschäftskerne übernehmen CRM und Versand; Antworten und Auswertungen entstehen direkt in Fachwerk GPE. Eure Integrationen bestimmen, welche Systeme und Kanäle angebunden werden.'
+          : 'Ein Beispiel: gewachsene Systeme, Handarbeit dazwischen, Sonderfälle ohne Zuhause. Welche Kanäle und Systeme ihr verbindet, hängt von euren Integrationen ab.';
+      });
+    }
+  }
+</script>
+
+<style>
+  .system-card strong {
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  [data-view='with'] .system-replace .system-replacement {
+    color: var(--paper);
+  }
+
+  .bridge-label {
+    display: grid;
+    gap: 4px;
+    padding: 16px;
+  }
+
+  .bridge-label strong {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .bridge-label > span {
+    font-size: 11px;
+  }
+
+  .landscape-intelligence {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    padding: 16px;
+  }
+
+  .landscape-intelligence p {
+    max-width: 35ch;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .special-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .special-grid li {
+    min-height: 68px;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  .gefuege-bridge > .bridge-wires:last-child {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gefuege-bridge > .bridge-wires:last-child span:nth-child(n+4) {
+    display: none;
+  }
+
+  @media (max-width: 1200px) {
+    .system-grid,
+    .gefuege-bridge > .bridge-wires:first-child {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gefuege-bridge > .bridge-wires:first-child span:nth-child(n+4) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .landscape-intelligence {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .system-grid,
+    .special-grid,
+    .gefuege-bridge > .bridge-wires:first-child,
+    .gefuege-bridge > .bridge-wires:last-child {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gefuege-bridge > .bridge-wires span:nth-child(n+3) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .system-grid,
+    .special-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bridge-wires {
+      display: none;
+    }
+  }
+</style>
