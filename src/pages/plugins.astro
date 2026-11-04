@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Fachwerk mit ChatGPT und Claude verbinden" description="Fachwerk in ChatGPT und Claude einrichten: Verbindung, Anmeldung und erste Fragen zu deinen Fachwerk-Instanzen.">
+  <main class="help-page wrap">
+    <header class="help-heading">
+      <p class="eyebrow">Einrichtung</p>
+      <h1>Fachwerk in ChatGPT und Claude</h1>
+      <p>Nutze Fachwerk direkt im Gespräch mit deiner KI. Verbinde dein eigenes Fachwerk-Konto und frage nach deinen Instanzen, Daten und Aufgaben.</p>
+    </header>
+
+    <nav class="help-jump-links" aria-label="Auf dieser Seite">
+      <a href="#chatgpt">ChatGPT einrichten</a>
+      <a href="#claude">Claude einrichten</a>
+      <a href="#erste-fragen">Erste Fragen</a>
+    </nav>
+
+    <section aria-labelledby="verbindung">
+      <h2 id="verbindung">Was du für die Verbindung brauchst</h2>
+      <p>Du brauchst ein Fachwerk-Konto mit Zugriff auf mindestens eine Instanz. Deine bestehenden Freigaben bestimmen, welche Daten und Aktionen du nutzen kannst. Die Verbindung gibt dir keine zusätzlichen Rechte.</p>
+      <p>Der Connector verbindet ChatGPT oder Claude mit Fachwerk. Ein Fachwerk-Plugin kann zusätzlich Anleitungen für die Arbeit mit Fachwerk enthalten. Für die Einrichtung auf dieser Seite trägst du die Verbindung selbst ein; du brauchst dafür kein Plugin-Paket herunterzuladen.</p>
+      <dl class="help-connection">
+        <div><dt>Name</dt><dd>Fachwerk</dd></div>
+        <div><dt>MCP-Server-URL</dt><dd><code>https://mcp.gefuege.eu/mcp</code></dd></div>
+        <div><dt>Anmeldung</dt><dd>OAuth mit deinem Fachwerk-Konto über <a href="https://auth.gefuege.eu">auth.gefuege.eu</a></dd></div>
+      </dl>
+      <p>Ob du eigene Verbindungen hinzufügen kannst, hängt auch von deinem KI-Konto und den Einstellungen deiner Organisation ab.</p>
+    </section>
+
+    <section aria-labelledby="chatgpt">
+      <h2 id="chatgpt">ChatGPT einrichten</h2>
+      <ol>
+        <li>Öffne <a href="https://chatgpt.com/plugins">ChatGPT Plugins</a> im Browser.</li>
+        <li>Wähle das Plus und dann „Add custom MCP server“.</li>
+        <li>Trage „Fachwerk“ als Namen und die MCP-Server-URL von oben ein. Wähle OAuth für die Anmeldung.</li>
+        <li>Prüfe die Verbindungshinweise und bestätige mit „Create as a plugin“.</li>
+        <li>Öffne das erstellte Plugin in deinem persönlichen Plugin-Bereich und installiere es. Folge beim Verbinden dem Fachwerk-Login.</li>
+        <li>Starte einen neuen Chat im Bereich „Work“. Tippe „@“ und wähle das installierte Fachwerk-Plugin.</li>
+      </ol>
+      <p class="help-reference">Die <a href="https://developers.openai.com/api/docs/guides/custom-mcp-server">OpenAI-Anleitung für eigene MCP-Verbindungen</a> beschreibt auch die verfügbaren Kontoeinstellungen.</p>
+    </section>
+
+    <section aria-labelledby="claude">
+      <h2 id="claude">Claude einrichten</h2>
+      <ol>
+        <li>Öffne in Claude „Customize“ und dann „Connectors“.</li>
+        <li>Wähle „+ Add“ und „Add custom connector“.</li>
+        <li>Trage „Fachwerk“ als Namen und die MCP-Server-URL von oben ein. Wähle „Continue“.</li>
+        <li>Prüfe die erkannten OAuth-Einstellungen. Wähle „Sign in now“ für die Anmeldung. Wenn Claude nach dem OAuth-Client fragt, wähle „Register automatically“.</li>
+        <li>Schließe die Einrichtung mit „Add“ ab und melde dich mit deinem Fachwerk-Konto an. Falls die Verbindung noch nicht angemeldet ist, wähle beim Connector „Connect“.</li>
+        <li>Öffne ein Gespräch. Aktiviere Fachwerk über das Plus im Eingabefeld unter „Connectors“.</li>
+      </ol>
+      <p>In Team und Enterprise fügt ein berechtigter Owner den Connector zuerst für die Organisation hinzu. Danach verbindest du ihn mit deinem eigenen Fachwerk-Konto.</p>
+      <p class="help-reference">Die <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp">Claude-Anleitung für eigene Connectors</a> zeigt die Einrichtung für die einzelnen Kontotypen.</p>
+    </section>
+
+    <section aria-labelledby="erste-fragen">
+      <h2 id="erste-fragen">Mit einer Übersicht anfangen</h2>
+      <p>Prüfe zuerst, welche Instanzen dein Konto erreichen kann. Nenne danach die gewünschte Instanz in deinem Auftrag.</p>
+      <blockquote>Welche Fachwerk-Instanzen kann ich nutzen?</blockquote>
+      <blockquote>Zeige mir meine offenen Aufgaben in Fachwerk. Frage zuerst nach der Instanz, falls mehrere infrage kommen.</blockquote>
+      <p>Falls eine Instanz eine eigene Anmeldung verlangt, öffne sie im Browser und melde dich dort an. Änderungen an Daten beauftragst du ausdrücklich.</p>
+    </section>
+
+    <section aria-labelledby="hilfe">
+      <h2 id="hilfe">Die Verbindung klappt noch nicht?</h2>
+      <p>Bei Problemen mit Anmeldung, Instanzwahl oder Zugriff hilft dir die <a href="/support/">Support-Seite</a> weiter.</p>
+      <p>Informationen zur Datenverarbeitung findest du im <a href="/de/datenschutz/">Datenschutz</a>, Angaben zum Anbieter im <a href="/de/impressum/">Impressum</a>.</p>
+    </section>
+  </main>
+</Base>

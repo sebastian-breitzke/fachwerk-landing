@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Fachwerk Support" description="Hilfe für Fachwerk in ChatGPT und Claude: Anmeldung, Instanzwahl und Zugriff. Kontakt zu Sebastian Breitzke.">
+  <main class="help-page wrap">
+    <header class="help-heading">
+      <p class="eyebrow">Support</p>
+      <h1>Hilfe mit Fachwerk</h1>
+      <p>Du kommst bei der Verbindung mit ChatGPT oder Claude nicht weiter? Hier findest du die nächsten Schritte und den direkten Kontakt.</p>
+      <div class="actions"><a class="button" href="mailto:hello@fachwerk.tech">hello@fachwerk.tech ↗</a></div>
+      <p class="help-reference">Dein Ansprechpartner: Sebastian Breitzke.</p>
+    </header>
+
+    <section aria-labelledby="einrichten">
+      <h2 id="einrichten">Fachwerk zum ersten Mal verbinden</h2>
+      <p>Die <a href="/plugins/">Einrichtung für ChatGPT und Claude</a> führt dich durch die Verbindung und Anmeldung mit deinem Fachwerk-Konto.</p>
+    </section>
+
+    <section aria-labelledby="login">
+      <h2 id="login">Die Anmeldung klappt nicht</h2>
+      <p>Prüfe, ob du dich mit deinem eigenen Fachwerk-Konto bei <a href="https://auth.gefuege.eu">auth.gefuege.eu</a> anmelden kannst. Öffne anschließend den Fachwerk-Connector in ChatGPT oder Claude und starte die Verbindung erneut.</p>
+      <p>Wenn eine bestimmte Instanz eine weitere Anmeldung verlangt, öffne diese Instanz im Browser und melde dich dort an.</p>
+    </section>
+
+    <section aria-labelledby="instanz">
+      <h2 id="instanz">Eine Instanz ist nicht sichtbar</h2>
+      <p>Frage deine KI: „Welche Fachwerk-Instanzen kann ich nutzen?“ Prüfe, ob du das richtige Fachwerk-Konto verbunden hast. Bitte den zuständigen Admin der Instanz, deinen Zugang zu prüfen.</p>
+    </section>
+
+    <section aria-labelledby="zugriff">
+      <h2 id="zugriff">Der Zugriff wird verweigert</h2>
+      <p>Auch über ChatGPT und Claude gelten deine bestehenden Fachwerk-Rechte. Kläre mit dem zuständigen Admin, ob dein Konto für die betroffenen Daten oder die gewünschte Aktion freigegeben ist.</p>
+    </section>
+
+    <section aria-labelledby="kontakt">
+      <h2 id="kontakt">Schreib uns, wo es hakt</h2>
+      <p>Sende deine Frage an <a href="mailto:hello@fachwerk.tech">hello@fachwerk.tech</a>. Damit wir den Fehler einordnen können, nenne bitte:</p>
+      <ul>
+        <li>die verwendete Anwendung: ChatGPT oder Claude, im Browser oder als Desktop-App,</li>
+        <li>Datum und Uhrzeit des Fehlers mit Zeitzone,</li>
+        <li>die Schritte bis zum Fehler und den Wortlaut der Fehlermeldung.</li>
+      </ul>
+      <p>Sende niemals Passwörter, Tokens oder andere Zugangsdaten. Entferne vertrauliche Daten aus Fehlermeldungen und Screenshots, bevor du sie weitergibst.</p>
+      <p>Informationen zur Verarbeitung deiner Anfrage findest du im <a href="/de/datenschutz/">Datenschutz</a>. Anbieterangaben stehen im <a href="/de/impressum/">Impressum</a>.</p>
+    </section>
+  </main>
+</Base>

@@ -198,7 +198,28 @@ h2 { font-size: clamp(32px, 3.5vw, 44px); }
 .contact-action:hover { background: var(--bg-muted); color: var(--fg); }
 .contact-action:first-child:hover { background: var(--ink-soft); color: var(--bg); }
 .site-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px 24px; padding-block: 20px; border-top: 1px solid var(--border); font: 12px/1.6 var(--font-mono); color: var(--muted-text); }
-.site-footer nav { display: flex; gap: 24px; }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+
+.help-page { max-width: 760px; padding-block: 64px 96px; }
+.help-heading { display: grid; gap: 24px; margin-bottom: 40px; }
+.help-heading h1 { font-size: clamp(40px, 5vw, 64px); }
+.help-heading > p:not(.eyebrow):not(.help-reference) { font-size: 20px; color: var(--ink-soft); }
+.help-jump-links { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-block: 20px; border-block: 1px solid var(--border); font: 12px/1.6 var(--font-mono); }
+.help-page section { margin-top: 48px; }
+.help-page h2 { font-size: clamp(28px, 3vw, 36px); margin-bottom: 20px; }
+.help-page section > p, .help-page li { color: var(--ink-soft); }
+.help-page section > p + p { margin-top: 16px; }
+.help-page ol, .help-page ul { margin-block: 20px; padding-left: 24px; }
+.help-page li { padding-left: 4px; margin-block: 12px; }
+.help-page a:not(.button) { text-decoration-color: var(--primary); }
+.help-page .help-reference { color: var(--muted-text); font-size: 14px; }
+.help-connection { margin-block: 24px; border-block: 1px solid var(--border); }
+.help-connection > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 12px; padding-block: 16px; }
+.help-connection > div + div { border-top: 1px solid var(--border); }
+.help-connection dt { font: 12px/1.8 var(--font-mono); color: var(--muted-text); }
+.help-connection dd { min-width: 0; }
+.help-connection code { font: 14px/1.7 var(--font-mono); overflow-wrap: anywhere; user-select: all; }
+.help-page blockquote { margin: 24px 0; border-left: 2px solid var(--primary); padding-left: 20px; font-size: 20px; }
 
 @media (max-width: 1100px) {
   .wrap { width: calc(100% - 64px); }
@@ -213,6 +234,9 @@ h2 { font-size: clamp(32px, 3.5vw, 44px); }
   .about-layout { grid-template-columns: 280px minmax(0, 1fr); gap: 48px; }
 }
 @media (max-width: 760px) {
+  .help-page { padding-block: 40px 64px; }
+  .help-heading > p:not(.eyebrow):not(.help-reference) { font-size: 18px; }
+  .help-connection > div { grid-template-columns: 1fr; gap: 4px; }
   .landscape-intelligence { grid-template-columns: 1fr; gap: 12px; }
   .wrap { width: calc(100% - 40px); }
   .section { padding-block: 64px; }
